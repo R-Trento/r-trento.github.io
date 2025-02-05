@@ -1,1 +1,1 @@
-Sitemap: https://R-Trento.github.io/r-trento/sitemap.xml
+Sitemap: https://R-Trento.github.io/r-trento.github.io/sitemap.xml
