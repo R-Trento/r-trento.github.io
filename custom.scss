@@ -6,3 +6,8 @@ $headings-font-weight:  500 !default;
 h1, h2, h3, h4, h5, h6 {
   text-shadow: 2px 2px 0 rgba(0, 0, 0, .2);
 }
+
+h1.title {
+  font-size: $h1-font-size*1.3;
+  font-weight: $headings-font-weight*2;
+}
