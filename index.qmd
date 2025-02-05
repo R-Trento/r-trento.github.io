@@ -1,6 +1,33 @@
 ---
-title: "R-Trento Users Group"
-format: html
+title: "R-Trento Users Group (RTUG)"
+listing:
+  sort: "date desc"
+  type: default
+  contents: posts
+  fields: [image, date, title, author, description, reading-time]
+  image-height: "150px"
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  feed: true
+page-layout: full
+title-block-banner: false
+engine: knitr
 ---
 
-# Under Construction
+::: {layout="[30,70]"}
+::: {#second-column}
+![](images/RTUG.jpg)
+:::
+:::{#first-column}
+The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the [R language](https://r-project.org) and its suite of tools.
+
+# Mission
+
+RTUG mission is to spread the use or R language and tools within academia, industry and public administration.
+:::
+
+:::
+
+
+# News

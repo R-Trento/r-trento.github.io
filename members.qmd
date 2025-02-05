@@ -1,0 +1,35 @@
+---
+title: "Members"
+date: "02/05/2025"
+date-modified: "02/05/2025"
+format: html
+---
+
+# RTUG Founding members
+
+## Paolo Bosetti
+::: {layout="[70,30]"}
+:::{#first-column}
+Professor at the [Department of Industrial Engineering](https://dii.unitn.it){target=_blank}, University of Trento. 
+
+See [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank} for teaching materials and personal blog.
+
+Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
+:::
+
+::: {#second-column}
+ciao
+![](images/PBBW.jpg)
+:::
+:::
+
+## Maria Michela Dickson
+
+
+## Giuseppe Espa
+
+
+## Diego Giuliani
+
+
+## Flavio Santi

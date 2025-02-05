@@ -1,12 +1,16 @@
 project:
   type: website
 website:
-  title: "R-Trento"
+  title: "R-Trento Users Group"
   description: "R-Trento Users Group"
   navbar:
     left:
-      - text: "Home"
-        href: index.html
+      - text: "Meetings"
+        href: meetings.html
+      - text: "Members"
+        href: members.html
+      - text: "Bibliography"
+        href: bibliography.html
       - text: "Contact"
         href: contact.html
     right:
@@ -15,6 +19,9 @@ website:
 format:
   html:
     toc: true
-    theme: cerulean
+    theme: 
+      - flatly
+      - custom.scss
+    
 execute:
   freeze: auto

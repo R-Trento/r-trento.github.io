@@ -1,0 +1,8 @@
+---
+title: "Contacts"
+format: html
+date: "02/05/2025"
+date-modified: "02/05/2025"
+---
+
+If you are interested in the RTUG activities, please contact `paolo [dot] bosetti [at] unitn [dot] it`

@@ -1,0 +1,20 @@
+---
+title: "Opening!"
+author: "Paolo Bosetti"
+date: "02/05/2025"
+image: "milestone.jpg"
+format: html
+---
+
+# The Users Group is instantiated
+:::column-margin
+![An important milestone](milestone.jpg)
+:::
+
+On Feb. 5th, 2025, Giuseppe **Espa**, Maria Michela **Dickson**, Flavio **Santi**, Diego **Giuliani** and Paolo **Bosetti** had the first ffounding meeting of the R-Trento Users Group.
+
+```{r}
+RTUG <- list("Giuseppe", "Maria Michela", "Flavio", "Diego", "Paolo")
+```
+
+That's a milestone.
