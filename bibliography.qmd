@@ -5,7 +5,7 @@ date-modified: "02/05/2025"
 format: html
 ---
 
-Members of RTUG have contributed to eth following topics:
+Members of RTUG have contributed to the following topics:
 
 # CRAN Packages
 
