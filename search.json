@@ -1,16 +1,51 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R-Trento Users Group",
+    "objectID": "meetings.html",
+    "href": "meetings.html",
+    "title": "Meetings",
     "section": "",
-    "text": "Under Construction"
+    "text": "Meetings organized by R-Trento Users Group\nUnder construction."
+  },
+  {
+    "objectID": "bibliography.html",
+    "href": "bibliography.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Members of RTUG have contributed to eth following topics:\n\nCRAN Packages\n\nADAS Utils (Design of Experiments)\n\n\n\nBooks\n\nFondamenti di statistica. Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R. Paolo Bosetti, Libreriauniversitaria.it, 2022.\n\n\n\nPapers"
   },
   {
     "objectID": "contact.html",
     "href": "contact.html",
     "title": "Contacts",
     "section": "",
-    "text": "Contacts\npaolo [dot] bosetti [at] unitn [dot] it"
+    "text": "If you are interested in the RTUG activities, please contact paolo [dot] bosetti [at] unitn [dot] it"
+  },
+  {
+    "objectID": "members.html",
+    "href": "members.html",
+    "title": "Members",
+    "section": "",
+    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub\n\n\nciao"
+  },
+  {
+    "objectID": "members.html#paolo-bosetti",
+    "href": "members.html#paolo-bosetti",
+    "title": "Members",
+    "section": "",
+    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub\n\n\nciao"
+  },
+  {
+    "objectID": "posts/001-opening/001-opening.html",
+    "href": "posts/001-opening/001-opening.html",
+    "title": "Opening!",
+    "section": "",
+    "text": "The Users Group is instantiated\n\n\n\n\n\nAn important milestone\n\n\nOn Feb. 5th, 2025, Giuseppe Espa, Maria Michela Dickson, Flavio Santi, Diego Giuliani and Paolo Bosetti had the first ffounding meeting of the R-Trento Users Group.\n\nRTUG &lt;- list(\"Giuseppe\", \"Maria Michela\", \"Flavio\", \"Diego\", \"Paolo\")\n\nThat’s a milestone."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R-Trento Users Group (RTUG)",
+    "section": "",
+    "text": "The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the R language and its suite of tools.\n\nMission\nRTUG mission is to spread the use or R language and tools within academia, industry and public administration.\n\n\n\n\n\nNews\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nOpening!\n\n\n\n\n\n\n\n\n\n\n\nFeb 5, 2025\n\n\nPaolo Bosetti\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   }
 ]
