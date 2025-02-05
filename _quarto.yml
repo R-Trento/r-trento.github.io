@@ -1,5 +1,20 @@
 project:
-  title: "R-Trento Users group"
   type: website
+website:
+  title: "R-Trento"
+  description: "R-Trento Users Group"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.html
+      - text: "Contact"
+        href: contact.html
+    right:
+      - icon: github
+        href: https://github.com/r-trento
+format:
+  html:
+    toc: true
+    theme: cerulean
 execute:
   freeze: auto
