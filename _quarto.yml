@@ -1,0 +1,5 @@
+project:
+  title: "R-Trento Users group"
+  type: website
+execute:
+  freeze: auto
