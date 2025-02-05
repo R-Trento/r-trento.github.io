@@ -4,6 +4,9 @@ author: "Paolo Bosetti"
 date: "02/05/2025"
 image: "milestone.jpg"
 format: html
+categories: 
+  - RTUG
+  - milestone
 ---
 
 # The Users Group is instantiated

@@ -1,8 +1,8 @@
 {
-  "hash": "96da8206bed69dec71e7c772cedef9c4",
+  "hash": "63e72884caa5c192b9df4574c334564f",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Opening!\"\nauthor: \"Paolo Bosetti\"\ndate: \"02/05/2025\"\nimage: \"milestone.jpg\"\nformat: html\n---\n\n\n\n# The Users Group is instantiated\n:::column-margin\n![An important milestone](milestone.jpg)\n:::\n\nOn Feb. 5th, 2025, Giuseppe **Espa**, Maria Michela **Dickson**, Flavio **Santi**, Diego **Giuliani** and Paolo **Bosetti** had the first ffounding meeting of the R-Trento Users Group.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nRTUG <- list(\"Giuseppe\", \"Maria Michela\", \"Flavio\", \"Diego\", \"Paolo\")\n```\n:::\n\n\n\nThat's a milestone.\n",
+    "markdown": "---\ntitle: \"Opening!\"\nauthor: \"Paolo Bosetti\"\ndate: \"02/05/2025\"\nimage: \"milestone.jpg\"\nformat: html\ncategories: \n  - RTUG\n  - milestone\n---\n\n\n\n# The Users Group is instantiated\n:::column-margin\n![An important milestone](milestone.jpg)\n:::\n\nOn Feb. 5th, 2025, Giuseppe **Espa**, Maria Michela **Dickson**, Flavio **Santi**, Diego **Giuliani** and Paolo **Bosetti** had the first ffounding meeting of the R-Trento Users Group.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nRTUG <- list(\"Giuseppe\", \"Maria Michela\", \"Flavio\", \"Diego\", \"Paolo\")\n```\n:::\n\n\n\nThat's a milestone.\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

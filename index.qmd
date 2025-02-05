@@ -4,7 +4,7 @@ listing:
   sort: "date desc"
   type: default
   contents: posts
-  fields: [image, date, title, author, description, reading-time]
+  fields: [image, date, title, author, categories, description, reading-time]
   image-height: "150px"
   categories: true
   sort-ui: true
@@ -29,5 +29,8 @@ RTUG mission is to spread the use or R language and tools within academia, indus
 
 :::
 
+:::{.callout-warning}
+This whole site is still under construction, bear with us.
+:::
 
 # News

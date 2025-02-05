@@ -10,7 +10,7 @@ format: html
 ## Paolo Bosetti
 ::: {layout="[70,30]"}
 :::{#first-column}
-Professor at the [Department of Industrial Engineering](https://dii.unitn.it){target=_blank}, University of Trento. 
+Professor at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
 
 See [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank} for teaching materials and personal blog.
 
@@ -18,7 +18,7 @@ Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
 :::
 
 ::: {#second-column}
-![](images/PBBW.jpg)
+![](images/PBBW.jpg){width=150}
 :::
 :::
 
