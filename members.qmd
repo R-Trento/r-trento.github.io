@@ -18,7 +18,6 @@ Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
 :::
 
 ::: {#second-column}
-ciao
 ![](images/PBBW.jpg)
 :::
 :::
