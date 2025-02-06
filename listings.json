@@ -2,7 +2,14 @@
   {
     "listing": "/index.html",
     "items": [
+      "/meetings/1.25-meeting.html",
       "/posts/001-opening/001-opening.html"
+    ]
+  },
+  {
+    "listing": "/meetings.html",
+    "items": [
+      "/meetings/1.25-meeting.html"
     ]
   }
 ]

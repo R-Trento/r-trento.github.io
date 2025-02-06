@@ -10,7 +10,37 @@
 <atom:link href="https://r-trento.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 04 Feb 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 05 Feb 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>First RTUG meeting</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://r-trento.github.io/meetings/1.25-meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The first R-Trento Users Meeting will be held in a yet to be defined location and on a yet to be defined date.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is just a placeholder.</p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <guid>https://r-trento.github.io/meetings/1.25-meeting.html</guid>
+  <pubDate>Wed, 05 Feb 2025 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Opening!</title>
   <dc:creator>Paolo Bosetti</dc:creator>

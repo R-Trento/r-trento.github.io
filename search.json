@@ -1,38 +1,17 @@
 [
   {
-    "objectID": "meetings.html",
-    "href": "meetings.html",
-    "title": "Meetings",
+    "objectID": "meetings/1.25-meeting.html",
+    "href": "meetings/1.25-meeting.html",
+    "title": "First RTUG meeting",
     "section": "",
-    "text": "Meetings organized by R-Trento Users Group\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction."
+    "text": "The first R-Trento Users Meeting will be held in a yet to be defined location and on a yet to be defined date.\n\n\n\n\n\n\nWarning\n\n\n\nThis is just a placeholder."
   },
   {
-    "objectID": "bibliography.html",
-    "href": "bibliography.html",
-    "title": "Bibliography",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R-Trento Users Group (RTUG)",
     "section": "",
-    "text": "Members of RTUG have contributed to the following topics:\n\nCRAN Packages\n\nADAS Utils (Design of Experiments)\n\n\n\nBooks\n\nFondamenti di statistica. Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R. Paolo Bosetti, Libreriauniversitaria.it, 2022.\n\n\n\nPapers"
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contacts",
-    "section": "",
-    "text": "If you are interested in the RTUG activities, please contact paolo [dot] bosetti [at] unitn [dot] it"
-  },
-  {
-    "objectID": "members.html",
-    "href": "members.html",
-    "title": "Members",
-    "section": "",
-    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub"
-  },
-  {
-    "objectID": "members.html#paolo-bosetti",
-    "href": "members.html#paolo-bosetti",
-    "title": "Members",
-    "section": "",
-    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub"
+    "text": "The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the R language and its suite of tools.\n\nMission\nRTUG mission is to spread the use or R language and tools within academia, industry and public administration.\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThis whole site is still under construction, bear with us.\n\n\n\nNext meeting\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\nDescription\n\n\n\n\n\n\nFeb 6, 2025\n\n\nFirst RTUG meeting\n\n\nPaolo Bosetti\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nNews\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nOpening!\n\n\n\n\n\n\nRTUG\n\n\nmilestone\n\n\n\n\n\n\n\n\n\nFeb 5, 2025\n\n\nPaolo Bosetti\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/001-opening/001-opening.html",
@@ -42,10 +21,66 @@
     "text": "The Users Group is instantiated\n\n\n\n\n\nAn important milestone\n\n\nOn Feb. 5th, 2025, Giuseppe Espa, Maria Michela Dickson, Flavio Santi, Diego Giuliani and Paolo Bosetti had the first ffounding meeting of the R-Trento Users Group.\n\nRTUG &lt;- list(\"Giuseppe\", \"Maria Michela\", \"Flavio\", \"Diego\", \"Paolo\")\n\nThat’s a milestone."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R-Trento Users Group (RTUG)",
+    "objectID": "members.html",
+    "href": "members.html",
+    "title": "Members",
     "section": "",
-    "text": "The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the R language and its suite of tools.\n\nMission\nRTUG mission is to spread the use or R language and tools within academia, industry and public administration.\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThis whole site is still under construction, bear with us.\n\n\n\nNews\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nOpening!\n\n\n\n\n\n\nRTUG\n\n\nmilestone\n\n\n\n\n\n\n\n\n\nFeb 5, 2025\n\n\nPaolo Bosetti\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "members.html#paolo-bosetti",
+    "href": "members.html#paolo-bosetti",
+    "title": "Members",
+    "section": "",
+    "text": "Professor at the Department of Industrial Engineering, University of Trento.\nSee paolobosetti.quarto.pub for teaching materials and personal blog.\nCode repository on GitHub"
+  },
+  {
+    "objectID": "members.html#maria-michela-dickson",
+    "href": "members.html#maria-michela-dickson",
+    "title": "Members",
+    "section": "",
+    "text": "Warning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "members.html#giuseppe-espa",
+    "href": "members.html#giuseppe-espa",
+    "title": "Members",
+    "section": "",
+    "text": "Warning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "members.html#diego-giuliani",
+    "href": "members.html#diego-giuliani",
+    "title": "Members",
+    "section": "",
+    "text": "Warning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "members.html#flavio-santi",
+    "href": "members.html#flavio-santi",
+    "title": "Members",
+    "section": "",
+    "text": "Warning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contacts",
+    "section": "",
+    "text": "If you are interested in the RTUG activities, please contact paolo [dot] bosetti [at] unitn [dot] it"
+  },
+  {
+    "objectID": "bibliography.html",
+    "href": "bibliography.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Members of RTUG have contributed to the following topics:\n\nCRAN Packages\n\nADAS Utils (Design of Experiments)\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\nBooks\n\nFondamenti di statistica. Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R. Paolo Bosetti, Libreriauniversitaria.it, 2022.\n\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\nPapers\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction."
+  },
+  {
+    "objectID": "meetings.html",
+    "href": "meetings.html",
+    "title": "Meetings",
+    "section": "",
+    "text": "Meetings organized by R-Trento Users Group\n\n\n\n\n\n\nWarning\n\n\n\nUnder construction.\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\nDescription\n\n\n\n\n\n\nFeb 6, 2025\n\n\nFirst RTUG meeting\n\n\nPaolo Bosetti\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]
