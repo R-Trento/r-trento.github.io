@@ -10,7 +10,38 @@
 <atom:link href="https://r-trento.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 04 Feb 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 05 Feb 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>New Logo</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://r-trento.github.io/posts/002-logo/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="we-have-a-new-group-logo" class="level1 page-columns page-full">
+<h1>We have a new group logo</h1>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://r-trento.github.io/images/logo.png" class="img-fluid figure-img"></p>
+<figcaption>RTUG logo</figcaption>
+</figure>
+</div>
+</div></div><p>The new RTUG logo is a hexagon, on the style of Tidyverse packages, it takes the colors of Trentino Province lettering, and of course it incorporates the GNU-R language logo.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>RTUG</category>
+  <category>website</category>
+  <guid>https://r-trento.github.io/posts/002-logo/</guid>
+  <pubDate>Wed, 05 Feb 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://r-trento.github.io/images/logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>First RTUG meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
