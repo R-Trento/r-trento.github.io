@@ -25,7 +25,7 @@ To create a new post, look into the `posts` folder, duplicate the `000-template`
 When editing the `index.md` file, remember to update the YAML preamble:
 
 - Set a proper title
-- Set the author (your name, preverably)
+- Set the author (your name, preferably)
 - Set the date (MM/DD/YYYY)
 - Set the image (the name of the image file)
 - Give a list of categories (e.g. `RTUG`, `milestone`, `R`, `tidyverse`, etc.)
