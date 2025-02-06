@@ -1,0 +1,18 @@
+---
+title: "New Logo"
+author: "Paolo Bosetti"
+date: "02/06/2025"
+date-modified: today
+image: "/images/logo.png"
+format: html
+categories: 
+  - RTUG
+  - website
+---
+
+# We have a new group logo
+:::column-margin
+![RTUG logo](/images/logo.png)
+:::
+
+The new RTUG logo is a hexagon, on the style of Tidyverse packages, it takes the colors of Trentino Province lettering, and of course it incorporates the GNU-R language logo.

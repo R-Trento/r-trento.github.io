@@ -4,6 +4,7 @@ website:
   site-url: https://r-trento.github.io
   title: "R-Trento Users Group"
   description: "R-Trento Users Group"
+  draft-mode: unlinked
   announcement: 
     icon: info-circle
     dismissable: true

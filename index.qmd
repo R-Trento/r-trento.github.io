@@ -26,7 +26,7 @@ engine: knitr
 
 ::: {layout="[30,70]"}
 ::: {#second-column}
-![](images/RTUG.jpg)
+![](images/logo.png)
 :::
 :::{#first-column}
 The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the [R language](https://r-project.org) and its suite of tools.
