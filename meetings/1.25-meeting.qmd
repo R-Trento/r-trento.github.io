@@ -1,0 +1,13 @@
+---
+title: "First RTUG meeting"
+author: "Paolo Bosetti"
+format: html
+date: "02/06/2025"
+---
+
+
+The first R-Trento Users Meeting will be held in a yet to be defined location and on a yet to be defined date.
+
+:::{.callout-warning}
+This is just a placeholder.
+:::

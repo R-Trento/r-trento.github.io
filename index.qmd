@@ -1,15 +1,24 @@
 ---
 title: "R-Trento Users Group (RTUG)"
 listing:
-  sort: "date desc"
-  type: default
-  contents: posts
-  fields: [image, date, title, author, categories, description, reading-time]
-  image-height: "150px"
-  categories: true
-  sort-ui: true
-  filter-ui: true
-  feed: true
+  - id: "meetings"
+    sort: "date desc"
+    max-items: 1
+    type: table
+    contents: meetings
+    fields: [date, title, author, description]
+    sort-ui: false
+    filter-ui: false
+  - id: "news"
+    sort: "date desc"
+    type: default
+    contents: posts
+    fields: [image, date, title, author, categories, description, reading-time]
+    image-height: "150px"
+    categories: true
+    sort-ui: true
+    filter-ui: true
+    feed: true
 page-layout: full
 title-block-banner: false
 engine: knitr
@@ -33,4 +42,13 @@ RTUG mission is to spread the use or R language and tools within academia, indus
 This whole site is still under construction, bear with us.
 :::
 
+# Next meeting
+
+:::{#meetings}
+:::
+
+
 # News
+
+:::{#news}
+:::

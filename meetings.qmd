@@ -3,6 +3,10 @@ title: "Meetings"
 author: "Paolo Bosetti"
 date: "02/05/2025"
 format: html
+listing:
+  type: table
+  contents: meetings
+  fields: [date, title, author, description]
 ---
 
 # Meetings organized by R-Trento Users Group

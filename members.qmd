@@ -23,12 +23,21 @@ Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
 :::
 
 ## Maria Michela Dickson
-
+:::{.callout-warning}
+Under construction.
+:::
 
 ## Giuseppe Espa
-
+:::{.callout-warning}
+Under construction.
+:::
 
 ## Diego Giuliani
-
+:::{.callout-warning}
+Under construction.
+:::
 
 ## Flavio Santi
+:::{.callout-warning}
+Under construction.
+:::
