@@ -4,6 +4,12 @@ website:
   site-url: https://r-trento.github.io
   title: "R-Trento Users Group"
   description: "R-Trento Users Group"
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "**Please Note** - This site is sill under construction, RTUG has not been launched yet..."
+    type: warning
+    position: below-navbar
   navbar:
     left:
       - text: "Meetings"
@@ -20,6 +26,8 @@ website:
 format:
   html:
     toc: true
+    anchor-sections: true
+    email-obfuscation: "javascript"
     theme: 
       - flatly
       - custom.scss

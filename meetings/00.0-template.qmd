@@ -3,7 +3,7 @@ title: "Template for RTUG meeting"
 author: "Paolo Bosetti"
 format: html
 date: "04/01/2025"
-date-modified: ""
+date-modified: today
 draft: true
 ---
 

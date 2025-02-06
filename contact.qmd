@@ -5,4 +5,4 @@ date: "02/05/2025"
 date-modified: "02/05/2025"
 ---
 
-If you are interested in the RTUG activities, please contact `paolo [dot] bosetti [at] unitn [dot] it`
+If you are interested in the RTUG activities, please contact [Paolo Bosetti](mailto:paolo.bosetti@unitn.it)

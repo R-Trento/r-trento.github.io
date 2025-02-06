@@ -2,7 +2,7 @@
 title: "Post Title"
 author: "Paolo Bosetti"
 date: "02/05/2025"
-date-modified: ""
+# date-modified: today
 image: "image.jpg"
 format: html
 draft: true
