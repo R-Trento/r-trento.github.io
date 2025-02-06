@@ -1,0 +1,15 @@
+---
+title: "Template for RTUG meeting"
+author: "Paolo Bosetti"
+format: html
+date: "04/01/2025"
+date-modified: ""
+draft: true
+---
+
+**When**: The next RTUG meeting will be on March 25th, 2025.
+**Where**: Online
+
+:::{.callout-warning}
+This is just a placeholder.
+:::

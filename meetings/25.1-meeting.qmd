@@ -2,7 +2,8 @@
 title: "First RTUG meeting"
 author: "Paolo Bosetti"
 format: html
-date: "02/06/2025"
+date: "02/05/2025"
+date-modified: "02/06/2025"
 ---
 
 
