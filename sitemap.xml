@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://r-trento.github.io/meetings/1.25-meeting.html</loc>
-    <lastmod>2025-02-06T10:00:25.417Z</lastmod>
+    <loc>https://r-trento.github.io/meetings/25.1-meeting.html</loc>
+    <lastmod>2025-02-06T10:52:18.003Z</lastmod>
   </url>
   <url>
-    <loc>https://r-trento.github.io/index.html</loc>
-    <lastmod>2025-02-06T09:56:15.230Z</lastmod>
+    <loc>https://r-trento.github.io/meetings.html</loc>
+    <lastmod>2025-02-06T09:49:09.506Z</lastmod>
   </url>
   <url>
-    <loc>https://r-trento.github.io/posts/001-opening/001-opening.html</loc>
-    <lastmod>2025-02-05T15:27:12.578Z</lastmod>
+    <loc>https://r-trento.github.io/bibliography.html</loc>
+    <lastmod>2025-02-06T09:57:52.671Z</lastmod>
   </url>
   <url>
     <loc>https://r-trento.github.io/members.html</loc>
@@ -21,11 +21,11 @@
     <lastmod>2025-02-05T12:38:11.824Z</lastmod>
   </url>
   <url>
-    <loc>https://r-trento.github.io/bibliography.html</loc>
-    <lastmod>2025-02-06T09:57:52.671Z</lastmod>
+    <loc>https://r-trento.github.io/posts/001-opening/001-opening.html</loc>
+    <lastmod>2025-02-05T15:27:12.578Z</lastmod>
   </url>
   <url>
-    <loc>https://r-trento.github.io/meetings.html</loc>
-    <lastmod>2025-02-06T09:49:09.506Z</lastmod>
+    <loc>https://r-trento.github.io/index.html</loc>
+    <lastmod>2025-02-06T09:56:15.230Z</lastmod>
   </url>
 </urlset>

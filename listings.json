@@ -1,15 +1,15 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/meetings.html",
     "items": [
-      "/meetings/1.25-meeting.html",
-      "/posts/001-opening/001-opening.html"
+      "/meetings/25.1-meeting.html"
     ]
   },
   {
-    "listing": "/meetings.html",
+    "listing": "/index.html",
     "items": [
-      "/meetings/1.25-meeting.html"
+      "/meetings/25.1-meeting.html",
+      "/posts/001-opening/001-opening.html"
     ]
   }
 ]
