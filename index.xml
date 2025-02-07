@@ -5,7 +5,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>R-Trento Users Group</title>
+<title>RTUG</title>
 <link>https://r-trento.github.io/</link>
 <atom:link href="https://r-trento.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
