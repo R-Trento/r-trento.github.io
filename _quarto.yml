@@ -2,7 +2,7 @@ project:
   type: website
   preview:
     port: 8080
-    host: 192.168.1.220
+    host: localhost
 website:
   site-url: https://r-trento.github.io
   title: "RTUG"
