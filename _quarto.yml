@@ -1,8 +1,11 @@
 project:
   type: website
+  preview:
+    port: 8080
+    host: 192.168.1.220
 website:
   site-url: https://r-trento.github.io
-  title: "R-Trento Users Group"
+  title: "RTUG"
   description: "R-Trento Users Group"
   draft-mode: unlinked
   announcement: 

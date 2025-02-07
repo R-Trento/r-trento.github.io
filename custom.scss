@@ -13,17 +13,21 @@ h1.title {
   font-weight: $headings-font-weight*2;
 }
 
-.navbar-title {
-  font-size: $h2-font-size;
-  font-weight: $headings-font-weight;
+.navbar-brand-container {
+  max-width: 100%;
 }
 
-.alert {
-  margin: 10px;
+.navbar-title {
+  font-size: $h3-font-size;
+  font-weight: $headings-font-weight;
 }
 
 .navbar-logo {
   max-height: 50px;
+}
+
+.alert {
+  margin: 10px;
 }
 
 .rounded-corners {
@@ -32,6 +36,12 @@ h1.title {
 
 .thumbnail-image {
   border-radius: 10px;
+}
+
+/* This is for making images in listings smaller */
+div.thumbnail {
+  max-width: 150px;
+  height: auto;
 }
 
 figcaption {
