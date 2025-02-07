@@ -27,6 +27,11 @@ website:
     right:
       - icon: github
         href: https://github.com/r-trento
+  margin-footer: |
+    :::{style="margin-top: 50px; border-top: 1px solid black; text-style: italic; font-size: 75%"}
+    Unless otherwise sepcified, all content is licensed as BY-NC-SA 
+    [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-top: 10px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+    :::
 format:
   html:
     toc: true
