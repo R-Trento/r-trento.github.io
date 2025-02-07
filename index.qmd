@@ -15,7 +15,7 @@ listing:
     contents: posts
     fields: [image, date, title, author, categories, description, reading-time]
     image-height: "150px"
-    categories: true
+    categories: numbered
     sort-ui: true
     filter-ui: true
     feed: true

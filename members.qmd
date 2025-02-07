@@ -18,7 +18,7 @@ Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
 :::
 
 ::: {#second-column}
-![](images/PBBW.jpg){width=150}
+![](images/PBBW.jpg){width=150 class=rounded-corners}
 :::
 :::
 

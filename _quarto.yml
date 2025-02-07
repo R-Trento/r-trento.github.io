@@ -27,11 +27,9 @@ website:
 format:
   html:
     toc: true
-    anchor-sections: true
     email-obfuscation: "javascript"
     theme: 
       - flatly
       - custom.scss
-    
 execute:
   freeze: auto
