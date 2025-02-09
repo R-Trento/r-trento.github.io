@@ -9,7 +9,9 @@ Members of RTUG have contributed to the following topics:
 
 # CRAN Packages
 
-* [ADAS Utils](https://cran.r-project.org/web/packages/adas.utils/index.html){target="_blank"} (Design of Experiments)
+* [ADAS Utils](https://cran.r-project.org/web/packages/adas.utils/index.html){target="_blank"}---Design of Experiments
+* [noisyCE2](https://cran.r-project.org/web/packages/noisyCE2/index.html){target="_blank"}---Cross-Entropy Optimisation of Noisy Functions
+
 
 
 # Books
