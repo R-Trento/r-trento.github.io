@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-02-05">
 
-<title>Members – RTUG</title>
+<title>Members posts – RTUG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,7 +69,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -96,11 +156,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Meetings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link active" href="./posts.html" aria-current="page"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./members.html" aria-current="page"> 
+    <a class="nav-link" href="./members.html"> 
 <span class="menu-text">Members</span></a>
   </li>  
   <li class="nav-item">
@@ -137,14 +197,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rtug-founding-members" id="toc-rtug-founding-members" class="nav-link active" data-scroll-target="#rtug-founding-members">RTUG Founding members</a>
-  <ul class="collapse">
-  <li><a href="#paolo-bosetti" id="toc-paolo-bosetti" class="nav-link" data-scroll-target="#paolo-bosetti">Paolo Bosetti</a></li>
-  <li><a href="#maria-michela-dickson" id="toc-maria-michela-dickson" class="nav-link" data-scroll-target="#maria-michela-dickson">Maria Michela Dickson</a></li>
-  <li><a href="#giuseppe-espa" id="toc-giuseppe-espa" class="nav-link" data-scroll-target="#giuseppe-espa">Giuseppe Espa</a></li>
-  <li><a href="#diego-giuliani" id="toc-diego-giuliani" class="nav-link" data-scroll-target="#diego-giuliani">Diego Giuliani</a></li>
-  <li><a href="#flavio-santi" id="toc-flavio-santi" class="nav-link" data-scroll-target="#flavio-santi">Flavio Santi</a></li>
-  </ul></li>
+  <li><a href="#posts" id="toc-posts" class="nav-link active" data-scroll-target="#posts">Posts</a></li>
   </ul>
 </nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
@@ -157,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Members</h1>
+<h1 class="title">Members posts</h1>
 </div>
 
 
@@ -175,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 5, 2025</p>
+      <p class="date-modified">February 9, 2025</p>
     </div>
   </div>
     
@@ -186,95 +239,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="rtug-founding-members" class="level1">
-<h1>RTUG Founding members</h1>
-<section id="paolo-bosetti" class="level2">
-<h2 class="anchored" data-anchor-id="paolo-bosetti">Paolo Bosetti</h2>
-<div>
+<p>This is a selection of the most interesting posts contributed by our members.</p>
+<p>If you want to contribute, head on to the <a href="https://github.com/r-trento/r-trento.github.io" target="_blank">GitHub repo</a>, fork it, add a new post in the <code>posts</code> folder, tag it with the <code>post</code> category and make a pull request.</p>
+<section id="posts" class="level1">
+<h1>Posts</h1>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[70,30]">
-<div class="quarto-layout-row">
-<div id="first-column" class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
-<p>Professor at the <a href="https://unitn.it/dii" target="_blank">Department of Industrial Engineering</a>, University of Trento.</p>
-<p>See <a href="https://paolobosetti.quarto.pub" target="_blank">paolobosetti.quarto.pub</a> for teaching materials and personal blog.</p>
-<p>Code repository on <a href="https://github.com/pbosetti" target="_blank">GitHub</a></p>
-</div>
-<div id="second-column" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
-<p><img src="images/PBBW.jpg" class="rounded-corners img-fluid" width="150"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="maria-michela-dickson" class="level2">
-<h2 class="anchored" data-anchor-id="maria-michela-dickson">Maria Michela Dickson</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Under construction.</p>
-</div>
-</div>
-</section>
-<section id="giuseppe-espa" class="level2">
-<h2 class="anchored" data-anchor-id="giuseppe-espa">Giuseppe Espa</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Under construction.</p>
-</div>
-</div>
-</section>
-<section id="diego-giuliani" class="level2">
-<h2 class="anchored" data-anchor-id="diego-giuliani">Diego Giuliani</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Under construction.</p>
-</div>
-</div>
-</section>
-<section id="flavio-santi" class="level2">
-<h2 class="anchored" data-anchor-id="flavio-santi">Flavio Santi</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Under construction.</p>
-</div>
-</div>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739055600000" data-listing-file-modified-sort="1739102005277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
+<a href="./posts/003-logscale/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Logarithmic scales in GGPlot2
+</h5>
+<div class="card-text listing-description">
+With the excuse of doing signal analysis in R, this post discusses on how to deal with logarithmic scalses and tick-marks in GGPlot2, and how to generate log-spaced grids to…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Feb 9, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
