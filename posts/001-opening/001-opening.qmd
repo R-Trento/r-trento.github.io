@@ -8,6 +8,7 @@ format: html
 categories: 
   - RTUG
   - milestone
+  - announcement
 ---
 
 # The Users Group is instantiated

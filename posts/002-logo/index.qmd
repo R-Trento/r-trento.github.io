@@ -8,6 +8,7 @@ format: html
 categories: 
   - RTUG
   - website
+  - announcement
 ---
 
 # We have a new group logo

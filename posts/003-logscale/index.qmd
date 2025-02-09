@@ -1,0 +1,220 @@
+---
+title: "Logarithmic scales in GGPlot2"
+date: "02/09/2025"
+# date-modified: today
+image: "steps.jpg"
+format: html
+draft: false
+categories: 
+  - post
+  - R
+  - tidyverse
+  - GGPlot2
+  - signal analysis
+abstract: >
+  With the excuse of doing signal analysis in R, this post discusses on how to deal with logarithmic scalses and tick-marks in GGPlot2, and how to generate log-spaced grids to have an equally dense set of points in the resulting plot.
+engine: knitr
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  fig.align = "center",
+  # This for default device
+  out.width = "16cm",
+  # This two for high quality charts:
+  fig.dim = c(16, 9)*0.4
+)
+library(tidyverse)
+library(control)
+library(signal)
+```
+
+# Rationale
+
+Recently I had to port in R some Matlab code using the `tf` and `bode` functions, which are respectively used to calculate the transfer function and create a Bode plot of it.
+
+The R package `control` luckily provides the analogous functions, although its `control::bodeplot` function uses the base `plot` interface. Of course, I wanted to make an analogous plot with GGplot2 tools.
+
+# Example: vibration isolation
+
+Let us use the example for a lumped parameters model of a vibration isolation system, that is, a 1-DoF mass-spring-damper system. Briefly, its transfer function can be created as:
+
+```{r}
+M <- 10
+K <- 1000
+C <- 50
+
+(H <- tf(c(C/K, 1),c(M/K, C/K, 1)))
+```
+
+Its Bode representation can be obtained by:
+
+```{r}
+bode(H) %>% str()
+```
+
+That is, a list of three vectors reporting frequency (`w`), magnitude in dB (`mag`), and phase in degrees (`phase`). Why the `control` developers decided to return a list of equally sized vectors rather a data frame is beyond me, but let's deal with what we have.
+
+```{r}
+bode(H, w=1:1e4) %>% {
+  tibble(
+    `frequency (rad/s)` = .$w, 
+    `magnitude (dB)` = .$mag,
+    `phase (deg)` = .$phase
+  )
+} %>% 
+  head() %>% 
+  knitr::kable()
+```
+
+To make the Bode plot, which reports magnitude vs. frequency on top of phase vs. frequency, we make the tibble tidy and use `facet_wrap`:
+
+```{r}
+bode(H, w=1:1e4) %>% {
+  tibble(
+    `frequency (rad/s)` = .$w, 
+    `magnitude (dB)` = .$mag,
+    `phase (deg)` = .$phase
+  )
+} %>%
+  pivot_longer(-`frequency (rad/s)`) %>% 
+  ggplot(aes(x=`frequency (rad/s)`, y=value)) +
+  geom_line() +
+  geom_point(alpha = 0.2) +
+  facet_wrap(~name, nrow=2, scales="free") +
+  scale_x_log10()
+```
+
+Note the followings:
+
+1. in `facet_wrap`, we use the option `scales="free"`: this allows to independently rescale the axes of each facet;
+2. the horizontal axis is logarithmic, but there is only one secondary grid line, while we usually have secondary gridlines at 2, 3, ..., 9;
+3. the point density is not evenly spaced on the logarithmic axis.
+
+So, here we want to tackle the problems in 2. and 3..
+
+# Log-tickmarks: Solution
+
+The `scale_x_log10()` function allows to specify the `breaks` and the `minor_breaks`, which we can exploit to fix the gridlines. How can we get a log-spaced sequence? an elegant solution uses the **outer product** `%o%` of two vectors: that of the ticks, and that of the orders of magnitude (`ooms`):
+
+```{r}
+ticks <- 2:9
+ooms <- 10^seq(0, 4)
+
+ticks %o% ooms
+```
+Looking at the columns , in sequence, we have what we want, so:
+
+```{r}
+(breaks <- as.vector(ticks %o% ooms))
+```
+
+```{r}
+bode(H, w=1:1e4) %>% {
+  tibble(
+    `frequency (rad/s)` = .$w, 
+    `magnitude (dB)` = .$mag,
+    `phase (deg)` = .$phase
+  )
+} %>%
+  pivot_longer(-`frequency (rad/s)`) %>% 
+  ggplot(aes(x=`frequency (rad/s)`, y=value)) +
+  geom_line() +
+  geom_point(alpha = 0.2) +
+  facet_wrap(~name, nrow=2, scales="free") +
+  scale_x_log10(minor_breaks=breaks, labels=scales::scientific)
+```
+
+Bingo!
+
+Now, we still have too sparse points to the left, and **definitely too many points to the right**. We can use a similar approach to define the frequency vector.
+
+
+# Log-spaced points: Solution
+
+We use the same outer product trick, multiplying the vector of orders of magnitude by a vector of positions, **exponentially spaced** within each magnitude:
+
+```{r}
+pts <- 10^seq(0, 1, 0.1) %>% tail(-1)
+(freqs <- as.vector(pts %o% ooms)) %>% head(n=20)
+```
+
+Finally:
+
+```{r}
+pts <- 10^seq(0, 1, 0.01) %>% tail(-1)
+freqs <- as.vector(pts %o% ooms)
+
+bode(H, w=freqs) %>% {
+  tibble(
+    `frequency (rad/s)` = .$w, 
+    `magnitude (dB)` = .$mag,
+    `phase (deg)` = .$phase
+  )
+} %>%
+  pivot_longer(-`frequency (rad/s)`) %>% 
+  ggplot(aes(x=`frequency (rad/s)`, y=value)) +
+  geom_line() +
+  geom_point(alpha = 0.2) +
+  facet_wrap(~name, nrow=2, scales="free") +
+  scale_x_log10(minor_breaks=breaks, labels=scales::scientific)
+```
+
+# Putting all together
+
+We can then put everything together and make a useful function (note that we are now converting the frequencies to Hz):
+
+```{r}
+ggbodeplot <- function(tf, fmin=1, fmax=1e4, df=0.01) {
+  ticks <- 2:9
+  pts <- 10^seq(0, 1, df) %>% tail(-1)
+  ooms <- 10^(floor(log10(fmin)):ceiling(log10(fmax)-1))
+  breaks <- as.vector(ticks %o% ooms)
+  freqs <- as.vector(pts %o% ooms)
+  
+  bode(tf, freqs*2*pi) %>% {
+    tibble(f=.$w/(2*pi), `magnitude (dB)`=.$mag, `phase (deg)`=.$phase)} %>% 
+    pivot_longer(-f) %>% 
+    ggplot(aes(x=f, y=value)) +
+    geom_line() +
+    scale_x_log10(minor_breaks=breaks, labels=scales::scientific) +
+    facet_wrap(~name, nrow=2, scales="free") +
+    labs(x="frequency (Hz)")
+}
+
+H %>% ggbodeplot(fmin=0.1, fmax=100)
+```
+
+# One last thing...
+
+Well, the above is mostly of academic interest, at least for what pertains the logarithmic grid lines: it shows a nice and useful way for creating regularly spaced vectors, which is really useful to evenly distribute abscissa values when the axis scale is not linear. But thanks to the `scales` package there is a quick way for having **any axis, whichever the scale**, with a number of minor breaks different to 1 (the defaiult in GGplot). In fact, we can just use the `scales::minor_breaks_n()` function to generate minor grid lines at will:
+
+```{r}
+ggbodeplot <- function(tf, fmin=1, fmax=1e4, df=0.01) {
+  pts <- 10^seq(0, 1, df) %>% tail(-1)
+  ooms <- 10^(floor(log10(fmin)):ceiling(log10(fmax)-1))
+  freqs <- as.vector(pts %o% ooms)
+  
+  bode(tf, freqs*2*pi) %>% {
+    tibble(f=.$w/(2*pi), `magnitude (dB)`=.$mag, `phase (deg)`=.$phase)} %>% 
+    pivot_longer(-f) %>% 
+    ggplot(aes(x=f, y=value)) +
+    geom_line() +
+    scale_x_log10(
+      minor_breaks=scales::minor_breaks_n(10), 
+      labels= ~ latex2exp::TeX(paste0("$10^{", log10(.), "}$"))
+    ) +
+    facet_wrap(~name, nrow=2, scales="free") +
+    labs(x="frequency (Hz)")
+}
+
+H %>% ggbodeplot(fmin=0.1, fmax=100)
+```
+
+where the trick is to set `scale_x_log10(minor_breaks=scales::minor_breaks_n(10))`. Note that the argument is the **number of intervals** rather than the number of grid lines (so, 10 rather than 9). As a final suggestion, try and use the same command with a `scale_x_continuous`: it works whichever is the axis transformation (including identity). Also, note the `labels` lambda function used for formatting tick labels.
+
+:::thatsall
+That's all, folks!
+:::
+
+

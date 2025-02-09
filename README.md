@@ -32,6 +32,10 @@ When editing the `index.md` file, remember to update the YAML preamble:
 
 Once you are done, **remember** to set `draft: false` in the YAML preamble.
 
+Note that posts that have the `post` category set will be also shown in the *Posts* section of the site. We are supposing to collect here technical, rather long posts on the R language and environment, data analysis, case studies, success stories and such. In other words, it should be a collection of the most interesting posts. 
+
+All posts appear on the homepage, the most interesting ones are also shown in the *Posts* section. Any post that is mostly an announcement **should not** be tagged `post`.
+
 ### Meetings announcements
 
 Similarly to the posts, you can create a new meeting announcement by creating a new `.qmd` document in the `meetings` folder. You don't need to put it into a folder, **unless you need to have additional files** (e.g. images, PDF downloads, etc.).
