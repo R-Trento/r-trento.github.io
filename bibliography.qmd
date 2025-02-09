@@ -1,7 +1,7 @@
 ---
 title: "Bibliography"
 date: "02/05/2025"
-date-modified: "02/05/2025"
+date-modified: today
 format: html
 ---
 
@@ -11,20 +11,18 @@ Members of RTUG have contributed to the following topics:
 
 * [ADAS Utils](https://cran.r-project.org/web/packages/adas.utils/index.html){target="_blank"} (Design of Experiments)
 
-:::{.callout-warning}
-Under construction.
-:::
 
 # Books
 
-* [Fondamenti di statistica](https://www.amazon.it/Fondamenti-statistica-misure-lanalisi-industriale/dp/8833595188/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=130DECQXCJAUU&dib=eyJ2IjoiMSJ9.JkZQh7pdSELYBbubl0AOoP8hMF5WE4YX2v5WcqzrSI1PkWPXwJATHdzq_sXG3tdeY5ZCf-riK7MHsBVIsOgfzw.moxkeVLCwEDMXtkOTAo-98QTge2OlqYC6M-VW7sYvgY&dib_tag=se&keywords=paolo+bosetti&qid=1738757933&sprefix=paolo+bosetti%2Caps%2C131&sr=8-1){target="_blank"}. *Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R*. Paolo Bosetti, Libreriauniversitaria.it, 2022.
-
-:::{.callout-warning}
-Under construction.
-:::
+* Agresti A., C. Franklin, B. Klingenberg (2025) *Statistica --- l’arte e la scienza d’imparare dai dati* (quinta edizione), Pearson Italia, Milano (a cura di G. Espa, R. Micciolo, D. Giuliani, M.M. Dickson). ISBN: 9788891931894.
+* Bosetti, P. (2022) *[Fondamenti di statistica](https://www.amazon.it/Fondamenti-statistica-misure-lanalisi-industriale/dp/8833595188/ref=sr_1_1?__mk_it_IT=ÅMÅŽÕÑ&crid=130DECQXCJAUU&dib=eyJ2IjoiMSJ9.JkZQh7pdSELYBbubl0AOoP8hMF5WE4YX2v5WcqzrSI1PkWPXwJATHdzq_sXG3tdeY5ZCf-riK7MHsBVIsOgfzw.moxkeVLCwEDMXtkOTAo-98QTge2OlqYC6M-VW7sYvgY&dib_tag=se&keywords=paolo+bosetti&qid=1738757933&sprefix=paolo+bosetti%2Caps%2C131&sr=8-1){target="_blank"} --- Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R*. Libreriauniversitaria.it. ISBN: 978-8833595188.
+* Micciolo R., L. Canal, G. Espa (2021) *Probabilità e modelli – Teoria e pratica con R*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 978-88-916-4935-5.
+* Espa G., R. Micciolo (2014) *Problemi ed Esperimenti di Statistica con R*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838786105.
+* Bee M, F. Santi (2013) *Finanza quantitativa con R*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787041.
+* R. Micciolo, G. Espa, L. Canal (2013) *Ricerca con R – Metodi di inferenza statistica*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787003.
+* Espa G., R.  Micciolo (2012) *Analisi esplorativa dei dati con R*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN 8838786853.
 
 # Papers
 
-:::{.callout-warning}
-Under construction.
-:::
+* Santi F., M.M. Dickson, G. Espa, D. Giuliani (2022) *plot3logit: Ternary Plots for Interpreting Trinomial Regression Models*, Journal of Statistical Software, Code Snippets, 103 (1), 1–27. DOI: 10.18637/jss.v103.c01.
+* Giuliani D., M.M. Dickson, G. Espa (2015) *Teaching statistics in the context of social foresight. An applied approach based on the use of an open-source software*, On the Horizon, 23, 2, 140–148. DOI: 10.1108/OTH-02-2015-0010.
