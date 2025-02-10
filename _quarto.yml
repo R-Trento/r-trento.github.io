@@ -8,10 +8,10 @@ website:
   title: "RTUG"
   description: "R-Trento Users Group"
   draft-mode: unlinked
-  announcement: 
+  announcement:
     icon: info-circle
     dismissable: true
-    content: "**Please Note** - This site is sill under construction, RTUG has not been launched yet..."
+    content: "**Please Note** - This site is sill under construction, RTUG has not been officially launched yet..."
     type: warning
     position: below-navbar
   navbar:
@@ -30,7 +30,7 @@ website:
       - icon: github
         href: https://github.com/r-trento
   margin-footer: |
-    :::{style="margin-top: 50px; border-top: 1px solid black; border-bottom: 1px solid black; text-style: italic; font-size: 75%"}
+    :::{.callout-note}
     Unless otherwise sepcified, all content is licensed as BY-NC-SA 
     [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-top: 10px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
     :::
