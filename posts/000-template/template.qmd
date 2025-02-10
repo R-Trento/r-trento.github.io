@@ -24,3 +24,7 @@ abstract: >
 
 {{< lipsum 2 >}}
 
+
+:::thatsall
+That's all, folks!
+:::

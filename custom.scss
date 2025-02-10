@@ -38,6 +38,11 @@ h1.title {
   border-radius: 10px;
 }
 
+/* Not within grid */
+.quarto-grid-item .thumbnail-image {
+  border-radius: 0px;
+}
+
 /* This is for making images in listings smaller */
 div.thumbnail {
   max-width: 150px;
@@ -63,4 +68,13 @@ figcaption {
 
 div.abstract {
   font-style: italic;
+}
+
+.thatsall {
+  margin-top: 75px;
+  padding-bottom: 0px;
+  line-height: 0;
+  font-style: italic;
+  text-align: right;
+  border-bottom: 1px solid #aaa;
 }

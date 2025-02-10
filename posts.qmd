@@ -6,7 +6,7 @@ date-modified: today
 listing:
   type: grid
   contents: posts
-  fields: [date, title, author, description]
+  fields: [date, title, author, description, categories, reading-time, image]
   include:
     categories: [post, R]
   sort-ui: true
