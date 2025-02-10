@@ -20,13 +20,21 @@
 
 
 
-<section id="factorial-plans" class="level1">
+<section id="factorial-plans" class="level1 page-columns page-full">
 <h1>Factorial plans</h1>
 <p>The package provides tools for dealing with factorial plan according to the <em>Design of Experiments</em> (DoE) protocols. The functions for dealing with DoE have names starting with <code>fp_</code>. As much as possible, we are aiming at a tidyverse-like syntax, so that the functions can be used in a pipe.</p>
 <p>We are following conventions and techniques illustrated in the book <em>Design and Analysis of Experiments</em> by Douglas C. Montgomery.</p>
-<section id="full-factorial-plan" class="level2">
+<section id="full-factorial-plan" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="full-factorial-plan">Full factorial plan</h2>
-<p>You can create a full factorial plan with the <code>fp_design_matrix</code> function, passing the number of factors:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://r-trento.github.io/posts/004-adas.utils/hypercube.jpg" class="img-fluid figure-img"></p>
+<figcaption>A hypercube, clearly impossible to represent in 2D</figcaption>
+</figure>
+</div>
+</div></div><p>You can create a full factorial plan with the <code>fp_design_matrix</code> function, passing the number of factors:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">(dm <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -76,34 +84,34 @@ background-color: null;
 font-style: inherit;">#&gt; # A tibble: 8 × 7</span></span>
 <span id="cb1-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B        Y</span></span>
+font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B      Y</span></span>
 <span id="cb1-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span id="cb1-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        2 (1)        1    -1    -1  0.946  </span></span>
+font-style: inherit;">#&gt; 1        1        1 (1)        1    -1    -1  0.295</span></span>
 <span id="cb1-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        7 a          1     1    -1 -0.738  </span></span>
+font-style: inherit;">#&gt; 2        2        3 a          1     1    -1  1.41 </span></span>
 <span id="cb1-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        6 b          1    -1     1 -2.41   </span></span>
+font-style: inherit;">#&gt; 3        3        8 b          1    -1     1 -2.35 </span></span>
 <span id="cb1-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        8 ab         1     1     1  0.303  </span></span>
+font-style: inherit;">#&gt; 4        4        6 ab         1     1     1  0.624</span></span>
 <span id="cb1-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        5 (1)        2    -1    -1  0.00958</span></span>
+font-style: inherit;">#&gt; 5        5        5 (1)        2    -1    -1 -0.160</span></span>
 <span id="cb1-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        3 a          2     1    -1 -0.142  </span></span>
+font-style: inherit;">#&gt; 6        6        2 a          2     1    -1 -1.13 </span></span>
 <span id="cb1-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        1 b          2    -1     1  0.0284 </span></span>
+font-style: inherit;">#&gt; 7        7        4 b          2    -1     1  0.774</span></span>
 <span id="cb1-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        4 ab         2     1     1 -0.0825</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8        8        7 ab         2     1     1 -1.64</span></span></code></pre></div>
 </div>
 <p>In this case, the factors are the first <code>n</code> capital letters.</p>
 <p>If you want different factor names, use a right-side-only formula combining all the named factors with <code>*</code>:</p>
@@ -147,10 +155,10 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb2-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        2 (1)             1    -1     -1 NA   </span></span>
+font-style: inherit;">#&gt; 1        1        1 (1)             1    -1     -1 NA   </span></span>
 <span id="cb2-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        1 speed           1     1     -1 NA   </span></span>
+font-style: inherit;">#&gt; 2        2        2 speed           1     1     -1 NA   </span></span>
 <span id="cb2-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt; 3        3        4 weight          1    -1      1 NA   </span></span>
@@ -318,31 +326,31 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt;</span></span>
 <span id="cb4-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        2     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt; 1        1        4     1    -1    -1 NA   </span></span>
 <span id="cb4-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        6     1     0    -1 NA   </span></span>
+font-style: inherit;">#&gt; 2        2        8     1     0    -1 NA   </span></span>
 <span id="cb4-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        3     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt; 3        3        7     1     1    -1 NA   </span></span>
 <span id="cb4-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        1     1    -1     0 NA   </span></span>
+font-style: inherit;">#&gt; 4        4        5     1    -1     0 NA   </span></span>
 <span id="cb4-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        7     1     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 5        5        2     1     0     0 NA   </span></span>
 <span id="cb4-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        4     1     1     0 NA   </span></span>
+font-style: inherit;">#&gt; 6        6        9     1     1     0 NA   </span></span>
 <span id="cb4-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        9     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt; 7        7        6     1    -1     1 NA   </span></span>
 <span id="cb4-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        5     1     0     1 NA   </span></span>
+font-style: inherit;">#&gt; 8        8        1     1     0     1 NA   </span></span>
 <span id="cb4-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 9        9        8     1     1     1 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 9        9        3     1     1     1 NA</span></span></code></pre></div>
 </div>
 </section>
 <section id="augment-a-plan" class="level2">
@@ -395,40 +403,40 @@ background-color: null;
 font-style: inherit;">#&gt;       &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb5-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  1        1        7 (1)        1    -1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  1        1        6 (1)        1    -1    -1    -1 NA   </span></span>
 <span id="cb5-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  2        2        1 a          1     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  2        2        5 a          1     1    -1    -1 NA   </span></span>
 <span id="cb5-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  3        3        5 b          1    -1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  3        3        8 b          1    -1     1    -1 NA   </span></span>
 <span id="cb5-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  4        4        3 ab         1     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  4        4        2 ab         1     1     1    -1 NA   </span></span>
 <span id="cb5-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  5        5        6 c          1    -1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt;  5        5        1 c          1    -1    -1     1 NA   </span></span>
 <span id="cb5-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  6        6        2 ac         1     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt;  6        6        7 ac         1     1    -1     1 NA   </span></span>
 <span id="cb5-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  7        7        8 bc         1    -1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  7        7        4 bc         1    -1     1     1 NA   </span></span>
 <span id="cb5-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  8        8        4 abc        1     1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  8        8        3 abc        1     1     1     1 NA   </span></span>
 <span id="cb5-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  9        9       12 center     1     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt;  9        9       10 center     1     0     0     0 NA   </span></span>
 <span id="cb5-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 10       10       10 center     2     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 10       10       11 center     2     0     0     0 NA   </span></span>
 <span id="cb5-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 11       11       11 center     3     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 11       11        9 center     3     0     0     0 NA   </span></span>
 <span id="cb5-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 12       12        9 center     4     0     0     0 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 12       12       12 center     4     0     0     0 NA</span></span></code></pre></div>
 </div>
 <p>Then if needed (because the analysis show low p-value for the quadratic term) you can add axial points to get a central composite design:</p>
 <div class="cell">
@@ -487,34 +495,34 @@ background-color: null;
 font-style: inherit;">#&gt;       &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb6-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  1        1        3 (1)        1    -1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  1        1        5 (1)        1    -1    -1    -1 NA   </span></span>
 <span id="cb6-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  2        2        6 a          1     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  2        2        1 a          1     1    -1    -1 NA   </span></span>
 <span id="cb6-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  3        3        4 b          1    -1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  3        3        6 b          1    -1     1    -1 NA   </span></span>
 <span id="cb6-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  4        4        8 ab         1     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  4        4        7 ab         1     1     1    -1 NA   </span></span>
 <span id="cb6-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  5        5        2 c          1    -1    -1     1 NA   </span></span>
 <span id="cb6-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  6        6        1 ac         1     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt;  6        6        8 ac         1     1    -1     1 NA   </span></span>
 <span id="cb6-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  7        7        5 bc         1    -1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  7        7        3 bc         1    -1     1     1 NA   </span></span>
 <span id="cb6-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  8        8        7 abc        1     1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  8        8        4 abc        1     1     1     1 NA   </span></span>
 <span id="cb6-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  9        9       11 center     1     0     0     0 NA   </span></span>
 <span id="cb6-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 10       10       10 center     2     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 10       10        9 center     2     0     0     0 NA   </span></span>
 <span id="cb6-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt; # ℹ 25 more rows</span></span></code></pre></div>
@@ -1030,28 +1038,28 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span id="cb16-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1       23 (1)        1    -1    -1    -1    -1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 1        1        6 (1)        1    -1    -1    -1    -1    -1 NA        1     1</span></span>
 <span id="cb16-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        7       10 bc         1    -1     1     1    -1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 2        7        8 bc         1    -1     1     1    -1    -1 NA        1     1</span></span>
 <span id="cb16-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3       11        8 bd         1    -1     1    -1     1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 3       11        5 bd         1    -1     1    -1     1    -1 NA        1     1</span></span>
 <span id="cb16-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4       13       27 cd         1    -1    -1     1     1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 4       13        2 cd         1    -1    -1     1     1    -1 NA        1     1</span></span>
 <span id="cb16-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5       20       20 abe        1     1     1    -1    -1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 5       20       25 abe        1     1     1    -1    -1     1 NA        1     1</span></span>
 <span id="cb16-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6       22       28 ace        1     1    -1     1    -1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 6       22       29 ace        1     1    -1     1    -1     1 NA        1     1</span></span>
 <span id="cb16-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7       26       21 ade        1     1    -1    -1     1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 7       26       12 ade        1     1    -1    -1     1     1 NA        1     1</span></span>
 <span id="cb16-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8       32       16 abcde      1     1     1     1     1     1 NA        1     1</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8       32       24 abcde      1     1     1     1     1     1 NA        1     1</span></span></code></pre></div>
 </div>
 <p>Note that with the <code>remove</code> option you can control if you want to keep both fractions, and later on <code>filter(ABC==1)</code> them out.</p>
 <div class="cell">
@@ -1107,28 +1115,28 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt;</span></span>
 <span id="cb17-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        2 (1)        1    -1    -1    -1 NA       -1</span></span>
+font-style: inherit;">#&gt; 1        1        5 (1)        1    -1    -1    -1 NA       -1</span></span>
 <span id="cb17-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        7 a          1     1    -1    -1 NA        1</span></span>
+font-style: inherit;">#&gt; 2        2        2 a          1     1    -1    -1 NA        1</span></span>
 <span id="cb17-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        5 b          1    -1     1    -1 NA        1</span></span>
+font-style: inherit;">#&gt; 3        3        4 b          1    -1     1    -1 NA        1</span></span>
 <span id="cb17-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        4 ab         1     1     1    -1 NA       -1</span></span>
+font-style: inherit;">#&gt; 4        4        3 ab         1     1     1    -1 NA       -1</span></span>
 <span id="cb17-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        3 c          1    -1    -1     1 NA        1</span></span>
+font-style: inherit;">#&gt; 5        5        1 c          1    -1    -1     1 NA        1</span></span>
 <span id="cb17-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        1 ac         1     1    -1     1 NA       -1</span></span>
+font-style: inherit;">#&gt; 6        6        7 ac         1     1    -1     1 NA       -1</span></span>
 <span id="cb17-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        8 bc         1    -1     1     1 NA       -1</span></span>
+font-style: inherit;">#&gt; 7        7        6 bc         1    -1     1     1 NA       -1</span></span>
 <span id="cb17-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        6 abc        1     1     1     1 NA        1</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8        8        8 abc        1     1     1     1 NA        1</span></span></code></pre></div>
 </div>
 <p>Also, note that the <code>remove</code> option is sticky, so that when you can apply the <code>fp_fraction</code> function multiple times and the first time has the option set to <code>remove=FALSE</code>, then all the following <code>fp_fraction</code> calls will have the same option set to <code>FALSE</code>. Setting <code>remove=FALSE</code> to any of the following calls <strong>can have unexpected behavior</strong>.</p>
 </section>
