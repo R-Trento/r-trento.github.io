@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/004-adas.utils/index.html",
       "/posts/003-logscale/index.html"
     ]
   },
@@ -9,6 +10,7 @@
     "listing": "/index.html",
     "items": [
       "/meetings/25.1-meeting.html",
+      "/posts/004-adas.utils/index.html",
       "/posts/003-logscale/index.html",
       "/posts/002-logo/index.html",
       "/posts/001-opening/001-opening.html"
