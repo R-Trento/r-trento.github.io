@@ -1,8 +1,18 @@
 ---
-title: "Contacts"
+title: "Contacts and updates"
 format: html
 date: "02/05/2025"
 date-modified: "02/05/2025"
 ---
 
-If you are interested in the RTUG activities, please contact [Paolo Bosetti](mailto:paolo.bosetti@unitn.it)
+# {{< bi envelope >}} Email
+
+If you are interested in the RTUG activities, please contact [Paolo Bosetti](mailto:paolo.bosetti@unitn.it).
+
+
+# {{< bi rss >}} RSS feeds
+
+You can stay updated using the following feeds:
+
+* List of meetings: [{{< bi rss >}}](meetings.xml)
+* List of posts: [{{< bi rss >}}](index.xml)

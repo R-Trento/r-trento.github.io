@@ -7,6 +7,7 @@ website:
   site-url: https://r-trento.github.io
   title: "RTUG"
   description: "R-Trento Users Group"
+  open-graph: true
   draft-mode: unlinked
   announcement:
     icon: info-circle
@@ -14,6 +15,18 @@ website:
     content: "**Please Note** - This site is sill under construction, RTUG has not been officially launched yet..."
     type: warning
     position: below-navbar
+  page-footer:
+    left: |
+      RTUG --- R-Trento Users Group
+    center: |
+      [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-top: 10px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+    right:
+      - icon: github
+        href: https://github.com/r-trento
+        aria-label: Quarto GitHub
+      - icon: rss
+        href: index.xml
+        aria-label: Quarto Blog RSS
   navbar:
     left:
       - text: "Meetings"
