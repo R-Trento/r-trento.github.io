@@ -36,6 +36,11 @@ We are following conventions and techniques illustrated in the book *Design and 
 
 ## Full factorial plan
 
+
+:::column-margin
+![A hypercube, clearly impossible to represent in 2D](hypercube.jpg)
+:::
+
 You can create a full factorial plan with the `fp_design_matrix` function, passing the number of factors:
 ```{r}
 (dm <- fp_design_matrix(2, rep=2) %>% 
