@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>RTUG</title>
+<link>https://r-trento.github.io/meetings.html</link>
+<atom:link href="https://r-trento.github.io/meetings.xml" rel="self" type="application/rss+xml"/>
+<description>R-Trento Users Group</description>
+<generator>quarto-1.6.40</generator>
+<lastBuildDate>Tue, 04 Feb 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>First RTUG meeting</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://r-trento.github.io/meetings/25.1-meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The first <strong>R-Trento Users Meeting</strong> will be held in a yet to be defined location and on a yet to be defined date.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is just a placeholder.</p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <guid>https://r-trento.github.io/meetings/25.1-meeting.html</guid>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
