@@ -8,7 +8,8 @@ format: html
 draft: false
 categories: 
   - packages
-  - R
+  - post
+  - CRAN
   - design of experiments
 abstract: >
   The package `adas.utils`, contributed by one of RTUG members, aims at helping in the design and analysis of factorial experiments.
