@@ -10,7 +10,7 @@ format: html
 ## Paolo Bosetti
 ::: {layout="[70,30]"}
 :::{#first-column}
-Professor at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
+Associate professor of Mechanical and Thermal Measurements at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
 
 See [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank} for teaching materials and personal blog.
 
@@ -28,8 +28,17 @@ Under construction.
 :::
 
 ## Giuseppe Espa
-:::{.callout-warning}
-Under construction.
+::: {layout="[70,30]"}
+:::{#first-column}
+Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"} of the University of Trento. He coordinates the research group StaTA.
+
+See the [Stata group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} and the [CSSC](http://statagroup.economia.unitn.it/){target="_blank"} research group.
+
+:::
+
+:::{#second-column}
+![](images/Espa.jpg){width=150 class=rounded-corners}
+:::
 :::
 
 ## Diego Giuliani
@@ -38,6 +47,12 @@ Under construction.
 :::
 
 ## Flavio Santi
+:::{.callout-warning}
+Under construction.
+:::
+
+
+# RTUG Regular members
 :::{.callout-warning}
 Under construction.
 :::
