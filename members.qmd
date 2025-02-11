@@ -44,9 +44,9 @@ See the [StaTA group at University of Trento](http://statagroup.economia.unitn.i
 ## Diego Giuliani
 ::: {layout="[70,30]"}
 :::{#first-colum
-Full professor of Economic Statistics at the Department of Economics and Management, University of Trento.
+Full professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"}, University of Trento.
 
-He is member of the research group [StaTA](http://statagroup.economia.unitn.it/).
+He is member of the research group [StaTA](http://statagroup.economia.unitn.it/){target="_blank"}.
 :::
 
 :::{#second-column}
