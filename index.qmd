@@ -30,7 +30,7 @@ engine: knitr
 :::{#first-column}
 The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the [R language](https://r-project.org) and its suite of tools.
 
-# Mission
+# {{< bi rocket-takeoff >}} Mission
 
 RTUG mission is to spread the use or R language and tools within academia, industry and public administration.
 :::
@@ -38,13 +38,13 @@ RTUG mission is to spread the use or R language and tools within academia, indus
 :::
 
 
-# Next meeting
+# {{< bi people >}} Next meeting
 
 :::{#meetings}
 :::
 
 
-# News
+# {{< bi newspaper >}} News
 
 :::{#news}
 :::

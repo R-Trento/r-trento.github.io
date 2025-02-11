@@ -10,4 +10,4 @@ listing:
   feed: true
 ---
 
-# Meetings organized by R-Trento Users Group
+# {{< bi people >}} Meetings organized by RTUG
