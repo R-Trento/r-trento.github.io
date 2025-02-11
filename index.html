@@ -42,6 +42,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-074c7fd59dc6751bef18b3a0fdb64b43.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -232,6 +234,7 @@ window.Quarto = {
   <ul>
   <li><a href="#next-meeting" id="toc-next-meeting" class="nav-link active" data-scroll-target="#next-meeting"><i class="bi-people " style="" role="img" aria-hidden="true"></i> Next meeting</a></li>
   <li><a href="#news" id="toc-news" class="nav-link" data-scroll-target="#news"><i class="bi-newspaper " style="" role="img" aria-hidden="true"></i> News</a></li>
+  <li><a href="#on-bluesky" id="toc-on-bluesky" class="nav-link" data-scroll-target="#on-bluesky"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> On Bluesky</a></li>
   </ul>
 </nav>
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UlRVRw==">RTUG <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YW5ub3VuY2VtZW50">announcement <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlsZXN0b25l">milestone <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2Vic2l0ZQ==">website <span class="quarto-category-count">(1)</span></div></div><div class="quarto-margin-footer"><div class="margin-footer-item">
@@ -538,12 +541,60 @@ Paolo Bosetti
 No matching items
 </div>
 </div>
+</section>
+<section id="on-bluesky" class="level1">
+<h1><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> On Bluesky</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Last post:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="bluesky-box">
+<p>Loading last post</p>
+</div>
+</div>
+</div>
 
 
 
 </section>
 
 </main> <!-- /main -->
+<script id="bluesky">
+  async function fetchLatestBlueskyPost(username) {
+    const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=${username}&limit=1`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Error fetching posts.");
+
+      const data = await response.json();
+      const post = data.feed[0]?.post;
+      
+      if (!post) {
+        document.getElementById("bluesky-box").innerText = "No posts yet.";
+        return;
+      }
+
+      const content = post.record.text;
+      const timestamp = new Date(post.record.createdAt);
+      const postUrl = `https://bsky.app/profile/${username}/post/${post.uri.split('/').pop()}`;
+
+      document.getElementById("bluesky-box").innerHTML = `
+        <p>${content}</p>
+        <small>📅 ${timestamp}</small> — 
+        <a href="${postUrl}" target="_blank">🔗 Open on Bluesky</a>
+      `;
+    } catch (error) {
+        document.getElementById("bluesky-box").innerText = "Error loading Bluesky post";
+    }
+  }
+  fetchLatestBlueskyPost("rtug.bsky.social");
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
