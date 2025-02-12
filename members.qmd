@@ -61,6 +61,25 @@ He is member of the research group [StaTA](http://statagroup.economia.unitn.it/)
 Under construction.
 :::
 
+## Michele Segata
+
+::: {layout="[70,30]"}
+:::{#first-colum
+Michele Segata is tenure-track Assistant Professor at the [Department of 
+Information Engineering and Computer Science](https://www.disi.unitn.it){target="_blank} of the University of Trento.
+
+See the MANTA research group [web page](https://manta.disi.unitn.it){target="_blank"} and his [personal web page](https://disi.unitn.it/~msegata){target="_blank"}.
+:::
+
+:::{#second-column}
+![](https://disi.unitn.it/~msegata/assets/images/michele.jpg){width=150 class=rounded-corners}
+:::
+:::
+
+
+:::{style="margin-top: 75px;"}
+---
+:::
 
 # {{< bi people >}} RTUG Regular members
 :::{.callout-warning}

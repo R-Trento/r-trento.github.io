@@ -24,7 +24,7 @@ Members of RTUG have contributed to the following topics:
 * R. Micciolo, G. Espa, L. Canal (2013) *Ricerca con R – Metodi di inferenza statistica*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787003.
 * Espa G., R.  Micciolo (2012) *Analisi esplorativa dei dati con R*, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN 8838786853.
 
-# {{< ai archive >}} Papers
+# {{< fa regular newspaper >}} Papers
 
 * Santi F., M.M. Dickson, G. Espa, D. Giuliani (2022) *plot3logit: Ternary Plots for Interpreting Trinomial Regression Models*, Journal of Statistical Software, Code Snippets, 103 (1), 1–27. DOI: 10.18637/jss.v103.c01.
 * Giuliani D., M.M. Dickson, G. Espa (2015) *Teaching statistics in the context of social foresight. An applied approach based on the use of an open-source software*, On the Horizon, 23, 2, 140–148. DOI: 10.1108/OTH-02-2015-0010.
