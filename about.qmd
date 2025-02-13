@@ -1,0 +1,32 @@
+---
+title: RTUG 
+subtitle: website info
+format: html
+about:
+  template: trestles
+  image: images/logo.png
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/r-tug
+    - text: "{{< fa brands bluesky >}}"
+      href: https://bsky.app/profile/rtug.bsky.social
+    - text: "![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)"
+      href: https://creativecommons.org/licenses/by-sa/4.0/
+---
+
+# Logo
+The R-Trento Users Group logo uses the green and blue hues from [our Province](https://www.visittrentino.info/it), it has the customary hexagonal shape made popular by [tidyverse](https://tidiverse.org), and uses the official R language logo in the word "T**R**ENTO".
+
+Note that the official R logo is used under [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/) (CC-BY-SA 4.0)
+
+
+# License
+
+The content provided by this site are covered by [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/)
+
+The **CC-BY-SA 4.0** license allows you to share and adapt the logo for any purpose, including commercial use, provided that you give appropriate credit, provide a link to the license, and indicate if any changes were made.
+
+# Website
+
+This site is built on tools from the R network, using [Quarto](https://quarto.org){target="_blank"} in the [RStudio IDE](https://posit.co/products/open-source/rstudio/){target="_blank"}.

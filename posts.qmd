@@ -21,4 +21,8 @@ This is a selection of the most interesting posts contributed by our members.
 If you want to contribute, head on to the [GitHub repo](https://github.com/r-trento/r-trento.github.io){target="_blank"}, fork it, add a new post in the `posts` folder, tag it with the `post` category and make a pull request.
 :::
 
+:::{.callout-note}
+[![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-right: 20px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/) **Unless otherwise sepcified, all content is licensed as BY-NC-SA.**
+:::
+
 # {{< bi file-post >}} Posts
