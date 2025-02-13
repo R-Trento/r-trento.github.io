@@ -22,7 +22,7 @@ If you want to contribute, head on to the [GitHub repo](https://github.com/r-tre
 :::
 
 :::{.callout-note}
-[![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-right: 20px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/) **Unless otherwise sepcified, all content is licensed as BY-NC-SA.**
+[![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-right: 20px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/) **Unless otherwise specified, all content is licensed as BY-NC-SA 4.0.**
 :::
 
 # {{< bi file-post >}} Posts

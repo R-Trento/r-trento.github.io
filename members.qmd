@@ -8,13 +8,15 @@ format: html
 # {{< bi flag >}} RTUG Founding members
 
 ## Paolo Bosetti
-::: {layout="[70,30]"}
+::: {layout="[80,20]"}
 :::{#first-column}
 Associate professor of Mechanical and Thermal Measurements at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
 
-See [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank} for teaching materials and personal blog.
-
-Code repository on [GitHub](https://github.com/pbosetti){target=_blank}
+:::{.links-list}
+* {{< bi link >}} teaching stuff: [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank}
+* {{< bi link >}} [personal blog:](https://paolobosetti.quarto.pub/blog){target=_blank}
+* {{< bi github >}} Code repository: [GitHub](https://github.com/pbosetti){target=_blank}
+:::
 :::
 
 ::: {#second-column}
@@ -28,12 +30,14 @@ Under construction.
 :::
 
 ## Giuseppe Espa
-::: {layout="[70,30]"}
+::: {layout="[80,20]"}
 :::{#first-column}
 Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"} of the University of Trento. He coordinates the research group StaTA.
 
-See the [StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} and the [CSSC](https://cssc.unitn.it/){target="_blank"} research group.
-
+:::{.links-list}
+* {{<bi link>}} The [StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
+* {{<bi link>}} The [CSSC](https://cssc.unitn.it/){target="_blank"} research group.
+:::
 :::
 
 :::{#second-column}
@@ -42,11 +46,13 @@ See the [StaTA group at University of Trento](http://statagroup.economia.unitn.i
 :::
 
 ## Diego Giuliani
-::: {layout="[70,30]"}
+::: {layout="[80,20]"}
 :::{#first-colum
 Full professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"}, University of Trento.
 
-He is member of the research group [StaTA](http://statagroup.economia.unitn.it/){target="_blank"}.
+:::{.links-list}
+* {{<bi link>}} The [StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
+:::
 :::
 
 :::{#second-column}
@@ -63,12 +69,16 @@ Under construction.
 
 ## Michele Segata
 
-::: {layout="[70,30]"}
+::: {layout="[80,20]"}
 :::{#first-colum
 Michele Segata is tenure-track Assistant Professor at the [Department of 
 Information Engineering and Computer Science](https://www.disi.unitn.it){target="_blank} of the University of Trento.
 
-See the MANTA research group [web page](https://manta.disi.unitn.it){target="_blank"} and his [personal web page](https://disi.unitn.it/~msegata){target="_blank"}.
+:::{.links-list}
+* {{<bi link>}} The MANTA research group [web page](https://manta.disi.unitn.it){target="_blank"}
+* {{<bi link>}} [Personal web page](https://disi.unitn.it/~msegata){target="_blank"}
+* {{<bi github>}} Code repository: [GitHub](https://github.com/michele-segata){target="_blank"}
+:::
 :::
 
 :::{#second-column}

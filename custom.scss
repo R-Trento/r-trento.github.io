@@ -79,4 +79,16 @@ div.abstract {
   border-bottom: 1px solid #aaa;
 }
 
+.links-list ul {
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
 
+.links-list li {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 3px 10px 3px 10px;
+  margin: 10px 0px 10px 0px;
+}
