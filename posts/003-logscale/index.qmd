@@ -2,7 +2,7 @@
 title: "Logarithmic scales in GGPlot2"
 date: "02/09/2025"
 # date-modified: today
-image: "scale.png"
+image: "steps.jpg"
 format: html
 draft: false
 categories: 
