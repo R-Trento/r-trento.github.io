@@ -8,7 +8,7 @@ about:
   links:
     - icon: github
       text: GitHub
-      href: https://github.com/r-tug
+      href: https://github.com/r-trento
     - text: "{{< fa brands bluesky >}}"
       href: https://bsky.app/profile/rtug.bsky.social
     - text: "![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)"

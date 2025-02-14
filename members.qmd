@@ -13,9 +13,9 @@ format: html
 Associate professor of Mechanical and Thermal Measurements at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
 
 :::{.links-list}
-* {{< bi link >}} teaching stuff: [paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank}
+* {{< bi link >}} [teaching stuff: paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank}
 * {{< bi link >}} [personal blog:](https://paolobosetti.quarto.pub/blog){target=_blank}
-* {{< bi github >}} Code repository: [GitHub](https://github.com/pbosetti){target=_blank}
+* {{< bi github >}} [GitHub code](https://github.com/pbosetti){target=_blank}
 :::
 :::
 
@@ -35,8 +35,8 @@ Under construction.
 Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"} of the University of Trento. He coordinates the research group StaTA.
 
 :::{.links-list}
-* {{<bi link>}} The [StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
-* {{<bi link>}} The [CSSC](https://cssc.unitn.it/){target="_blank"} research group.
+* {{<bi link>}} [The StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
+* {{<bi link>}} [The CSSC research group](https://cssc.unitn.it/){target="_blank"}
 :::
 :::
 
@@ -51,7 +51,7 @@ Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Eco
 Full professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"}, University of Trento.
 
 :::{.links-list}
-* {{<bi link>}} The [StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
+* {{<bi link>}} [The StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"} 
 :::
 :::
 
@@ -75,9 +75,9 @@ Michele Segata is tenure-track Assistant Professor at the [Department of
 Information Engineering and Computer Science](https://www.disi.unitn.it){target="_blank} of the University of Trento.
 
 :::{.links-list}
-* {{<bi link>}} The MANTA research group [web page](https://manta.disi.unitn.it){target="_blank"}
+* {{<bi link>}} [The MANTA research group web page](https://manta.disi.unitn.it){target="_blank"}
 * {{<bi link>}} [Personal web page](https://disi.unitn.it/~msegata){target="_blank"}
-* {{<bi github>}} Code repository: [GitHub](https://github.com/michele-segata){target="_blank"}
+* {{<bi github>}} [GitHub code](https://github.com/michele-segata){target="_blank"}
 :::
 :::
 

@@ -14,5 +14,7 @@ If you are interested in the RTUG activities, please contact [Paolo Bosetti](mai
 
 You can stay updated using the following feeds:
 
-* List of meetings: [{{< bi rss >}}](meetings.xml)
-* List of posts: [{{< bi rss >}}](index.xml)
+:::{.links-list}
+* [{{< bi rss >}} List of meetings](meetings.xml)
+* [{{< bi rss >}} List of posts](index.xml)
+:::

@@ -32,10 +32,16 @@ h1.title {
 
 .rounded-corners {
   border-radius: 25px;
+  transition: border-radius 0.3s ease-in-out;
 }
 
 .thumbnail-image {
   border-radius: 10px;
+}
+
+.rounded-corners:hover {
+  border-radius: 0px;
+  animation: shake 0.5s;
 }
 
 /* Not within grid */
@@ -92,4 +98,13 @@ div.abstract {
   padding: 3px 10px 3px 10px;
   margin: 10px 0px 10px 0px;
   width: fit-content;
+}
+
+.links-list li a {
+  text-decoration: none;
+}
+
+.links-list li:hover {
+  color: $link-hover-color;
+  border-color: $link-hover-color;
 }

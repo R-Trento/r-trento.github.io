@@ -9,6 +9,9 @@ website:
   description: "R-Trento Users Group"
   open-graph: true
   draft-mode: unlinked
+  google-analytics: 
+    tracking-id: G-XKT2HCTTXM
+    storage: none
   announcement:
     icon: info-circle
     dismissable: true
