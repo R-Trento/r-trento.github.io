@@ -1,0 +1,15 @@
+{
+  "hash": "39719e7316b9e0146237811fa1ae68f5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Post Title\"\nauthor: \"Paolo Bosetti\"\ndate: \"02/05/2025\"\n# date-modified: today\nimage: \"image.jpg\"\nformat: html\ndraft: true\ncategories: \n  - RTUG\n  - milestone\nabstract: >\n  This is the abstract. If not empty, it is used in plece of the post initial paragraph to build the post preview in the posts listing.\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nknitr::opts_chunk$set(\n  fig.align = \"center\",\n  # This for default device\n  out.width = \"16cm\",\n  # This two for high quality charts:\n  fig.dim = c(16, 9)*0.4\n)\n```\n:::\n\n{{< lipsum 1 >}}\n\n\n\n\n\n:::column-margin\n![Image caption](image.jpg)\n:::\n\n# Main title\n\n\n\n{{< lipsum 2 >}}\n\n\n\n\n\n:::thatsall\nThat's all, folks!\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

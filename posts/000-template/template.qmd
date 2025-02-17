@@ -13,6 +13,18 @@ abstract: >
   This is the abstract. If not empty, it is used in plece of the post initial paragraph to build the post preview in the posts listing.
 ---
 
+```{r}
+#| label: setup
+knitr::opts_chunk$set(
+  fig.align = "center",
+  # This for default device
+  out.width = "16cm",
+  # This two for high quality charts:
+  fig.dim = c(16, 9)*0.4
+)
+```
+
+
 {{< lipsum 1 >}}
 
 
