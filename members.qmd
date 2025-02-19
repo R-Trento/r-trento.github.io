@@ -73,8 +73,20 @@ Full professor of Economic Statistics at the [Department of Economics and Manage
 
 
 ## Flavio Santi
-:::{.callout-warning}
-Under construction.
+::: {layout="[80,20]"}
+:::{#first-column}
+Flavio Santi is Associate Professor of Economic Statistics at the Department of Economics and Management of the University of Trento.
+
+:::{.links-list}
+* {{<bi link>}} [Personal website](https://www.flaviosanti.it){target="_blank"}
+* {{<bi link>}} [The StaTA group at University of Trento](http://statagroup.economia.unitn.it/){target="_blank"}
+* {{< bi github >}} [GitHub code](https://github.com/f-santi){target=_blank}
+:::
+:::
+
+:::{#second-column}
+![](images/Santi.jpg){width=150 class=rounded-corners}
+:::
 :::
 
 ## Michele Segata
