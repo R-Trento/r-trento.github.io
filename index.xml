@@ -1730,6 +1730,7 @@ font-style: inherit;">#&gt; 36        9            36         125        3      
 </item>
 <item>
   <title>Logarithmic scales in GGPlot2</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
   <link>https://r-trento.github.io/posts/003-logscale/</link>
   <description><![CDATA[ 
 
