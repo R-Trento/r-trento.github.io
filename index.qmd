@@ -24,9 +24,9 @@ engine: knitr
 include-after-body: bluesky.txt
 ---
 
-::: {layout="[20,80]"}
+::: {layout="[30,70]"}
 ::: {#second-column}
-![](images/logo.png){width=150px}
+![](images/logo.png){width=300px}
 :::
 :::{#first-column}
 The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the [R language](https://r-project.org) and its suite of tools.

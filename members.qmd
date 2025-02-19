@@ -25,8 +25,18 @@ Associate professor of Mechanical and Thermal Measurements at the [Department of
 :::
 
 ## Maria Michela Dickson
-:::{.callout-warning}
-Under construction.
+::: {layout="[80,20]"}
+:::{#first-column}
+Maria Michela Dickson is Full Professor of Economic Statistics at the Department of Statistical Sciences of the University of Padova.
+
+:::{.links-list}
+* {{<bi link>}} [The Department of Statistical Sciences of the University of Padova](https://www.stat.unipd.it){target="_blank"}
+:::
+:::
+
+:::{#second-column}
+![](images/Dickson.jpg){width=150 class=rounded-corners}
+:::
 :::
 
 ## Giuseppe Espa

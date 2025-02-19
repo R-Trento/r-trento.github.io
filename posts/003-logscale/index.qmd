@@ -1,5 +1,6 @@
 ---
 title: "Logarithmic scales in GGPlot2"
+author: "Paolo Bosetti"
 date: "02/09/2025"
 # date-modified: today
 image: "steps.jpg"
