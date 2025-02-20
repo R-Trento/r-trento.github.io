@@ -8,7 +8,7 @@ format: html
 # {{< bi flag >}} RTUG Founding members
 
 ## Paolo Bosetti
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-column}
 Associate professor of Mechanical and Thermal Measurements at the [Department of Industrial Engineering](https://unitn.it/dii){target=_blank}, University of Trento. 
 
@@ -25,7 +25,7 @@ Associate professor of Mechanical and Thermal Measurements at the [Department of
 :::
 
 ## Maria Michela Dickson
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-column}
 Maria Michela Dickson is Full Professor of Economic Statistics at the Department of Statistical Sciences of the University of Padova.
 
@@ -40,7 +40,7 @@ Maria Michela Dickson is Full Professor of Economic Statistics at the Department
 :::
 
 ## Giuseppe Espa
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-column}
 Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"} of the University of Trento. He coordinates the research group StaTA.
 
@@ -56,7 +56,7 @@ Giuseppe Espa is Full Professor of Economic Statistics at the [Department of Eco
 :::
 
 ## Diego Giuliani
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-colum
 Full professor of Economic Statistics at the [Department of Economics and Management](https://www.economia.unitn.it){target="_blank"}, University of Trento.
 
@@ -73,7 +73,7 @@ Full professor of Economic Statistics at the [Department of Economics and Manage
 
 
 ## Flavio Santi
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-column}
 Flavio Santi is Associate Professor of Economic Statistics at the Department of Economics and Management of the University of Trento.
 
@@ -91,7 +91,7 @@ Flavio Santi is Associate Professor of Economic Statistics at the Department of 
 
 ## Michele Segata
 
-::: {layout="[80,20]"}
+:::{layout="[80,20]"}
 :::{#first-colum
 Michele Segata is tenure-track Assistant Professor at the [Department of 
 Information Engineering and Computer Science](https://www.disi.unitn.it){target="_blank} of the University of Trento.
@@ -109,11 +109,33 @@ Information Engineering and Computer Science](https://www.disi.unitn.it){target=
 :::
 
 
+## Rocco Micciolo
+
+:::{layout="[80,20]"}
+:::{#first-colum
+Rocco Micciolo is Full Professor of Medical Statistics at the Department of Psychology and Cognitive Sciences and the Interdepartmental Centre for Medical Sciences-CISMed of the University of Trento
+
+:::{.links-list}
+* {{<bi link>}} [DPCS](https://www.cogsci.unitn.it){target="_blank"}
+* {{<bi link>}} [Personal web page](https://hostingwin.unitn.it/micciolo){target="_blank"}
+:::
+:::
+
+:::{#second-column}
+![](images/unknown.jpg){width=150 class=rounded-corners alt="No Photo"}
+:::
+:::
+
+
+
+
 :::{style="margin-top: 75px;"}
 ---
 :::
 
 # {{< bi people >}} RTUG Regular members
 :::{.callout-warning}
-Under construction.
+Under construction. 
+
+If you want to become a member, apply by writing an email to [Paolo Bosetti](mailto:paolo.bosetti@unitn.it).
 :::
