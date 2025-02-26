@@ -7,8 +7,10 @@ date-modified: "02/06/2025"
 ---
 
 
-The first **R-Trento Users Meeting** will be held in a yet to be defined location and on a yet to be defined date.
+The first R-Trento Users Meeting, code 25.1, is tentatively planned for **Friday, March 30, 2025**.
 
-:::{.callout-warning}
-This is just a placeholder.
+:::{.callout-note}
+The date is still **not confirmed**.
+
+Final date and more details on venue and topics will be published here.
 :::
