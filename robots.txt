@@ -1,1 +1,1 @@
-Sitemap: https://rtug.unitn.it/sitemap.xml
+Sitemap: https://r-tug.github.io/sitemap.xml

@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>RTUG</title>
-<link>https://rtug.unitn.it/</link>
-<atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://r-tug.github.io/</link>
+<atom:link href="https://r-tug.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.6.40</generator>
 <lastBuildDate>Sun, 09 Feb 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Introducing the adas.utils package</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/004-adas.utils/</link>
+  <link>https://r-tug.github.io/posts/004-adas.utils/</link>
   <description><![CDATA[ 
 
 
@@ -30,7 +30,7 @@
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/hypercube.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/hypercube.jpg" class="img-fluid figure-img"></p>
 <figcaption>A hypercube, clearly impossible to represent in 2D</figcaption>
 </figure>
 </div>
@@ -1235,7 +1235,7 @@ font-style: inherit;">plot</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1346,7 +1346,7 @@ font-style: inherit;">normplot</span>(xn)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1358,7 +1358,7 @@ font-style: inherit;">normplot</span>(xu)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1412,7 +1412,7 @@ font-style: inherit;">values=</span>val)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1443,7 +1443,7 @@ font-style: inherit;">pareto_chart</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1471,7 +1471,7 @@ font-style: inherit;">data=</span>filtration))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1510,7 +1510,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://r-tug.github.io/posts/004-adas.utils/index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1724,14 +1724,14 @@ font-style: inherit;">#&gt; 36        9            36         125        3      
   <category>post</category>
   <category>CRAN</category>
   <category>design of experiments</category>
-  <guid>https://rtug.unitn.it/posts/004-adas.utils/</guid>
+  <guid>https://r-tug.github.io/posts/004-adas.utils/</guid>
   <pubDate>Sun, 09 Feb 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://rtug.unitn.it/posts/004-adas.utils/hypercube.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://r-tug.github.io/posts/004-adas.utils/hypercube.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Logarithmic scales in GGPlot2</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/003-logscale/</link>
+  <link>https://r-tug.github.io/posts/003-logscale/</link>
   <description><![CDATA[ 
 
 
@@ -2037,7 +2037,7 @@ font-style: inherit;">scale_x_log10</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/003-logscale/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://r-tug.github.io/posts/003-logscale/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -2233,7 +2233,7 @@ font-style: inherit;">::</span>scientific)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/003-logscale/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://r-tug.github.io/posts/003-logscale/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -2441,7 +2441,7 @@ font-style: inherit;">::</span>scientific)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/003-logscale/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://r-tug.github.io/posts/003-logscale/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -2655,7 +2655,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/003-logscale/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://r-tug.github.io/posts/003-logscale/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -2874,7 +2874,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/003-logscale/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://r-tug.github.io/posts/003-logscale/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -2893,14 +2893,14 @@ font-style: inherit;">100</span>)</span></code></pre></div>
   <category>tidyverse</category>
   <category>GGPlot2</category>
   <category>signal analysis</category>
-  <guid>https://rtug.unitn.it/posts/003-logscale/</guid>
+  <guid>https://r-tug.github.io/posts/003-logscale/</guid>
   <pubDate>Sat, 08 Feb 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://rtug.unitn.it/posts/003-logscale/steps.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://r-tug.github.io/posts/003-logscale/steps.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>New Logo</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/002-logo/</link>
+  <link>https://r-tug.github.io/posts/002-logo/</link>
   <description><![CDATA[ 
 
 
@@ -2912,7 +2912,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/images/logo.png" class="img-fluid figure-img"></p>
+<p><img src="https://r-tug.github.io/images/logo.png" class="img-fluid figure-img"></p>
 <figcaption>RTUG logo</figcaption>
 </figure>
 </div>
@@ -2925,14 +2925,14 @@ font-style: inherit;">100</span>)</span></code></pre></div>
   <category>RTUG</category>
   <category>website</category>
   <category>announcement</category>
-  <guid>https://rtug.unitn.it/posts/002-logo/</guid>
+  <guid>https://r-tug.github.io/posts/002-logo/</guid>
   <pubDate>Wed, 05 Feb 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://rtug.unitn.it/images/logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://r-tug.github.io/images/logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>First RTUG meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/meetings/25.1-meeting.html</link>
+  <link>https://r-tug.github.io/meetings/25.1-meeting.html</link>
   <description><![CDATA[ 
 
 
@@ -2956,13 +2956,13 @@ Warning
 
 
  ]]></description>
-  <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
+  <guid>https://r-tug.github.io/meetings/25.1-meeting.html</guid>
   <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Opening!</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/001-opening/001-opening.html</link>
+  <link>https://r-tug.github.io/posts/001-opening/001-opening.html</link>
   <description><![CDATA[ 
 
 
@@ -2974,7 +2974,7 @@ Warning
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/001-opening/milestone.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://r-tug.github.io/posts/001-opening/milestone.jpg" class="img-fluid figure-img"></p>
 <figcaption>An important milestone</figcaption>
 </figure>
 </div>
@@ -3005,9 +3005,9 @@ font-style: inherit;">"Paolo"</span>)</span></code></pre></div>
   <category>RTUG</category>
   <category>milestone</category>
   <category>announcement</category>
-  <guid>https://rtug.unitn.it/posts/001-opening/001-opening.html</guid>
+  <guid>https://r-tug.github.io/posts/001-opening/001-opening.html</guid>
   <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://rtug.unitn.it/posts/001-opening/milestone.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://r-tug.github.io/posts/001-opening/milestone.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
