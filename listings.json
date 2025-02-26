@@ -16,6 +16,7 @@
     "listing": "/index.html",
     "items": [
       "/meetings/25.1-meeting.html",
+      "/posts/005-domain/index.html",
       "/posts/004-adas.utils/index.html",
       "/posts/003-logscale/index.html",
       "/posts/002-logo/index.html",

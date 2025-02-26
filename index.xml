@@ -10,7 +10,49 @@
 <atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Sun, 09 Feb 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 25 Feb 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Movnig to a new domain</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://rtug.unitn.it/posts/005-domain/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Starting from February 26, 2025, RTUG website has a new domain under the <a href="https://unitn.it" target="_blank">University of Trento</a> domain: <code>rtug.unitn.it</code>. So the group’s homepage is now accessible as <a href="https://rtug.unitn.it" class="uri">https://rtug.unitn.it</a>.</p>
+<p>Furthermore, there is a new contact email address: <script type="text/javascript">
+<!--
+h='&#x75;&#110;&#x69;&#116;&#110;&#46;&#x69;&#116;';a='&#64;';n='&#114;&#116;&#x75;&#x67;&#46;&#x67;&#114;&#x6f;&#x75;&#112;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail uri">'+'&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#114;&#116;&#x75;&#x67;&#46;&#x67;&#114;&#x6f;&#x75;&#112;&#64;&#x75;&#110;&#x69;&#116;&#110;&#46;&#x69;&#116;'+'<\/'+'a'+'>');
+// -->
+</script><noscript>mailto:rtug.group@unitn.it (rtug.group at unitn dot it)</noscript></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The old address <a href="https://r-trento.github.io" class="uri">https://r-trento.github.io</a> will continue to work, automatically redirecting to the new domain name.</p>
+</div>
+</div>
+<div class="thatsall">
+<p>That’s all, folks!</p>
+</div>
+
+
+
+ ]]></description>
+  <category>RTUG</category>
+  <category>milestone</category>
+  <guid>https://rtug.unitn.it/posts/005-domain/</guid>
+  <pubDate>Tue, 25 Feb 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://rtug.unitn.it/posts/005-domain/image.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Introducing the adas.utils package</title>
   <dc:creator>Paolo Bosetti</dc:creator>
