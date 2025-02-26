@@ -5,7 +5,7 @@ date: "02/26/2025"
 # date-modified: today
 image: "image.jpg"
 format: html
-draft: true
+draft: false
 categories: 
   - RTUG
   - milestone
