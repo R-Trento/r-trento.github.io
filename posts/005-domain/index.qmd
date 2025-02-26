@@ -1,0 +1,26 @@
+---
+title: "Movnig to a new domain"
+author: "Paolo Bosetti"
+date: "02/26/2025"
+# date-modified: today
+image: "image.jpg"
+format: html
+draft: true
+categories: 
+  - RTUG
+  - milestone
+abstract: >
+  RTUG website has a new domain and a new contact email.
+---
+
+Starting from {{<meta date>}}, RTUG website has a new domain under the [University of Trento](https://unitn.it){target="_blank"} domain: `rtug.unitn.it`. So the group's homepage is now accessible as <https://rtug.unitn.it>.
+
+Furthermore, there is a new contact email address: <mailto:rtug.group@unitn.it>
+
+:::{.callout-note}
+The old address <https://r-trento.github.io> will continue to work, automatically redirecting to the new domain name.
+:::
+
+:::thatsall
+That's all, folks!
+:::

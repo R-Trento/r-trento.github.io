@@ -7,7 +7,9 @@ date-modified: "02/05/2025"
 
 # {{< bi envelope >}} Email
 
-If you are interested in the RTUG activities, please contact [Paolo Bosetti](mailto:paolo.bosetti@unitn.it).
+If you are interested in the RTUG activities, please contact [the RTUG group](mailto:rtug.group@unitn.it).
+
+If you want to inquire about this web site, please contact [Paolo Bosetti](mailto:paolo.bosetti@unitn.it).
 
 
 # {{< bi rss >}} RSS feeds
@@ -18,3 +20,7 @@ You can stay updated using the following feeds:
 * [{{< bi rss >}} List of meetings](meetings.xml)
 * [{{< bi rss >}} List of posts](index.xml)
 :::
+
+# {{< bi info-square >}} More info
+
+More info on the group and on this website on the [about page](/about.qmd)

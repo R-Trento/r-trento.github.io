@@ -13,7 +13,7 @@ categories:
   - GGPlot2
   - signal analysis
 abstract: >
-  With the excuse of doing signal analysis in R, this post discusses on how to deal with logarithmic scalses and tick-marks in GGPlot2, and how to generate log-spaced grids to have an equally dense set of points in the resulting plot.
+  With the excuse of doing signal analysis in R, this post discusses on how to deal with logarithmic scales and tick-marks in GGPlot2, and how to generate log-spaced grids to have an equally dense set of points in the resulting plot.
 engine: knitr
 ---
 

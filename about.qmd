@@ -15,6 +15,11 @@ about:
       href: https://creativecommons.org/licenses/by-sa/4.0/
 ---
 
+# Affiliation
+
+The group has been founded and by faculty members of the [University of Trento](https://unitn.it){target="_blank"} and the group Internet domain name `rtug.unitn.it` is provided by the same University.
+
+
 # Logo
 The R-Trento Users Group logo uses the green and blue hues from [our Province](https://www.visittrentino.info/it), it has the customary hexagonal shape made popular by [tidyverse](https://tidiverse.org), and uses the official R language logo in the word "T**R**ENTO".
 

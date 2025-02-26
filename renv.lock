@@ -399,6 +399,22 @@
       ],
       "Hash": "33698c4b3127fc9f506654607fb73676"
     },
+    "dlstats": {
+      "Package": "dlstats",
+      "Version": "0.1.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "RColorBrewer",
+        "ggplot2",
+        "jsonlite",
+        "magrittr",
+        "scales",
+        "utils"
+      ],
+      "Hash": "e9ba1c73457c25b19b94bd71eceb38ab"
+    },
     "dplyr": {
       "Package": "dplyr",
       "Version": "1.1.4",
