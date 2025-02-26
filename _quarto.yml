@@ -3,21 +3,25 @@ project:
   preview:
     port: 8080
     host: localhost
+  resources:
+    - "CNAME"
 website:
-  site-url: https://r-trento.github.io
+  site-url: https://rtug.unitn.it
   title: "RTUG"
   description: "R-Trento Users Group"
   open-graph: true
   draft-mode: unlinked
-  google-analytics: 
-    tracking-id: G-XKT2HCTTXM
-    storage: none
-  announcement:
-    icon: info-circle
-    dismissable: true
-    content: "**Please Note** - This site is sill under construction, RTUG has not been officially launched yet..."
-    type: warning
-    position: below-navbar
+  google-analytics: "G-XKT2HCTTXM"
+  cookie-consent:
+    type: express
+    style: simple
+    palette: light
+  # announcement:
+  #   icon: info-circle
+  #   dismissable: true
+  #   content: "**Please Note** - This site is sill under construction, RTUG has not been officially launched yet..."
+  #   type: warning
+  #   position: below-navbar
   page-footer:
     left: |
       RTUG --- R-Trento Users Group
