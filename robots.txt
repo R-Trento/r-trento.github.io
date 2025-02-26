@@ -1,1 +1,1 @@
-Sitemap: https://r-trento.github.io/sitemap.xml
+Sitemap: https://rtug.unitn.it/sitemap.xml
