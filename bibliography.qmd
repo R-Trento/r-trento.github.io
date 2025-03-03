@@ -10,6 +10,7 @@ format: html
 #| include: false
 library(tidyverse)
 library(dlstats)
+library(plotly)
 knitr::opts_chunk$set(
   fig.align = "center",
   # This for default device
@@ -29,7 +30,7 @@ Members of RTUG have contributed to the following topics:
 
 ```{r}
 #| echo: false
-cran_stats(c("adas.utils", "noisyCE2")) %>% 
+pp <- cran_stats(c("adas.utils", "noisyCE2")) %>% 
   ggplot(aes(x=end, y=downloads, group=package, color=package)) +
   geom_line() +
   scale_x_date(date_labels="%Y",
@@ -39,6 +40,8 @@ cran_stats(c("adas.utils", "noisyCE2")) %>%
        y="Monthly downloads", 
        color="Package", 
        title="RTUG-contributed packages")
+
+ggplotly(pp)
 ```
 
 # {{< bi book >}} Books

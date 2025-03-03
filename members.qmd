@@ -14,8 +14,8 @@ Associate professor of Mechanical and Thermal Measurements at the [Department of
 
 :::{.links-list}
 * {{< bi link >}} [teaching stuff: paolobosetti.quarto.pub](https://paolobosetti.quarto.pub){target=_blank}
-* {{< bi link >}} [personal blog:](https://paolobosetti.quarto.pub/blog){target=_blank}
-* {{< bi github >}} [GitHub code](https://github.com/pbosetti){target=_blank}
+* {{< bi link >}} [personal blog](https://paolobosetti.quarto.pub/blog){target=_blank}
+* {{< bi github >}} [GitHub page](https://github.com/pbosetti){target=_blank}
 :::
 :::
 
@@ -126,6 +126,44 @@ Rocco Micciolo is Full Professor of Medical Statistics at the Department of Psyc
 :::
 :::
 
+
+
+## Yari Ciani
+
+:::{layout="[80,20]"}
+:::{#first-colum
+Yari Ciani is Assistant Professor (RTDa) at the Department of Cellular, Computational and Integrative Biology - CIBIO of the University of Trento.
+
+:::{.links-list}
+* {{<bi github>}} [GitHub page](https://github.com/demichelislab){target="_blank"}
+:::
+:::
+
+:::{#second-column}
+![](images/ciani.jpg){width=150 class=rounded-corners alt="Yari Ciani"}
+:::
+:::
+
+
+
+## Philippe Velha
+
+:::{layout="[80,20]"}
+:::{#first-colum
+Philippe Velha is tenure-track Assistant Professor at the Department of Information Engineering and Computer Science of the University of Trento.
+He is also affiliated with TIFPA - Trento Institute for Fundamental Physics and Applications.
+
+
+:::{.links-list}
+* {{<bi link>}} [DISI](https://www.disi.unitn.it/it/node/1509){target="_blank"}
+* {{<bi link>}} [TIFPA](https://www.tifpa.infn.it){target="_blank"}
+:::
+:::
+
+:::{#second-column}
+![](images/velha.jpg){width=150 class=rounded-corners alt="Philippe Velha"}
+:::
+:::
 
 
 
