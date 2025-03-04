@@ -1,5 +1,5 @@
 ---
-title: "Movnig to a new domain"
+title: "Moving to a new domain"
 author: "Paolo Bosetti"
 date: "02/26/2025"
 # date-modified: today
