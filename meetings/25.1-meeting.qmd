@@ -3,11 +3,11 @@ title: "First RTUG meeting"
 author: "Paolo Bosetti"
 format: html
 date: "02/05/2025"
-date-modified: "02/06/2025"
+date-modified: today
 ---
 
 
-The first R-Trento Users Meeting, code 25.1, is tentatively planned for **Friday, March 30, 2025**.
+The first R-Trento Users Meeting, code 25.1, is tentatively planned for **Friday, May 30, 2025**.
 
 :::{.callout-note}
 The date is still **not confirmed**.
