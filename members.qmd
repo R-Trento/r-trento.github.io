@@ -172,8 +172,6 @@ He is also affiliated with TIFPA - Trento Institute for Fundamental Physics and 
 :::
 
 # {{< bi people >}} RTUG Regular members
-:::{.callout-warning}
-Under construction. 
 
-If you want to become a member, apply by writing an email to [Paolo Bosetti](mailto:paolo.bosetti@unitn.it).
-:::
+* **Enrico Tundis**, [Istituto di Statistica della Provincia di Trento](http://www.statistica.provincia.tn.it){target="_blank"} (ISPAT)
+* **Emanuele Cordano**, [Rendena 100](http://www.rendena100.eu/){target="_blank"}
