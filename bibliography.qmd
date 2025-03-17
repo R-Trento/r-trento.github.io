@@ -30,7 +30,7 @@ Members of RTUG have contributed to the following topics:
 
 ```{r}
 #| echo: false
-pp <- cran_stats(c("adas.utils", "noisyCE2")) %>% 
+pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "geotopbricks")) %>% 
   ggplot(aes(x=end, y=downloads, group=package, color=package)) +
   geom_line() +
   scale_x_date(date_labels="%Y",

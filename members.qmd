@@ -122,7 +122,7 @@ Rocco Micciolo is Full Professor of Medical Statistics at the Department of Psyc
 :::
 
 :::{#second-column}
-![](images/unknown.jpg){width=150 class=rounded-corners alt="No Photo"}
+![](images/Micciolo.jpg){width=150 class=rounded-corners alt="No Photo"}
 :::
 :::
 
@@ -175,3 +175,8 @@ He is also affiliated with TIFPA - Trento Institute for Fundamental Physics and 
 
 * **Enrico Tundis**, [Istituto di Statistica della Provincia di Trento](http://www.statistica.provincia.tn.it){target="_blank"} (ISPAT)
 * **Emanuele Cordano**, [Rendena 100](http://www.rendena100.eu/){target="_blank"}
+* **Riccardo Campana**, [Servizio geologico della Provinacia Autonoma di Trento](http://www.protezionecivile.tn.it/organizzazione/Geologico/){target="_blank"}
+* **Matteo Abbia**, Dottorando presso [Università degli Studi della Campania "Luigi Vanvitelli"](https://www.unicampania.it){target="_blank"} - [www.matteoabbia.com](https://www.matteoabbia.com){target="_blank"}
+* **Mariolino De Cecco**, [Università degli Studi di Trento](https://www.unitn.it){target="_blank"}
+* **Davide Albanese**, [Adige SpA](https://www.adige.it){target="_blank"}
+* **Daniele Toffoli**, Dottorando presso [Università degli Studi di Trento, Dip. di Economia e Management](https://www.economia.unitn.it/en/dottorato/susteems){target="_blank"}

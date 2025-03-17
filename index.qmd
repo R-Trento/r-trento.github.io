@@ -31,6 +31,8 @@ include-after-body: bluesky.txt
 :::{#first-column}
 The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the [R language](https://r-project.org) and its suite of tools.
 
+*The suggested pronunciation for RTUG is "Ar-TOO(g)", akin to the Italian "Artù".*
+
 # {{< bi rocket-takeoff >}} Mission
 
 RTUG mission is to spread the use or R language and tools within academia, industry and public administration.
