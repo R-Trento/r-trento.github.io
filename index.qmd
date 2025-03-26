@@ -41,6 +41,20 @@ RTUG mission is to spread the use or R language and tools within academia, indus
 :::
 
 
+# {{< bi gear >}} How it works
+
+RTUG is a **community-driven group**. We organize meetings, workshops, and seminars, we share news, and we publish posts and tutorials. We are open to collaborations and partnerships with other groups and organizations. 
+
+**Meetings** are the core of our activities: we plan to have two to three meetings per year, with a mix of invited speakers, tutorials, and member presentations. Meetings can be a great opportunity for networking, learning, sharing experiences, and possibly finding new collaborations or solution providers.
+
+To collaborate with RTUG, you can:
+
+- **Become a member**: contact [the group](mailto:rtug.group@unitn.it?subject=[RTUG] Becoming a member) and ask for instructions. Membership if free and open to anyone interested. **Please note** that, to simplify the management of members mailing list, we are currently accepting one member per institution/department/workgroup. 
+- **Get to know us**: [join our meetings](meetings.html)
+- **Volunteer and advertise your R skills**: [contribute a post](posts.html)
+
+
+
 # {{< bi people >}} Next meeting
 
 :::{#meetings}
