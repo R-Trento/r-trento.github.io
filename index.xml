@@ -14,7 +14,7 @@
 <item>
   <title>Tukey’s test plot in adas.utils</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/006-tukey/template.html</link>
+  <link>https://rtug.unitn.it/posts/006-tukey/</link>
   <description><![CDATA[ 
 
 
@@ -99,7 +99,7 @@ font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://rtug.unitn.it/posts/006-tukey/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -129,7 +129,7 @@ font-style: inherit;">plot</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://rtug.unitn.it/posts/006-tukey/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -163,7 +163,7 @@ font-style: inherit;">ggTukey</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://rtug.unitn.it/posts/006-tukey/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -181,7 +181,7 @@ font-style: inherit;">~</span> Cotton)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://rtug.unitn.it/posts/006-tukey/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -251,7 +251,7 @@ font-style: inherit;">~</span>Material)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+<p><img src="https://rtug.unitn.it/posts/006-tukey/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
 </figure>
 </div>
 </div>
@@ -273,7 +273,7 @@ font-style: inherit;">~</span>Material)</span></code></pre></div>
 </section></div> ]]></description>
   <category>R</category>
   <category>packages</category>
-  <guid>https://rtug.unitn.it/posts/006-tukey/template.html</guid>
+  <guid>https://rtug.unitn.it/posts/006-tukey/</guid>
   <pubDate>Wed, 26 Mar 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg" medium="image" type="image/jpeg"/>
 </item>

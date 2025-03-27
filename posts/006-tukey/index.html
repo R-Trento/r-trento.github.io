@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Paolo Bosetti">
-<meta name="dcterms.date" content="2025-02-05">
+<meta name="dcterms.date" content="2025-03-27">
 
-<title>Post Title – RTUG</title>
+<title>Tukey’s test plot in adas.utils – RTUG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,19 +133,18 @@ cookieconsent.run({
 });
 </script> 
   
-<meta name="quarto:status" content="draft">
 
 
-<meta property="og:title" content="Post Title – RTUG">
-<meta property="og:description" content="This is the abstract. If not empty, it is used in plece of the post initial paragraph to build the post preview in the posts listing.">
-<meta property="og:image" content="https://rtug.unitn.it/posts/000-template/image.jpg">
+<meta property="og:title" content="Tukey’s test plot in adas.utils – RTUG">
+<meta property="og:description" content="The new version 1.1.1 of the adas.utils package includes a new function to plot the results of Tukey’s test.">
+<meta property="og:image" content="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg">
 <meta property="og:site_name" content="RTUG">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -209,7 +208,8 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#main-title" id="toc-main-title" class="nav-link active" data-scroll-target="#main-title">Main title</a></li>
+  <li><a href="#rationale" id="toc-rationale" class="nav-link active" data-scroll-target="#rationale">Rationale</a></li>
+  <li><a href="#enter-ggtukey" id="toc-enter-ggtukey" class="nav-link" data-scroll-target="#enter-ggtukey">Enter <code>ggTukey</code></a></li>
   </ul>
 </nav>
     </div>
@@ -218,10 +218,10 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Post Title</h1>
+<h1 class="title">Tukey’s test plot in <code>adas.utils</code></h1>
   <div class="quarto-categories">
-    <div class="quarto-category">RTUG</div>
-    <div class="quarto-category">milestone</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">packages</div>
   </div>
   </div>
 
@@ -239,7 +239,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 5, 2025</p>
+      <p class="date">March 27, 2025</p>
     </div>
   </div>
   
@@ -249,7 +249,7 @@ cookieconsent.run({
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This is the abstract. If not empty, it is used in plece of the post initial paragraph to build the post preview in the posts listing.</p>
+    <p>The new version 1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test.</p>
   </div>
 </div>
 
@@ -257,28 +257,119 @@ cookieconsent.run({
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align =</span> <span class="st">"center"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This for default device</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">out.width =</span> <span class="st">"16cm"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This two for high quality charts:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.dim =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">9</span>)<span class="sc">*</span><span class="fl">0.4</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Etiam congue quam eget velit convallis, eu sagittis orci vestibulum. Vestibulum at massa turpis. Curabitur ornare ex sed purus vulputate, vitae porta augue rhoncus. Phasellus auctor suscipit purus, vel ultricies nunc. Nunc eleifend nulla ac purus volutpat, id fringilla felis aliquet. Duis vitae porttitor nibh, in rhoncus risus. Vestibulum a est vitae est tristique vehicula. Proin mollis justo id est tempus hendrerit. Praesent suscipit placerat congue. Aliquam eu elit gravida, consequat augue non, ultricies sapien. Nunc ultricies viverra ante, sit amet vehicula ante volutpat id. Etiam tempus purus vitae tellus mollis viverra. Donec at ornare mauris. Aliquam sodales hendrerit ornare. Suspendisse accumsan lacinia sapien, sit amet imperdiet dui molestie ut.</p>
+<section id="rationale" class="level1 page-columns page-full">
+<h1>Rationale</h1>
+<p>The new version v1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test. The function is called <code>ggTukey</code> and it is used to plot the results of Tukey’s test provided by the <code>stas::TukeyHSD</code> function.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="image.jpg" class="img-fluid figure-img"></p>
-<figcaption>Image caption</figcaption>
+<p><img src="Tukey.jpg" class="img-fluid figure-img"></p>
+<figcaption>John W. Tukey</figcaption>
 </figure>
 </div>
-</div></div><section id="main-title" class="level1">
-<h1>Main title</h1>
-<p>Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.</p>
-<p>Ut ut condimentum augue, nec eleifend nisl. Sed facilisis egestas odio ac pretium. Pellentesque consequat magna sed venenatis sagittis. Vivamus feugiat lobortis magna vitae accumsan. Pellentesque euismod malesuada hendrerit. Ut non mauris non arcu condimentum sodales vitae vitae dolor. Nullam dapibus, velit eget lacinia rutrum, ipsum justo malesuada odio, et lobortis sapien magna vel lacus. Nulla purus neque, hendrerit non malesuada eget, mattis vel erat. Suspendisse potenti.</p>
+</div></div><p>The standard <code>stats::TukeyHSD</code> function returns an S3 object that has the <code>print</code> and <code>plot</code> methods. The result of the <code>plot</code> method, though, is honestly not really appealing. Let’s see how it works, by loading a dataset and running a Tukey’s test on it. We load an online dataset by using the <code>adas.utils::examples_url</code> function<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and we begin with a simple boxplot of the data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adas.utils)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">examples_url</span>(<span class="st">"anova.dat"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Cotton=</span><span class="fu">factor</span>(Cotton)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 25
+Columns: 3
+$ Cotton      &lt;fct&gt; 15, 15, 15, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25…
+$ Observation &lt;int&gt; 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5…
+$ Strength    &lt;int&gt; 7, 7, 15, 11, 9, 12, 17, 12, 18, 18, 14, 18, 18, 19, 19, 1…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Cotton, <span class="at">y=</span>Strength, <span class="at">group=</span>Cotton)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The Tukey’s test is built by using the <code>aov</code> function and the <code>TukeyHSD</code> function. The results are then plotted by the <code>plot</code> method of the <code>TukeyHSD</code> object:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aov</span>(Strength <span class="sc">~</span> Cotton, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">TukeyHSD</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The biggest problem with <code>plot.TukeyHSD</code> is that the labels of the differences are often partially hidden if there are many groups or the plot is too squat. This is the main reason for implementing an analogous function based on GGplot2 in <code>adas.utils</code>.</p>
+</section>
+<section id="enter-ggtukey" class="level1">
+<h1>Enter <code>ggTukey</code></h1>
+<p>Labels are much more readable in the <code>ggTukey</code> plot. Let’s see how it works:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aov</span>(Strength <span class="sc">~</span> Cotton, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">TukeyHSD</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggTukey</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There’s actually more: you can also pass to <code>ggTukey</code> the data frame and the formula to be used in the <code>aov</code> model:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggTukey</span>(Strength <span class="sc">~</span> Cotton)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Which is nicely more tidiverse-y and readable, isn’t it?</p>
+<p>Now let’s look at a different, slightly more complex dataset:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">examples_url</span>(<span class="st">"battery.dat"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.table</span>(<span class="at">header=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Material=</span><span class="fu">factor</span>(LETTERS[Material]), <span class="at">Temperature=</span><span class="fu">factor</span>(Temperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 36
+Columns: 6
+$ RunOrder      &lt;int&gt; 34, 25, 16, 7, 8, 1, 26, 36, 6, 13, 3, 31, 27, 29, 12, 1…
+$ StandardOrder &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+$ Temperature   &lt;fct&gt; 15, 70, 125, 15, 70, 125, 15, 70, 125, 15, 70, 125, 15, …
+$ Material      &lt;fct&gt; A, A, A, B, B, B, C, C, C, A, A, A, B, B, B, C, C, C, A,…
+$ Repeat        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,…
+$ Response      &lt;int&gt; 130, 34, 20, 150, 136, 25, 138, 174, 96, 155, 40, 70, 18…</code></pre>
+</div>
+</div>
+<p>This one shows discharge test results for batteries with different dielectric materials (qualitative factors) and operating at different temperatures (quantitative factors). So inn this case we have two predictors. We want to create a set of Tukey’s tests for each level of <code>Material</code>. We need to pass <code>ggTukey</code> with the formula <code>Response ~ Temperature</code> (for the <code>aov</code> model) and the <code>splt</code> argument with another, one side formula that specifies the grouping factor: <code>~Material</code>. In a terse and clear way, we can write:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggTukey</span>(Response <span class="sc">~</span> Temperature, <span class="at">splt=</span><span class="sc">~</span>Material)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And that was not possible with the standard <code>plot.TukeyHSD</code> method, at least not in two lines of code.</p>
 <div class="thatsall">
 <p>That’s all, folks!</p>
 </div>
@@ -286,7 +377,13 @@ cookieconsent.run({
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This function can load any data file listed on <a href="https://paolobosetti.quarto.pub/data" class="uri">https://paolobosetti.quarto.pub/data</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
