@@ -10,7 +10,273 @@
 <atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 25 Feb 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 26 Mar 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Tukey’s test plot in adas.utils</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://rtug.unitn.it/posts/006-tukey/template.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="rationale" class="level1 page-columns page-full">
+<h1>Rationale</h1>
+<p>The new version v1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test. The function is called <code>ggTukey</code> and it is used to plot the results of Tukey’s test provided by the <code>stas::TukeyHSD</code> function.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg" class="img-fluid figure-img"></p>
+<figcaption>John W. Tukey</figcaption>
+</figure>
+</div>
+</div></div><p>The standard <code>stats::TukeyHSD</code> function returns an S3 object that has the <code>print</code> and <code>plot</code> methods. The result of the <code>plot</code> method, though, is honestly not really appealing. Let’s see how it works, by loading a dataset and running a Tukey’s test on it. We load an online dataset by using the <code>adas.utils::examples_url</code> function<sup>1</sup>, and we begin with a simple boxplot of the data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(adas.utils)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">examples_url</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"anova.dat"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb1-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Cotton=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(Cotton)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb1-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 25
+Columns: 3
+$ Cotton      &lt;fct&gt; 15, 15, 15, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25…
+$ Observation &lt;int&gt; 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5…
+$ Strength    &lt;int&gt; 7, 7, 15, 11, 9, 12, 17, 12, 18, 18, 14, 18, 18, 19, 19, 1…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span>Cotton, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span>Strength, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group=</span>Cotton)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The Tukey’s test is built by using the <code>aov</code> function and the <code>TukeyHSD</code> function. The results are then plotted by the <code>plot</code> method of the <code>TukeyHSD</code> object:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aov</span>(Strength <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Cotton, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data=</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">TukeyHSD</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The biggest problem with <code>plot.TukeyHSD</code> is that the labels of the differences are often partially hidden if there are many groups or the plot is too squat. This is the main reason for implementing an analogous function based on GGplot2 in <code>adas.utils</code>.</p>
+</section>
+<section id="enter-ggtukey" class="level1">
+<h1>Enter <code>ggTukey</code></h1>
+<p>Labels are much more readable in the <code>ggTukey</code> plot. Let’s see how it works:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aov</span>(Strength <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Cotton, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data=</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">TukeyHSD</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggTukey</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There’s actually more: you can also pass to <code>ggTukey</code> the data frame and the formula to be used in the <code>aov</code> model:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggTukey</span>(Strength <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Cotton)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Which is nicely more tidiverse-y and readable, isn’t it?</p>
+<p>Now let’s look at a different, slightly more complex dataset:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">examples_url</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"battery.dat"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.table</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">header=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Material=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(LETTERS[Material]), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Temperature=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(Temperature)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 36
+Columns: 6
+$ RunOrder      &lt;int&gt; 34, 25, 16, 7, 8, 1, 26, 36, 6, 13, 3, 31, 27, 29, 12, 1…
+$ StandardOrder &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+$ Temperature   &lt;fct&gt; 15, 70, 125, 15, 70, 125, 15, 70, 125, 15, 70, 125, 15, …
+$ Material      &lt;fct&gt; A, A, A, B, B, B, C, C, C, A, A, A, B, B, B, C, C, C, A,…
+$ Repeat        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,…
+$ Response      &lt;int&gt; 130, 34, 20, 150, 136, 25, 138, 174, 96, 155, 40, 70, 18…</code></pre>
+</div>
+</div>
+<p>This one shows discharge test results for batteries with different dielectric materials (qualitative factors) and operating at different temperatures (quantitative factors). So inn this case we have two predictors. We want to create a set of Tukey’s tests for each level of <code>Material</code>. We need to pass <code>ggTukey</code> with the formula <code>Response ~ Temperature</code> (for the <code>aov</code> model) and the <code>splt</code> argument with another, one side formula that specifies the grouping factor: <code>~Material</code>. In a terse and clear way, we can write:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggTukey</span>(Response <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Temperature, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">splt=</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Material)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/006-tukey/template_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:16cm"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And that was not possible with the standard <code>plot.TukeyHSD</code> method, at least not in two lines of code.</p>
+<div class="thatsall">
+<p>That’s all, folks!</p>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This function can load any data file listed on <a href="https://paolobosetti.quarto.pub/data" class="uri">https://paolobosetti.quarto.pub/data</a>↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <guid>https://rtug.unitn.it/posts/006-tukey/template.html</guid>
+  <pubDate>Wed, 26 Mar 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Moving to a new domain</title>
   <dc:creator>Paolo Bosetti</dc:creator>
