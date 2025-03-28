@@ -17,6 +17,7 @@
     "listing": "/index.html",
     "items": [
       "/meetings/25.1-meeting.html",
+      "/posts/007-r-consortium/index.html",
       "/posts/006-tukey/index.html",
       "/posts/005-domain/index.html",
       "/posts/004-adas.utils/index.html",
