@@ -47,6 +47,10 @@ website:
       - text: "Contact"
         href: contact.html
     right:
+      - icon: info
+        text: "About"
+        href: about.qmd
+      - text: "|"
       - icon: github
         href: https://github.com/r-trento
       - text: "{{< fa brands bluesky >}}"

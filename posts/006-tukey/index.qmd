@@ -1,0 +1,106 @@
+---
+title: "Tukey's test plot in `adas.utils`"
+author: "Paolo Bosetti"
+date: "03/27/2025"
+# date-modified: today
+image: "Tukey.jpg"
+format: html
+draft: false
+categories: 
+  - R
+  - packages
+abstract: >
+  The new version 1.1.1 of the `adas.utils` package includes a new function to plot the results of Tukey's test.
+---
+
+```{r}
+#| label: setup
+#| echo: false
+knitr::opts_chunk$set(
+  fig.align = "center",
+  # This for default device
+  out.width = "16cm",
+  # This two for high quality charts:
+  fig.dim = c(16, 9)*0.4
+)
+```
+
+# Rationale
+
+The new version v1.1.1 of the `adas.utils` package includes a new function to plot the results of Tukey's test. The function is called `ggTukey` and it is used to plot the results of Tukey's test provided by the `stas::TukeyHSD` function.
+
+:::{.column-margin}
+![John W. Tukey](Tukey.jpg)
+:::
+
+The standard `stats::TukeyHSD` function returns an S3 object that has the `print` and `plot` methods. The result of the `plot` method, though, is honestly not really appealing. Let's see how it works, by loading a dataset and running a Tukey's test on it. We load an online dataset by using the `adas.utils::examples_url` function[^1], and we begin with a simple boxplot of the data.
+
+[^1]: This function can load any data file listed on <https://paolobosetti.quarto.pub/data>
+
+```{r}
+#| warning=FALSE
+library(tidyverse)
+library(adas.utils)
+
+data <- examples_url("anova.dat") %>% 
+  read.table(header=TRUE) %>% 
+  mutate(Cotton=factor(Cotton)) %>% 
+  glimpse()
+
+data %>% 
+  ggplot(aes(x=Cotton, y=Strength, group=Cotton)) +
+  geom_boxplot()
+```
+
+The Tukey's test is built by using the `aov` function and the `TukeyHSD` function. The results are then plotted by the `plot` method of the `TukeyHSD` object:
+
+```{r}
+data %>% 
+  aov(Strength ~ Cotton, data=.) %>%
+  TukeyHSD() %>% 
+  plot()
+```
+
+The biggest problem with `plot.TukeyHSD` is that the labels of the differences are often partially hidden if there are many groups or the plot is too squat. This is the main reason for implementing an analogous function based on GGplot2 in `adas.utils`.
+
+# Enter `ggTukey`
+
+Labels are much more readable in the `ggTukey` plot. Let's see how it works:
+
+```{r}
+data %>% 
+  aov(Strength ~ Cotton, data=.) %>%
+  TukeyHSD() %>% 
+  ggTukey()
+```
+
+There's actually more: you can also pass to `ggTukey` the data frame and the formula to be used in the `aov` model:
+
+```{r}
+data %>% 
+  ggTukey(Strength ~ Cotton)
+```
+
+Which is nicely more tidiverse-y and readable, isn't it?
+
+Now let's look at a different, slightly more complex dataset:
+
+```{r}
+data <- examples_url("battery.dat") %>% 
+  read.table(header=TRUE) %>% 
+  mutate(Material=factor(LETTERS[Material]), Temperature=factor(Temperature)) %>%
+  glimpse()
+```
+
+This one shows discharge test results for batteries with different dielectric materials (qualitative factors) and operating at different temperatures (quantitative factors). So inn this case we have two predictors. We want to create a set of Tukey's tests for each level of `Material`. We need to pass `ggTukey` with the formula `Response ~ Temperature` (for the `aov` model) and the `splt` argument with another, one side formula that specifies the grouping factor: `~Material`. In a terse and clear way, we can write:
+
+```{r}
+data %>% 
+  ggTukey(Response ~ Temperature, splt=~Material)
+```
+
+And that was not possible with the standard `plot.TukeyHSD` method, at least not in two lines of code.
+
+::: thatsall
+That's all, folks!
+:::

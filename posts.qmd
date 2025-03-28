@@ -4,6 +4,7 @@ format: html
 date: "02/05/2025"
 date-modified: today
 listing:
+  id: posts
   type: grid
   contents: posts
   fields: [date, title, author, description, categories, reading-time, image]
@@ -21,8 +22,12 @@ This is a selection of the most interesting posts contributed by our members.
 If you want to contribute, head on to the [GitHub repo](https://github.com/r-trento/r-trento.github.io){target="_blank"}, fork it, add a new post in the `posts` folder, tag it with the `post` category and make a pull request.
 :::
 
+
+# {{< bi file-post >}} Posts
+
+:::{#posts}
+:::
+
 :::{.callout-note}
 [![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-right: 20px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/) **Unless otherwise specified, all content is licensed as BY-NC-SA 4.0.**
 :::
-
-# {{< bi file-post >}} Posts

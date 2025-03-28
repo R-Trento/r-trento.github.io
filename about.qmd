@@ -19,6 +19,14 @@ about:
 
 The group has been founded and by faculty members of the [University of Trento](https://unitn.it){target="_blank"} and the group Internet domain name `rtug.unitn.it` is provided by the same University.
 
+# Sponsor
+
+![](https://r-consortium.org/images/RConsortium_Horizontal_Pantone.webp){width=50%}
+
+R-Trento Users Group is kindly sponsored by the [R consortium](https://www.r-consortium.org/).
+
+We follow the R Consortium and the R Community [Code of Conduct](https://wiki.r-consortium.org/view/R_Consortium_and_the_R_Community_Code_of_Conduct).
+
 
 # Logo
 The R-Trento Users Group logo uses the green and blue hues from [our Province](https://www.visittrentino.info/it), it has the customary hexagonal shape made popular by [tidyverse](https://tidiverse.org), and uses the official R language logo in the word "T**R**ENTO".

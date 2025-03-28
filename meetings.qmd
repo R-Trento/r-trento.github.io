@@ -11,3 +11,11 @@ listing:
 ---
 
 # {{< bi people >}} Meetings organized by RTUG
+
+:::{.column-margin}
+[![](https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN)](https://www.meetup.com/r-trento-users-group/)
+:::
+
+Meetings and events are organized and shared via [Meetup.com](https://www.meetup.com/r-trento-users-group/).
+
+Participation is **free and open to everyone**, provided that you sign up for the meeting on [Meetup.com](https://meetup.com).
