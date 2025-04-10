@@ -16,7 +16,7 @@ categories:
 ![An important milestone](milestone.jpg)
 :::
 
-On Feb. 5th, 2025, Giuseppe **Espa**, Maria Michela **Dickson**, Flavio **Santi**, Diego **Giuliani** and Paolo **Bosetti** had the first ffounding meeting of the R-Trento Users Group.
+On Feb. 5th, 2025, Giuseppe **Espa**, Maria Michela **Dickson**, Flavio **Santi**, Diego **Giuliani** and Paolo **Bosetti** had the first founding meeting of the R-Trento Users Group.
 
 ```{r}
 RTUG <- list("Giuseppe", "Maria Michela", "Flavio", "Diego", "Paolo")

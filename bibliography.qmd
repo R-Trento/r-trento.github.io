@@ -27,6 +27,8 @@ Members of RTUG have contributed to the following topics:
 
 * [ADAS Utils](https://cran.r-project.org/package=adas.utils){target="_blank"}---Design of Experiments
 * [noisyCE2](https://cran.r-project.org/package=noisyCE2){target="_blank"}---Cross-Entropy Optimisation of Noisy Functions
+* [RMAWGEN](https://cran.r-project.org/web/packages/RMAWGEN/index.html){target="_blank"}---Multi-Site Auto-Regressive Weather GENerator
+* [geotopbricks](https://cran.r-project.org/web/packages/geotopbricks/index.html){target="_blank"}---An R Plug-in for the Distributed Hydrological Model GEOtop
 
 ```{r}
 #| echo: false
@@ -43,6 +45,7 @@ pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "geotopbricks")) %>%
 
 ggplotly(pp)
 ```
+
 
 # {{< bi book >}} Books
 

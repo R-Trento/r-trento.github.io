@@ -1,0 +1,197 @@
+---
+title: "Tukey vs. Student"
+author: "Paolo Bosetti"
+date: "04/10/2025"
+# date-modified: today
+image: "image.png"
+format: html
+draft: false
+categories: 
+  - R
+  - tidyverse
+  - inference
+  - Tukey
+abstract: >
+  To compare two samples, or groups, we can use a T-test. But if we want to compare more than two groups, we need to use Tukey's test. In this post we investigate the reason why a Tukey's test is more appropriate and robust than a set of pairwise T-tests for all possible combinations of groups. This is also an excuse to illustrate the power of `purrr` and `dplyr` packages, specifically for the use of `map`/`reduce`, `join_left`, and `pivot_longer`/`pivot_wider` functions.
+---
+
+```{r}
+#| label: setup
+#| echo: FALSE
+knitr::opts_chunk$set(
+  fig.align = "center",
+  # This for default device
+  out.width = "16cm",
+  # This two for high quality charts:
+  fig.dim = c(16, 9)*0.4
+)
+```
+
+:::{.callout-note title="Packages that we need"}
+In this example, we are using the packages `tidyverse` and `adas.utils` version 1.1.4 (see <https://github.com/pbosetti/adas.utils>)
+
+```{r}
+#| message: FALSE
+library(tidyverse)
+library(adas.utils)
+```
+:::
+
+# Repeated T-test vs. Tukey's test
+
+## The dataset
+
+Let us compare the result of a Tukey's test with a repeated Student's T-test on all combinations. We consider the `cotton` dataset, which is included in the `adas.utils` package from version 1.1.4. The dataset contains the tensile strength of mixed cotton-synthetic yarns with different cotton content:
+
+```{r}
+cotton %>% 
+  ggplot(aes(x=Cotton, y=Strength, group=Cotton)) +
+  geom_boxplot()
+```
+
+## Inference on `Strength`
+
+Now we want to compare all the possibile combinations of treatmentswith a set of pairwise T-tests.
+
+First, we create the list of pairwise combinations, sorting each pair in descending order, as it is done by the `TukeyHSD` function:
+
+```{r}
+lvl <- levels(cotton$Cotton) %>% 
+  combn(2, FUN=sort, decreasing=T) %>% 
+  as_tibble(.name_repair="minimal") %>% 
+  as.list() %>% glimpse()
+```
+
+Now, for each pair we do a T-test on the corresponding `cotton` data-frame subset, and accumulate into a new tibble the values of interest. We get the `df` table that is analogous to the `TukeyHSD` output:
+
+```{r}
+df <- lvl %>% reduce(\(acc, pair) {
+  tt <- cotton %>% 
+    filter(Cotton %in% pair) %>% 
+    t.test(Strength~Cotton, data=., var.equal=TRUE)
+  bind_rows(acc, list(
+    pair = paste0(pair[1], "-", pair[2]),
+    diff = -median(tt$conf.int),
+    lwr = -tt$conf.int[2],
+    upr = -tt$conf.int[1],
+    p.value = tt$p.value
+  ))
+}, .init=tibble()) 
+
+df %>% knitr::kable()
+```
+
+To be compared with Tukey's values:
+
+```{r}
+ttdf <- TukeyHSD(aov(lm(Strength~Cotton, data=cotton)))$Cotton %>% 
+  as.data.frame() %>% 
+  rownames_to_column(var="pair") %>% 
+  rename(p.value=`p adj`)
+ttdf %>% knitr::kable()
+```
+
+Now let's join both tables and make a common plot:
+
+```{r}
+compared <- df %>% 
+  left_join(ttdf, by=join_by(pair), suffix=c(".student", ".tukey")) %>% 
+  pivot_longer(-pair, names_to = c("stat", "test"), names_pattern = "(.*)\\.(student|tukey)$") %>% 
+  pivot_wider(names_from = stat)
+
+compared %>% knitr::kable()
+```
+
+```{r}
+compared %>%
+  ggplot(aes(x=diff, y=pair, color=test)) + 
+  geom_point() + 
+  geom_errorbar(aes(xmin=lwr, xmax=upr), width=0.5, position=position_dodge()) + 
+  geom_vline(xintercept=0, color="red") +
+  labs(x="Difference", y="Pair", title="95% pairwise confidence level")
+```
+
+## The Family-Wise Error Rate
+
+:::{.callout-important title="The Family-Wise Error Rate"}
+As expected, the Tukey's test in the last plot shows larger confidence intervals, that is, it has reduced chances of a false positive (Type I Error). More specifically, Tukey's test controls the **family-wise error rate (FWER)** --- the probability of making any false positive in the full set of comparisons.
+:::
+
+Let's see why. If we set a confidence level of 0.95, it means that the probability of not making a Type I error on **a single** T-test is 0.95.
+
+For 3 independent tests, the probability of no Type I error at all (in any of the tests) is:
+$$
+0.95^3 \approx `r round(0.95^3, 3)`
+$$
+So the chance of making at least one Type I error is:
+$$
+1 - 0.95^3 \approx `r round(1-0.95^3, 3)` \quad \text{(`r round((1-0.95^3)*100, 1)`\%)}
+$$
+That's almost triple the risk you thought you were accepting! Furthermore, this risk increases exponentially with the number of comparisons. Given $n$ elements, the number of possible combinations of $k$ elements is given by the **binomial coefficient**:
+$$
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+$$
+In R, the latter is provided by the `choose(n, k)` function:
+```{r}
+choose(5, 2)
+```
+
+so, with increasing number of classes to be compared, this is what happens to the probability of committing **at least one** Type-I error:
+
+```{r}
+2:15 %>% reduce(\(acc, k) {
+    nt <- choose(k, 2)
+    bind_rows(acc,
+      list(n=k, p=1-0.95^nt)
+    )
+  }, .init=tibble()) %>% 
+  ggplot(aes(x=n, y=p)) +
+  geom_point() +
+  geom_line() +
+  ylim(0, 1) +
+  labs(
+    x="number of classes", 
+    y="probability of Type-I Error")
+```
+
+And what happens if we change the confidence level? Let's see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last `reduce` opration into a function, `FEWR`, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.
+
+```{r}
+FEWR <- function(levels, conf.int=0.95) {
+  reduce(levels, \(acc, k) {
+    nt <- choose(k, 2)
+    bind_rows(acc,
+      list(n=k, p=1-conf.int^nt)
+    )
+  }, .init=tibble()) 
+}
+```
+
+Then we apply the `FEWR` function to a set of confidence levels, and join the results into a single tibble via the usual `reduce`, and finally, we plot the results:
+
+```{r}
+cl <- c(0.9, 0.95, 0.99, 0.995, 0.999) 
+N <- 2:15
+cl %>% 
+  reduce(\(acc, ci) {
+    fewr <- FEWR(N, ci) %>% rename(!!paste0("cl-", ci):=p)
+    left_join(acc, fewr, by=join_by(n))
+  }, .init=tibble(n=N)) %>% 
+  pivot_longer(-n, names_to = c(NA, "cl"), names_pattern="(cl-)(.*)") %>% 
+  ggplot(aes(x=n, y=value, color=cl)) + 
+  geom_point() + 
+  geom_line() + 
+  ylim(0, 1) + 
+  labs(
+    x="number of classes", 
+    y="probability of Type-I Error", 
+    color="Conf. level")
+```
+
+
+
+
+
+:::thatsall
+That's all, folks!
+:::

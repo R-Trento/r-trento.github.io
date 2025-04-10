@@ -5,9 +5,11 @@ date: "02/05/2025"
 date-modified: today
 listing:
   id: posts
+  sort: "date desc"
   type: grid
   contents: posts
   fields: [date, title, author, description, categories, reading-time, image]
+  categories: numbered
   include:
     categories: [post, R]
   sort-ui: true
