@@ -2,9 +2,10 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/008-tukey-vs-student/tukey-vs-student.html",
+      "/posts/006-tukey/index.html",
       "/posts/004-adas.utils/index.html",
-      "/posts/003-logscale/index.html",
-      "/posts/006-tukey/index.html"
+      "/posts/003-logscale/index.html"
     ]
   },
   {
@@ -17,6 +18,7 @@
     "listing": "/index.html",
     "items": [
       "/meetings/25.1-meeting.html",
+      "/posts/008-tukey-vs-student/tukey-vs-student.html",
       "/posts/007-r-consortium/index.html",
       "/posts/006-tukey/index.html",
       "/posts/005-domain/index.html",

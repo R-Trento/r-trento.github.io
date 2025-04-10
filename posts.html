@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-date','listing-title','listing-author','listing-description','listing-categories','listing-reading-time','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -163,8 +163,10 @@ window.Quarto = {
 
 <meta property="og:title" content="Members posts – RTUG">
 <meta property="og:description" content="R-Trento Users Group">
-<meta property="og:image" content="https://rtug.unitn.it/posts/004-adas.utils/hypercube.jpg">
+<meta property="og:image" content="https://rtug.unitn.it/posts/008-tukey-vs-student/image.png">
 <meta property="og:site_name" content="RTUG">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
 </head>
 
 <body class="nav-fixed">
@@ -242,7 +244,7 @@ window.Quarto = {
   <li><a href="#posts" id="toc-posts" class="nav-link active" data-scroll-target="#posts"><i class="bi-file-post " style="" role="img" aria-hidden="true"></i> Posts</a></li>
   </ul>
 </nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -266,7 +268,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 4, 2025</p>
+      <p class="date-modified">April 10, 2025</p>
     </div>
   </div>
     
@@ -320,14 +322,92 @@ How to contribute
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739142000000" data-listing-file-modified-sort="1739177225807" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
+<div class="g-col-1" data-index="0" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744236000000" data-listing-file-modified-sort="1744290835992" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
+<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/008-tukey-vs-student/image.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title" data-anchor-id="posts">
+Tukey vs.&nbsp;Student
+</h5>
+<div class="listing-reading-time card-text text-muted">
+5 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('dGlkeXZlcnNl'); return false;">
+tidyverse
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('aW5mZXJlbmNl'); return false;">
+inference
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('VHVrZXk='); return false;">
+Tukey
+</div>
+</div>
+<div class="card-text listing-description">
+To compare two samples, or groups, we can use a T-test. But if we want to compare more than two groups, we need to use Tukey’s test. In this post we investigate the reason…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Paolo Bosetti
+</div>
+<div class="listing-date">
+Apr 10, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743030000000" data-listing-file-modified-sort="1743148362373" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
+<a href="./posts/006-tukey/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/006-tukey/Tukey.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tukey’s test plot in <code>adas.utils</code>
+</h5>
+<div class="listing-reading-time card-text text-muted">
+3 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">
+packages
+</div>
+</div>
+<div class="card-text listing-description">
+<p>The new version 1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Paolo Bosetti
+</div>
+<div class="listing-date">
+Mar 27, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739142000000" data-listing-file-modified-sort="1739177225807" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
 <a href="./posts/004-adas.utils/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./posts/004-adas.utils/hypercube.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="posts">
+<h5 class="no-anchor card-title listing-title">
 Introducing the <code>adas.utils</code> package
 </h5>
 <div class="listing-reading-time card-text text-muted">
@@ -362,7 +442,7 @@ Feb 10, 2025
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739055600000" data-listing-file-modified-sort="1740575231955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
+<div class="g-col-1" data-index="3" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739055600000" data-listing-file-modified-sort="1740575231955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
 <a href="./posts/003-logscale/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -401,42 +481,6 @@ Paolo Bosetti
 </div>
 <div class="listing-date">
 Feb 9, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743030000000" data-listing-file-modified-sort="1743148362373" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
-<a href="./posts/006-tukey/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/006-tukey/Tukey.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Tukey’s test plot in <code>adas.utils</code>
-</h5>
-<div class="listing-reading-time card-text text-muted">
-3 min
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">
-packages
-</div>
-</div>
-<div class="card-text listing-description">
-<p>The new version 1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Paolo Bosetti
-</div>
-<div class="listing-date">
-Mar 27, 2025
 </div>
 </div>
 </div>
