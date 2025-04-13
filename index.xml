@@ -886,9 +886,9 @@ font-style: inherit;">"probability of Type-I Error"</span>)</span></code></pre><
 </div>
 </div>
 </div>
-<p>And what happens if we change the confidence level? Let’s see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last <code>reduce</code> opration into a function, <code>FEWR</code>, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.</p>
+<p>And what happens if we change the confidence level? Let’s see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last <code>reduce</code> opration into a function, <code>FWER</code>, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">FEWR <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">FWER <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -932,7 +932,7 @@ background-color: null;
 font-style: inherit;">tibble</span>()) </span>
 <span id="cb12-8">}</span></code></pre></div>
 </div>
-<p>Then we apply the <code>FEWR</code> function to a set of confidence levels, and join the results into a single tibble via the usual <code>reduce</code>, and finally, we plot the results:</p>
+<p>Then we apply the <code>FWER</code> function to a set of confidence levels, and join the results into a single tibble via the usual <code>reduce</code>, and finally, we plot the results:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">cl <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -964,11 +964,11 @@ font-style: inherit;">%&gt;%</span> </span>
 <span id="cb13-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">reduce</span>(\(acc, ci) {</span>
-<span id="cb13-5">    fewr <span class="ot" style="color: #003B4F;
+<span id="cb13-5">    fwer <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">FEWR</span>(N, ci) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">FWER</span>(N, ci) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -985,7 +985,7 @@ background-color: null;
 font-style: inherit;">=</span>p)</span>
 <span id="cb13-6">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">left_join</span>(acc, fewr, <span class="at" style="color: #657422;
+font-style: inherit;">left_join</span>(acc, fwer, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">by=</span><span class="fu" style="color: #4758AB;
 background-color: null;
