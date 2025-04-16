@@ -17,7 +17,7 @@ about:
 
 # Affiliation
 
-The group has been founded and by faculty members of the [University of Trento](https://unitn.it){target="_blank"} and the group Internet domain name `rtug.unitn.it` is provided by the same University.
+The group has been founded by faculty members of the [University of Trento](https://unitn.it){target="_blank"} and the group Internet domain name `rtug.unitn.it` is provided by the same University.
 
 # Sponsor
 

@@ -154,10 +154,10 @@ so, with increasing number of classes to be compared, this is what happens to th
     y="probability of Type-I Error")
 ```
 
-And what happens if we change the confidence level? Let's see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last `reduce` opration into a function, `FEWR`, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.
+And what happens if we change the confidence level? Let's see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last `reduce` opration into a function, `FWER`, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.
 
 ```{r}
-FEWR <- function(levels, conf.int=0.95) {
+FWER <- function(levels, conf.int=0.95) {
   reduce(levels, \(acc, k) {
     nt <- choose(k, 2)
     bind_rows(acc,
@@ -167,15 +167,15 @@ FEWR <- function(levels, conf.int=0.95) {
 }
 ```
 
-Then we apply the `FEWR` function to a set of confidence levels, and join the results into a single tibble via the usual `reduce`, and finally, we plot the results:
+Then we apply the `FWER` function to a set of confidence levels, and join the results into a single tibble via the usual `reduce`, and finally, we plot the results:
 
 ```{r}
 cl <- c(0.9, 0.95, 0.99, 0.995, 0.999) 
 N <- 2:15
 cl %>% 
   reduce(\(acc, ci) {
-    fewr <- FEWR(N, ci) %>% rename(!!paste0("cl-", ci):=p)
-    left_join(acc, fewr, by=join_by(n))
+    fwer <- FWER(N, ci) %>% rename(!!paste0("cl-", ci):=p)
+    left_join(acc, fwer, by=join_by(n))
   }, .init=tibble(n=N)) %>% 
   pivot_longer(-n, names_to = c(NA, "cl"), names_pattern="(cl-)(.*)") %>% 
   ggplot(aes(x=n, y=value, color=cl)) + 
