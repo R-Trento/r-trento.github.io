@@ -38,15 +38,22 @@
     "objectID": "meetings/25.1-meeting.html#topics",
     "href": "meetings/25.1-meeting.html#topics",
     "title": "First RTUG meeting",
-    "section": "Topics",
-    "text": "Topics\n\nWelcome and Introduction to the R-Trento Users Group (P. Bosetti)\nThe R Package rmf in Teaching (R. Micciolo and G. Espa)\nThe adas.utils Package: Design of Experiments, the Tidy Way (P. Bosetti)\nBioinformatics and R: Visualizing Genomic Data (Y. Ciani)\nSpatial Sampling in R (M. M. Dickson)\nE-Agle Trento Racing Team: reporting racecar test results with RStudio (E-Agle TRT)\nRefreshments and networking!"
+    "section": " Topics",
+    "text": "Topics\n\n\n\n\n\n\n\n\nEvent flyer\n\n\n\nDownload here  the event flyer.\n\n\n\nWelcome and Introduction to the R-Trento Users Group (P. Bosetti)\nThe R Package rmf in Teaching (R. Micciolo and G. Espa)\nThe adas.utils Package: Design of Experiments, the Tidy Way (P. Bosetti)\nBioinformatics and R: Visualizing Genomic Data (Y. Ciani)\nSpatial Sampling in R (M. M. Dickson)\nE-Agle Trento Racing Team: reporting racecar test results with RStudio (E-Agle TRT)\nRefreshments and networking!\n\nSee below for details on the topics."
   },
   {
     "objectID": "meetings/25.1-meeting.html#venue",
     "href": "meetings/25.1-meeting.html#venue",
     "title": "First RTUG meeting",
-    "section": "Venue",
-    "text": "Venue\nAula Rossa of the Department of Economics and Management, via Inama 5, Trento.\n\n\n\n\n\n\nEvent flyer\n\n\n\nDownload here the event flyer."
+    "section": " Venue",
+    "text": "Venue\nAula Rossa of the Department of Economics and Management, via Inama 5, Trento."
+  },
+  {
+    "objectID": "meetings/25.1-meeting.html#details-on-topics",
+    "href": "meetings/25.1-meeting.html#details-on-topics",
+    "title": "First RTUG meeting",
+    "section": " Details on Topics",
+    "text": "Details on Topics\n\nThe R Package rmf in Teaching\n\nAuthors: R. Micciolo and G. Espa\nStyle: Presentation\n\nWe introduce the rmf package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.\n\n\nThe adas.utils Package: Design of Experiments, the Tidy Way\n\nAuthor: P. Bosetti\nStyle: Presentation\n\nWe introduce the adas.utils package, which provides a set of tools for designing factorial designs and analyzing results, in line with the Tidyverse package approach.\n\n\nBioinformatics and R: Visualizing Genomic Data (\n\nAuthor: Y. Ciani\nStyle: Presentation\n\nAn overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.\n\n\nSpatial Sampling in R\n\nAuthor: M. M. Dickson\nStyle: Presentation\n\nWe introduce the BalancedSampling package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.\n\n\nE-Agle Trento Racing Team: reporting racecar test results with RStudio\n\nAuthor: E-Agle TRT\nStyle: Presentation\n\nThe E-Agle Trento Racnig Team is a student team of the University of Trento that designs and builds a racing car for the Formula Student competition. We present how we use RStudio to report our test results."
   },
   {
     "objectID": "posts/008-tukey-vs-student/tukey-vs-student.html",

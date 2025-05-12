@@ -22,21 +22,10 @@
 
 <p>The first R-Trento Users Meeting, code <code>RTUG::25.1</code>, is planned for <strong>Friday, May 30, 2025</strong> at 14:30 in the <em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 <p><strong>Participation is free</strong> but you need to subscribe to the event via <a href="https://www.meetup.com/r-trento-users-group/events/306973694/?eventOrigin=group_upcoming_events"><img src="https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN.png" style="height:2em"></a>.</p>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics">Topics</h2>
-<ol type="1">
-<li>Welcome and Introduction to the R-Trento Users Group (<em>P. Bosetti</em>)</li>
-<li>The R Package <code>rmf</code> in Teaching (<em>R. Micciolo and G. Espa</em>)</li>
-<li>The <code>adas.utils</code> Package: Design of Experiments, the Tidy Way (<em>P. Bosetti</em>)</li>
-<li>Bioinformatics and R: Visualizing Genomic Data (<em>Y. Ciani</em>)</li>
-<li>Spatial Sampling in R (<em>M. M. Dickson</em>)</li>
-<li>E-Agle Trento Racing Team: reporting racecar test results with RStudio (<em>E-Agle TRT</em>)</li>
-<li>Refreshments and networking!</li>
-</ol>
-</section>
-<section id="venue" class="level2">
-<h2 class="anchored" data-anchor-id="venue">Venue</h2>
-<p><em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
+<section id="topics" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <div class="callout callout-style-default callout-note callout-titled" title="Event flyer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -47,11 +36,68 @@ Event flyer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Download <a href="../images/flyer.pdf" target="_blank">here</a> the event flyer.</p>
+<p>Download <a href="../images/flyer.pdf" target="_blank">here </a> the event flyer.</p>
 </div>
 </div>
+</div></div><ol type="1">
+<li>Welcome and Introduction to the R-Trento Users Group (<em>P. Bosetti</em>)</li>
+<li>The R Package <code>rmf</code> in Teaching (<em>R. Micciolo and G. Espa</em>)</li>
+<li>The <code>adas.utils</code> Package: Design of Experiments, the Tidy Way (<em>P. Bosetti</em>)</li>
+<li>Bioinformatics and R: Visualizing Genomic Data (<em>Y. Ciani</em>)</li>
+<li>Spatial Sampling in R (<em>M. M. Dickson</em>)</li>
+<li>E-Agle Trento Racing Team: reporting racecar test results with RStudio (<em>E-Agle TRT</em>)</li>
+<li>Refreshments and networking!</li>
+</ol>
+<p>See below for details on the topics.</p>
+</section>
+<section id="venue" class="level2">
+<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<p><em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
+</section>
+<section id="details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="the-r-package-rmf-in-teaching" class="level3">
+<h3 class="anchored" data-anchor-id="the-r-package-rmf-in-teaching">The R Package <code>rmf</code> in Teaching</h3>
+<ul>
+<li>Authors: <em>R. Micciolo and G. Espa</em></li>
+<li>Style: Presentation</li>
+</ul>
+<p>We introduce the <code>rmf</code> package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.</p>
+</section>
+<section id="the-adas.utils-package-design-of-experiments-the-tidy-way" class="level3">
+<h3 class="anchored" data-anchor-id="the-adas.utils-package-design-of-experiments-the-tidy-way">The <code>adas.utils</code> Package: Design of Experiments, the Tidy Way</h3>
+<ul>
+<li>Author: <em>P. Bosetti</em></li>
+<li>Style: Presentation</li>
+</ul>
+<p>We introduce the <code>adas.utils</code> package, which provides a set of tools for designing factorial designs and analyzing results, in line with the Tidyverse package approach.</p>
+</section>
+<section id="bioinformatics-and-r-visualizing-genomic-data" class="level3">
+<h3 class="anchored" data-anchor-id="bioinformatics-and-r-visualizing-genomic-data">Bioinformatics and R: Visualizing Genomic Data (</h3>
+<ul>
+<li>Author: <em>Y. Ciani</em></li>
+<li>Style: Presentation</li>
+</ul>
+<p>An overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.</p>
+</section>
+<section id="spatial-sampling-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-sampling-in-r">Spatial Sampling in R</h3>
+<ul>
+<li>Author: <em>M. M. Dickson</em></li>
+<li>Style: Presentation</li>
+</ul>
+<p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
+</section>
+<section id="e-agle-trento-racing-team-reporting-racecar-test-results-with-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="e-agle-trento-racing-team-reporting-racecar-test-results-with-rstudio">E-Agle Trento Racing Team: reporting racecar test results with RStudio</h3>
+<ul>
+<li>Author: <em>E-Agle TRT</em></li>
+<li>Style: Presentation</li>
+</ul>
+<p>The <a href="https://eagletrt.it">E-Agle Trento Racnig Team</a> is a student team of the University of Trento that designs and builds a racing car for the Formula Student competition. We present how we use RStudio to report our test results.</p>
 
 
+</section>
 </section>
 
  ]]></description>
