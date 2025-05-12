@@ -6,6 +6,10 @@
     ]
   },
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/posts.html",
     "items": [
       "/posts/008-tukey-vs-student/tukey-vs-student.html",

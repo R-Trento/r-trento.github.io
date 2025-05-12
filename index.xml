@@ -4366,9 +4366,11 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
 <ol type="1">
-<li>Welcome and introduction to the R-Trento Users Group (<em>P. Bosetti</em>)</li>
-<li>R in teaching (<em>R. Micciolo and G. Espa</em>)</li>
-<li><code>adas.utils</code> package: Design of Experiments, the tidy way (<em>P. Bosetti</em>)</li>
+<li>Welcome and Introduction to the R-Trento Users Group (<em>P. Bosetti</em>)</li>
+<li>The R Package <code>rmf</code> in Teaching (<em>R. Micciolo and G. Espa</em>)</li>
+<li>The <code>adas.utils</code> Package: Design of Experiments, the Tidy Way (<em>P. Bosetti</em>)</li>
+<li>Bioinformatics and R: Visualizing Genomic Data (<em>Y. Ciani</em>)</li>
+<li>Spatial Sampling in R (<em>M. M. Dickson</em>)</li>
 <li>E-Agle Trento Racing Team: reporting racecar test results with RStudio (<em>E-Agle TRT</em>)</li>
 <li>Refreshments and networking!</li>
 </ol>
