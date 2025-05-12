@@ -37,15 +37,17 @@ website:
   navbar:
     left:
       - text: "Meetings"
-        href: meetings.html
+        href: meetings.qmd
       - text: "Posts"
-        href: posts.html
+        href: posts.qmd
       - text: "Members"
-        href: members.html
+        href: members.qmd
       - text: "Bibliography"
         href: bibliography.html
+      - text: "Slides"
+        href: slides.qmd
       - text: "Contact"
-        href: contact.html
+        href: contact.qmd
     right:
       - icon: info-circle
         href: about.qmd

@@ -13,11 +13,13 @@ The first R-Trento Users Meeting, code `RTUG::25.1`, is planned for **Friday, Ma
 
 ## Topics
 
-1. Welcome and introduction to the R-Trento Users Group (*P. Bosetti*)
-2. R in teaching (*R. Micciolo and G. Espa*)
-3. `adas.utils` package: Design of Experiments, the tidy way (*P. Bosetti*)
-4. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
-5. Refreshments and networking!
+1. Welcome and Introduction to the R-Trento Users Group (*P. Bosetti*)
+2. The R Package `rmf` in Teaching (*R. Micciolo and G. Espa*)
+3. The `adas.utils` Package: Design of Experiments, the Tidy Way (*P. Bosetti*)
+4. Bioinformatics and R: Visualizing Genomic Data (*Y. Ciani*)
+5. Spatial Sampling in R (*M. M. Dickson*)
+6. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
+7. Refreshments and networking!
 
 ## Venue
 

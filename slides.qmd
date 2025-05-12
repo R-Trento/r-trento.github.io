@@ -1,0 +1,34 @@
+---
+title: "Slides and Presentations"
+author: Paolo Bosetti
+format: html
+date: "02/05/2025"
+date-modified: today
+listing:
+  id: posts
+  sort: "date desc"
+  type: grid
+  contents: slides
+  fields: [date, title, author, description, categories, reading-time]
+  categories: numbered
+  sort-ui: true
+  filter-ui: true
+---
+
+This is a selection of the most interesting presentations contributed by our members.
+
+:::{.callout-tip}
+## How to contribute
+
+If you want to contribute, head on to the [GitHub repo](https://github.com/r-trento/r-trento.github.io){target="_blank"}, fork it, add a new post in the `slides` folder, tag it with the `slides` category and make a pull request. Use the `slides/_template.qmd` file to start.
+:::
+
+
+# {{< bi file-post >}} Posts
+
+:::{#posts}
+:::
+
+:::{.callout-note}
+[![](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png){style="margin-right: 20px;"}](https://creativecommons.org/licenses/by-nc-sa/4.0/) **Unless otherwise specified, all content is licensed as BY-NC-SA 4.0.**
+:::

@@ -1,0 +1,89 @@
+---
+title: "rtug::25.1"
+subtitle: "Introduction to the first RTUG meeting"
+author: Paolo Bosetti
+institute: University of Trento
+title-slide-attributes:
+  data-background-image: /images/logo.png
+  data-background-size: 15%
+  data-background-position: top 50px center
+  data-background-repeat: no-repeat
+draft: true
+categories: [intro, meeting]
+format: 
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0.1
+    slide-number: true
+    code-line-numbers: true
+    code-annotations: below
+    preview-links: auto
+    theme: [default, slides.scss]
+    chalkboard: true
+    footer: "RTUG --- [https://rtug.unitn.it/slides.html](/slides.html)"
+    fig-width: 5
+    fig-height: 4
+    fig-dpi: 300
+    touch: true
+    email-obfuscation: javascript
+    pdf-separate-fragments: true
+    link-external-icon: true
+    lang: it-IT
+abstract: |
+  Introductory slides to the first RTUG meeting, code `rtug::25.1`, held on May 30, 2025.
+---
+
+# rtug::25.1
+
+R-Trento Users Group, year 2025, meeting 1 (that's it)
+
+# Today's agenda
+
+- Welcome (that's me)
+- RTUG: what is it?
+- Seminars
+- Refreshments and networking!
+
+
+## RTUG: what is it?
+
+:::{.columns}
+:::{.column width="66%"}
+* We are an informal group of R users and developers based in Trento or connected with this territory, in any way
+* Activities are funded by the [R-Consortium](https://r-consortium.org)
+* Meetings are published on [Meetup](https://www.meetup.com/r-trento-users-group/)
+* We aim at **two meetings per year** (minimum)
+* Meetings are open to **your** contributions too!
+* Our website, [rtug.unitn.it](https://rtug.unitn.it), is also open to contributed posts
+
+:::
+
+:::{.column width="34%"}
+![[bit.ly/RTUG](https://bit.ly/RTUG)](/images/bit.ly_RTUG.svg)
+:::
+:::
+
+
+## Seminars
+
+1. Welcome and Introduction to the R-Trento Users Group (*P. Bosetti*)
+2. The R Package `rmf` in Teaching (*R. Micciolo and G. Espa*)
+3. The `adas.utils` Package: Design of Experiments, the Tidy Way (*P. Bosetti*)
+4. Bioinformatics and R: Visualizing Genomic Data (*Y. Ciani*)
+5. Spatial Sampling in R (*M. M. Dickson*)
+6. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
+
+
+# Refreshments and networking!
+
+:::{.columns}
+:::{.column width="60%"}
+Mind you: refreshments are funded by the [R-Consortium](https://r-consortium.org)!
+
+See you at the next meeting, `rtug::25.2`!
+:::
+:::{.column width="30%"}
+![](https://r-consortium.org/images/RConsortium_Horizontal_Pantone.webp){width=100%}
+:::
+:::

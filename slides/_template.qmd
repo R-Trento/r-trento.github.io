@@ -1,0 +1,52 @@
+---
+title: "Template title"
+subtitle: "Template subtitle"
+author: T. Author
+institute: University of Trento
+title-slide-attributes:
+  data-background-image: /images/logo.png
+  data-background-size: 20%
+  data-background-position: top center
+  data-background-repeat: no-repeat
+draft: true
+categories: [intro, meeting]
+format: 
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0.1
+    slide-number: true
+    code-line-numbers: true
+    code-annotations: below
+    preview-links: auto
+    theme: [default, slides.scss]
+    chalkboard: true
+    footer: "RTUG --- [https://rtug.unitn.it/slides.html](/slides.html)"
+    fig-width: 5
+    fig-height: 4
+    fig-dpi: 300
+    touch: true
+    email-obfuscation: javascript
+    pdf-separate-fragments: true
+    link-external-icon: true
+    lang: it-IT
+abstract: |
+  A brief asbtract of the presentation.
+---
+
+# Section title
+
+## Page title
+
+
+:::{.columns}
+:::{.column width="66%"}
+{{< lipsum 1 >}}
+:::
+
+:::{.column width="34%"}
+![](/images/logo.png)
+:::
+:::
+
+
