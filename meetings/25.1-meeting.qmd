@@ -7,11 +7,22 @@ date-modified: today
 ---
 
 
-The first R-Trento Users Meeting, code `RTUG::25.1`, is planned for **Friday, May 30, 2025**.
+The first R-Trento Users Meeting, code `RTUG::25.1`, is planned for **Friday, May 30, 2025** at 14:30 in the *Aula Rossa* of the Department of Economics and Management, via Inama 5, Trento.
 
 **Participation is free** but you need to subscribe to the event via [![](https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN){height=2em}](https://www.meetup.com/r-trento-users-group/events/306973694/?eventOrigin=group_upcoming_events).
 
+## Topics
 
-:::{.callout-note}
-More details on venue and list of topics will be published here.
+1. Welcome and introduction to the R-Trento Users Group (*P. Bosetti*)
+2. R in teaching (*R. Micciolo and G. Espa*)
+3. `adas.utils` package: Design of Experiments, the tidy way (*P. Bosetti*)
+4. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
+5. Refreshments and networking!
+
+## Venue
+
+*Aula Rossa* of the Department of Economics and Management, via Inama 5, Trento.
+
+:::{.callout-note title="Event flyer"}
+Download [here](/images/flyer.pdf){target="_blank"} the event flyer.
 :::
