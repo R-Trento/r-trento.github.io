@@ -228,7 +228,21 @@
     "href": "meetings/25.1-meeting.html",
     "title": "First RTUG meeting",
     "section": "",
-    "text": "The first R-Trento Users Meeting, code RTUG::25.1, is planned for Friday, May 30, 2025.\nParticipation is free but you need to subscribe to the event via .\n\n\n\n\n\n\nNote\n\n\n\nMore details on venue and list of topics will be published here."
+    "text": "The first R-Trento Users Meeting, code RTUG::25.1, is planned for Friday, May 30, 2025 at 14:30 in the Aula Rossa of the Department of Economics and Management, via Inama 5, Trento.\nParticipation is free but you need to subscribe to the event via ."
+  },
+  {
+    "objectID": "meetings/25.1-meeting.html#topics",
+    "href": "meetings/25.1-meeting.html#topics",
+    "title": "First RTUG meeting",
+    "section": "Topics",
+    "text": "Topics\n\nWelcome and introduction to the R-Trento Users Group (P. Bosetti)\nR in teaching (R. Micciolo and G. Espa)\nadas.utils package: Design of Experiments, the tidy way (P. Bosetti)\nE-Agle Trento Racing Team: reporting racecar test results with RStudio (E-Agle TRT)\nRefreshments and networking!"
+  },
+  {
+    "objectID": "meetings/25.1-meeting.html#venue",
+    "href": "meetings/25.1-meeting.html#venue",
+    "title": "First RTUG meeting",
+    "section": "Venue",
+    "text": "Venue\nAula Rossa of the Department of Economics and Management, via Inama 5, Trento.\n\n\n\n\n\n\nEvent flyer\n\n\n\nDownload here the event flyer."
   },
   {
     "objectID": "bibliography.html",

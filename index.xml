@@ -4361,23 +4361,37 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 
 
 
-<p>The first R-Trento Users Meeting, code <code>RTUG::25.1</code>, is planned for <strong>Friday, May 30, 2025</strong>.</p>
+<p>The first R-Trento Users Meeting, code <code>RTUG::25.1</code>, is planned for <strong>Friday, May 30, 2025</strong> at 14:30 in the <em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 <p><strong>Participation is free</strong> but you need to subscribe to the event via <a href="https://www.meetup.com/r-trento-users-group/events/306973694/?eventOrigin=group_upcoming_events"><img src="https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN.png" style="height:2em"></a>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<ol type="1">
+<li>Welcome and introduction to the R-Trento Users Group (<em>P. Bosetti</em>)</li>
+<li>R in teaching (<em>R. Micciolo and G. Espa</em>)</li>
+<li><code>adas.utils</code> package: Design of Experiments, the tidy way (<em>P. Bosetti</em>)</li>
+<li>E-Agle Trento Racing Team: reporting racecar test results with RStudio (<em>E-Agle TRT</em>)</li>
+<li>Refreshments and networking!</li>
+</ol>
+</section>
+<section id="venue" class="level2">
+<h2 class="anchored" data-anchor-id="venue">Venue</h2>
+<p><em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Event flyer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Event flyer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>More details on venue and list of topics will be published here.</p>
+<p>Download <a href="../images/flyer.pdf" target="_blank">here</a> the event flyer.</p>
 </div>
 </div>
 
 
+</section>
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
