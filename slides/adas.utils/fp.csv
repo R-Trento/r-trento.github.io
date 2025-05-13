@@ -1,0 +1,17 @@
+#  Factorial Plan Design Matrix
+#  Defining Relationship:  ~ A * B * C * D 
+#  Factors:  A B C D 
+#  Levels:  -1 1 
+#  Fraction:  I=ABCD 
+#  Type:  fractional 
+#  
+#  Created 13/05/2025 13:08:33 
+StdOrder,RunOrder,.treat,.rep,A,B,C,D,Y,ABCD
+16,1,abcd,1,1,1,1,1,NA,1
+11,2,bd,1,-1,1,-1,1,NA,1
+1,8,(1),1,-1,-1,-1,-1,NA,1
+13,9,cd,1,-1,-1,1,1,NA,1
+4,11,ab,1,1,1,-1,-1,NA,1
+10,13,ad,1,1,-1,-1,1,NA,1
+6,14,ac,1,1,-1,1,-1,NA,1
+7,15,bc,1,-1,1,1,-1,NA,1

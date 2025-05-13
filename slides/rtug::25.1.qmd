@@ -3,6 +3,8 @@ title: "rtug::25.1"
 subtitle: "Introduction to the first RTUG meeting"
 author: Paolo Bosetti
 institute: University of Trento
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
 title-slide-attributes:
   data-background-image: /images/logo.png
   data-background-size: 15%
@@ -34,11 +36,11 @@ abstract: |
   Introductory slides to the first RTUG meeting, code `rtug::25.1`, held on May 30, 2025.
 ---
 
-# rtug::25.1
+# {{<bi info-circle>}} rtug::25.1
 
 R-Trento Users Group, year 2025, meeting 1 (that's it)
 
-# Today's agenda
+# {{< bi list-task >}} Today's agenda
 
 - Welcome (that's me)
 - RTUG: what is it?
@@ -46,7 +48,7 @@ R-Trento Users Group, year 2025, meeting 1 (that's it)
 - Refreshments and networking!
 
 
-## RTUG: what is it?
+## {{< bi question-circle >}} RTUG: what is it?
 
 :::{.columns}
 :::{.column width="66%"}
@@ -65,7 +67,7 @@ R-Trento Users Group, year 2025, meeting 1 (that's it)
 :::
 
 
-## Seminars
+## {{< bi file-easel >}} Seminars
 
 1. Welcome and Introduction to the R-Trento Users Group (*P. Bosetti*)
 2. The R Package `rmf` in Teaching (*R. Micciolo and G. Espa*)
@@ -75,7 +77,7 @@ R-Trento Users Group, year 2025, meeting 1 (that's it)
 6. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
 
 
-# Refreshments and networking!
+# {{< bi cup >}} Refreshments and networking!
 
 :::{.columns}
 :::{.column width="60%"}

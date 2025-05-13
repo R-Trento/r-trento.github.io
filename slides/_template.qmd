@@ -3,6 +3,8 @@ title: "Template title"
 subtitle: "Template subtitle"
 author: T. Author
 institute: University of Trento
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
 title-slide-attributes:
   data-background-image: /images/logo.png
   data-background-size: 20%

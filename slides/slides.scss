@@ -106,6 +106,18 @@ $code-block-font-size: 0.75em;
   color: #008800;
 }
 
+.reveal .ul {
+  text-decoration: underline;
+}
+
+.reveal .smaller {
+  font-size: 75%;
+}
+
+.reveal .tiny {
+  font-size: 50%;
+}
+
 .option-button {
   background-color: #efefef !important;
   color: black !important;

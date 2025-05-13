@@ -1,6 +1,8 @@
 ---
 title: "The `adas.utils` package"
 subtitle: "Design of Experiments, the tidy way"
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
 author: Paolo Bosetti
 institute: University of Trento
 title-slide-attributes:
@@ -39,10 +41,11 @@ abstract: |
 #| include: false
 #| echo: false
 library(tidyverse)
+library(adas.utils)
 ```
 
 
-# Contents
+# {{< bi list-task >}} Contents
 
 ::: columns
 :::{.column width=66%}
@@ -76,7 +79,7 @@ DoE aims at getting the [most information]{.bgreen} from a [minimum of experimen
 :::
 
 ::: aside
-See the famous "Design and Analysis of Experiments", by Douglas C. Montgomery, 10th edition, Wiley, 2020. 
+{{< bi book >}} See the famous "Design and Analysis of Experiments", by Douglas C. Montgomery, 10th edition, Wiley, 2020. 
 :::
 
 ## DoE in brief
@@ -119,13 +122,13 @@ fp
 Then save it (typ. as CSV), perform the experiments, fill the `Y` yield column, and load it back for the analysis
 
 ::: aside
-In a **replicated** $k\cdot2^n$ FP, the replica index is formally just another factor with $k$ levels
+{{< bi info-circle >}} In a **replicated** $k\cdot2^n$ FP, the replica index is formally just another factor with $k$ levels
 :::
 
 
 ## Simple example in vanilla R
 
-For a fractional factorial plan, we reject one half of the FP according to a **defining relationship**: $I=ABC$, which can be transformed as $C=AB$.
+For a fractional factorial plan, we reject one half of the FP according to a **defining relationship**: $I=ABC$, which can be transformed as $C=AB${{< bi bookmark >}}
 
 We remove rows where the sign of $C$ is the product of $A$ and $B$:
 
@@ -136,10 +139,12 @@ ffp$RunOrder <- sample(nrow(ffp))
 ffp
 ```
 
-But mind you! for this to work, columns `A`, `B`, and `C` **must NOT be factors!**
+But mind you! for this to work, columns `A`, `B`, and `C` **must NOT be [factors]{.ul}!** (in the R sense)
 
 ::: aside
-When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone
+{{< bi bookmark >}} It holds the signs algebra: $X\cdot X=I,~I\cdot X = X$, thus $CI = ABCC~\rightarrow~C=AB$
+
+{{< bi info-circle >}} When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone
 :::
 
 
@@ -155,26 +160,306 @@ Analyzing the FP is mostly a matter of:
 
 But if the FP is **non-replicated**, you can't fit a model unless you remove some terms from the general linear model `Y~A*B*C`. To do so, Daniel's method suggests to make a [Q-Q plot of the effects]{.bblue}: **not straightforward** 
 
-## Simple example in vanilla R
-
-A Q-Q plot of the effects can be obtained by:
-
 
 ## Simple example in vanilla R
 
-Problems:
+As an example for a $2^4$ FP, the Daniel's Q-Q plot of the effects can be obtained by:
+```{r}
+lvl <- c("-", "+")
+fp <- expand.grid(A=lvl, B=lvl, C=lvl, D=lvl, Y=NA)
+fp$Y <- c(
+  1.68, 1.98, 4.98, 5.70,  # (1) a b ab
+  3.24, 3.44, 9.97, 9.07,  # c ac bc abc
+  2.07, 2.44, 7.77, 9.43,  # d ad bd abd
+  4.09, 4.53, 11.75, 16.30 # cd acd bcd abcd
+)
+```
 
+
+```{r}
+#| echo: true
+# build a full linear model:
+fp.lm <- lm(Y ~ A*B*C*D, data=fp)
+
+# prepare plot data:
+len     <- length(fp.lm$effects)
+effects <- fp.lm$effects[2:len]
+
+# Q-Q plot:
+qq      <- qqnorm(effects)
+qqline(effects)
+
+# add names:
+text(qq$x, qq$y, labels=names(effects))
+```
+
+::: aside
+**{{< bi exclamation-diamond >}} Problems**: not immediate; the plot is not really clean and it often needs tuning (scales and labels size)
+:::
+
+## Simple example in vanilla R
+
+{{< bi exclamation-diamond >}} Problems:
+
+::: columns
+:::{.column width=66%}
 * difficult to manage **scaled units** *vs.* non scaled units
-* factor names aren't **menmonic**
+* factor names aren't **mnemonic** (which parameter is represented by `F`?)
 * **fractioning** an FP is not trivial
 * **Daniel's method** is tricky and repetitive
 * **augmenting a plan** is not trivial when the number of factors is 4 or more
+* everything is not very **tidy** (in the sense of [tidyverse]{.bgreen})
+:::
 
-## `adas.utils` package
+:::{.column width=34%}
+![](https://www.tidyverse.org/css/images/hex/ggplot2.png){width=60% fig-align=center}
+:::
+:::
 
+## Enter `adas.utils` package
+
+The package is available on CRAN:
+
+```{r}
+#| echo: true
+#| eval: false
+install.packages("adas.utils")
+library(adas.utils)
+```
+
+Don't forget to look at the vignette:
+
+```{r}
+#| echo: true
+#| eval: false
+vignette("adas.utils")
+```
+
+
+
+## Plain FPs
+
+Base $2\cdot 2^2$ FP:
+
+::: smaller
+```{r}
+#| echo: true
+library(adas.utils)
+
+fp_design_matrix(2, rep=2)
+```
+:::
+
+Note the Yates' treatment names in `.treat` column
+
+::: aside
+{{< bi info-circle >}} the object returned, class `factorial.plan`, is a `tibble` with added attributes that keep track of the design
+:::
+
+
+## Plain FPs, with named factors
+
+We can tie factors with corresponding parameter names:
+
+::: smaller
+```{r}
+#| echo: true
+library(adas.utils)
+
+fp_design_matrix(2, rep=2) %>% 
+  fp_add_names(A="Temperature", B="Pressure")
+```
+:::
+
+::: aside
+{{< bi info-circle >}} Note that it's been designed to support the `magrittr` pipe operator `%>%` (or the native R one `|>`)
+:::
+
+
+## Plain FPs, with named factors and actual scales
+
+Actual scales can be added for reference:
+
+::: smaller
+```{r}
+#| echo: true
+library(adas.utils)
+
+fp_design_matrix(2, rep=2) %>% 
+  fp_add_names(A="Temperature", B="Pressure") %>% 
+  fp_add_scale(
+    A=c(20, 25), 
+    B=c(75, 125), 
+    suffix=".scaled") %>% 
+  select(-c(StdOrder, RunOrder))
+```
+:::
+
+::: aside
+{{< bi info-circle >}} Note that it's been designed to support the `magrittr` pipe operator `%>%` (or the native R one `|>`)
+:::
+
+
+## Augmented FPs
+
+We can augment a $2^n$ FP with a **central treatment**:
+
+::: smaller
+```{r}
+#| echo: true
+fp_design_matrix(3) %>%
+  fp_add_scale(B=c(10, 20)) %>% 
+  fp_augment_center(rep=4) %>% 
+  slice_tail(n=6)
+```
+:::
+
+
+## Augmented FPs
+
+And then further augment the FP with **axial treatments** to get a rotatable Composite Centered Design (CCD):
+
+::: smaller
+```{r}
+#| echo: true
+fp_design_matrix(3) %>%
+  fp_augment_center(rep=2) %>%
+  fp_augment_axial(rep=1) %>% 
+  slice_tail(n=12)
+```
+:::
+
+
+## Fractional Factorial Plans
+
+We can fraction a $2^n$ FP by adding subsequent **defining relationships**:
+
+::: smaller
+```{r}
+#| echo: true
+fp_design_matrix(5) %>% 
+  fp_fraction(~A*B*C*D) %>% 
+  fp_fraction(~B*C*D*E) %>% 
+  select(-c(StdOrder, RunOrder, .rep)) 
+```
+:::
+
+## Save design matrix
+
+You can save the design matrix as CSV file (for collecting experimental data), then load it back **into** the original FP object (thus preserving attributes):
+
+```{r}
+#| echo: true
+fp <- fp_design_matrix(4) %>% 
+  fp_fraction(~A*B*C*D) %>% 
+  fp_write_csv("fp.csv")
+
+fp <- fp %>% 
+  fp_read_csv("fp.csv")
+
+fp
+```
+
+
+
+## Alias structures
+
+Fractioning a FP creates **alias structures**: the `adas.utils` package can help you with that too:
+
+::: smaller
+```{r}
+#| echo: true
+fp_alias_matrix(~A*B*C, ~B*C*D)
+```
+:::
+
+
+## Alias structures
+
+The alias matrix can be plotted directly, via `ggplot2`:
+
+```{r}
+#| echo: true
+#| fig.width: 6
+#| fig.height: 4
+fp_alias_matrix(~A*B*C, ~B*C*D) %>% 
+  plot()
+```
+
+::: aside
+{{< bi info-circle >}} The third generator is the **dependent one**, i.e. the one that has all terms not in common in the first two generators
+:::
+
+
+## Daniel's method
+
+The `adas.utils` package can also help you with **Daniel's method**: the `daniel_plot_hn()` function takes a linear model object and returns a half-normal plot of the effects:
+
+```{r}
+#| echo: true
+filtration %>% 
+  lm(Y~A*B*C*D, data=.) %>%
+  daniel_plot_hn(nlab=6, repel=TRUE) +
+  labs(title="Revised model: Y~A*C + A*D")
+```
+
+
+## Pareto chart of the effects
+
+It's easy to build a Pareto chart of the effects in a linear model:
+
+```{r}
+#| echo: true
+filtration %>% 
+  lm(Y~A*B*C*D, data=.) %>%
+  pareto_chart() +
+  theme(
+    legend.position = "bottom",
+    axis.text.x = 
+      element_text(angle=45, hjust=1))
+```
+
+
+## Tukey plots
+
+Tukey's test `TukeyHSD()` is not compatible with `ggplot2`, and its output pretty limited (and not very appealing). The `adas.utils` package provides a `ggTukey()` function that can be used to plot the results of Tukey's test, **also with multiple groups**:
+
+```{r}
+#| echo: true
+#| fig.width: 6
+#| fig.height: 3.5
+battery %>%
+  ggTukey(Response~Material, 
+          splt=~Temperature, 
+          conf.level=0.99)
+```
+
+::: aside
+{{< bi info-circle >}} `ggTukey()` is a **generic** with two methods: `ggTukey.data.frame()` and `ggTukey.TukeyHSD()`
+:::
 
 ## Alternatives?
+
+Mostly pre-tidyverse packages:
+
+* `DoE.base`
+* `FrF2`
+
 
 
 ## Future developments
 
+* `adas.utils` is currently `v1.1.4` on CRAN
+* {{< bi terminal >}} `install.packages("adas.utils")`
+* The package is open to contributions **{{< bi github >}}**
+* Currently working on:
+  - a tool that suggests [minimum aberration designs]{.bgreen} for FFPs $2^{n-p}$ where $p\geq 2$
+  - blocking structures
+
+::: aside
+**{{< bi github >}}** Development on: [github.com/pbosetti/adas.utils](https://github.com/pbosetti/adas.utils)
+:::
+
+# Thanks for your attention!
+
+{{< bi person-raised-hand >}} Questions?
