@@ -1,21 +1,12 @@
 [
   {
-    "listing": "/meetings.html",
-    "items": [
-      "/meetings/25.1-meeting.html"
-    ]
-  },
-  {
     "listing": "/slides.html",
     "items": []
   },
   {
-    "listing": "/posts.html",
+    "listing": "/meetings.html",
     "items": [
-      "/posts/008-tukey-vs-student/tukey-vs-student.html",
-      "/posts/006-tukey/index.html",
-      "/posts/004-adas.utils/index.html",
-      "/posts/003-logscale/index.html"
+      "/meetings/25.1-meeting.html"
     ]
   },
   {
@@ -30,6 +21,15 @@
       "/posts/003-logscale/index.html",
       "/posts/002-logo/index.html",
       "/posts/001-opening/001-opening.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/008-tukey-vs-student/tukey-vs-student.html",
+      "/posts/006-tukey/index.html",
+      "/posts/004-adas.utils/index.html",
+      "/posts/003-logscale/index.html"
     ]
   }
 ]

@@ -9,7 +9,7 @@
 <link>https://rtug.unitn.it/</link>
 <atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.7.30</generator>
+<generator>quarto-1.7.31</generator>
 <lastBuildDate>Thu, 10 Apr 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Tukey vs. Student</title>

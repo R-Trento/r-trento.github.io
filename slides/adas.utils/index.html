@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="it-IT"><head>
-<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.30">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Paolo Bosetti">
   <title>RTUG – The adas.utils package</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4ca3c258b2b1b3bea55470e240ef5006.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-4ca3c258b2b1b3bea55470e240ef5006.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
   <script type="text/plain" cookie-consent="tracking">
@@ -59,12 +125,12 @@
   });
   </script> 
     
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -160,7 +226,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../images/logo.png" data-background-position="top center" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+<section id="title-slide" data-background-image="../../images/logo.png" data-background-position="top center" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
   <h1 class="title">The <code>adas.utils</code> package</h1>
   <p class="subtitle">Design of Experiments, the tidy way</p>
 
@@ -189,14 +255,137 @@ Paolo Bosetti
 <li>Future developments</li>
 </ul>
 </div><div class="column" style="width:33%;">
-<p><img data-src="../posts/004-adas.utils/hypercube.jpg"></p>
+<p><img data-src="../../posts/004-adas.utils/hypercube.jpg"></p>
 </div></div>
 </section>
 <section id="design-of-experiments-and-factorial-plans" class="slide level2">
 <h2>Design of Experiments and factorial plans</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>Design of Experiments (<em>DoE</em>) is a collection of statistical techniques to plan and analyze <strong>industrial</strong> experiments</li>
+<li>Predictors are typically many (10 or more), and can be continuous or categorical</li>
+<li>Often a first-order model is enough</li>
+<li>Fitting a <strong>response surface</strong> on a multidimensional grid can be costly</li>
+</ul>
+<p>DoE aims at getting the <span class="bgreen">most information</span> from a <span class="bblue">minimum of experiments</span></p>
+</div><div class="column" style="width:34%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://m.media-amazon.com/images/I/81zdcVeRwRL._SY385_.jpg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p>See the famous “Design and Analysis of Experiments”, by Douglas C. Montgomery, 10th edition, Wiley, 2020.</p>
+</div></aside></section>
+<section id="doe-in-brief" class="slide level2">
+<h2>DoE in brief</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>Plan for a grid of treatments (<em>factorial plan</em>) in the <span class="math inline">\(n\)</span>-hyperspace, where <span class="math inline">\(n\)</span> is the number of predictors, or <strong>process parameters</strong></li>
+<li>The FP can be optimized, sacrificing completeness for efficiency (<em>Fractional Factorial Plans</em>)</li>
+<li>The FP must be <span class="bgreen">randomized</span>, to reduce bias due to systematic errors</li>
+<li>The FP can be <span class="bgreen">non-replicated</span>, to further reduce costs (<em>Daniel’s method</em>)</li>
+<li>The FP can be <span class="bgreen">augmented</span>, to add new treatments to an existing plan (<em>Augmented Factorial Plans</em>)</li>
+<li>We use <span class="bgreen">coded units</span> (i.e.&nbsp;normalized to <span class="math inline">\([-1,1]\)</span>)</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="CCD2.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="CCD3.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="simple-example-in-vanilla-r" class="slide level2">
 <h2>Simple example in vanilla R</h2>
+<p>Create a non-replicated <strong>full factorial plan</strong> with three factors, two levels each (<span class="math inline">\(2^3\)</span>):</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb1-2"><a></a>  <span class="at">A=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-3"><a></a>  <span class="at">B=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-4"><a></a>  <span class="at">C=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-5"><a></a>  <span class="at">Y=</span><span class="cn">NA</span></span>
+<span id="cb1-6"><a></a>)</span>
+<span id="cb1-7"><a></a>fp<span class="sc">$</span>StdOrder <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fp)</span>
+<span id="cb1-8"><a></a>fp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(fp))</span>
+<span id="cb1-9"><a></a>fp</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>   A  B  C  Y StdOrder RunOrder
+1 -1 -1 -1 NA        1        6
+2  1 -1 -1 NA        2        7
+3 -1  1 -1 NA        3        2
+4  1  1 -1 NA        4        5
+5 -1 -1  1 NA        5        3
+6  1 -1  1 NA        6        8
+7 -1  1  1 NA        7        1
+8  1  1  1 NA        8        4</code></pre>
+</div>
+</div></div>
+<p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
+
+<aside><div>
+<p>In a <strong>replicated</strong> <span class="math inline">\(k\cdot2^n\)</span> FP, the replica index is formally just another factor with <span class="math inline">\(k\)</span> levels</p>
+</div></aside></section>
+<section id="simple-example-in-vanilla-r-1" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>For a fractional factorial plan, we reject one half of the FP according to a <strong>defining relationship</strong>: <span class="math inline">\(I=ABC\)</span>, which can be transformed as <span class="math inline">\(C=AB\)</span>.</p>
+<p>We remove rows where the sign of <span class="math inline">\(C\)</span> is the product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>ffp <span class="ot">&lt;-</span> fp[fp<span class="sc">$</span>C<span class="sc">==</span>fp<span class="sc">$</span>A<span class="sc">*</span>fp<span class="sc">$</span>B, ]</span>
+<span id="cb3-2"><a></a>ffp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(ffp))</span>
+<span id="cb3-3"><a></a>ffp</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>   A  B  C  Y StdOrder RunOrder
+2  1 -1 -1 NA        2        2
+3 -1  1 -1 NA        3        4
+5 -1 -1  1 NA        5        3
+8  1  1  1 NA        8        1</code></pre>
+</div>
+</div></div>
+<p>But mind you! for this to work, columns <code>A</code>, <code>B</code>, and <code>C</code> <strong>must NOT be factors!</strong></p>
+
+<aside><div>
+<p>When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone</p>
+</div></aside></section>
+<section id="simple-example-in-vanilla-r-2" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>Analyzing the FP is mostly a matter of:</p>
+<ul>
+<li>defining a linear model, <code>Y~A*B*C</code></li>
+<li>using <code>lm()</code> to fit the model</li>
+<li>using <code>residuals()</code> to check the residuals for normality and patterns</li>
+<li>using <code>anova()</code> to analyze the model</li>
+<li>simplify the model if necessary</li>
+</ul>
+<p>But if the FP is <strong>non-replicated</strong>, you can’t fit a model unless you remove some terms from the general linear model <code>Y~A*B*C</code>. To do so, Daniel’s method suggests to make a <span class="bblue">Q-Q plot of the effects</span>: <strong>not straightforward</strong></p>
+</section>
+<section id="simple-example-in-vanilla-r-3" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>A Q-Q plot of the effects can be obtained by:</p>
+</section>
+<section id="simple-example-in-vanilla-r-4" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>Problems:</p>
+<ul>
+<li>difficult to manage <strong>scaled units</strong> <em>vs.</em> non scaled units</li>
+<li>factor names aren’t <strong>menmonic</strong></li>
+<li><strong>fractioning</strong> an FP is not trivial</li>
+<li><strong>Daniel’s method</strong> is tricky and repetitive</li>
+<li><strong>augmenting a plan</strong> is not trivial when the number of factors is 4 or more</li>
+</ul>
 </section>
 <section id="adas.utils-package" class="slide level2">
 <h2><code>adas.utils</code> package</h2>
@@ -211,27 +400,27 @@ Paolo Bosetti
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="../images/logo.png" class="slide-logo"></p>
+<p><img src="../../images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>RTUG — <a href="../slides.html">https://rtug.unitn.it/slides.html</a></p>
+<p>RTUG — <a href="../../slides.html">https://rtug.unitn.it/slides.html</a></p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -427,6 +616,44 @@ Paolo Bosetti
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

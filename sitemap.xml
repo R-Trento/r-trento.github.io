@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rtug.unitn.it/about.html</loc>
-    <lastmod>2025-05-12T13:54:20.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/meetings.html</loc>
-    <lastmod>2025-05-12T13:54:21.104Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides.html</loc>
-    <lastmod>2025-05-12T13:54:21.151Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/bibliography.html</loc>
-    <lastmod>2025-05-12T13:54:20.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/meetings/25.1-meeting.html</loc>
-    <lastmod>2025-05-12T13:54:21.104Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</loc>
-    <lastmod>2025-05-12T13:54:21.150Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/007-r-consortium/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.134Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/004-adas.utils/index.html</loc>
+    <lastmod>2025-05-13T06:25:18.890Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/posts/002-logo/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.118Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/001-opening/001-opening.html</loc>
-    <lastmod>2025-05-12T13:54:21.111Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/004-adas.utils/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.126Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/005-domain/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.133Z</lastmod>
+    <lastmod>2025-05-13T06:25:18.883Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/posts/006-tukey/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.134Z</lastmod>
+    <lastmod>2025-05-13T06:25:18.898Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/posts/003-logscale/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.119Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/001-opening/001-opening.html</loc>
+    <lastmod>2025-05-13T06:25:18.876Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/posts.html</loc>
-    <lastmod>2025-05-12T13:54:21.104Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</loc>
+    <lastmod>2025-05-13T06:25:18.914Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/members.html</loc>
-    <lastmod>2025-05-12T13:54:21.104Z</lastmod>
+    <loc>https://rtug.unitn.it/slides.html</loc>
+    <lastmod>2025-05-13T06:25:18.915Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/contact.html</loc>
-    <lastmod>2025-05-12T13:54:20.981Z</lastmod>
+    <lastmod>2025-05-13T06:25:18.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/meetings.html</loc>
+    <lastmod>2025-05-13T06:25:18.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/members.html</loc>
+    <lastmod>2025-05-13T06:25:18.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/about.html</loc>
+    <lastmod>2025-05-13T06:25:18.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/meetings/25.1-meeting.html</loc>
+    <lastmod>2025-05-13T06:25:18.869Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/index.html</loc>
-    <lastmod>2025-05-12T13:54:21.104Z</lastmod>
+    <lastmod>2025-05-13T06:25:18.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/bibliography.html</loc>
+    <lastmod>2025-05-13T06:25:18.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts.html</loc>
+    <lastmod>2025-05-13T06:25:18.869Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/003-logscale/index.html</loc>
+    <lastmod>2025-05-13T06:25:18.883Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/005-domain/index.html</loc>
+    <lastmod>2025-05-13T06:25:18.897Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/007-r-consortium/index.html</loc>
+    <lastmod>2025-05-13T06:25:18.898Z</lastmod>
   </url>
 </urlset>
