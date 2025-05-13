@@ -1,0 +1,180 @@
+---
+title: "The `adas.utils` package"
+subtitle: "Design of Experiments, the tidy way"
+author: Paolo Bosetti
+institute: University of Trento
+title-slide-attributes:
+  data-background-image: /images/logo.png
+  data-background-size: 20%
+  data-background-position: top center
+  data-background-repeat: no-repeat
+draft: true
+categories: [packages, meeting]
+format: 
+  revealjs:
+    width: 1280
+    height: 720
+    margin: 0.1
+    slide-number: true
+    output-location: column
+    code-line-numbers: true
+    code-annotations: below
+    preview-links: auto
+    theme: [default, ../slides.scss]
+    chalkboard: true
+    footer: "RTUG --- [https://rtug.unitn.it/slides.html](/slides.html)"
+    fig-width: 5
+    fig-height: 4
+    fig-dpi: 300
+    touch: true
+    email-obfuscation: javascript
+    pdf-separate-fragments: true
+    link-external-icon: true
+    lang: it-IT
+abstract: |
+  We are here presenting the `adas.utils` package, a collection of functions for the design of experiments, the tidy way.
+---
+
+```{r setup}
+#| include: false
+#| echo: false
+library(tidyverse)
+```
+
+
+# Contents
+
+::: columns
+:::{.column width=66%}
+* Design of Experiments (*DoE*) and factorial plans
+* How to do DoE in vanilla R
+* How to do DoE with the `adas.utils` package
+* Alternatives
+* Future developments
+:::
+
+:::{.column width=33%}
+![](/posts/004-adas.utils/hypercube.jpg)
+:::
+:::
+
+## Design of Experiments and factorial plans
+
+::: columns
+:::{.column width=66%}
+* Design of Experiments (*DoE*) is a collection of statistical techniques to plan and analyze **industrial** experiments
+* Predictors are typically many (10 or more), and can be continuous or categorical
+* Often a first-order model is enough
+* Fitting a **response surface** on a multidimensional grid can be costly
+
+DoE aims at getting the [most information]{.bgreen} from a [minimum of experiments]{.bblue}
+:::
+
+:::{.column width=34%}
+![](https://m.media-amazon.com/images/I/81zdcVeRwRL._SY385_.jpg){width=80% fig-align=center}
+:::
+:::
+
+::: aside
+See the famous "Design and Analysis of Experiments", by Douglas C. Montgomery, 10th edition, Wiley, 2020. 
+:::
+
+## DoE in brief
+
+::: columns
+:::{.column width=66%}
+* Plan for a grid of treatments (*factorial plan*) in the $n$-hyperspace, where $n$ is the number of predictors, or **process parameters**
+* The FP can be optimized, sacrificing completeness for efficiency (*Fractional Factorial Plans*)
+* The FP must be [randomized]{.bgreen}, to reduce bias due to systematic errors
+* The FP can be [non-replicated]{.bgreen}, to further reduce costs (*Daniel's method*)
+* The FP can be [augmented]{.bgreen}, to add new treatments to an existing plan (*Augmented Factorial Plans*)
+* We use [coded units]{.bgreen} (i.e. normalized to $[-1,1]$)
+:::
+
+:::{.column width=34%}
+![](CCD2.png){width=60% fig-align=center}
+
+![](CCD3.png){width=60% fig-align=center}
+:::
+:::
+
+
+## Simple example in vanilla R
+
+Create a non-replicated **full factorial plan** with three factors, two levels each ($2^3$):
+
+```{r}
+#| echo: true
+fp <- expand.grid(
+  A=c(-1,1), 
+  B=c(-1,1), 
+  C=c(-1,1), 
+  Y=NA
+)
+fp$StdOrder <- 1:nrow(fp)
+fp$RunOrder <- sample(nrow(fp))
+fp
+```
+
+Then save it (typ. as CSV), perform the experiments, fill the `Y` yield column, and load it back for the analysis
+
+::: aside
+In a **replicated** $k\cdot2^n$ FP, the replica index is formally just another factor with $k$ levels
+:::
+
+
+## Simple example in vanilla R
+
+For a fractional factorial plan, we reject one half of the FP according to a **defining relationship**: $I=ABC$, which can be transformed as $C=AB$.
+
+We remove rows where the sign of $C$ is the product of $A$ and $B$:
+
+```{r}
+#| echo: true
+ffp <- fp[fp$C==fp$A*fp$B, ]
+ffp$RunOrder <- sample(nrow(ffp))
+ffp
+```
+
+But mind you! for this to work, columns `A`, `B`, and `C` **must NOT be factors!**
+
+::: aside
+When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone
+:::
+
+
+## Simple example in vanilla R
+
+Analyzing the FP is mostly a matter of:
+
+* defining a linear model, `Y~A*B*C`
+* using `lm()` to fit the model
+* using `residuals()` to check the residuals for normality and patterns
+* using `anova()` to analyze the model
+* simplify the model if necessary
+
+But if the FP is **non-replicated**, you can't fit a model unless you remove some terms from the general linear model `Y~A*B*C`. To do so, Daniel's method suggests to make a [Q-Q plot of the effects]{.bblue}: **not straightforward** 
+
+## Simple example in vanilla R
+
+A Q-Q plot of the effects can be obtained by:
+
+
+## Simple example in vanilla R
+
+Problems:
+
+* difficult to manage **scaled units** *vs.* non scaled units
+* factor names aren't **menmonic**
+* **fractioning** an FP is not trivial
+* **Daniel's method** is tricky and repetitive
+* **augmenting a plan** is not trivial when the number of factors is 4 or more
+
+## `adas.utils` package
+
+
+## Alternatives?
+
+
+## Future developments
+

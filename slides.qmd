@@ -24,7 +24,7 @@ If you want to contribute, head on to the [GitHub repo](https://github.com/r-tre
 :::
 
 
-# {{< bi file-post >}} Posts
+# {{< bi file-earmark-easel >}} Presentations
 
 :::{#posts}
 :::
