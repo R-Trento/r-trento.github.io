@@ -31,7 +31,7 @@ format:
     email-obfuscation: javascript
     pdf-separate-fragments: true
     link-external-icon: true
-    lang: it-IT
+    lang: en-EN
 abstract: |
   A brief asbtract of the presentation.
 ---

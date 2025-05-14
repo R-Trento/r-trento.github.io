@@ -32,7 +32,7 @@ format:
     email-obfuscation: javascript
     pdf-separate-fragments: true
     link-external-icon: true
-    lang: it-IT
+    lang: en-EN
 abstract: |
   We are here presenting the `adas.utils` package, a collection of functions for the design of experiments, the tidy way.
 ---
@@ -42,6 +42,7 @@ abstract: |
 #| echo: false
 library(tidyverse)
 library(adas.utils)
+library(ggforce)
 ```
 
 
@@ -141,9 +142,11 @@ ffp
 
 But mind you! for this to work, columns `A`, `B`, and `C` **must NOT be [factors]{.ul}!** (in the R sense)
 
-::: aside
+::: callout-note
 {{< bi bookmark >}} It holds the signs algebra: $X\cdot X=I,~I\cdot X = X$, thus $CI = ABCC~\rightarrow~C=AB$
+:::
 
+::: aside
 {{< bi info-circle >}} When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone
 :::
 
@@ -250,7 +253,9 @@ fp_design_matrix(2, rep=2)
 ```
 :::
 
+::: callout-note
 Note the Yates' treatment names in `.treat` column
+:::
 
 ::: aside
 {{< bi info-circle >}} the object returned, class `factorial.plan`, is a `tibble` with added attributes that keep track of the design
@@ -317,17 +322,56 @@ fp_design_matrix(3) %>%
 
 ## Augmented FPs
 
-And then further augment the FP with **axial treatments** to get a rotatable Composite Centered Design (CCD):
+And then further augment the FP with **axial treatments** to get a rotatable Centered Composite Design (CCD):
 
 ::: smaller
 ```{r}
 #| echo: true
-fp_design_matrix(3) %>%
-  fp_augment_center(rep=2) %>%
+fp_design_matrix(2) %>%
+  fp_add_scale(A=c(7,18), B=c(10, 20)) %>%
+  fp_augment_center(rep=1) %>%
   fp_augment_axial(rep=1) %>% 
-  slice_tail(n=12)
+  select(-RunOrder) %>% 
+  as_tibble()
 ```
 :::
+
+:::{.callout-note}
+Automatically scaling CCDs helps a lot in correctly defining process settings for each treatment
+:::
+
+::: aside
+{{< bi info-circle >}} Converted to a tibble to reduce the printout length
+:::
+
+
+## Augmented FPs
+
+And then further augment the FP with **axial treatments** to get a rotatable Centered Composite Design (CCD):
+
+::: smaller
+```{r}
+#| echo: true
+#| fig.width: 6
+#| fig.height: 4
+fp_design_matrix(2) %>%
+  fp_add_scale(A=c(7,18), B=c(10, 20)) %>%
+  fp_augment_center(rep=1) %>%
+  fp_augment_axial(rep=1) %>% 
+  ggplot(aes(x=A, y=B)) + 
+  geom_circle(aes(x0=0, y0=0, r=sqrt(2)), 
+              lty=2, color=gray(0.5)) +
+  geom_label(aes(label=.treat)) +
+  theme(legend.position = "bottom") + 
+  coord_fixed(xlim=c(-1.5,1.5) * 6/4)
+```
+:::
+
+:::{.callout-note}
+Of course it works on higher dimensions as well
+:::
+
+
 
 
 ## Fractional Factorial Plans
@@ -348,6 +392,7 @@ fp_design_matrix(5) %>%
 
 You can save the design matrix as CSV file (for collecting experimental data), then load it back **into** the original FP object (thus preserving attributes):
 
+::: smaller
 ```{r}
 #| echo: true
 fp <- fp_design_matrix(4) %>% 
@@ -357,9 +402,13 @@ fp <- fp_design_matrix(4) %>%
 fp <- fp %>% 
   fp_read_csv("fp.csv")
 
-fp
+fp %>% select(-RunOrder)
 ```
+:::
 
+::: callout-note
+The saved CSV file has a commented header with FFP details (.g. defining relationships, factors names, scales, etc.)
+:::
 
 
 ## Alias structures
@@ -386,8 +435,8 @@ fp_alias_matrix(~A*B*C, ~B*C*D) %>%
   plot()
 ```
 
-::: aside
-{{< bi info-circle >}} The third generator is the **dependent one**, i.e. the one that has all terms not in common in the first two generators
+::: callout-note
+The third generator is the **dependent one**, i.e. the one that has all terms not in common in the first two generators
 :::
 
 
@@ -440,7 +489,7 @@ battery %>%
 
 ## Alternatives?
 
-Mostly pre-tidyverse packages:
+Only **pre-tidyverse** packages as:
 
 * `DoE.base`
 * `FrF2`
@@ -449,8 +498,10 @@ Mostly pre-tidyverse packages:
 
 ## Future developments
 
-* `adas.utils` is currently `v1.1.4` on CRAN
-* {{< bi terminal >}} `install.packages("adas.utils")`
+* `adas.utils` is currently `v1.2.0` on CRAN
+  * {{< bi terminal >}} `install.packages("adas.utils")`
+* Development version on GitHub `v1.2.1`
+  * {{< bi terminal >}} `devtools::install_github("pbosetti/adas.utils")`
 * The package is open to contributions **{{< bi github >}}**
 * Currently working on:
   - a tool that suggests [minimum aberration designs]{.bgreen} for FFPs $2^{n-p}$ where $p\geq 2$
@@ -460,6 +511,5 @@ Mostly pre-tidyverse packages:
 **{{< bi github >}}** Development on: [github.com/pbosetti/adas.utils](https://github.com/pbosetti/adas.utils)
 :::
 
-# Thanks for your attention!
+# {{< bi person-raised-hand >}} Question time
 
-{{< bi person-raised-hand >}} Questions?
