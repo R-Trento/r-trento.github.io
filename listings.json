@@ -7,7 +7,9 @@
   },
   {
     "listing": "/slides.html",
-    "items": []
+    "items": [
+      "/slides/rtug::25.1.html"
+    ]
   },
   {
     "listing": "/posts.html",
