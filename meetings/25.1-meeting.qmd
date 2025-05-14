@@ -26,8 +26,7 @@ Download [here {{< bi file-pdf >}}](/images/flyer.pdf){target="_blank"} the even
 3. The `adas.utils` Package: Design of Experiments, the Tidy Way (*P. Bosetti*)
 4. Bioinformatics and R: Visualizing Genomic Data (*Y. Ciani*)
 5. Spatial Sampling in R (*M. M. Dickson*)
-6. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
-7. Refreshments and networking!
+6. Refreshments and networking!
 
 See [below](#details-on-topics) for details on the topics.
 
