@@ -87,14 +87,6 @@ Event flyer
 <li>Style: Presentation</li>
 </ul>
 <p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
-</section>
-<section id="e-agle-trento-racing-team-reporting-racecar-test-results-with-rstudio" class="level3">
-<h3 class="anchored" data-anchor-id="e-agle-trento-racing-team-reporting-racecar-test-results-with-rstudio">E-Agle Trento Racing Team: reporting racecar test results with RStudio</h3>
-<ul>
-<li>Author: <strong>E-Agle TRT</strong>, University of Trento</li>
-<li>Style: Presentation</li>
-</ul>
-<p>The <a href="https://eagletrt.it">E-Agle Trento Racnig Team</a> is a student team of the University of Trento that designs and builds a racing car for the Formula Student competition. We present how we use RStudio to report our test results.</p>
 
 
 </section>
