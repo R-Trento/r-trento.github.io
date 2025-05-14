@@ -74,7 +74,6 @@ R-Trento Users Group, year 2025, meeting 1 (that's it)
 3. The `adas.utils` Package: Design of Experiments, the Tidy Way (*P. Bosetti*)
 4. Bioinformatics and R: Visualizing Genomic Data (*Y. Ciani*)
 5. Spatial Sampling in R (*M. M. Dickson*)
-6. E-Agle Trento Racing Team: reporting racecar test results with RStudio (*E-Agle TRT*)
 
 
 # {{< bi cup >}} Refreshments and networking!

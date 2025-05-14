@@ -65,10 +65,3 @@ An overview of the use of R in bioinformatics, particularly its use for visualiz
 
 We introduce the `BalancedSampling` package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.
 
-
-### E-Agle Trento Racing Team: reporting racecar test results with RStudio 
-
-* Author: **E-Agle TRT**, University of Trento
-* Style: Presentation
-
-The [E-Agle Trento Racnig Team](https://eagletrt.it) is a student team of the University of Trento that designs and builds a racing car for the Formula Student competition. We present how we use RStudio to report our test results.
