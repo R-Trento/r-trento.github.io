@@ -129,7 +129,7 @@ Then save it (typ. as CSV), perform the experiments, fill the `Y` yield column, 
 
 ## Simple example in vanilla R
 
-For a fractional factorial plan, we reject one half of the FP according to a **defining relationship**: $I=ABC$, which can be transformed as $C=AB${{< bi bookmark >}}
+For a fractional factorial plan, we reject one half of the FP according to a **defining relationship**: $I=ABC$, which can be transformed as $C=AB$ **{{< bi bookmark-fill >}}**
 
 We remove rows where the sign of $C$ is the product of $A$ and $B$:
 
@@ -142,8 +142,9 @@ ffp
 
 But mind you! for this to work, columns `A`, `B`, and `C` **must NOT be [factors]{.ul}!** (in the R sense)
 
-::: callout-note
-{{< bi bookmark >}} It holds the signs algebra: $X\cdot X=I,~I\cdot X = X$, thus $CI = ABCC~\rightarrow~C=AB$
+:::{.callout-note icon=false}
+## {{< bi bookmark-fill >}} Remark on defining relationships
+It holds the signs algebra: $X\cdot X=I,~I\cdot X = X$, thus $CI = ABCC~\rightarrow~C=AB$
 :::
 
 ::: aside
@@ -322,7 +323,7 @@ fp_design_matrix(3) %>%
 
 ## Augmented FPs
 
-And then further augment the FP with **axial treatments** to get a rotatable Centered Composite Design (CCD):
+And then further augment the FP with **axial treatments** to get a rotatable *Composite Centered Design* (CCD):
 
 ::: smaller
 ```{r}
@@ -347,7 +348,7 @@ Automatically scaling CCDs helps a lot in correctly defining process settings fo
 
 ## Augmented FPs
 
-And then further augment the FP with **axial treatments** to get a rotatable Centered Composite Design (CCD):
+And then further augment the FP with **axial treatments** to get a rotatable *Composite Centered Design* (CCD):
 
 ::: smaller
 ```{r}
