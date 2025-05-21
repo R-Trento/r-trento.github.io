@@ -11,7 +11,7 @@ title-slide-attributes:
   data-background-position: top center
   data-background-repeat: no-repeat
 draft: true
-categories: [packages, meeting]
+categories: [packages, meeting, rtug::25.1]
 format: 
   revealjs:
     width: 1280
@@ -408,7 +408,7 @@ fp %>% select(-RunOrder)
 :::
 
 ::: callout-note
-The saved CSV file has a commented header with FFP details (.g. defining relationships, factors names, scales, etc.)
+The saved CSV file has a commented header with FFP details (e.g. defining relationships, factors names, scales, etc.)
 :::
 
 

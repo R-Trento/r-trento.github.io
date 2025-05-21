@@ -11,7 +11,7 @@ title-slide-attributes:
   data-background-position: top 50px center
   data-background-repeat: no-repeat
 draft: false
-categories: [intro, meeting]
+categories: [intro, meeting, rtug::25.1]
 format: 
   revealjs:
     width: 1280
