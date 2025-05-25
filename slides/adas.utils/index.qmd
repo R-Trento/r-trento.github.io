@@ -109,12 +109,15 @@ Create a non-replicated **full factorial plan** with three factors, two levels e
 
 ```{r}
 #| echo: true
+# Make the grid
 fp <- expand.grid(
   A=c(-1,1), 
   B=c(-1,1), 
   C=c(-1,1), 
   Y=NA
 )
+
+# Add orders
 fp$StdOrder <- 1:nrow(fp)
 fp$RunOrder <- sample(nrow(fp))
 fp
@@ -135,7 +138,11 @@ We remove rows where the sign of $C$ is the product of $A$ and $B$:
 
 ```{r}
 #| echo: true
+# Extract the fraction where C=AB
 ffp <- fp[fp$C==fp$A*fp$B, ]
+
+# Add orders
+fp$StdOrder <- 1:nrow(fp)
 ffp$RunOrder <- sample(nrow(ffp))
 ffp
 ```
@@ -245,14 +252,13 @@ vignette("adas.utils")
 
 Base $2\cdot 2^2$ FP:
 
-::: smaller
 ```{r}
 #| echo: true
 library(adas.utils)
 
+# Two factors, two replicas
 fp_design_matrix(2, rep=2)
 ```
-:::
 
 ::: callout-note
 Note the Yates' treatment names in `.treat` column
@@ -267,15 +273,15 @@ Note the Yates' treatment names in `.treat` column
 
 We can tie factors with corresponding parameter names:
 
-::: smaller
 ```{r}
 #| echo: true
-library(adas.utils)
-
+# Two factors, two replicas, with names
 fp_design_matrix(2, rep=2) %>% 
-  fp_add_names(A="Temperature", B="Pressure")
+  fp_add_names(
+    A="Temperature", 
+    B="Pressure"
+  )
 ```
-:::
 
 ::: aside
 {{< bi info-circle >}} Note that it's been designed to support the `magrittr` pipe operator `%>%` (or the native R one `|>`)
@@ -286,20 +292,22 @@ fp_design_matrix(2, rep=2) %>%
 
 Actual scales can be added for reference:
 
-::: smaller
 ```{r}
 #| echo: true
-library(adas.utils)
-
+# Two factors, two replicas, with names and scales
 fp_design_matrix(2, rep=2) %>% 
-  fp_add_names(A="Temperature", B="Pressure") %>% 
+  fp_add_names(
+    A="Temperature", 
+    B="Pressure"
+  ) %>% 
   fp_add_scale(
     A=c(20, 25), 
     B=c(75, 125), 
-    suffix=".scaled") %>% 
+    suffix=".scaled"
+  ) %>% 
+  # Just to keep output compact 😎 
   select(-c(StdOrder, RunOrder))
 ```
-:::
 
 ::: aside
 {{< bi info-circle >}} Note that it's been designed to support the `magrittr` pipe operator `%>%` (or the native R one `|>`)
@@ -310,32 +318,37 @@ fp_design_matrix(2, rep=2) %>%
 
 We can augment a $2^n$ FP with a **central treatment**:
 
-::: smaller
 ```{r}
 #| echo: true
+# Three factors, scaled
 fp_design_matrix(3) %>%
   fp_add_scale(B=c(10, 20)) %>% 
+  
+  # Augment with a central treatment
   fp_augment_center(rep=4) %>% 
+  
+  # Just to keep output compact 😎 
   slice_tail(n=6)
 ```
-:::
 
 
 ## Augmented FPs
 
 And then further augment the FP with **axial treatments** to get a rotatable *Composite Centered Design* (CCD):
 
-::: smaller
 ```{r}
 #| echo: true
 fp_design_matrix(2) %>%
-  fp_add_scale(A=c(7,18), B=c(10, 20)) %>%
+  fp_add_scale(
+    A=c(7,18), 
+    B=c(10, 20)) %>%
   fp_augment_center(rep=1) %>%
+  # Also augment with axial treatments
   fp_augment_axial(rep=1) %>% 
+  # Just to keep output compact 😎 
   select(-RunOrder) %>% 
-  as_tibble()
+  as_tibble() # don't print header
 ```
-:::
 
 :::{.callout-note}
 Automatically scaling CCDs helps a lot in correctly defining process settings for each treatment
@@ -350,15 +363,18 @@ Automatically scaling CCDs helps a lot in correctly defining process settings fo
 
 And then further augment the FP with **axial treatments** to get a rotatable *Composite Centered Design* (CCD):
 
-::: smaller
 ```{r}
 #| echo: true
 #| fig.width: 6
 #| fig.height: 4
 fp_design_matrix(2) %>%
-  fp_add_scale(A=c(7,18), B=c(10, 20)) %>%
+  fp_add_scale(
+    A=c(7,18), 
+    B=c(10, 20)) %>%
   fp_augment_center(rep=1) %>%
   fp_augment_axial(rep=1) %>% 
+  
+  # Make a plot
   ggplot(aes(x=A, y=B)) + 
   geom_circle(aes(x0=0, y0=0, r=sqrt(2)), 
               lty=2, color=gray(0.5)) +
@@ -366,7 +382,6 @@ fp_design_matrix(2) %>%
   theme(legend.position = "bottom") + 
   coord_fixed(xlim=c(-1.5,1.5) * 6/4)
 ```
-:::
 
 :::{.callout-note}
 Of course it works on higher dimensions as well
@@ -379,7 +394,6 @@ Of course it works on higher dimensions as well
 
 We can fraction a $2^n$ FP by adding subsequent **defining relationships**:
 
-::: smaller
 ```{r}
 #| echo: true
 fp_design_matrix(5) %>% 
@@ -387,13 +401,11 @@ fp_design_matrix(5) %>%
   fp_fraction(~B*C*D*E) %>% 
   select(-c(StdOrder, RunOrder, .rep)) 
 ```
-:::
 
 ## Save design matrix
 
 You can save the design matrix as CSV file (for collecting experimental data), then load it back **into** the original FP object (thus preserving attributes):
 
-::: smaller
 ```{r}
 #| echo: true
 fp <- fp_design_matrix(4) %>% 
@@ -405,7 +417,6 @@ fp <- fp %>%
 
 fp %>% select(-RunOrder)
 ```
-:::
 
 ::: callout-note
 The saved CSV file has a commented header with FFP details (e.g. defining relationships, factors names, scales, etc.)
@@ -416,12 +427,10 @@ The saved CSV file has a commented header with FFP details (e.g. defining relati
 
 Fractioning a FP creates **alias structures**: the `adas.utils` package can help you with that too:
 
-::: smaller
 ```{r}
 #| echo: true
 fp_alias_matrix(~A*B*C, ~B*C*D)
 ```
-:::
 
 
 ## Alias structures
