@@ -96,9 +96,9 @@ DoE aims at getting the [most information]{.bgreen} from a [minimum of experimen
 :::
 
 :::{.column width=34%}
-![](CCD2.png){width=60% fig-align=center}
+![2 factors CCD](CCD2.png){width=60% fig-align=center}
 
-![](CCD3.png){width=60% fig-align=center}
+![3 factors CCD](CCD3.png){width=60% fig-align=center}
 :::
 :::
 
@@ -265,7 +265,7 @@ Note the Yates' treatment names in `.treat` column
 :::
 
 ::: aside
-{{< bi info-circle >}} the object returned, class `factorial.plan`, is a `tibble` with added attributes that keep track of the design
+{{< bi info-circle >}} The object returned, class `factorial.plan`, is a `tibble` with added attributes that keep track of the design
 :::
 
 
@@ -361,7 +361,8 @@ Automatically scaling CCDs helps a lot in correctly defining process settings fo
 
 ## Augmented FPs
 
-And then further augment the FP with **axial treatments** to get a rotatable *Composite Centered Design* (CCD):
+And then further augment the FP with **axial treatments** to get a rotatable *Centered Composite Design* (CCD):
+
 
 ```{r}
 #| echo: true
