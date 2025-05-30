@@ -329,14 +329,14 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-1 -1 -1 -1 NA        1        3
-2  1 -1 -1 NA        2        8
-3 -1  1 -1 NA        3        4
-4  1  1 -1 NA        4        6
-5 -1 -1  1 NA        5        5
-6  1 -1  1 NA        6        2
+1 -1 -1 -1 NA        1        8
+2  1 -1 -1 NA        2        1
+3 -1  1 -1 NA        3        5
+4  1  1 -1 NA        4        4
+5 -1 -1  1 NA        5        2
+6  1 -1  1 NA        6        3
 7 -1  1  1 NA        7        7
-8  1  1  1 NA        8        1</code></pre>
+8  1  1  1 NA        8        6</code></pre>
 </div>
 </div></div>
 <p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
@@ -360,10 +360,10 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-2  1 -1 -1 NA        2        4
-3 -1  1 -1 NA        3        1
-5 -1 -1  1 NA        5        2
-8  1  1  1 NA        8        3</code></pre>
+2  1 -1 -1 NA        2        1
+3 -1  1 -1 NA        3        3
+5 -1 -1  1 NA        5        4
+8  1  1  1 NA        8        2</code></pre>
 </div>
 </div></div>
 <p>But mind you! for this to work, columns <code>A</code>, <code>B</code>, and <code>C</code> <strong>must NOT be <u>factors</u>!</strong> (in the R sense)</p>
@@ -410,7 +410,8 @@ Paolo Bosetti
 <span id="cb5-10"><a></a><span class="fu">qqline</span>(effects)</span>
 <span id="cb5-11"><a></a></span>
 <span id="cb5-12"><a></a><span class="co"># add names:</span></span>
-<span id="cb5-13"><a></a><span class="fu">text</span>(qq<span class="sc">$</span>x, qq<span class="sc">$</span>y, <span class="at">labels=</span><span class="fu">names</span>(effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-13"><a></a><span class="fu">text</span>(qq<span class="sc">$</span>x, qq<span class="sc">$</span>y, </span>
+<span id="cb5-14"><a></a>     <span class="at">labels=</span><span class="fu">names</span>(effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -484,13 +485,13 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        8 (1)        1    -1    -1 NA   
-2        2        1 a          1     1    -1 NA   
-3        3        2 b          1    -1     1 NA   
-4        4        3 ab         1     1     1 NA   
-5        5        4 (1)        2    -1    -1 NA   
-6        6        6 a          2     1    -1 NA   
-7        7        5 b          2    -1     1 NA   
+1        1        4 (1)        1    -1    -1 NA   
+2        2        6 a          1     1    -1 NA   
+3        3        3 b          1    -1     1 NA   
+4        4        2 ab         1     1     1 NA   
+5        5        8 (1)        2    -1    -1 NA   
+6        6        5 a          2     1    -1 NA   
+7        7        1 b          2    -1     1 NA   
 8        8        7 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
@@ -516,12 +517,13 @@ Paolo Bosetti
 <p>We can tie factors with corresponding parameter names:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Two factors, two replicas, with names</span></span>
-<span id="cb10-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">fp_add_names</span>(</span>
-<span id="cb10-4"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>, </span>
-<span id="cb10-5"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
-<span id="cb10-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
+<span id="cb10-2"><a></a><span class="co"># with names</span></span>
+<span id="cb10-3"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">fp_add_names</span>(</span>
+<span id="cb10-5"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>,</span>
+<span id="cb10-6"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
+<span id="cb10-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -537,14 +539,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        5 (1)        1    -1    -1 NA   
-2        2        2 a          1     1    -1 NA   
-3        3        6 b          1    -1     1 NA   
-4        4        7 ab         1     1     1 NA   
-5        5        4 (1)        2    -1    -1 NA   
-6        6        1 a          2     1    -1 NA   
-7        7        8 b          2    -1     1 NA   
-8        8        3 ab         2     1     1 NA   </code></pre>
+1        1        6 (1)        1    -1    -1 NA   
+2        2        4 a          1     1    -1 NA   
+3        3        5 b          1    -1     1 NA   
+4        4        8 ab         1     1     1 NA   
+5        5        2 (1)        2    -1    -1 NA   
+6        6        7 a          2     1    -1 NA   
+7        7        3 b          2    -1     1 NA   
+8        8        1 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 
@@ -556,19 +558,20 @@ Paolo Bosetti
 <p>Actual scales can be added for reference:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Two factors, two replicas, with names and scales</span></span>
-<span id="cb12-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">fp_add_names</span>(</span>
-<span id="cb12-4"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>, </span>
-<span id="cb12-5"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
-<span id="cb12-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-7"><a></a>  <span class="fu">fp_add_scale</span>(</span>
-<span id="cb12-8"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), </span>
-<span id="cb12-9"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">125</span>), </span>
-<span id="cb12-10"><a></a>    <span class="at">suffix=</span><span class="st">".scaled"</span></span>
-<span id="cb12-11"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-12"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
-<span id="cb12-13"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
+<span id="cb12-2"><a></a><span class="co"># with names and scales</span></span>
+<span id="cb12-3"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a></a>  <span class="fu">fp_add_names</span>(</span>
+<span id="cb12-5"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>, </span>
+<span id="cb12-6"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
+<span id="cb12-7"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-8"><a></a>  <span class="fu">fp_add_scale</span>(</span>
+<span id="cb12-9"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), </span>
+<span id="cb12-10"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">125</span>), </span>
+<span id="cb12-11"><a></a>    <span class="at">suffix=</span><span class="st">".scaled"</span></span>
+<span id="cb12-12"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-13"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
+<span id="cb12-14"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -631,12 +634,12 @@ Paolo Bosetti
 # A tibble: 6 × 9
   StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        7        7 bc         1    -1     1     1    20 NA   
-2        8        5 abc        1     1     1     1    20 NA   
-3        9       12 center     1     0     0     0    15 NA   
-4       10       11 center     2     0     0     0    15 NA   
-5       11       10 center     3     0     0     0    15 NA   
-6       12        9 center     4     0     0     0    15 NA   </code></pre>
+1        7        4 bc         1    -1     1     1    20 NA   
+2        8        8 abc        1     1     1     1    20 NA   
+3        9       11 center     1     0     0     0    15 NA   
+4       10       12 center     2     0     0     0    15 NA   
+5       11        9 center     3     0     0     0    15 NA   
+6       12       10 center     4     0     0     0    15 NA   </code></pre>
 </div>
 </div></div>
 </section>
@@ -699,14 +702,13 @@ Paolo Bosetti
 <span id="cb18-4"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb18-5"><a></a>  <span class="fu">fp_augment_center</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb18-6"><a></a>  <span class="fu">fp_augment_axial</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-7"><a></a>  </span>
-<span id="cb18-8"><a></a>  <span class="co"># Make a plot</span></span>
-<span id="cb18-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>A, <span class="at">y=</span>B)) <span class="sc">+</span> </span>
-<span id="cb18-10"><a></a>  <span class="fu">geom_circle</span>(<span class="fu">aes</span>(<span class="at">x0=</span><span class="dv">0</span>, <span class="at">y0=</span><span class="dv">0</span>, <span class="at">r=</span><span class="fu">sqrt</span>(<span class="dv">2</span>)), </span>
-<span id="cb18-11"><a></a>              <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="fu">gray</span>(<span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb18-7"><a></a>  <span class="co"># Make a plot</span></span>
+<span id="cb18-8"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>A, <span class="at">y=</span>B)) <span class="sc">+</span> </span>
+<span id="cb18-9"><a></a>  <span class="fu">geom_circle</span>(</span>
+<span id="cb18-10"><a></a>    <span class="fu">aes</span>(<span class="at">x0=</span><span class="dv">0</span>, <span class="at">y0=</span><span class="dv">0</span>, <span class="at">r=</span><span class="fu">sqrt</span>(<span class="dv">2</span>)), </span>
+<span id="cb18-11"><a></a>    <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="fu">gray</span>(<span class="fl">0.5</span>)) <span class="sc">+</span></span>
 <span id="cb18-12"><a></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>.treat)) <span class="sc">+</span></span>
-<span id="cb18-13"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> </span>
-<span id="cb18-14"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>) <span class="sc">*</span> <span class="dv">6</span><span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-13"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)<span class="sc">*</span><span class="dv">6</span><span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -737,8 +739,8 @@ Paolo Bosetti
 <div class="column">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D<span class="sc">*</span>E) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder, .rep)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D<span class="sc">*</span>E) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder,RunOrder,.rep))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -878,8 +880,8 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <div class="column">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
 <span id="cb26-2"><a></a>  <span class="fu">lm</span>(Y<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">daniel_plot_hn</span>(<span class="at">nlab=</span><span class="dv">6</span>, <span class="at">repel=</span><span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Revised model: Y~A*C + A*D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-3"><a></a>  <span class="fu">daniel_plot_hn</span>(<span class="at">nlab=</span><span class="dv">6</span>,<span class="at">repel=</span><span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Rev. model: Y~A*C+A*D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -901,7 +903,7 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <span id="cb27-4"><a></a>  <span class="fu">theme</span>(</span>
 <span id="cb27-5"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
 <span id="cb27-6"><a></a>    <span class="at">axis.text.x =</span> </span>
-<span id="cb27-7"><a></a>      <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-7"><a></a>      <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>

@@ -4432,7 +4432,7 @@ Event flyer
 <h3 class="anchored" data-anchor-id="spatial-sampling-in-r">Spatial Sampling in R</h3>
 <ul>
 <li>Author: <strong>M. M. Dickson</strong>, University of Padua</li>
-<li>Style: Presentation</li>
+<li>Style: <a href="../slides/dickson-25.1.pdf">Presentation</a></li>
 </ul>
 <p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
 

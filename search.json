@@ -32,7 +32,7 @@
     "href": "slides.html",
     "title": "Slides and Presentations",
     "section": "",
-    "text": "This is a selection of the most interesting presentations contributed by our members.\n\n\n\n\n\n\nHow to contribute\n\n\n\nIf you want to contribute, head on to the GitHub repo, fork it, add a new post in the slides folder, tag it with the slides category and make a pull request. Use the slides/_template.qmd file to start.\n\n\n\n Presentations\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nrtug::25.1\n\n2 min\n\n\nintro\n\nmeeting\n\nrtug::25.1\n\n\n\nIntroductory slides to the first RTUG meeting, code rtug::25.1, held on May 30, 2025.\n\n\n\nPaolo Bosetti\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nThe adas.utils package\n\n8 min\n\n\npackages\n\nmeeting\n\nrtug::25.1\n\n\n\nWe are here presenting the adas.utils package, a collection of functions for the design of experiments, the tidy way.\n\n\n\nPaolo Bosetti\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nThe R Package rmf in Teaching\n\n1 min\n\n\nteaching\n\nmeeting\n\nrtug::25.1\n\n\n\nWe introduce the rmf package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics…\n\n\n\nRocco Micciolo, Giuseppe Espa\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nBioinformatics and R: Visualizing Genomic Data\n\n1 min\n\n\nbioinformatics\n\nmeeting\n\nrtug::25.1\n\n\n\nAn overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.\n\n\n\nYari Ciani\n\n\nMay 30, 2025\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nNote\n\n\n\n Unless otherwise specified, all content is licensed as BY-NC-SA 4.0."
+    "text": "This is a selection of the most interesting presentations contributed by our members.\n\n\n\n\n\n\nHow to contribute\n\n\n\nIf you want to contribute, head on to the GitHub repo, fork it, add a new post in the slides folder, tag it with the slides category and make a pull request. Use the slides/_template.qmd file to start.\n\n\n\n Presentations\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\nSpatial Sampling in R\n\n1 min\n\n\nsampling\n\nmeeting\n\nrtug::25.1\n\n\n\nWe introduce the BalancedSampling package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with…\n\n\n\nMaria Michela Dockson\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nrtug::25.1\n\n2 min\n\n\nintro\n\nmeeting\n\nrtug::25.1\n\n\n\nIntroductory slides to the first RTUG meeting, code rtug::25.1, held on May 30, 2025.\n\n\n\nPaolo Bosetti\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nThe adas.utils package\n\n8 min\n\n\npackages\n\nmeeting\n\nrtug::25.1\n\n\n\nWe are here presenting the adas.utils package, a collection of functions for the design of experiments, the tidy way.\n\n\n\nPaolo Bosetti\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nThe R Package rmf in Teaching\n\n1 min\n\n\nteaching\n\nmeeting\n\nrtug::25.1\n\n\n\nWe introduce the rmf package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics…\n\n\n\nRocco Micciolo, Giuseppe Espa\n\n\nMay 30, 2025\n\n\n\n\n\n\n\n\n\n\nBioinformatics and R: Visualizing Genomic Data\n\n1 min\n\n\nbioinformatics\n\nmeeting\n\nrtug::25.1\n\n\n\nAn overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.\n\n\n\nYari Ciani\n\n\nMay 30, 2025\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nNote\n\n\n\n Unless otherwise specified, all content is licensed as BY-NC-SA 4.0."
   },
   {
     "objectID": "members.html",
@@ -140,6 +140,48 @@
     "text": "Email\nIf you are interested in the RTUG activities, please contact the RTUG group (rtug.group at unitn dot it).\nIf you want to inquire about this web site, please contact Paolo Bosetti (paolo.bosetti at unitn dot it).\n\n\n RSS feeds\nYou can stay updated using the following feeds:\n\n\n List of meetings\n List of posts\n\n\n\n\n More info\nMore info on the group and on this website on the about page"
   },
   {
+    "objectID": "slides/dickson-25.1.html",
+    "href": "slides/dickson-25.1.html",
+    "title": "Spatial Sampling in R",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "slides/ciani-25.1.html",
+    "href": "slides/ciani-25.1.html",
+    "title": "Bioinformatics and R: Visualizing Genomic Data",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "RTUG",
+    "section": "",
+    "text": "Affiliation\nThe group has been founded by faculty members of the University of Trento and the group Internet domain name rtug.unitn.it is provided by the same University.\n\n\nSponsor\n\nR-Trento Users Group is kindly sponsored by the R consortium.\nWe follow the R Consortium and the R Community Code of Conduct.\n\n\nLogo\nThe R-Trento Users Group logo uses the green and blue hues from our Province, it has the customary hexagonal shape made popular by tidyverse, and uses the official R language logo in the word “TRENTO”.\nNote that the official R logo is used under Creative Commons Attribution-ShareAlike 4.0 International license (CC-BY-SA 4.0)\n\n\nLicense\nThe content provided by this site are covered by Creative Commons Attribution-ShareAlike 4.0 International license\nThe CC-BY-SA 4.0 license allows you to share and adapt the logo for any purpose, including commercial use, provided that you give appropriate credit, provide a link to the license, and indicate if any changes were made.\n\n\nWebsite\nThis site is built on tools from the R network, using Quarto in the RStudio IDE."
+  },
+  {
+    "objectID": "bibliography.html",
+    "href": "bibliography.html",
+    "title": "Bibliography",
+    "section": "",
+    "text": "Members of RTUG have contributed to the following topics:\n\n CRAN Packages\n\nADAS Utils—Design of Experiments\nnoisyCE2—Cross-Entropy Optimisation of Noisy Functions\nRMAWGEN—Multi-Site Auto-Regressive Weather GENerator\ngeotopbricks—An R Plug-in for the Distributed Hydrological Model GEOtop\n\n\n\n\n\n\n\n\n\n Books\n\nAgresti A., C. Franklin, B. Klingenberg (2025) Statistica — l’arte e la scienza d’imparare dai dati (quinta edizione), Pearson Italia, Milano (a cura di G. Espa, R. Micciolo, D. Giuliani, M.M. Dickson). ISBN: 9788891931894.\nBosetti, P. (2022) Fondamenti di statistica — Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R. Libreriauniversitaria.it. ISBN: 978-8833595188.\nMicciolo R., L. Canal, G. Espa (2021) Probabilità e modelli – Teoria e pratica con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 978-88-916-4935-5.\nEspa G., R. Micciolo (2014) Problemi ed Esperimenti di Statistica con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838786105.\nBee M, F. Santi (2013) Finanza quantitativa con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787041.\nR. Micciolo, G. Espa, L. Canal (2013) Ricerca con R – Metodi di inferenza statistica, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787003.\nEspa G., R. Micciolo (2012) Analisi esplorativa dei dati con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN 8838786853.\n\n\n\n Papers\n\nSanti F., M.M. Dickson, G. Espa, D. Giuliani (2022) plot3logit: Ternary Plots for Interpreting Trinomial Regression Models, Journal of Statistical Software, Code Snippets, 103 (1), 1–27. DOI: 10.18637/jss.v103.c01.\nGiuliani D., M.M. Dickson, G. Espa (2015) Teaching statistics in the context of social foresight. An applied approach based on the use of an open-source software, On the Horizon, 23, 2, 140–148. DOI: 10.1108/OTH-02-2015-0010.\nCanal L., Micciolo R. (2008) The proportional means regression model for the analysis of recurrent event data. BioMedical Statistics and Clinical Epidemiology, 2:2, 157-169 (pdf here).\nCanal L., Micciolo R. (2014) The chi-square controversy: what if Pearson had R?. Journal of Statistical Computation and Simulation, 84:5, 1015-1021. DOI: 10.1080/00949655.2012.737793\nDecarli A., La Vecchia C., Malvezzi M., Micciolo R. (2014) An R package for fitting age, period and cohort models. Epidemiology Biostatistics and Public Health, 11:4, e9977-1 – e9977-12. DOI: 10.2427/9977 (pdf here).\nFedrizzi G., Canal L., Micciolo R. (2022). UEFA EURO 2020: An exciting match between football and probability. Teaching Statistics, 44:3, 119-125. DOI: 10.1111/test.12315 (pdf here)."
+  },
+  {
+    "objectID": "slides/rtug-25.1.html#rtug-what-is-it",
+    "href": "slides/rtug-25.1.html#rtug-what-is-it",
+    "title": "rtug::25.1",
+    "section": " RTUG: what is it?",
+    "text": "RTUG: what is it?\n\n\n\nWe are an informal group of R users and developers based in Trento or connected with this territory, in any way\nActivities are funded by the R-Consortium\nMeetings are published on Meetup\nWe aim at two meetings per year (minimum)\nMeetings are open to your contributions too!\nOur website, rtug.unitn.it, is also open to contributed posts\n\n\n\n\n\nbit.ly/RTUG"
+  },
+  {
+    "objectID": "slides/rtug-25.1.html#seminars",
+    "href": "slides/rtug-25.1.html#seminars",
+    "title": "rtug::25.1",
+    "section": " Seminars",
+    "text": "Seminars\n\nWelcome and Introduction to the R-Trento Users Group (P. Bosetti)\nThe R Package rmf in Teaching (R. Micciolo and G. Espa) \nThe adas.utils Package: Design of Experiments, the Tidy Way (P. Bosetti) \nBioinformatics and R: Visualizing Genomic Data (Y. Ciani) \nSpatial Sampling in R (M. M. Dickson)"
+  },
+  {
     "objectID": "slides/bosetti-25.1/index.html#design-of-experiments-and-factorial-plans",
     "href": "slides/bosetti-25.1/index.html#design-of-experiments-and-factorial-plans",
     "title": "The adas.utils package",
@@ -158,14 +200,14 @@
     "href": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r",
     "title": "The adas.utils package",
     "section": "Simple example in vanilla R",
-    "text": "Simple example in vanilla R\nCreate a non-replicated full factorial plan with three factors, two levels each (\\(2^3\\)):\n\n\n# Make the grid\nfp &lt;- expand.grid(\n  A=c(-1,1), \n  B=c(-1,1), \n  C=c(-1,1), \n  Y=NA\n)\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nfp$RunOrder &lt;- sample(nrow(fp))\nfp\n\n\n   A  B  C  Y StdOrder RunOrder\n1 -1 -1 -1 NA        1        3\n2  1 -1 -1 NA        2        8\n3 -1  1 -1 NA        3        4\n4  1  1 -1 NA        4        6\n5 -1 -1  1 NA        5        5\n6  1 -1  1 NA        6        2\n7 -1  1  1 NA        7        7\n8  1  1  1 NA        8        1\n\n\nThen save it (typ. as CSV), perform the experiments, fill the Y yield column, and load it back for the analysis\n\n\n In a replicated \\(k\\cdot2^n\\) FP, the replica index is formally just another factor with \\(k\\) levels"
+    "text": "Simple example in vanilla R\nCreate a non-replicated full factorial plan with three factors, two levels each (\\(2^3\\)):\n\n\n# Make the grid\nfp &lt;- expand.grid(\n  A=c(-1,1), \n  B=c(-1,1), \n  C=c(-1,1), \n  Y=NA\n)\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nfp$RunOrder &lt;- sample(nrow(fp))\nfp\n\n\n   A  B  C  Y StdOrder RunOrder\n1 -1 -1 -1 NA        1        8\n2  1 -1 -1 NA        2        1\n3 -1  1 -1 NA        3        5\n4  1  1 -1 NA        4        4\n5 -1 -1  1 NA        5        2\n6  1 -1  1 NA        6        3\n7 -1  1  1 NA        7        7\n8  1  1  1 NA        8        6\n\n\nThen save it (typ. as CSV), perform the experiments, fill the Y yield column, and load it back for the analysis\n\n\n In a replicated \\(k\\cdot2^n\\) FP, the replica index is formally just another factor with \\(k\\) levels"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-1",
     "href": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-1",
     "title": "The adas.utils package",
     "section": "Simple example in vanilla R",
-    "text": "Simple example in vanilla R\nFor a fractional factorial plan, we reject one half of the FP according to a defining relationship: \\(I=ABC\\), which can be transformed as \\(C=AB\\) \nWe remove rows where the sign of \\(C\\) is the product of \\(A\\) and \\(B\\):\n\n\n# Extract the fraction where C=AB\nffp &lt;- fp[fp$C==fp$A*fp$B, ]\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nffp$RunOrder &lt;- sample(nrow(ffp))\nffp\n\n\n   A  B  C  Y StdOrder RunOrder\n2  1 -1 -1 NA        2        4\n3 -1  1 -1 NA        3        1\n5 -1 -1  1 NA        5        2\n8  1  1  1 NA        8        3\n\n\nBut mind you! for this to work, columns A, B, and C must NOT be factors! (in the R sense)\n\n\n\n Remark on defining relationships\n\n\nIt holds the signs algebra: \\(X\\cdot X=I,~I\\cdot X = X\\), thus \\(CI = ABCC~\\rightarrow~C=AB\\)\n\n\n\n\n\n When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone"
+    "text": "Simple example in vanilla R\nFor a fractional factorial plan, we reject one half of the FP according to a defining relationship: \\(I=ABC\\), which can be transformed as \\(C=AB\\) \nWe remove rows where the sign of \\(C\\) is the product of \\(A\\) and \\(B\\):\n\n\n# Extract the fraction where C=AB\nffp &lt;- fp[fp$C==fp$A*fp$B, ]\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nffp$RunOrder &lt;- sample(nrow(ffp))\nffp\n\n\n   A  B  C  Y StdOrder RunOrder\n2  1 -1 -1 NA        2        1\n3 -1  1 -1 NA        3        3\n5 -1 -1  1 NA        5        4\n8  1  1  1 NA        8        2\n\n\nBut mind you! for this to work, columns A, B, and C must NOT be factors! (in the R sense)\n\n\n\n Remark on defining relationships\n\n\nIt holds the signs algebra: \\(X\\cdot X=I,~I\\cdot X = X\\), thus \\(CI = ABCC~\\rightarrow~C=AB\\)\n\n\n\n\n\n When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-2",
@@ -179,7 +221,7 @@
     "href": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-3",
     "title": "The adas.utils package",
     "section": "Simple example in vanilla R",
-    "text": "Simple example in vanilla R\nAs an example for a \\(2^4\\) FP, the Daniel’s Q-Q plot of the effects can be obtained by:\n\n\n# build a full linear model:\nfp.lm &lt;- lm(Y ~ A*B*C*D, data=fp)\n\n# prepare plot data:\nlen     &lt;- length(fp.lm$effects)\neffects &lt;- fp.lm$effects[2:len]\n\n# Q-Q plot:\nqq      &lt;- qqnorm(effects)\nqqline(effects)\n\n# add names:\ntext(qq$x, qq$y, labels=names(effects))\n\n\n\n\n\n\n\n\n\n\n\n Problems: not immediate; the plot is not really clean and it often needs tuning (scales and labels size)"
+    "text": "Simple example in vanilla R\nAs an example for a \\(2^4\\) FP, the Daniel’s Q-Q plot of the effects can be obtained by:\n\n\n# build a full linear model:\nfp.lm &lt;- lm(Y ~ A*B*C*D, data=fp)\n\n# prepare plot data:\nlen     &lt;- length(fp.lm$effects)\neffects &lt;- fp.lm$effects[2:len]\n\n# Q-Q plot:\nqq      &lt;- qqnorm(effects)\nqqline(effects)\n\n# add names:\ntext(qq$x, qq$y, \n     labels=names(effects))\n\n\n\n\n\n\n\n\n\n\n\n Problems: not immediate; the plot is not really clean and it often needs tuning (scales and labels size)"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-4",
@@ -200,28 +242,28 @@
     "href": "slides/bosetti-25.1/index.html#plain-fps",
     "title": "The adas.utils package",
     "section": "Plain FPs",
-    "text": "Plain FPs\nBase \\(2\\cdot 2^2\\) FP:\n\n\nlibrary(adas.utils)\n\n# Two factors, two replicas\nfp_design_matrix(2, rep=2)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        8 (1)        1    -1    -1 NA   \n2        2        1 a          1     1    -1 NA   \n3        3        2 b          1    -1     1 NA   \n4        4        3 ab         1     1     1 NA   \n5        5        4 (1)        2    -1    -1 NA   \n6        6        6 a          2     1    -1 NA   \n7        7        5 b          2    -1     1 NA   \n8        8        7 ab         2     1     1 NA   \n\n\n\n\n\n\n\n\nNote\n\n\nNote the Yates’ treatment names in .treat column\n\n\n\n\n\n The object returned, class factorial.plan, is a tibble with added attributes that keep track of the design"
+    "text": "Plain FPs\nBase \\(2\\cdot 2^2\\) FP:\n\n\nlibrary(adas.utils)\n\n# Two factors, two replicas\nfp_design_matrix(2, rep=2)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        4 (1)        1    -1    -1 NA   \n2        2        6 a          1     1    -1 NA   \n3        3        3 b          1    -1     1 NA   \n4        4        2 ab         1     1     1 NA   \n5        5        8 (1)        2    -1    -1 NA   \n6        6        5 a          2     1    -1 NA   \n7        7        1 b          2    -1     1 NA   \n8        8        7 ab         2     1     1 NA   \n\n\n\n\n\n\n\n\nNote\n\n\nNote the Yates’ treatment names in .treat column\n\n\n\n\n\n The object returned, class factorial.plan, is a tibble with added attributes that keep track of the design"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors",
     "href": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors",
     "title": "The adas.utils package",
     "section": "Plain FPs, with named factors",
-    "text": "Plain FPs, with named factors\nWe can tie factors with corresponding parameter names:\n\n\n# Two factors, two replicas, with names\nfp_design_matrix(2, rep=2) %&gt;% \n  fp_add_names(\n    A=\"Temperature\", \n    B=\"Pressure\"\n  )\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        5 (1)        1    -1    -1 NA   \n2        2        2 a          1     1    -1 NA   \n3        3        6 b          1    -1     1 NA   \n4        4        7 ab         1     1     1 NA   \n5        5        4 (1)        2    -1    -1 NA   \n6        6        1 a          2     1    -1 NA   \n7        7        8 b          2    -1     1 NA   \n8        8        3 ab         2     1     1 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
+    "text": "Plain FPs, with named factors\nWe can tie factors with corresponding parameter names:\n\n\n# Two factors, two replicas, \n# with names\nfp_design_matrix(2, rep=2) %&gt;%\n  fp_add_names(\n    A=\"Temperature\",\n    B=\"Pressure\"\n  )\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        6 (1)        1    -1    -1 NA   \n2        2        4 a          1     1    -1 NA   \n3        3        5 b          1    -1     1 NA   \n4        4        8 ab         1     1     1 NA   \n5        5        2 (1)        2    -1    -1 NA   \n6        6        7 a          2     1    -1 NA   \n7        7        3 b          2    -1     1 NA   \n8        8        1 ab         2     1     1 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors-and-actual-scales",
     "href": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors-and-actual-scales",
     "title": "The adas.utils package",
     "section": "Plain FPs, with named factors and actual scales",
-    "text": "Plain FPs, with named factors and actual scales\nActual scales can be added for reference:\n\n\n# Two factors, two replicas, with names and scales\nfp_design_matrix(2, rep=2) %&gt;% \n  fp_add_names(\n    A=\"Temperature\", \n    B=\"Pressure\"\n  ) %&gt;% \n  fp_add_scale(\n    A=c(20, 25), \n    B=c(75, 125), \n    suffix=\".scaled\"\n  ) %&gt;% \n  # Just to keep output compact 😎 \n  select(-c(StdOrder, RunOrder))\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Scales suffix: .scaled\n Scaled factors:\n    A.scaled: [20, 25]\n    B.scaled: [75, 125]\n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  .treat  .rep     A     B A.scaled B.scaled Y    \n  &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;\n1 (1)        1    -1    -1       20       75 NA   \n2 a          1     1    -1       25       75 NA   \n3 b          1    -1     1       20      125 NA   \n4 ab         1     1     1       25      125 NA   \n5 (1)        2    -1    -1       20       75 NA   \n6 a          2     1    -1       25       75 NA   \n7 b          2    -1     1       20      125 NA   \n8 ab         2     1     1       25      125 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
+    "text": "Plain FPs, with named factors and actual scales\nActual scales can be added for reference:\n\n\n# Two factors, two replicas, \n# with names and scales\nfp_design_matrix(2, rep=2) %&gt;% \n  fp_add_names(\n    A=\"Temperature\", \n    B=\"Pressure\"\n  ) %&gt;% \n  fp_add_scale(\n    A=c(20, 25), \n    B=c(75, 125), \n    suffix=\".scaled\"\n  ) %&gt;% \n  # Just to keep output compact 😎 \n  select(-c(StdOrder, RunOrder))\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Scales suffix: .scaled\n Scaled factors:\n    A.scaled: [20, 25]\n    B.scaled: [75, 125]\n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  .treat  .rep     A     B A.scaled B.scaled Y    \n  &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;\n1 (1)        1    -1    -1       20       75 NA   \n2 a          1     1    -1       25       75 NA   \n3 b          1    -1     1       20      125 NA   \n4 ab         1     1     1       25      125 NA   \n5 (1)        2    -1    -1       20       75 NA   \n6 a          2     1    -1       25       75 NA   \n7 b          2    -1     1       20      125 NA   \n8 ab         2     1     1       25      125 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#augmented-fps",
     "href": "slides/bosetti-25.1/index.html#augmented-fps",
     "title": "The adas.utils package",
     "section": "Augmented FPs",
-    "text": "Augmented FPs\nWe can augment a \\(2^n\\) FP with a central treatment:\n\n\n# Three factors, scaled\nfp_design_matrix(3) %&gt;%\n  fp_add_scale(B=c(10, 20)) %&gt;% \n  \n  # Augment with a central treatment\n  fp_augment_center(rep=4) %&gt;% \n  \n  # Just to keep output compact 😎 \n  slice_tail(n=6)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C \n Factors:  A B C \n Levels:  -1 1 \n Fraction:  NA \n Type:  centered \n Scales suffix: _s\n Scaled factors:\n    B_s: [10, 20]\n \n# A tibble: 6 × 9\n  StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        7        7 bc         1    -1     1     1    20 NA   \n2        8        5 abc        1     1     1     1    20 NA   \n3        9       12 center     1     0     0     0    15 NA   \n4       10       11 center     2     0     0     0    15 NA   \n5       11       10 center     3     0     0     0    15 NA   \n6       12        9 center     4     0     0     0    15 NA"
+    "text": "Augmented FPs\nWe can augment a \\(2^n\\) FP with a central treatment:\n\n\n# Three factors, scaled\nfp_design_matrix(3) %&gt;%\n  fp_add_scale(B=c(10, 20)) %&gt;% \n  \n  # Augment with a central treatment\n  fp_augment_center(rep=4) %&gt;% \n  \n  # Just to keep output compact 😎 \n  slice_tail(n=6)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C \n Factors:  A B C \n Levels:  -1 1 \n Fraction:  NA \n Type:  centered \n Scales suffix: _s\n Scaled factors:\n    B_s: [10, 20]\n \n# A tibble: 6 × 9\n  StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        7        4 bc         1    -1     1     1    20 NA   \n2        8        8 abc        1     1     1     1    20 NA   \n3        9       11 center     1     0     0     0    15 NA   \n4       10       12 center     2     0     0     0    15 NA   \n5       11        9 center     3     0     0     0    15 NA   \n6       12       10 center     4     0     0     0    15 NA"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#augmented-fps-1",
@@ -235,14 +277,14 @@
     "href": "slides/bosetti-25.1/index.html#augmented-fps-2",
     "title": "The adas.utils package",
     "section": "Augmented FPs",
-    "text": "Augmented FPs\nAnd then further augment the FP with axial treatments to get a rotatable Centered Composite Design (CCD):\n\n\nfp_design_matrix(2) %&gt;%\n  fp_add_scale(\n    A=c(7,18), \n    B=c(10, 20)) %&gt;%\n  fp_augment_center(rep=1) %&gt;%\n  fp_augment_axial(rep=1) %&gt;% \n  \n  # Make a plot\n  ggplot(aes(x=A, y=B)) + \n  geom_circle(aes(x0=0, y0=0, r=sqrt(2)), \n              lty=2, color=gray(0.5)) +\n  geom_label(aes(label=.treat)) +\n  theme(legend.position = \"bottom\") + \n  coord_fixed(xlim=c(-1.5,1.5) * 6/4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nOf course it works on higher dimensions as well"
+    "text": "Augmented FPs\nAnd then further augment the FP with axial treatments to get a rotatable Centered Composite Design (CCD):\n\n\nfp_design_matrix(2) %&gt;%\n  fp_add_scale(\n    A=c(7,18), \n    B=c(10, 20)) %&gt;%\n  fp_augment_center(rep=1) %&gt;%\n  fp_augment_axial(rep=1) %&gt;% \n  # Make a plot\n  ggplot(aes(x=A, y=B)) + \n  geom_circle(\n    aes(x0=0, y0=0, r=sqrt(2)), \n    lty=2, color=gray(0.5)) +\n  geom_label(aes(label=.treat)) +\n  coord_fixed(xlim=c(-1.5,1.5)*6/4)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nOf course it works on higher dimensions as well"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#fractional-factorial-plans",
     "href": "slides/bosetti-25.1/index.html#fractional-factorial-plans",
     "title": "The adas.utils package",
     "section": "Fractional Factorial Plans",
-    "text": "Fractional Factorial Plans\nWe can fraction a \\(2^n\\) FP by adding subsequent defining relationships:\n\n\nfp_design_matrix(5) %&gt;% \n  fp_fraction(~A*B*C*D) %&gt;% \n  fp_fraction(~B*C*D*E) %&gt;% \n  select(-c(StdOrder, RunOrder, .rep)) \n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C * D * E \n Factors:  A B C D E \n Levels:  -1 1 \n Fraction:  I=ABCD I=BCDE \n Type:  fractional \n \n# A tibble: 8 × 9\n  .treat     A     B     C     D     E Y      ABCD  BCDE\n  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 (1)       -1    -1    -1    -1    -1 NA        1     1\n2 bc        -1     1     1    -1    -1 NA        1     1\n3 bd        -1     1    -1     1    -1 NA        1     1\n4 cd        -1    -1     1     1    -1 NA        1     1\n5 abe        1     1    -1    -1     1 NA        1     1\n6 ace        1    -1     1    -1     1 NA        1     1\n7 ade        1    -1    -1     1     1 NA        1     1\n8 abcde      1     1     1     1     1 NA        1     1"
+    "text": "Fractional Factorial Plans\nWe can fraction a \\(2^n\\) FP by adding subsequent defining relationships:\n\n\nfp_design_matrix(5) %&gt;% \n  fp_fraction(~A*B*C*D) %&gt;% \n  fp_fraction(~B*C*D*E) %&gt;%\n  select(-c(StdOrder,RunOrder,.rep))\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C * D * E \n Factors:  A B C D E \n Levels:  -1 1 \n Fraction:  I=ABCD I=BCDE \n Type:  fractional \n \n# A tibble: 8 × 9\n  .treat     A     B     C     D     E Y      ABCD  BCDE\n  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 (1)       -1    -1    -1    -1    -1 NA        1     1\n2 bc        -1     1     1    -1    -1 NA        1     1\n3 bd        -1     1    -1     1    -1 NA        1     1\n4 cd        -1    -1     1     1    -1 NA        1     1\n5 abe        1     1    -1    -1     1 NA        1     1\n6 ace        1    -1     1    -1     1 NA        1     1\n7 ade        1    -1    -1     1     1 NA        1     1\n8 abcde      1     1     1     1     1 NA        1     1"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#save-design-matrix",
@@ -270,14 +312,14 @@
     "href": "slides/bosetti-25.1/index.html#daniels-method",
     "title": "The adas.utils package",
     "section": "Daniel’s method",
-    "text": "Daniel’s method\nThe adas.utils package can also help you with Daniel’s method: the daniel_plot_hn() function takes a linear model object and returns a half-normal plot of the effects:\n\n\nfiltration %&gt;% \n  lm(Y~A*B*C*D, data=.) %&gt;%\n  daniel_plot_hn(nlab=6, repel=TRUE) +\n  labs(title=\"Revised model: Y~A*C + A*D\")"
+    "text": "Daniel’s method\nThe adas.utils package can also help you with Daniel’s method: the daniel_plot_hn() function takes a linear model object and returns a half-normal plot of the effects:\n\n\nfiltration %&gt;% \n  lm(Y~A*B*C*D, data=.) %&gt;%\n  daniel_plot_hn(nlab=6,repel=TRUE) +\n  labs(title=\"Rev. model: Y~A*C+A*D\")"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#pareto-chart-of-the-effects",
     "href": "slides/bosetti-25.1/index.html#pareto-chart-of-the-effects",
     "title": "The adas.utils package",
     "section": "Pareto chart of the effects",
-    "text": "Pareto chart of the effects\nIt’s easy to build a Pareto chart of the effects in a linear model:\n\n\nfiltration %&gt;% \n  lm(Y~A*B*C*D, data=.) %&gt;%\n  pareto_chart() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text.x = \n      element_text(angle=45, hjust=1))"
+    "text": "Pareto chart of the effects\nIt’s easy to build a Pareto chart of the effects in a linear model:\n\n\nfiltration %&gt;% \n  lm(Y~A*B*C*D, data=.) %&gt;%\n  pareto_chart() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text.x = \n      element_text(angle=45,hjust=1))"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#tukey-plots",
@@ -299,41 +341,6 @@
     "title": "The adas.utils package",
     "section": "Future developments",
     "text": "Future developments\n\nadas.utils is currently v1.2.0 on CRAN\n\n install.packages(\"adas.utils\")\n\nDevelopment version on GitHub v1.2.1\n\n devtools::install_github(\"pbosetti/adas.utils\")\n\nThe package is open to contributions \nCurrently working on:\n\na tool that suggests minimum aberration designs for FFPs \\(2^{n-p}\\) where \\(p\\geq 2\\)\nblocking structures\n\n\n\n\n Development on: github.com/pbosetti/adas.utils"
-  },
-  {
-    "objectID": "slides/rtug-25.1.html#rtug-what-is-it",
-    "href": "slides/rtug-25.1.html#rtug-what-is-it",
-    "title": "rtug::25.1",
-    "section": " RTUG: what is it?",
-    "text": "RTUG: what is it?\n\n\n\nWe are an informal group of R users and developers based in Trento or connected with this territory, in any way\nActivities are funded by the R-Consortium\nMeetings are published on Meetup\nWe aim at two meetings per year (minimum)\nMeetings are open to your contributions too!\nOur website, rtug.unitn.it, is also open to contributed posts\n\n\n\n\n\nbit.ly/RTUG"
-  },
-  {
-    "objectID": "slides/rtug-25.1.html#seminars",
-    "href": "slides/rtug-25.1.html#seminars",
-    "title": "rtug::25.1",
-    "section": " Seminars",
-    "text": "Seminars\n\nWelcome and Introduction to the R-Trento Users Group (P. Bosetti)\nThe R Package rmf in Teaching (R. Micciolo and G. Espa) \nThe adas.utils Package: Design of Experiments, the Tidy Way (P. Bosetti) \nBioinformatics and R: Visualizing Genomic Data (Y. Ciani) \nSpatial Sampling in R (M. M. Dickson)"
-  },
-  {
-    "objectID": "bibliography.html",
-    "href": "bibliography.html",
-    "title": "Bibliography",
-    "section": "",
-    "text": "Members of RTUG have contributed to the following topics:\n\n CRAN Packages\n\nADAS Utils—Design of Experiments\nnoisyCE2—Cross-Entropy Optimisation of Noisy Functions\nRMAWGEN—Multi-Site Auto-Regressive Weather GENerator\ngeotopbricks—An R Plug-in for the Distributed Hydrological Model GEOtop\n\n\n\n\n\n\n\n\n\n Books\n\nAgresti A., C. Franklin, B. Klingenberg (2025) Statistica — l’arte e la scienza d’imparare dai dati (quinta edizione), Pearson Italia, Milano (a cura di G. Espa, R. Micciolo, D. Giuliani, M.M. Dickson). ISBN: 9788891931894.\nBosetti, P. (2022) Fondamenti di statistica — Per le misure e l’analisi dati in ambito industriale. Con esempi in GNU-R. Libreriauniversitaria.it. ISBN: 978-8833595188.\nMicciolo R., L. Canal, G. Espa (2021) Probabilità e modelli – Teoria e pratica con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 978-88-916-4935-5.\nEspa G., R. Micciolo (2014) Problemi ed Esperimenti di Statistica con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838786105.\nBee M, F. Santi (2013) Finanza quantitativa con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787041.\nR. Micciolo, G. Espa, L. Canal (2013) Ricerca con R – Metodi di inferenza statistica, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN: 8838787003.\nEspa G., R. Micciolo (2012) Analisi esplorativa dei dati con R, Apogeo Education, Maggioli Editore, Santarcangelo di Romagna (RN). ISBN 8838786853.\n\n\n\n Papers\n\nSanti F., M.M. Dickson, G. Espa, D. Giuliani (2022) plot3logit: Ternary Plots for Interpreting Trinomial Regression Models, Journal of Statistical Software, Code Snippets, 103 (1), 1–27. DOI: 10.18637/jss.v103.c01.\nGiuliani D., M.M. Dickson, G. Espa (2015) Teaching statistics in the context of social foresight. An applied approach based on the use of an open-source software, On the Horizon, 23, 2, 140–148. DOI: 10.1108/OTH-02-2015-0010.\nCanal L., Micciolo R. (2008) The proportional means regression model for the analysis of recurrent event data. BioMedical Statistics and Clinical Epidemiology, 2:2, 157-169 (pdf here).\nCanal L., Micciolo R. (2014) The chi-square controversy: what if Pearson had R?. Journal of Statistical Computation and Simulation, 84:5, 1015-1021. DOI: 10.1080/00949655.2012.737793\nDecarli A., La Vecchia C., Malvezzi M., Micciolo R. (2014) An R package for fitting age, period and cohort models. Epidemiology Biostatistics and Public Health, 11:4, e9977-1 – e9977-12. DOI: 10.2427/9977 (pdf here).\nFedrizzi G., Canal L., Micciolo R. (2022). UEFA EURO 2020: An exciting match between football and probability. Teaching Statistics, 44:3, 119-125. DOI: 10.1111/test.12315 (pdf here)."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "RTUG",
-    "section": "",
-    "text": "Affiliation\nThe group has been founded by faculty members of the University of Trento and the group Internet domain name rtug.unitn.it is provided by the same University.\n\n\nSponsor\n\nR-Trento Users Group is kindly sponsored by the R consortium.\nWe follow the R Consortium and the R Community Code of Conduct.\n\n\nLogo\nThe R-Trento Users Group logo uses the green and blue hues from our Province, it has the customary hexagonal shape made popular by tidyverse, and uses the official R language logo in the word “TRENTO”.\nNote that the official R logo is used under Creative Commons Attribution-ShareAlike 4.0 International license (CC-BY-SA 4.0)\n\n\nLicense\nThe content provided by this site are covered by Creative Commons Attribution-ShareAlike 4.0 International license\nThe CC-BY-SA 4.0 license allows you to share and adapt the logo for any purpose, including commercial use, provided that you give appropriate credit, provide a link to the license, and indicate if any changes were made.\n\n\nWebsite\nThis site is built on tools from the R network, using Quarto in the RStudio IDE."
-  },
-  {
-    "objectID": "slides/ciani-25.1.html",
-    "href": "slides/ciani-25.1.html",
-    "title": "Bioinformatics and R: Visualizing Genomic Data",
-    "section": "",
-    "text": "Download PDF file."
   },
   {
     "objectID": "slides/micciolo-espa-25.1.html",
