@@ -200,14 +200,14 @@
     "href": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r",
     "title": "The adas.utils package",
     "section": "Simple example in vanilla R",
-    "text": "Simple example in vanilla R\nCreate a non-replicated full factorial plan with three factors, two levels each (\\(2^3\\)):\n\n\n# Make the grid\nfp &lt;- expand.grid(\n  A=c(-1,1), \n  B=c(-1,1), \n  C=c(-1,1), \n  Y=NA\n)\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nfp$RunOrder &lt;- sample(nrow(fp))\nfp\n\n\n   A  B  C  Y StdOrder RunOrder\n1 -1 -1 -1 NA        1        3\n2  1 -1 -1 NA        2        2\n3 -1  1 -1 NA        3        8\n4  1  1 -1 NA        4        4\n5 -1 -1  1 NA        5        5\n6  1 -1  1 NA        6        7\n7 -1  1  1 NA        7        1\n8  1  1  1 NA        8        6\n\n\nThen save it (typ. as CSV), perform the experiments, fill the Y yield column, and load it back for the analysis\n\n\n In a replicated \\(k\\cdot2^n\\) FP, the replica index is formally just another factor with \\(k\\) levels"
+    "text": "Simple example in vanilla R\nCreate a non-replicated full factorial plan with three factors, two levels each (\\(2^3\\)):\n\n\n# Make the grid\nfp &lt;- expand.grid(\n  A=c(-1,1), \n  B=c(-1,1), \n  C=c(-1,1), \n  Y=NA\n)\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nfp$RunOrder &lt;- sample(nrow(fp))\nfp\n\n\n   A  B  C  Y StdOrder RunOrder\n1 -1 -1 -1 NA        1        5\n2  1 -1 -1 NA        2        1\n3 -1  1 -1 NA        3        7\n4  1  1 -1 NA        4        3\n5 -1 -1  1 NA        5        2\n6  1 -1  1 NA        6        6\n7 -1  1  1 NA        7        8\n8  1  1  1 NA        8        4\n\n\nThen save it (typ. as CSV), perform the experiments, fill the Y yield column, and load it back for the analysis\n\n\n In a replicated \\(k\\cdot2^n\\) FP, the replica index is formally just another factor with \\(k\\) levels"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-1",
     "href": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-1",
     "title": "The adas.utils package",
     "section": "Simple example in vanilla R",
-    "text": "Simple example in vanilla R\nFor a fractional factorial plan, we reject one half of the FP according to a defining relationship: \\(I=ABC\\), which can be transformed as \\(C=AB\\) \nWe remove rows where the sign of \\(C\\) is the product of \\(A\\) and \\(B\\):\n\n\n# Extract the fraction where C=AB\nffp &lt;- fp[fp$C==fp$A*fp$B, ]\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nffp$RunOrder &lt;- sample(nrow(ffp))\nffp\n\n\n   A  B  C  Y StdOrder RunOrder\n2  1 -1 -1 NA        2        2\n3 -1  1 -1 NA        3        3\n5 -1 -1  1 NA        5        1\n8  1  1  1 NA        8        4\n\n\nBut mind you! for this to work, columns A, B, and C must NOT be factors! (in the R sense)\n\n\n\n Remark on defining relationships\n\n\nIt holds the signs algebra: \\(X\\cdot X=I,~I\\cdot X = X\\), thus \\(CI = ABCC~\\rightarrow~C=AB\\)\n\n\n\n\n\n When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone"
+    "text": "Simple example in vanilla R\nFor a fractional factorial plan, we reject one half of the FP according to a defining relationship: \\(I=ABC\\), which can be transformed as \\(C=AB\\) \nWe remove rows where the sign of \\(C\\) is the product of \\(A\\) and \\(B\\):\n\n\n# Extract the fraction where C=AB\nffp &lt;- fp[fp$C==fp$A*fp$B, ]\n\n# Add orders\nfp$StdOrder &lt;- 1:nrow(fp)\nffp$RunOrder &lt;- sample(nrow(ffp))\nffp\n\n\n   A  B  C  Y StdOrder RunOrder\n2  1 -1 -1 NA        2        4\n3 -1  1 -1 NA        3        3\n5 -1 -1  1 NA        5        1\n8  1  1  1 NA        8        2\n\n\nBut mind you! for this to work, columns A, B, and C must NOT be factors! (in the R sense)\n\n\n\n Remark on defining relationships\n\n\nIt holds the signs algebra: \\(X\\cdot X=I,~I\\cdot X = X\\), thus \\(CI = ABCC~\\rightarrow~C=AB\\)\n\n\n\n\n\n When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#simple-example-in-vanilla-r-2",
@@ -242,14 +242,14 @@
     "href": "slides/bosetti-25.1/index.html#plain-fps",
     "title": "The adas.utils package",
     "section": "Plain FPs",
-    "text": "Plain FPs\nBase \\(2\\cdot 2^2\\) FP:\n\n\nlibrary(adas.utils)\n\n# Two factors, two replicas\nfp_design_matrix(2, rep=2)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        6 (1)        1    -1    -1 NA   \n2        2        8 a          1     1    -1 NA   \n3        3        4 b          1    -1     1 NA   \n4        4        7 ab         1     1     1 NA   \n5        5        2 (1)        2    -1    -1 NA   \n6        6        3 a          2     1    -1 NA   \n7        7        1 b          2    -1     1 NA   \n8        8        5 ab         2     1     1 NA   \n\n\n\n\n\n\n\n\nNote\n\n\nNote the Yates’ treatment names in .treat column\n\n\n\n\n\n The object returned, class factorial.plan, is a tibble with added attributes that keep track of the design"
+    "text": "Plain FPs\nBase \\(2\\cdot 2^2\\) FP:\n\n\nlibrary(adas.utils)\n\n# Two factors, two replicas\nfp_design_matrix(2, rep=2)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        8 (1)        1    -1    -1 NA   \n2        2        2 a          1     1    -1 NA   \n3        3        6 b          1    -1     1 NA   \n4        4        5 ab         1     1     1 NA   \n5        5        4 (1)        2    -1    -1 NA   \n6        6        1 a          2     1    -1 NA   \n7        7        7 b          2    -1     1 NA   \n8        8        3 ab         2     1     1 NA   \n\n\n\n\n\n\n\n\nNote\n\n\nNote the Yates’ treatment names in .treat column\n\n\n\n\n\n The object returned, class factorial.plan, is a tibble with added attributes that keep track of the design"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors",
     "href": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors",
     "title": "The adas.utils package",
     "section": "Plain FPs, with named factors",
-    "text": "Plain FPs, with named factors\nWe can tie factors with corresponding parameter names:\n\n\n# Two factors, two replicas, \n# with names\nfp_design_matrix(2, rep=2) %&gt;%\n  fp_add_names(\n    A=\"Temperature\",\n    B=\"Pressure\"\n  )\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        3 (1)        1    -1    -1 NA   \n2        2        7 a          1     1    -1 NA   \n3        3        4 b          1    -1     1 NA   \n4        4        5 ab         1     1     1 NA   \n5        5        8 (1)        2    -1    -1 NA   \n6        6        2 a          2     1    -1 NA   \n7        7        6 b          2    -1     1 NA   \n8        8        1 ab         2     1     1 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
+    "text": "Plain FPs, with named factors\nWe can tie factors with corresponding parameter names:\n\n\n# Two factors, two replicas, \n# with names\nfp_design_matrix(2, rep=2) %&gt;%\n  fp_add_names(\n    A=\"Temperature\",\n    B=\"Pressure\"\n  )\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B \n Factors:  A B \n Levels:  -1 1 \n Fraction:  NA \n Type:  plain \n Factor names:\n    A: Temperature\n    B: Pressure\n \n# A tibble: 8 × 7\n  StdOrder RunOrder .treat  .rep     A     B Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        1        1 (1)        1    -1    -1 NA   \n2        2        5 a          1     1    -1 NA   \n3        3        7 b          1    -1     1 NA   \n4        4        4 ab         1     1     1 NA   \n5        5        6 (1)        2    -1    -1 NA   \n6        6        8 a          2     1    -1 NA   \n7        7        2 b          2    -1     1 NA   \n8        8        3 ab         2     1     1 NA   \n\n\n\n\n Note that it’s been designed to support the magrittr pipe operator %&gt;% (or the native R one |&gt;)"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#plain-fps-with-named-factors-and-actual-scales",
@@ -263,7 +263,7 @@
     "href": "slides/bosetti-25.1/index.html#augmented-fps",
     "title": "The adas.utils package",
     "section": "Augmented FPs",
-    "text": "Augmented FPs\nWe can augment a \\(2^n\\) FP with a central treatment:\n\n\n# Three factors, scaled\nfp_design_matrix(3) %&gt;%\n  fp_add_scale(B=c(10, 20)) %&gt;% \n  \n  # Augment with a central treatment\n  fp_augment_center(rep=4) %&gt;% \n  \n  # Just to keep output compact 😎 \n  slice_tail(n=6)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C \n Factors:  A B C \n Levels:  -1 1 \n Fraction:  NA \n Type:  centered \n Scales suffix: _s\n Scaled factors:\n    B_s: [10, 20]\n \n# A tibble: 6 × 9\n  StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        7        3 bc         1    -1     1     1    20 NA   \n2        8        2 abc        1     1     1     1    20 NA   \n3        9       12 center     1     0     0     0    15 NA   \n4       10       10 center     2     0     0     0    15 NA   \n5       11        9 center     3     0     0     0    15 NA   \n6       12       11 center     4     0     0     0    15 NA"
+    "text": "Augmented FPs\nWe can augment a \\(2^n\\) FP with a central treatment:\n\n\n# Three factors, scaled\nfp_design_matrix(3) %&gt;%\n  fp_add_scale(B=c(10, 20)) %&gt;% \n  \n  # Augment with a central treatment\n  fp_augment_center(rep=4) %&gt;% \n  \n  # Just to keep output compact 😎 \n  slice_tail(n=6)\n\n\n Factorial Plan Design Matrix\n Defining Relationship:  ~ A * B * C \n Factors:  A B C \n Levels:  -1 1 \n Fraction:  NA \n Type:  centered \n Scales suffix: _s\n Scaled factors:\n    B_s: [10, 20]\n \n# A tibble: 6 × 9\n  StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    \n     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;\n1        7        2 bc         1    -1     1     1    20 NA   \n2        8        7 abc        1     1     1     1    20 NA   \n3        9       12 center     1     0     0     0    15 NA   \n4       10       10 center     2     0     0     0    15 NA   \n5       11       11 center     3     0     0     0    15 NA   \n6       12        9 center     4     0     0     0    15 NA"
   },
   {
     "objectID": "slides/bosetti-25.1/index.html#augmented-fps-1",
@@ -343,18 +343,18 @@
     "text": "Future developments\n\nadas.utils is currently v1.2.0 on CRAN\n\n install.packages(\"adas.utils\")\n\nDevelopment version on GitHub v1.2.1\n\n devtools::install_github(\"pbosetti/adas.utils\")\n\nThe package is open to contributions \nCurrently working on:\n\na tool that suggests minimum aberration designs for FFPs \\(2^{n-p}\\) where \\(p\\geq 2\\)\nblocking structures\n\n\n\n\n Development on: github.com/pbosetti/adas.utils"
   },
   {
-    "objectID": "slides/bosetti-25.1/index.html#one-last-thing",
-    "href": "slides/bosetti-25.1/index.html#one-last-thing",
+    "objectID": "slides/bosetti-25.1/index.html#webr-code-chunks-in-quarto-documents",
+    "href": "slides/bosetti-25.1/index.html#webr-code-chunks-in-quarto-documents",
     "title": "The adas.utils package",
-    "section": "One last thing…",
-    "text": "One last thing…\nPresentations made in Quarto can be interactive too…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "section": "WebR code chunks in Quarto documents",
+    "text": "WebR code chunks in Quarto documents\nPresentations made in Quarto can be interactive too…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "slides/bosetti-25.1/index.html#one-last-thing-1",
-    "href": "slides/bosetti-25.1/index.html#one-last-thing-1",
+    "objectID": "slides/bosetti-25.1/index.html#webr-code-chunks-in-quarto-documents-1",
+    "href": "slides/bosetti-25.1/index.html#webr-code-chunks-in-quarto-documents-1",
     "title": "The adas.utils package",
-    "section": "One last thing…",
-    "text": "One last thing…\nPresentations made in Quarto can be interactive too…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "section": "WebR code chunks in Quarto documents",
+    "text": "WebR code chunks in Quarto documents\nPresentations made in Quarto can be interactive too…\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "slides/micciolo-espa-25.1.html",

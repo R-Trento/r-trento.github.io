@@ -507,7 +507,7 @@
   globalThis.qwebrAutoloadRPackages = true;
 
   // Display a startup message?
-  globalThis.qwebrShowStartupMessage = true;
+  globalThis.qwebrShowStartupMessage = false;
   globalThis.qwebrShowHeaderMessage = false;
 
   // Describe the webR settings that should be used
@@ -2166,14 +2166,14 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-1 -1 -1 -1 NA        1        3
-2  1 -1 -1 NA        2        2
-3 -1  1 -1 NA        3        8
-4  1  1 -1 NA        4        4
-5 -1 -1  1 NA        5        5
-6  1 -1  1 NA        6        7
-7 -1  1  1 NA        7        1
-8  1  1  1 NA        8        6</code></pre>
+1 -1 -1 -1 NA        1        5
+2  1 -1 -1 NA        2        1
+3 -1  1 -1 NA        3        7
+4  1  1 -1 NA        4        3
+5 -1 -1  1 NA        5        2
+6  1 -1  1 NA        6        6
+7 -1  1  1 NA        7        8
+8  1  1  1 NA        8        4</code></pre>
 </div>
 </div></div>
 <p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
@@ -2197,10 +2197,10 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-2  1 -1 -1 NA        2        2
+2  1 -1 -1 NA        2        4
 3 -1  1 -1 NA        3        3
 5 -1 -1  1 NA        5        1
-8  1  1  1 NA        8        4</code></pre>
+8  1  1  1 NA        8        2</code></pre>
 </div>
 </div></div>
 <p>But mind you! for this to work, columns <code>A</code>, <code>B</code>, and <code>C</code> <strong>must NOT be <u>factors</u>!</strong> (in the R sense)</p>
@@ -2322,14 +2322,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        6 (1)        1    -1    -1 NA   
-2        2        8 a          1     1    -1 NA   
-3        3        4 b          1    -1     1 NA   
-4        4        7 ab         1     1     1 NA   
-5        5        2 (1)        2    -1    -1 NA   
-6        6        3 a          2     1    -1 NA   
-7        7        1 b          2    -1     1 NA   
-8        8        5 ab         2     1     1 NA   </code></pre>
+1        1        8 (1)        1    -1    -1 NA   
+2        2        2 a          1     1    -1 NA   
+3        3        6 b          1    -1     1 NA   
+4        4        5 ab         1     1     1 NA   
+5        5        4 (1)        2    -1    -1 NA   
+6        6        1 a          2     1    -1 NA   
+7        7        7 b          2    -1     1 NA   
+8        8        3 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -2376,14 +2376,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        3 (1)        1    -1    -1 NA   
-2        2        7 a          1     1    -1 NA   
-3        3        4 b          1    -1     1 NA   
-4        4        5 ab         1     1     1 NA   
-5        5        8 (1)        2    -1    -1 NA   
-6        6        2 a          2     1    -1 NA   
-7        7        6 b          2    -1     1 NA   
-8        8        1 ab         2     1     1 NA   </code></pre>
+1        1        1 (1)        1    -1    -1 NA   
+2        2        5 a          1     1    -1 NA   
+3        3        7 b          1    -1     1 NA   
+4        4        4 ab         1     1     1 NA   
+5        5        6 (1)        2    -1    -1 NA   
+6        6        8 a          2     1    -1 NA   
+7        7        2 b          2    -1     1 NA   
+8        8        3 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 
@@ -2471,12 +2471,12 @@ Paolo Bosetti
 # A tibble: 6 × 9
   StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        7        3 bc         1    -1     1     1    20 NA   
-2        8        2 abc        1     1     1     1    20 NA   
+1        7        2 bc         1    -1     1     1    20 NA   
+2        8        7 abc        1     1     1     1    20 NA   
 3        9       12 center     1     0     0     0    15 NA   
 4       10       10 center     2     0     0     0    15 NA   
-5       11        9 center     3     0     0     0    15 NA   
-6       12       11 center     4     0     0     0    15 NA   </code></pre>
+5       11       11 center     3     0     0     0    15 NA   
+6       12        9 center     4     0     0     0    15 NA   </code></pre>
 </div>
 </div></div>
 </section>
@@ -2802,15 +2802,20 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 
 <aside><div>
 <p><strong><i class="bi-github " style="" role="img" aria-hidden="true"></i></strong> Development on: <a href="https://github.com/pbosetti/adas.utils">github.com/pbosetti/adas.utils</a></p>
-</div></aside></section>
-<section id="one-last-thing" class="slide level2">
-<h2>One last thing…</h2>
+</div></aside></section></section>
+<section>
+<section id="one-last-thing" class="title-slide slide level1 center">
+<h1>One last thing…</h1>
+
+</section>
+<section id="webr-code-chunks-in-quarto-documents" class="slide level2">
+<h2>WebR code chunks in Quarto documents</h2>
 <p>Presentations made in <a href="https://quarto.org" target="_blank">Quarto</a> can be interactive too…</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="one-last-thing-1" class="slide level2">
-<h2>One last thing…</h2>
+<section id="webr-code-chunks-in-quarto-documents-1" class="slide level2">
+<h2>WebR code chunks in Quarto documents</h2>
 <p>Presentations made in <a href="https://quarto.org" target="_blank">Quarto</a> can be interactive too…</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
