@@ -5,6 +5,7 @@ project:
     host: localhost
   resources:
     - "CNAME"
+    - "/slides/*.pdf"
 website:
   site-url: https://rtug.unitn.it
   title: "RTUG"

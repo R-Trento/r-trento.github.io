@@ -1,0 +1,13 @@
+---
+title: "The R Package `rmf` in Teaching"
+author: "Rocco Micciolo, Giuseppe Espa"
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
+institute: University of Trento
+format: html
+categories: [teaching, meeting, rtug::25.1]
+abstract: |
+  We introduce the `rmf` package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.
+---
+
+{{< pdf "micciolo-espa-25.1.pdf"  width=100% height=910 >}}

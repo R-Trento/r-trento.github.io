@@ -28,7 +28,7 @@ Download [here {{< bi file-pdf >}}](/images/flyer.pdf){target="_blank"} the even
 5. Spatial Sampling in R (*M. M. Dickson*)
 6. Refreshments and networking!
 
-See [below](#details-on-topics) for details on the topics.
+See [below](#details-on-topics) for details on the topics. The [slides](/slides.html) page lists all the available presentations.
 
 
 ## {{< bi building >}} Venue
@@ -37,24 +37,29 @@ See [below](#details-on-topics) for details on the topics.
 
 ## {{< bi zoom-in >}} Details on Topics
 
+### Welcome
+
+* Author: **P. Bosetti**, University of Trento
+* Style: [Presentation](/slides/rtug-25.1.html)
+
 ### The R Package `rmf` in Teaching
 
 * Authors: **R. Micciolo and G. Espa**, University or Trento
-* Style: Presentation
+* Style: [Presentation](/slides/micciolo-espa-25.1.pdf)
 
 We introduce the `rmf` package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.
 
 ### The `adas.utils` Package: Design of Experiments, the Tidy Way
 
 * Author: **P. Bosetti**, University or Trento
-* Style: Presentation
+* Style: [Presentation](/slides/bosetti-25.1)
 
 We introduce the `adas.utils` package, which provides a set of tools for designing factorial designs and analyzing results, in line with the Tidyverse package approach.
 
 ### Bioinformatics and R: Visualizing Genomic Data
 
 * Author: **Y. Ciani**, University or Trento
-* Style: Presentation
+* Style: [Presentation](/slides/ciani-25.1.pdf)
 
 An overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.
 

@@ -1,0 +1,13 @@
+---
+title: "Bioinformatics and R: Visualizing Genomic Data"
+author: "Yari Ciani"
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
+institute: University of Trento
+format: html
+categories: [bioinformatics, meeting, rtug::25.1]
+abstract: |
+  An overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.
+---
+
+{{< pdf "ciani-25.1.pdf"  width=100% height=910 >}}
