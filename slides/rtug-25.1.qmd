@@ -70,7 +70,7 @@ R-Trento Users Group, year 2025, meeting 1 (that's it)
 2.  The R Package `rmf` in Teaching (*R. Micciolo and G. Espa*) [{{< bi file-earmark-easel >}}](/slides/micciolo-espa-25.1)
 3.  The `adas.utils` Package: Design of Experiments, the Tidy Way (*P. Bosetti*) [{{< bi file-earmark-easel >}}](/slides/bosetti-25.1)
 4.  Bioinformatics and R: Visualizing Genomic Data (*Y. Ciani*) [{{< bi file-earmark-easel >}}](/slides/ciani-25.1.pdf)
-5.  Spatial Sampling in R (*M. M. Dickson*)
+5.  Spatial Sampling in R (*M. M. Dickson*) [{{< bi file-earmark-easel >}}](/slides/dickson-25.1.pdf)
 
 # {{< bi cup >}} Refreshments and networking!
 
