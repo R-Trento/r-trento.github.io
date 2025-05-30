@@ -1,0 +1,13 @@
+---
+title: "Spatial Sampling in R"
+author: "Maria Michela Dockson"
+date: 2025-05-30
+date-format: "rtug::25.1, YYYY-MM-DD"
+institute: University of Padua
+format: html
+categories: [sampling, meeting, rtug::25.1]
+abstract: |
+  We introduce the `BalancedSampling` package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.
+---
+
+{{< pdf "dickson-25.1.pdf"  width=100% height=910 >}}
