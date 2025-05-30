@@ -48,7 +48,7 @@ Event flyer
 <li>Spatial Sampling in R (<em>M. M. Dickson</em>)</li>
 <li>Refreshments and networking!</li>
 </ol>
-<p>See below for details on the topics.</p>
+<p>See below for details on the topics. The <a href="../slides.html">slides</a> page lists all the available presentations.</p>
 </section>
 <section id="venue" class="level2">
 <h2 class="anchored" data-anchor-id="venue"> Venue</h2>
@@ -56,11 +56,18 @@ Event flyer
 </section>
 <section id="details-on-topics" class="level2">
 <h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="welcome" class="level3">
+<h3 class="anchored" data-anchor-id="welcome">Welcome</h3>
+<ul>
+<li>Author: <strong>P. Bosetti</strong>, University of Trento</li>
+<li>Style: <a href="../slides/rtug-25.1.html">Presentation</a></li>
+</ul>
+</section>
 <section id="the-r-package-rmf-in-teaching" class="level3">
 <h3 class="anchored" data-anchor-id="the-r-package-rmf-in-teaching">The R Package <code>rmf</code> in Teaching</h3>
 <ul>
 <li>Authors: <strong>R. Micciolo and G. Espa</strong>, University or Trento</li>
-<li>Style: Presentation</li>
+<li>Style: <a href="../slides/micciolo-espa-25.1.pdf">Presentation</a></li>
 </ul>
 <p>We introduce the <code>rmf</code> package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.</p>
 </section>
@@ -68,7 +75,7 @@ Event flyer
 <h3 class="anchored" data-anchor-id="the-adas.utils-package-design-of-experiments-the-tidy-way">The <code>adas.utils</code> Package: Design of Experiments, the Tidy Way</h3>
 <ul>
 <li>Author: <strong>P. Bosetti</strong>, University or Trento</li>
-<li>Style: Presentation</li>
+<li>Style: <a href="../slides/bosetti-25.1">Presentation</a></li>
 </ul>
 <p>We introduce the <code>adas.utils</code> package, which provides a set of tools for designing factorial designs and analyzing results, in line with the Tidyverse package approach.</p>
 </section>
@@ -76,7 +83,7 @@ Event flyer
 <h3 class="anchored" data-anchor-id="bioinformatics-and-r-visualizing-genomic-data">Bioinformatics and R: Visualizing Genomic Data</h3>
 <ul>
 <li>Author: <strong>Y. Ciani</strong>, University or Trento</li>
-<li>Style: Presentation</li>
+<li>Style: <a href="../slides/ciani-25.1.pdf">Presentation</a></li>
 </ul>
 <p>An overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.</p>
 </section>

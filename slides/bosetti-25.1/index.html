@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en-EN"><head>
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <meta name="author" content="Paolo Bosetti">
+  <title>RTUG – The adas.utils package</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a5dae8357010f1b99b26106ba09c65d4.css">
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
+
+  <script type="text/plain" cookie-consent="tracking">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XKT2HCTTXM', { 'anonymize_ip': true});
+  </script>
+  
+  <script type="text/javascript" charset="UTF-8">
+  document.addEventListener('DOMContentLoaded', function () {
+  cookieconsent.run({
+    "notice_banner_type":"simple",
+    "consent_type":"express",
+    "palette":"light",
+    "language":"en",
+    "page_load_consent_levels":["strictly-necessary"],
+    "notice_banner_reject_button_hide":false,
+    "preferences_center_close_button_hide":false,
+    "website_name":""
+    ,
+  "language":"en-EN"
+    });
+  });
+  </script> 
+    
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="The adas.utils package – RTUG">
+<meta property="og:description" content="We are here presenting the adas.utils package, a collection of functions for the design of experiments, the tidy way.">
+<meta property="og:site_name" content="RTUG">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="../../images/logo.png" data-background-position="top center" data-background-repeat="no-repeat" data-background-size="20%" class="quarto-title-block center">
+  <h1 class="title">The <code>adas.utils</code> package</h1>
+  <p class="subtitle">Design of Experiments, the tidy way</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Paolo Bosetti 
+</div>
+        <p class="quarto-title-affiliation">
+            University of Trento
+          </p>
+    </div>
+</div>
+
+  <p class="date">rtug::25.1, 2025-05-30</p>
+</section>
+<section>
+<section id="contents" class="title-slide slide level1 center">
+<h1><i class="bi-list-task " style="" role="img" aria-hidden="true"></i> Contents</h1>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>Design of Experiments (<em>DoE</em>) and factorial plans</li>
+<li>How to do DoE in vanilla R</li>
+<li>How to do DoE with the <code>adas.utils</code> package</li>
+<li>Alternatives</li>
+<li>Future developments</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<p><img data-src="../../posts/004-adas.utils/hypercube.jpg"></p>
+</div></div>
+</section>
+<section id="design-of-experiments-and-factorial-plans" class="slide level2">
+<h2>Design of Experiments and factorial plans</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>Design of Experiments (<em>DoE</em>) is a collection of statistical techniques to plan and analyze <strong>industrial</strong> experiments</li>
+<li>Predictors are typically many (10 or more), and can be continuous or categorical</li>
+<li>Often a first-order model is enough</li>
+<li>Fitting a <strong>response surface</strong> on a multidimensional grid can be costly</li>
+</ul>
+<p>DoE aims at getting the <span class="bgreen">most information</span> from a <span class="bblue">minimum of experiments</span></p>
+</div><div class="column" style="width:34%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://m.media-amazon.com/images/I/81zdcVeRwRL._SY385_.jpg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
+
+<aside><div>
+<p><i class="bi-book " style="" role="img" aria-hidden="true"></i> See the famous “Design and Analysis of Experiments”, by Douglas C. Montgomery, 10th edition, Wiley, 2020.</p>
+</div></aside></section>
+<section id="doe-in-brief" class="slide level2">
+<h2>DoE in brief</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>Plan for a grid of treatments (<em>factorial plan</em>) in the <span class="math inline">\(n\)</span>-hyperspace, where <span class="math inline">\(n\)</span> is the number of predictors, or <strong>process parameters</strong></li>
+<li>The FP can be optimized, sacrificing completeness for efficiency (<em>Fractional Factorial Plans</em>)</li>
+<li>The FP must be <span class="bgreen">randomized</span>, to reduce bias due to systematic errors</li>
+<li>The FP can be <span class="bgreen">non-replicated</span>, to further reduce costs (<em>Daniel’s method</em>)</li>
+<li>The FP can be <span class="bgreen">augmented</span>, to add new treatments to an existing plan (<em>Augmented Factorial Plans</em>)</li>
+<li>We use <span class="bgreen">coded units</span> (i.e.&nbsp;normalized to <span class="math inline">\([-1,1]\)</span>)</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="CCD2.png" style="width:60.0%"></p>
+<figcaption>2 factors CCD</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="CCD3.png" style="width:60.0%"></p>
+<figcaption>3 factors CCD</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="simple-example-in-vanilla-r" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>Create a non-replicated <strong>full factorial plan</strong> with three factors, two levels each (<span class="math inline">\(2^3\)</span>):</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Make the grid</span></span>
+<span id="cb1-2"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb1-3"><a></a>  <span class="at">A=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-4"><a></a>  <span class="at">B=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-5"><a></a>  <span class="at">C=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
+<span id="cb1-6"><a></a>  <span class="at">Y=</span><span class="cn">NA</span></span>
+<span id="cb1-7"><a></a>)</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co"># Add orders</span></span>
+<span id="cb1-10"><a></a>fp<span class="sc">$</span>StdOrder <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fp)</span>
+<span id="cb1-11"><a></a>fp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(fp))</span>
+<span id="cb1-12"><a></a>fp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>   A  B  C  Y StdOrder RunOrder
+1 -1 -1 -1 NA        1        3
+2  1 -1 -1 NA        2        8
+3 -1  1 -1 NA        3        4
+4  1  1 -1 NA        4        6
+5 -1 -1  1 NA        5        5
+6  1 -1  1 NA        6        2
+7 -1  1  1 NA        7        7
+8  1  1  1 NA        8        1</code></pre>
+</div>
+</div></div>
+<p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> In a <strong>replicated</strong> <span class="math inline">\(k\cdot2^n\)</span> FP, the replica index is formally just another factor with <span class="math inline">\(k\)</span> levels</p>
+</div></aside></section>
+<section id="simple-example-in-vanilla-r-1" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>For a fractional factorial plan, we reject one half of the FP according to a <strong>defining relationship</strong>: <span class="math inline">\(I=ABC\)</span>, which can be transformed as <span class="math inline">\(C=AB\)</span> <strong><i class="bi-bookmark-fill " style="" role="img" aria-hidden="true"></i></strong></p>
+<p>We remove rows where the sign of <span class="math inline">\(C\)</span> is the product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Extract the fraction where C=AB</span></span>
+<span id="cb3-2"><a></a>ffp <span class="ot">&lt;-</span> fp[fp<span class="sc">$</span>C<span class="sc">==</span>fp<span class="sc">$</span>A<span class="sc">*</span>fp<span class="sc">$</span>B, ]</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="co"># Add orders</span></span>
+<span id="cb3-5"><a></a>fp<span class="sc">$</span>StdOrder <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fp)</span>
+<span id="cb3-6"><a></a>ffp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(ffp))</span>
+<span id="cb3-7"><a></a>ffp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>   A  B  C  Y StdOrder RunOrder
+2  1 -1 -1 NA        2        4
+3 -1  1 -1 NA        3        1
+5 -1 -1  1 NA        5        2
+8  1  1  1 NA        8        3</code></pre>
+</div>
+</div></div>
+<p>But mind you! for this to work, columns <code>A</code>, <code>B</code>, and <code>C</code> <strong>must NOT be <u>factors</u>!</strong> (in the R sense)</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="bi-bookmark-fill " style="" role="img" aria-hidden="true"></i> Remark on defining relationships</strong></p>
+</div>
+<div class="callout-content">
+<p>It holds the signs algebra: <span class="math inline">\(X\cdot X=I,~I\cdot X = X\)</span>, thus <span class="math inline">\(CI = ABCC~\rightarrow~C=AB\)</span></p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> When factors become numerous, and when you need to fraction two or three or more times, the above operations become cumbersome and error prone</p>
+</div></aside></section>
+<section id="simple-example-in-vanilla-r-2" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>Analyzing the FP is mostly a matter of:</p>
+<ul>
+<li>defining a linear model, <code>Y~A*B*C</code></li>
+<li>using <code>lm()</code> to fit the model</li>
+<li>using <code>residuals()</code> to check the residuals for normality and patterns</li>
+<li>using <code>anova()</code> to analyze the model</li>
+<li>simplify the model if necessary</li>
+</ul>
+<p>But if the FP is <strong>non-replicated</strong>, you can’t fit a model unless you remove some terms from the general linear model <code>Y~A*B*C</code>. To do so, Daniel’s method suggests to make a <span class="bblue">Q-Q plot of the effects</span>: <strong>not straightforward</strong></p>
+</section>
+<section id="simple-example-in-vanilla-r-3" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p>As an example for a <span class="math inline">\(2^4\)</span> FP, the Daniel’s Q-Q plot of the effects can be obtained by:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># build a full linear model:</span></span>
+<span id="cb5-2"><a></a>fp.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>fp)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="co"># prepare plot data:</span></span>
+<span id="cb5-5"><a></a>len     <span class="ot">&lt;-</span> <span class="fu">length</span>(fp.lm<span class="sc">$</span>effects)</span>
+<span id="cb5-6"><a></a>effects <span class="ot">&lt;-</span> fp.lm<span class="sc">$</span>effects[<span class="dv">2</span><span class="sc">:</span>len]</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co"># Q-Q plot:</span></span>
+<span id="cb5-9"><a></a>qq      <span class="ot">&lt;-</span> <span class="fu">qqnorm</span>(effects)</span>
+<span id="cb5-10"><a></a><span class="fu">qqline</span>(effects)</span>
+<span id="cb5-11"><a></a></span>
+<span id="cb5-12"><a></a><span class="co"># add names:</span></span>
+<span id="cb5-13"><a></a><span class="fu">text</span>(qq<span class="sc">$</span>x, qq<span class="sc">$</span>y, <span class="at">labels=</span><span class="fu">names</span>(effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="1500"></p>
+</figure>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p><strong><i class="bi-exclamation-diamond " style="" role="img" aria-hidden="true"></i> Problems</strong>: not immediate; the plot is not really clean and it often needs tuning (scales and labels size)</p>
+</div></aside></section>
+<section id="simple-example-in-vanilla-r-4" class="slide level2">
+<h2>Simple example in vanilla R</h2>
+<p><i class="bi-exclamation-diamond " style="" role="img" aria-hidden="true"></i> Problems:</p>
+<div class="columns">
+<div class="column" style="width:66%;">
+<ul>
+<li>difficult to manage <strong>scaled units</strong> <em>vs.</em> non scaled units</li>
+<li>factor names aren’t <strong>mnemonic</strong> (which parameter is represented by <code>F</code>?)</li>
+<li><strong>fractioning</strong> an FP is not trivial</li>
+<li><strong>Daniel’s method</strong> is tricky and repetitive</li>
+<li><strong>augmenting a plan</strong> is not trivial when the number of factors is 4 or more</li>
+<li>everything is not very <strong>tidy</strong> (in the sense of <span class="bgreen">tidyverse</span>)</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.tidyverse.org/css/images/hex/ggplot2.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="enter-adas.utils-package" class="slide level2">
+<h2>Enter <code>adas.utils</code> package</h2>
+<p>The package is available on CRAN:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"adas.utils"</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">library</span>(adas.utils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+<p>Don’t forget to look at the vignette:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">vignette</span>(<span class="st">"adas.utils"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div></div>
+</section>
+<section id="plain-fps" class="slide level2">
+<h2>Plain FPs</h2>
+<p>Base <span class="math inline">\(2\cdot 2^2\)</span> FP:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(adas.utils)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="co"># Two factors, two replicas</span></span>
+<span id="cb8-4"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B 
+ Factors:  A B 
+ Levels:  -1 1 
+ Fraction:  NA 
+ Type:  plain 
+ 
+# A tibble: 8 × 7
+  StdOrder RunOrder .treat  .rep     A     B Y    
+     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+1        1        8 (1)        1    -1    -1 NA   
+2        2        1 a          1     1    -1 NA   
+3        3        2 b          1    -1     1 NA   
+4        4        3 ab         1     1     1 NA   
+5        5        4 (1)        2    -1    -1 NA   
+6        6        6 a          2     1    -1 NA   
+7        7        5 b          2    -1     1 NA   
+8        8        7 ab         2     1     1 NA   </code></pre>
+</div>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Note the Yates’ treatment names in <code>.treat</code> column</p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> The object returned, class <code>factorial.plan</code>, is a <code>tibble</code> with added attributes that keep track of the design</p>
+</div></aside></section>
+<section id="plain-fps-with-named-factors" class="slide level2">
+<h2>Plain FPs, with named factors</h2>
+<p>We can tie factors with corresponding parameter names:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Two factors, two replicas, with names</span></span>
+<span id="cb10-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a></a>  <span class="fu">fp_add_names</span>(</span>
+<span id="cb10-4"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>, </span>
+<span id="cb10-5"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
+<span id="cb10-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B 
+ Factors:  A B 
+ Levels:  -1 1 
+ Fraction:  NA 
+ Type:  plain 
+ Factor names:
+    A: Temperature
+    B: Pressure
+ 
+# A tibble: 8 × 7
+  StdOrder RunOrder .treat  .rep     A     B Y    
+     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+1        1        5 (1)        1    -1    -1 NA   
+2        2        2 a          1     1    -1 NA   
+3        3        6 b          1    -1     1 NA   
+4        4        7 ab         1     1     1 NA   
+5        5        4 (1)        2    -1    -1 NA   
+6        6        1 a          2     1    -1 NA   
+7        7        8 b          2    -1     1 NA   
+8        8        3 ab         2     1     1 NA   </code></pre>
+</div>
+</div></div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> Note that it’s been designed to support the <code>magrittr</code> pipe operator <code>%&gt;%</code> (or the native R one <code>|&gt;</code>)</p>
+</div></aside></section>
+<section id="plain-fps-with-named-factors-and-actual-scales" class="slide level2">
+<h2>Plain FPs, with named factors and actual scales</h2>
+<p>Actual scales can be added for reference:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Two factors, two replicas, with names and scales</span></span>
+<span id="cb12-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">fp_add_names</span>(</span>
+<span id="cb12-4"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>, </span>
+<span id="cb12-5"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
+<span id="cb12-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-7"><a></a>  <span class="fu">fp_add_scale</span>(</span>
+<span id="cb12-8"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), </span>
+<span id="cb12-9"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">125</span>), </span>
+<span id="cb12-10"><a></a>    <span class="at">suffix=</span><span class="st">".scaled"</span></span>
+<span id="cb12-11"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-12"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
+<span id="cb12-13"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B 
+ Factors:  A B 
+ Levels:  -1 1 
+ Fraction:  NA 
+ Type:  plain 
+ Scales suffix: .scaled
+ Scaled factors:
+    A.scaled: [20, 25]
+    B.scaled: [75, 125]
+ Factor names:
+    A: Temperature
+    B: Pressure
+ 
+# A tibble: 8 × 7
+  .treat  .rep     A     B A.scaled B.scaled Y    
+  &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;
+1 (1)        1    -1    -1       20       75 NA   
+2 a          1     1    -1       25       75 NA   
+3 b          1    -1     1       20      125 NA   
+4 ab         1     1     1       25      125 NA   
+5 (1)        2    -1    -1       20       75 NA   
+6 a          2     1    -1       25       75 NA   
+7 b          2    -1     1       20      125 NA   
+8 ab         2     1     1       25      125 NA   </code></pre>
+</div>
+</div></div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> Note that it’s been designed to support the <code>magrittr</code> pipe operator <code>%&gt;%</code> (or the native R one <code>|&gt;</code>)</p>
+</div></aside></section>
+<section id="augmented-fps" class="slide level2">
+<h2>Augmented FPs</h2>
+<p>We can augment a <span class="math inline">\(2^n\)</span> FP with a <strong>central treatment</strong>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Three factors, scaled</span></span>
+<span id="cb14-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a></a>  <span class="fu">fp_add_scale</span>(<span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a></a>  </span>
+<span id="cb14-5"><a></a>  <span class="co"># Augment with a central treatment</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">fp_augment_center</span>(<span class="at">rep=</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a></a>  </span>
+<span id="cb14-8"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
+<span id="cb14-9"><a></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B * C 
+ Factors:  A B C 
+ Levels:  -1 1 
+ Fraction:  NA 
+ Type:  centered 
+ Scales suffix: _s
+ Scaled factors:
+    B_s: [10, 20]
+ 
+# A tibble: 6 × 9
+  StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    
+     &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+1        7        7 bc         1    -1     1     1    20 NA   
+2        8        5 abc        1     1     1     1    20 NA   
+3        9       12 center     1     0     0     0    15 NA   
+4       10       11 center     2     0     0     0    15 NA   
+5       11       10 center     3     0     0     0    15 NA   
+6       12        9 center     4     0     0     0    15 NA   </code></pre>
+</div>
+</div></div>
+</section>
+<section id="augmented-fps-1" class="slide level2">
+<h2>Augmented FPs</h2>
+<p>And then further augment the FP with <strong>axial treatments</strong> to get a rotatable <em>Composite Centered Design</em> (CCD):</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">fp_add_scale</span>(</span>
+<span id="cb16-3"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">18</span>), </span>
+<span id="cb16-4"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">fp_augment_center</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a></a>  <span class="co"># Also augment with axial treatments</span></span>
+<span id="cb16-7"><a></a>  <span class="fu">fp_augment_axial</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-8"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
+<span id="cb16-9"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>RunOrder) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-10"><a></a>  <span class="fu">as_tibble</span>() <span class="co"># don't print header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 8
+  StdOrder .treat  .rep     A     B   A_s   B_s Y    
+     &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+1        1 (1)        1 -1    -1     7    10    NA   
+2        2 a          1  1    -1    18    10    NA   
+3        3 b          1 -1     1     7    20    NA   
+4        4 ab         1  1     1    18    20    NA   
+5        5 center     1  0     0    12.5  15    NA   
+6        6 axial      1  0    -1.41 12.5   7.93 NA   
+7        7 axial      1 -1.41  0     4.72 15    NA   
+8        8 axial      1  1.41  0    20.3  15    NA   
+9        9 axial      1  0     1.41 12.5  22.1  NA   </code></pre>
+</div>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Automatically scaling CCDs helps a lot in correctly defining process settings for each treatment</p>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> Converted to a tibble to reduce the printout length</p>
+</div></aside></section>
+<section id="augmented-fps-2" class="slide level2">
+<h2>Augmented FPs</h2>
+<p>And then further augment the FP with <strong>axial treatments</strong> to get a rotatable <em>Centered Composite Design</em> (CCD):</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a></a>  <span class="fu">fp_add_scale</span>(</span>
+<span id="cb18-3"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">18</span>), </span>
+<span id="cb18-4"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">fp_augment_center</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a></a>  <span class="fu">fp_augment_axial</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a></a>  </span>
+<span id="cb18-8"><a></a>  <span class="co"># Make a plot</span></span>
+<span id="cb18-9"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>A, <span class="at">y=</span>B)) <span class="sc">+</span> </span>
+<span id="cb18-10"><a></a>  <span class="fu">geom_circle</span>(<span class="fu">aes</span>(<span class="at">x0=</span><span class="dv">0</span>, <span class="at">y0=</span><span class="dv">0</span>, <span class="at">r=</span><span class="fu">sqrt</span>(<span class="dv">2</span>)), </span>
+<span id="cb18-11"><a></a>              <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="fu">gray</span>(<span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb18-12"><a></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>.treat)) <span class="sc">+</span></span>
+<span id="cb18-13"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> </span>
+<span id="cb18-14"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>) <span class="sc">*</span> <span class="dv">6</span><span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="1800"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Of course it works on higher dimensions as well</p>
+</div>
+</div>
+</div>
+</section>
+<section id="fractional-factorial-plans" class="slide level2">
+<h2>Fractional Factorial Plans</h2>
+<p>We can fraction a <span class="math inline">\(2^n\)</span> FP by adding subsequent <strong>defining relationships</strong>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D<span class="sc">*</span>E) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder, .rep)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B * C * D * E 
+ Factors:  A B C D E 
+ Levels:  -1 1 
+ Fraction:  I=ABCD I=BCDE 
+ Type:  fractional 
+ 
+# A tibble: 8 × 9
+  .treat     A     B     C     D     E Y      ABCD  BCDE
+  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 (1)       -1    -1    -1    -1    -1 NA        1     1
+2 bc        -1     1     1    -1    -1 NA        1     1
+3 bd        -1     1    -1     1    -1 NA        1     1
+4 cd        -1    -1     1     1    -1 NA        1     1
+5 abe        1     1    -1    -1     1 NA        1     1
+6 ace        1    -1     1    -1     1 NA        1     1
+7 ade        1    -1    -1     1     1 NA        1     1
+8 abcde      1     1     1     1     1 NA        1     1</code></pre>
+</div>
+</div></div>
+</section>
+<section id="save-design-matrix" class="slide level2">
+<h2>Save design matrix</h2>
+<p>You can save the design matrix as CSV file (for collecting experimental data), then load it back <strong>into</strong> the original FP object (thus preserving attributes):</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">fp_design_matrix</span>(<span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">fp_write_csv</span>(<span class="st">"fp.csv"</span>)</span>
+<span id="cb21-4"><a></a></span>
+<span id="cb21-5"><a></a>fp <span class="ot">&lt;-</span> fp <span class="sc">%&gt;%</span> </span>
+<span id="cb21-6"><a></a>  <span class="fu">fp_read_csv</span>(<span class="st">"fp.csv"</span>)</span>
+<span id="cb21-7"><a></a></span>
+<span id="cb21-8"><a></a>fp <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>RunOrder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factorial Plan Design Matrix
+ Defining Relationship:  ~ A * B * C * D 
+ Factors:  A B C D 
+ Levels:  -1 1 
+ Fraction:  I=ABCD 
+ Type:  fractional 
+ 
+# A tibble: 8 × 9
+  StdOrder .treat  .rep     A     B     C     D Y      ABCD
+     &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt;
+1        1 (1)        1    -1    -1    -1    -1 NA        1
+2        4 ab         1     1     1    -1    -1 NA        1
+3        6 ac         1     1    -1     1    -1 NA        1
+4        7 bc         1    -1     1     1    -1 NA        1
+5       10 ad         1     1    -1    -1     1 NA        1
+6       11 bd         1    -1     1    -1     1 NA        1
+7       13 cd         1    -1    -1     1     1 NA        1
+8       16 abcd       1     1     1     1     1 NA        1</code></pre>
+</div>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The saved CSV file has a commented header with FFP details (e.g.&nbsp;defining relationships, factors names, scales, etc.)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="alias-structures" class="slide level2">
+<h2>Alias structures</h2>
+<p>Fractioning a FP creates <strong>alias structures</strong>: the <code>adas.utils</code> package can help you with that too:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>Defining relationships:
+ I=ABC I=BCD I=AD 
+
+     A B AB C AC BC ABC D AD BD ABD CD ACD BCD ABCD
+A    0 0  0 0  0  1   0 3  0  0   0  0   0   0    2
+B    0 0  0 0  1  0   0 0  0  0   3  2   0   0    0
+AB   0 0  0 1  0  0   0 0  0  3   0  0   2   0    0
+C    0 0  1 0  0  0   0 0  0  2   0  0   3   0    0
+AC   0 1  0 0  0  0   0 0  0  0   2  3   0   0    0
+BC   1 0  0 0  0  0   0 2  0  0   0  0   0   0    3
+ABC  0 0  0 0  0  0   0 0  2  0   0  0   0   3    0
+D    3 0  0 0  0  2   0 0  0  0   0  0   0   0    1
+AD   0 0  0 0  0  0   2 0  0  0   0  0   0   1    0
+BD   0 0  3 2  0  0   0 0  0  0   0  0   1   0    0
+ABD  0 3  0 0  2  0   0 0  0  0   0  1   0   0    0
+CD   0 2  0 0  3  0   0 0  0  0   1  0   0   0    0
+ACD  0 0  2 3  0  0   0 0  0  1   0  0   0   0    0
+BCD  0 0  0 0  0  0   3 0  1  0   0  0   0   0    0
+ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
+</div>
+</div></div>
+</section>
+<section id="alias-structures-1" class="slide level2">
+<h2>Alias structures</h2>
+<p>The alias matrix can be plotted directly, via <code>ggplot2</code>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="1800"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>The third generator is the <strong>dependent one</strong>, i.e.&nbsp;the one that has all terms not in common in the first two generators</p>
+</div>
+</div>
+</div>
+</section>
+<section id="daniels-method" class="slide level2">
+<h2>Daniel’s method</h2>
+<p>The <code>adas.utils</code> package can also help you with <strong>Daniel’s method</strong>: the <code>daniel_plot_hn()</code> function takes a linear model object and returns a half-normal plot of the effects:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">lm</span>(Y<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a></a>  <span class="fu">daniel_plot_hn</span>(<span class="at">nlab=</span><span class="dv">6</span>, <span class="at">repel=</span><span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb26-4"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Revised model: Y~A*C + A*D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="1500"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="pareto-chart-of-the-effects" class="slide level2">
+<h2>Pareto chart of the effects</h2>
+<p>It’s easy to build a Pareto chart of the effects in a linear model:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">lm</span>(Y<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">pareto_chart</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb27-5"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb27-6"><a></a>    <span class="at">axis.text.x =</span> </span>
+<span id="cb27-7"><a></a>      <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="1500"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="tukey-plots" class="slide level2">
+<h2>Tukey plots</h2>
+<p>Tukey’s test <code>TukeyHSD()</code> is not compatible with <code>ggplot2</code>, and its output pretty limited (and not very appealing). The <code>adas.utils</code> package provides a <code>ggTukey()</code> function that can be used to plot the results of Tukey’s test, <strong>also with multiple groups</strong>:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>battery <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">ggTukey</span>(Response<span class="sc">~</span>Material, </span>
+<span id="cb28-3"><a></a>          <span class="at">splt=</span><span class="sc">~</span>Temperature, </span>
+<span id="cb28-4"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="1800"></p>
+</figure>
+</div>
+</div>
+</div></div>
+
+<aside><div>
+<p><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> <code>ggTukey()</code> is a <strong>generic</strong> with two methods: <code>ggTukey.data.frame()</code> and <code>ggTukey.TukeyHSD()</code></p>
+</div></aside></section>
+<section id="alternatives" class="slide level2">
+<h2>Alternatives?</h2>
+<p>Only <strong>pre-tidyverse</strong> packages as:</p>
+<ul>
+<li><code>DoE.base</code></li>
+<li><code>FrF2</code></li>
+</ul>
+</section>
+<section id="future-developments" class="slide level2">
+<h2>Future developments</h2>
+<ul>
+<li><code>adas.utils</code> is currently <code>v1.2.0</code> on CRAN
+<ul>
+<li><i class="bi-terminal " style="" role="img" aria-hidden="true"></i> <code>install.packages("adas.utils")</code></li>
+</ul></li>
+<li>Development version on GitHub <code>v1.2.1</code>
+<ul>
+<li><i class="bi-terminal " style="" role="img" aria-hidden="true"></i> <code>devtools::install_github("pbosetti/adas.utils")</code></li>
+</ul></li>
+<li>The package is open to contributions <strong><i class="bi-github " style="" role="img" aria-hidden="true"></i></strong></li>
+<li>Currently working on:
+<ul>
+<li>a tool that suggests <span class="bgreen">minimum aberration designs</span> for FFPs <span class="math inline">\(2^{n-p}\)</span> where <span class="math inline">\(p\geq 2\)</span></li>
+<li>blocking structures</li>
+</ul></li>
+</ul>
+
+<aside><div>
+<p><strong><i class="bi-github " style="" role="img" aria-hidden="true"></i></strong> Development on: <a href="https://github.com/pbosetti/adas.utils">github.com/pbosetti/adas.utils</a></p>
+</div></aside></section></section>
+<section id="question-time" class="title-slide slide level1 center">
+<h1><i class="bi-person-raised-hand " style="" role="img" aria-hidden="true"></i> Question time</h1>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../../images/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>RTUG — <a href="../../slides.html">https://rtug.unitn.it/slides.html</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': true,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/rtug\.unitn\.it");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+                // default icon
+                link.classList.add("external");
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            // Attach click handler to the DT
+            const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+            for (const annoteDlNode of annoteDls) {
+              annoteDlNode.addEventListener('click', (event) => {
+                const clickedEl = event.target;
+                if (clickedEl !== selectedAnnoteEl) {
+                  unselectCodeLines();
+                  const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+                  if (activeEl) {
+                    activeEl.classList.remove('code-annotation-active');
+                  }
+                  selectCodeLines(clickedEl);
+                  clickedEl.classList.add('code-annotation-active');
+                } else {
+                  // Unselect the line
+                  unselectCodeLines();
+                  clickedEl.classList.remove('code-annotation-active');
+                }
+              });
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
