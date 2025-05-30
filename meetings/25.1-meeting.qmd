@@ -4,6 +4,7 @@ author: "Paolo Bosetti"
 format: html
 date: "02/05/2025"
 date-modified: today
+lightbox: true
 ---
 
 
@@ -70,3 +71,13 @@ An overview of the use of R in bioinformatics, particularly its use for visualiz
 
 We introduce the `BalancedSampling` package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.
 
+
+## {{< bi camera >}} Post Mortem 😜
+
+So `RTUG::25.1` is over, and it was a great success! We had a good turnout, with more than 20 participants, and the feedback was very positive. The presentations were well received, and the discussions were lively.
+
+We would like to thank all the speakers for their contributions, and all the participants for their interest and enthusiasm. We hope to see you again at the next RTUG meeting, which will be held in the fall of 2025.
+
+![](images/rtug-25.1-01.jpeg){.lightbox group="post_mortem"}
+
+![](images/rtug-25.1-02.jpeg){.lightbox group="post_mortem"}
