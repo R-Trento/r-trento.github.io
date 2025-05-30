@@ -47,6 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +108,7 @@ cookieconsent.run({
 
 <meta property="og:title" content="First RTUG meeting – RTUG">
 <meta property="og:description" content="R-Trento Users Group">
+<meta property="og:image" content="https://rtug.unitn.it/meetings/images/rtug-25.1-01.jpeg">
 <meta property="og:site_name" content="RTUG">
 </head>
 
@@ -194,6 +198,7 @@ cookieconsent.run({
   <li><a href="#bioinformatics-and-r-visualizing-genomic-data" id="toc-bioinformatics-and-r-visualizing-genomic-data" class="nav-link" data-scroll-target="#bioinformatics-and-r-visualizing-genomic-data">Bioinformatics and R: Visualizing Genomic Data</a></li>
   <li><a href="#spatial-sampling-in-r" id="toc-spatial-sampling-in-r" class="nav-link" data-scroll-target="#spatial-sampling-in-r">Spatial Sampling in R</a></li>
   </ul></li>
+  <li><a href="#post-mortem" id="toc-post-mortem" class="nav-link" data-scroll-target="#post-mortem"><i class="bi-camera " style="" role="img" aria-hidden="true"></i> Post Mortem 😜</a></li>
   </ul>
 </nav>
     </div>
@@ -311,9 +316,16 @@ Event flyer
 <li>Style: <a href="../slides/dickson-25.1.pdf">Presentation</a></li>
 </ul>
 <p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
-
-
 </section>
+</section>
+<section id="post-mortem" class="level2">
+<h2 class="anchored" data-anchor-id="post-mortem"><i class="bi-camera " style="" role="img" aria-hidden="true"></i> Post Mortem 😜</h2>
+<p>So <code>RTUG::25.1</code> is over, and it was a great success! We had a good turnout, with more than 20 participants, and the feedback was very positive. The presentations were well received, and the discussions were lively.</p>
+<p>We would like to thank all the speakers for their contributions, and all the participants for their interest and enthusiasm. We hope to see you again at the next RTUG meeting, which will be held in the fall of 2025.</p>
+<p><a href="images/rtug-25.1-01.jpeg" class="lightbox" data-gallery="post_mortem"><img src="images/rtug-25.1-01.jpeg" class="img-fluid"></a></p>
+<p><a href="images/rtug-25.1-02.jpeg" class="lightbox" data-gallery="post_mortem"><img src="images/rtug-25.1-02.jpeg" class="img-fluid"></a></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,6 +755,38 @@ Event flyer
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

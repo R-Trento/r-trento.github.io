@@ -133,6 +133,13 @@
     "text": "Details on Topics\n\nWelcome\n\nAuthor: P. Bosetti, University of Trento\nStyle: Presentation\n\n\n\nThe R Package rmf in Teaching\n\nAuthors: R. Micciolo and G. Espa, University or Trento\nStyle: Presentation\n\nWe introduce the rmf package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics courses.\n\n\nThe adas.utils Package: Design of Experiments, the Tidy Way\n\nAuthor: P. Bosetti, University or Trento\nStyle: Presentation\n\nWe introduce the adas.utils package, which provides a set of tools for designing factorial designs and analyzing results, in line with the Tidyverse package approach.\n\n\nBioinformatics and R: Visualizing Genomic Data\n\nAuthor: Y. Ciani, University or Trento\nStyle: Presentation\n\nAn overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.\n\n\nSpatial Sampling in R\n\nAuthor: M. M. Dickson, University of Padua\nStyle: Presentation\n\nWe introduce the BalancedSampling package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field."
   },
   {
+    "objectID": "meetings/25.1-meeting.html#post-mortem",
+    "href": "meetings/25.1-meeting.html#post-mortem",
+    "title": "First RTUG meeting",
+    "section": " Post Mortem 😜",
+    "text": "Post Mortem 😜\nSo RTUG::25.1 is over, and it was a great success! We had a good turnout, with more than 20 participants, and the feedback was very positive. The presentations were well received, and the discussions were lively.\nWe would like to thank all the speakers for their contributions, and all the participants for their interest and enthusiasm. We hope to see you again at the next RTUG meeting, which will be held in the fall of 2025."
+  },
+  {
     "objectID": "contact.html",
     "href": "contact.html",
     "title": "Contacts and updates",
