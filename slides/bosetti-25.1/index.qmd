@@ -33,6 +33,13 @@ format:
     pdf-separate-fragments: true
     link-external-icon: true
     lang: en-EN
+filters:
+  - webr
+webr:
+  cell-options:
+    autorun: false
+    editor-font-scale: 0.75
+  packages: ['dplyr','ggplot2','glue','lubridate','magrittr','purrr','readr','rlang','scales','stringr','tibble','tidyr','adas.utils']
 abstract: |
   We are here presenting the `adas.utils` package, a collection of functions for the design of experiments, the tidy way.
 ---
@@ -523,6 +530,31 @@ Only **pre-tidyverse** packages as:
 ::: aside
 **{{< bi github >}}** Development on: [github.com/pbosetti/adas.utils](https://github.com/pbosetti/adas.utils)
 :::
+
+## One last thing...
+
+Presentations made in [Quarto](https://quarto.org){target="_blank"} can be interactive too...
+
+```{webr-r}
+#| fig-width: 8
+#| fig-height: 4
+fp_design_matrix(2) %>%
+  fp_add_scale(A=c(7,18), B=c(10, 20)) %>%
+  fp_augment_center(rep=1) %>%
+  fp_augment_axial(rep=1)
+```
+
+## One last thing...
+
+Presentations made in [Quarto](https://quarto.org){target="_blank"} can be interactive too...
+
+```{webr-r}
+#| fig-width: 8
+#| fig-height: 4
+filtration %>% lm(Y~A*B*C*D, data=.) %>%
+  pareto_chart() +
+  theme(axis.text.x = element_text(angle=45,hjust=1))
+```
 
 # {{< bi person-raised-hand >}} Question time
 
