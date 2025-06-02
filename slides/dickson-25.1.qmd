@@ -1,6 +1,6 @@
 ---
 title: "Spatial Sampling in R"
-author: "Maria Michela Dockson"
+author: "Maria Michela Dickson"
 date: 2025-05-30
 date-format: "rtug::25.1, YYYY-MM-DD"
 institute: University of Padua
