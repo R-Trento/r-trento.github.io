@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Paolo Bosetti">
-<meta name="dcterms.date" content="2025-02-05">
+<meta name="dcterms.date" content="2025-06-02">
 
-<title>Slides and Presentations – RTUG</title>
+<title>RTUG::25.2 meeting – RTUG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,30 +25,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8cb3c4bc63a3cc4e45d5d97aea54ecef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8cb3c4bc63a3cc4e45d5d97aea54ecef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,35 +74,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-posts .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-posts'] = new List('listing-posts', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
 <script type="text/plain" cookie-consent="tracking">
@@ -133,38 +102,9 @@ cookieconsent.run({
 </script> 
   
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Slides and Presentations – RTUG">
-<meta property="og:description" content="R-Trento Users Group">
+<meta property="og:title" content="RTUG::25.2 meeting – RTUG">
+<meta property="og:description" content="The RTUG::25.2 meeting is planned for late Fall 2025. Details will be announced here and on our Meetup page.">
 <meta property="og:site_name" content="RTUG">
 </head>
 
@@ -175,10 +115,10 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/logo.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">RTUG</span>
     </a>
   </div>
@@ -189,33 +129,33 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./meetings.html"> 
+    <a class="nav-link" href="../meetings.html"> 
 <span class="menu-text">Meetings</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./members.html"> 
+    <a class="nav-link" href="../members.html"> 
 <span class="menu-text">Members</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bibliography.html"> 
+    <a class="nav-link" href="../bibliography.html"> 
 <span class="menu-text">Bibliography</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./slides.html" aria-current="page"> 
+    <a class="nav-link" href="../slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> <i class="bi bi-info-circle" role="img">
+    <a class="nav-link" href="../about.html"> <i class="bi bi-info-circle" role="img">
 </i> 
 <span class="menu-text"> </span></a>
   </li>  
@@ -244,16 +184,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#presentations" id="toc-presentations" class="nav-link active" data-scroll-target="#presentations"><i class="bi-file-earmark-easel " style="" role="img" aria-hidden="true"></i> Presentations</a></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics"><i class="bi-patch-question " style="" role="img" aria-hidden="true"></i> Topics</a></li>
+  <li><a href="#venue" id="toc-venue" class="nav-link" data-scroll-target="#venue"><i class="bi-building " style="" role="img" aria-hidden="true"></i> Venue</a></li>
+  <li><a href="#details-on-topics" id="toc-details-on-topics" class="nav-link" data-scroll-target="#details-on-topics"><i class="bi-zoom-in " style="" role="img" aria-hidden="true"></i> Details on Topics</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YmlvaW5mb3JtYXRpY3M=">bioinformatics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50cm8=">intro <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWVldGluZw==">meeting <span class="quarto-category-count">(5)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnR1ZyUzQSUzQTI1LjE=">rtug::25.1 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="c2FtcGxpbmc=">sampling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVhY2hpbmc=">teaching <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Slides and Presentations</h1>
+<h1 class="title">RTUG::25.2 meeting</h1>
 </div>
 
 
@@ -270,7 +212,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 5, 2025</p>
+      <p class="date">June 2, 2025</p>
     </div>
   </div>
   
@@ -283,226 +225,44 @@ window.Quarto = {
     
   </div>
   
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    The <code>RTUG::25.2</code> meeting is planned for late Fall 2025. Details will be announced here and on our Meetup page.
+  </div>
+</div>
 
 
 </header>
 
 
-<p>This is a selection of the most interesting presentations contributed by our members.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to contribute
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you want to contribute, head on to the <a href="https://github.com/r-trento/r-trento.github.io" target="_blank">GitHub repo</a>, fork it, add a new post in the <code>slides</code> folder, tag it with the <code>slides</code> category and make a pull request. Use the <code>slides/_template.qmd</code> file to start.</p>
-</div>
-</div>
-<section id="presentations" class="level1">
-<h1><i class="bi-file-earmark-easel " style="" role="img" aria-hidden="true"></i> Presentations</h1>
-<div id="listing-posts" class="quarto-listing quarto-listing-container-grid">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-posts-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-posts'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="c2FtcGxpbmclMkNtZWV0aW5nJTJDcnR1ZyUzQSUzQTI1LjE=" data-listing-date-sort="1748563200000" data-listing-file-modified-sort="1748857545582" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<a href="./slides/dickson-25.1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="presentations">
-Spatial Sampling in R
-</h5>
-<div class="listing-reading-time card-text text-muted">1 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2FtcGxpbmc='); return false;">sampling</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVldGluZw=='); return false;">meeting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cnR1ZyUzQSUzQTI1LjE='); return false;">rtug::25.1</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with…</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Maria Michela Dickson
-</div>
-<div class="listing-date">
-May 30, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="aW50cm8lMkNtZWV0aW5nJTJDcnR1ZyUzQSUzQTI1LjE=" data-listing-date-sort="1748563200000" data-listing-file-modified-sort="1748857545589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213">
-<a href="./slides/rtug-25.1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-rtug::25.1
-</h5>
-<div class="listing-reading-time card-text text-muted">2 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50cm8='); return false;">intro</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVldGluZw=='); return false;">meeting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cnR1ZyUzQSUzQTI1LjE='); return false;">rtug::25.1</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Introductory slides to the first RTUG meeting, code <code>rtug::25.1</code>, held on May 30, 2025.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Paolo Bosetti
-</div>
-<div class="listing-date">
-May 30, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="cGFja2FnZXMlMkNtZWV0aW5nJTJDcnR1ZyUzQSUzQTI1LjE=" data-listing-date-sort="1748563200000" data-listing-file-modified-sort="1748857545484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1617">
-<a href="./slides/bosetti-25.1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The <code>adas.utils</code> package
-</h5>
-<div class="listing-reading-time card-text text-muted">9 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVldGluZw=='); return false;">meeting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cnR1ZyUzQSUzQTI1LjE='); return false;">rtug::25.1</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>We are here presenting the <code>adas.utils</code> package, a collection of functions for the design of experiments, the tidy way.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Paolo Bosetti
-</div>
-<div class="listing-date">
-May 30, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="dGVhY2hpbmclMkNtZWV0aW5nJTJDcnR1ZyUzQSUzQTI1LjE=" data-listing-date-sort="1748563200000" data-listing-file-modified-sort="1748857545589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<a href="./slides/micciolo-espa-25.1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The R Package <code>rmf</code> in Teaching
-</h5>
-<div class="listing-reading-time card-text text-muted">1 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVhY2hpbmc='); return false;">teaching</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVldGluZw=='); return false;">meeting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cnR1ZyUzQSUzQTI1LjE='); return false;">rtug::25.1</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>We introduce the <code>rmf</code> package, which contains a series of functions developed primarily for use in educational settings, particularly in basic university statistics…</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rocco Micciolo, Giuseppe Espa
-</div>
-<div class="listing-date">
-May 30, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="YmlvaW5mb3JtYXRpY3MlMkNtZWV0aW5nJTJDcnR1ZyUzQSUzQTI1LjE=" data-listing-date-sort="1748563200000" data-listing-file-modified-sort="1748857545574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
-<a href="./slides/ciani-25.1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Bioinformatics and R: Visualizing Genomic Data
-</h5>
-<div class="listing-reading-time card-text text-muted">1 min</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvaW5mb3JtYXRpY3M='); return false;">bioinformatics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVldGluZw=='); return false;">meeting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cnR1ZyUzQSUzQTI1LjE='); return false;">rtug::25.1</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>An overview of the use of R in bioinformatics, particularly its use for visualizing genomic data.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Yari Ciani
-</div>
-<div class="listing-date">
-May 30, 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" class="img-fluid" style="margin-right: 20px;"></a> <strong>Unless otherwise specified, all content is licensed as BY-NC-SA 4.0.</strong></p>
-</div>
-</div>
-
+<p>It is now time for planning the next R-Trento Users Meeting, code <code>RTUG::25.2</code>. The event is loosely planned for late Fall 2025. Content and location are still to be defined, but we are looking for contributions from the community, i.e.&nbsp;<strong>YOU!</strong></p>
+<p>Details will be announced here and on our <a href="https://www.meetup.com/r-trento-users-group/">Meetup page</a>.</p>
+<p>Remember: RTUG meetings are open to contributions, in the form of:</p>
+<ul>
+<li>presentations</li>
+<li>workshops or hands-on sessions</li>
+<li>discussions on open topics</li>
+<li>request for help or collaboration on specific issues</li>
+</ul>
+<p>Drop your proposals to <script type="text/javascript">
+<!--
+h='&#x75;&#110;&#x69;&#116;&#110;&#46;&#x69;&#116;';a='&#64;';n='&#114;&#116;&#x75;&#x67;&#46;&#x67;&#114;&#x6f;&#x75;&#112;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>rtug.group at unitn dot it</noscript>.</p>
+<hr>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics"><i class="bi-patch-question " style="" role="img" aria-hidden="true"></i> Topics</h2>
+<p>To be defined.</p>
+</section>
+<section id="venue" class="level2">
+<h2 class="anchored" data-anchor-id="venue"><i class="bi-building " style="" role="img" aria-hidden="true"></i> Venue</h2>
+<p>To be defined.</p>
+</section>
+<section id="details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="details-on-topics"><i class="bi-zoom-in " style="" role="img" aria-hidden="true"></i> Details on Topics</h2>
+<p>To be defined.</p>
 
 
 </section>
@@ -914,7 +674,7 @@ Note
 <p>RTUG — R-Trento Users Group</p>
 </div>   
     <div class="nav-footer-center">
-<p><a href="./about.html">Licenses, Logo, and website info</a></p>
+<p><a href="../about.html">Licenses, Logo, and website info</a></p>
 <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
@@ -925,7 +685,7 @@ Note
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml">
+    <a class="nav-link" href="../index.xml">
       <i class="bi bi-rss" role="img" aria-label="Quarto Blog RSS">
 </i> 
     </a>

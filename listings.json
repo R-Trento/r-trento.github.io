@@ -21,12 +21,14 @@
   {
     "listing": "/meetings.html",
     "items": [
+      "/meetings/25.2-meeting.html",
       "/meetings/25.1-meeting.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/meetings/25.2-meeting.html",
       "/meetings/25.1-meeting.html",
       "/posts/008-tukey-vs-student/tukey-vs-student.html",
       "/posts/007-r-consortium/index.html",

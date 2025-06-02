@@ -10,7 +10,51 @@
 <atom:link href="https://rtug.unitn.it/meetings.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Wed, 05 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>RTUG::25.2 meeting</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://rtug.unitn.it/meetings/25.2-meeting.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>It is now time for planning the next R-Trento Users Meeting, code <code>RTUG::25.2</code>. The event is loosely planned for late Fall 2025. Content and location are still to be defined, but we are looking for contributions from the community, i.e.&nbsp;<strong>YOU!</strong></p>
+<p>Details will be announced here and on our <a href="https://www.meetup.com/r-trento-users-group/">Meetup page</a>.</p>
+<p>Remember: RTUG meetings are open to contributions, in the form of:</p>
+<ul>
+<li>presentations</li>
+<li>workshops or hands-on sessions</li>
+<li>discussions on open topics</li>
+<li>request for help or collaboration on specific issues</li>
+</ul>
+<p>Drop your proposals to <script type="text/javascript">
+<!--
+h='&#x75;&#110;&#x69;&#116;&#110;&#46;&#x69;&#116;';a='&#64;';n='&#114;&#116;&#x75;&#x67;&#46;&#x67;&#114;&#x6f;&#x75;&#112;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>rtug.group at unitn dot it</noscript>.</p>
+<hr>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+<p>To be defined.</p>
+</section>
+<section id="venue" class="level2">
+<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<p>To be defined.</p>
+</section>
+<section id="details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<p>To be defined.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://rtug.unitn.it/meetings/25.2-meeting.html</guid>
+  <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>First RTUG meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
