@@ -1,0 +1,36 @@
+---
+title: "RTUG::25.2 meeting"
+author: "Paolo Bosetti"
+format: html
+date: "06/02/2025"
+date-modified: today
+draft: false
+abstract: "The `RTUG::25.2` meeting is planned for late Fall 2025. Details will be announced here and on our Meetup page."
+---
+
+It is now time for planning the next R-Trento Users Meeting, code `RTUG::25.2`. The event is loosely planned for late Fall 2025. Content and location are still to be defined, but we are looking for contributions from the community, i.e. **YOU!**
+
+Details will be announced here and on our [Meetup page](https://www.meetup.com/r-trento-users-group/).
+
+Remember: RTUG meetings are open to contributions, in the form of:
+
+* presentations
+* workshops or hands-on sessions
+* discussions on open topics
+* request for help or collaboration on specific issues
+
+Drop your proposals to <rtug.group@unitn.it>.
+
+---
+
+## {{< bi patch-question >}} Topics
+
+To be defined.
+
+## {{< bi building >}} Venue
+
+To be defined.
+
+## {{< bi zoom-in >}} Details on Topics
+
+To be defined.
