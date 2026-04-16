@@ -8,9 +8,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+  <meta name="generator" content="quarto-1.9.30">
 
   <meta name="author" content="Paolo Bosetti">
   <title>RTUG – rtug::25.1</title>
@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,7 +35,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a5dae8357010f1b99b26106ba09c65d4.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f19e61daf9493e3e1e5fe4cb9a0896a5.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
   <script type="text/plain" cookie-consent="tracking">
@@ -178,13 +181,13 @@ Paolo Bosetti
 
   <p class="date">rtug::25.1, 2025-05-30</p>
 </section>
-<section id="rtug25.1" class="title-slide slide level1 center">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c626920696e666f2d636972636c653e7d7d-rtug25.1" class="title-slide slide level1 center">
 <h1><i class="bi-info-circle " style="" role="img" aria-hidden="true"></i> rtug::25.1</h1>
 <p>R-Trento Users Group, year 2025, meeting 1 (that’s it)</p>
 </section>
 
 <section>
-<section id="todays-agenda" class="title-slide slide level1 center">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206c6973742d7461736b203e7d7d-todays-agenda" class="title-slide slide level1 center">
 <h1><i class="bi-list-task " style="" role="img" aria-hidden="true"></i> Today’s agenda</h1>
 <ul>
 <li>Welcome (that’s me)</li>
@@ -193,7 +196,7 @@ Paolo Bosetti
 <li>Refreshments and networking!</li>
 </ul>
 </section>
-<section id="rtug-what-is-it" class="slide level2">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207175657374696f6e2d636972636c65203e7d7d-rtug-what-is-it" class="slide level2">
 <h2><i class="bi-question-circle " style="" role="img" aria-hidden="true"></i> RTUG: what is it?</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -214,7 +217,7 @@ Paolo Bosetti
 </div>
 </div></div>
 </section>
-<section id="seminars" class="slide level2">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d656173656c203e7d7d-seminars" class="slide level2">
 <h2><i class="bi-file-easel " style="" role="img" aria-hidden="true"></i> Seminars</h2>
 <ol type="1">
 <li><del>Welcome and Introduction to the R-Trento Users Group</del> (<em>P. Bosetti</em>)</li>
@@ -224,7 +227,7 @@ Paolo Bosetti
 <li>Spatial Sampling in R (<em>M. M. Dickson</em>) <a href="../slides/dickson-25.1.pdf"><i class="bi-file-earmark-easel " style="" role="img" aria-hidden="true"></i></a></li>
 </ol>
 </section></section>
-<section id="refreshments-and-networking" class="title-slide slide level1 center">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20626920637570203e7d7d-refreshments-and-networking" class="title-slide slide level1 center">
 <h1><i class="bi-cup " style="" role="img" aria-hidden="true"></i> Refreshments and networking!</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -428,7 +431,7 @@ Paolo Bosetti
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -502,13 +505,14 @@ Paolo Bosetti
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

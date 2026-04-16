@@ -8,9 +8,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+  <meta name="generator" content="quarto-1.9.30">
 
   <meta name="author" content="Paolo Bosetti">
   <title>RTUG – The adas.utils package</title>
@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -98,7 +101,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-a5dae8357010f1b99b26106ba09c65d4.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f19e61daf9493e3e1e5fe4cb9a0896a5.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
   <script type="text/plain" cookie-consent="tracking">
@@ -2082,7 +2085,7 @@ Paolo Bosetti
   <p class="date">rtug::25.1, 2025-05-30</p>
 </section>
 <section>
-<section id="contents" class="title-slide slide level1 center">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206c6973742d7461736b203e7d7d-contents" class="title-slide slide level1 center">
 <h1><i class="bi-list-task " style="" role="img" aria-hidden="true"></i> Contents</h1>
 <div class="columns">
 <div class="column" style="width:66%;">
@@ -2151,7 +2154,7 @@ Paolo Bosetti
 <p>Create a non-replicated <strong>full factorial plan</strong> with three factors, two levels each (<span class="math inline">\(2^3\)</span>):</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Make the grid</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Make the grid</span></span>
 <span id="cb1-2"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
 <span id="cb1-3"><a></a>  <span class="at">A=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
 <span id="cb1-4"><a></a>  <span class="at">B=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), </span>
@@ -2162,18 +2165,18 @@ Paolo Bosetti
 <span id="cb1-9"><a></a><span class="co"># Add orders</span></span>
 <span id="cb1-10"><a></a>fp<span class="sc">$</span>StdOrder <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fp)</span>
 <span id="cb1-11"><a></a>fp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(fp))</span>
-<span id="cb1-12"><a></a>fp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a></a>fp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-1 -1 -1 -1 NA        1        5
+1 -1 -1 -1 NA        1        2
 2  1 -1 -1 NA        2        1
-3 -1  1 -1 NA        3        7
-4  1  1 -1 NA        4        3
-5 -1 -1  1 NA        5        2
-6  1 -1  1 NA        6        6
-7 -1  1  1 NA        7        8
-8  1  1  1 NA        8        4</code></pre>
+3 -1  1 -1 NA        3        4
+4  1  1 -1 NA        4        8
+5 -1 -1  1 NA        5        7
+6  1 -1  1 NA        6        3
+7 -1  1  1 NA        7        5
+8  1  1  1 NA        8        6</code></pre>
 </div>
 </div></div>
 <p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
@@ -2187,19 +2190,19 @@ Paolo Bosetti
 <p>We remove rows where the sign of <span class="math inline">\(C\)</span> is the product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Extract the fraction where C=AB</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Extract the fraction where C=AB</span></span>
 <span id="cb3-2"><a></a>ffp <span class="ot">&lt;-</span> fp[fp<span class="sc">$</span>C<span class="sc">==</span>fp<span class="sc">$</span>A<span class="sc">*</span>fp<span class="sc">$</span>B, ]</span>
 <span id="cb3-3"><a></a></span>
 <span id="cb3-4"><a></a><span class="co"># Add orders</span></span>
 <span id="cb3-5"><a></a>fp<span class="sc">$</span>StdOrder <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(fp)</span>
 <span id="cb3-6"><a></a>ffp<span class="sc">$</span>RunOrder <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">nrow</span>(ffp))</span>
-<span id="cb3-7"><a></a>ffp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a></a>ffp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-2  1 -1 -1 NA        2        4
+2  1 -1 -1 NA        2        1
 3 -1  1 -1 NA        3        3
-5 -1 -1  1 NA        5        1
+5 -1 -1  1 NA        5        4
 8  1  1  1 NA        8        2</code></pre>
 </div>
 </div></div>
@@ -2235,7 +2238,7 @@ Paolo Bosetti
 <p>As an example for a <span class="math inline">\(2^4\)</span> FP, the Daniel’s Q-Q plot of the effects can be obtained by:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># build a full linear model:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># build a full linear model:</span></span>
 <span id="cb5-2"><a></a>fp.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>fp)</span>
 <span id="cb5-3"><a></a></span>
 <span id="cb5-4"><a></a><span class="co"># prepare plot data:</span></span>
@@ -2248,7 +2251,7 @@ Paolo Bosetti
 <span id="cb5-11"><a></a></span>
 <span id="cb5-12"><a></a><span class="co"># add names:</span></span>
 <span id="cb5-13"><a></a><span class="fu">text</span>(qq<span class="sc">$</span>x, qq<span class="sc">$</span>y, </span>
-<span id="cb5-14"><a></a>     <span class="at">labels=</span><span class="fu">names</span>(effects))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a></a>     <span class="at">labels=</span><span class="fu">names</span>(effects))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2288,15 +2291,15 @@ Paolo Bosetti
 <p>The package is available on CRAN:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"adas.utils"</span>)</span>
-<span id="cb6-2"><a></a><span class="fu">library</span>(adas.utils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"adas.utils"</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">library</span>(adas.utils)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
 <p>Don’t forget to look at the vignette:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">vignette</span>(<span class="st">"adas.utils"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">vignette</span>(<span class="st">"adas.utils"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 
 </div></div>
@@ -2306,10 +2309,10 @@ Paolo Bosetti
 <p>Base <span class="math inline">\(2\cdot 2^2\)</span> FP:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(adas.utils)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(adas.utils)</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a><span class="co"># Two factors, two replicas</span></span>
-<span id="cb8-4"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2322,14 +2325,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        8 (1)        1    -1    -1 NA   
-2        2        2 a          1     1    -1 NA   
-3        3        6 b          1    -1     1 NA   
-4        4        5 ab         1     1     1 NA   
-5        5        4 (1)        2    -1    -1 NA   
-6        6        1 a          2     1    -1 NA   
-7        7        7 b          2    -1     1 NA   
-8        8        3 ab         2     1     1 NA   </code></pre>
+1        1        6 (1)        1    -1    -1 NA   
+2        2        1 a          1     1    -1 NA   
+3        3        2 b          1    -1     1 NA   
+4        4        8 ab         1     1     1 NA   
+5        5        7 (1)        2    -1    -1 NA   
+6        6        3 a          2     1    -1 NA   
+7        7        5 b          2    -1     1 NA   
+8        8        4 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -2354,13 +2357,13 @@ Paolo Bosetti
 <p>We can tie factors with corresponding parameter names:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
 <span id="cb10-2"><a></a><span class="co"># with names</span></span>
 <span id="cb10-3"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb10-4"><a></a>  <span class="fu">fp_add_names</span>(</span>
 <span id="cb10-5"><a></a>    <span class="at">A=</span><span class="st">"Temperature"</span>,</span>
 <span id="cb10-6"><a></a>    <span class="at">B=</span><span class="st">"Pressure"</span></span>
-<span id="cb10-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2376,14 +2379,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        1 (1)        1    -1    -1 NA   
-2        2        5 a          1     1    -1 NA   
+1        1        3 (1)        1    -1    -1 NA   
+2        2        1 a          1     1    -1 NA   
 3        3        7 b          1    -1     1 NA   
 4        4        4 ab         1     1     1 NA   
-5        5        6 (1)        2    -1    -1 NA   
-6        6        8 a          2     1    -1 NA   
-7        7        2 b          2    -1     1 NA   
-8        8        3 ab         2     1     1 NA   </code></pre>
+5        5        8 (1)        2    -1    -1 NA   
+6        6        6 a          2     1    -1 NA   
+7        7        5 b          2    -1     1 NA   
+8        8        2 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 
@@ -2395,7 +2398,7 @@ Paolo Bosetti
 <p>Actual scales can be added for reference:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Two factors, two replicas, </span></span>
 <span id="cb12-2"><a></a><span class="co"># with names and scales</span></span>
 <span id="cb12-3"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>, <span class="at">rep=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-4"><a></a>  <span class="fu">fp_add_names</span>(</span>
@@ -2408,7 +2411,7 @@ Paolo Bosetti
 <span id="cb12-11"><a></a>    <span class="at">suffix=</span><span class="st">".scaled"</span></span>
 <span id="cb12-12"><a></a>  ) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-13"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
-<span id="cb12-14"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-14"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder, RunOrder))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2447,7 +2450,7 @@ Paolo Bosetti
 <p>We can augment a <span class="math inline">\(2^n\)</span> FP with a <strong>central treatment</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Three factors, scaled</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Three factors, scaled</span></span>
 <span id="cb14-2"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a></a>  <span class="fu">fp_add_scale</span>(<span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-4"><a></a>  </span>
@@ -2455,7 +2458,7 @@ Paolo Bosetti
 <span id="cb14-6"><a></a>  <span class="fu">fp_augment_center</span>(<span class="at">rep=</span><span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb14-7"><a></a>  </span>
 <span id="cb14-8"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
-<span id="cb14-9"><a></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-9"><a></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2471,12 +2474,12 @@ Paolo Bosetti
 # A tibble: 6 × 9
   StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        7        2 bc         1    -1     1     1    20 NA   
-2        8        7 abc        1     1     1     1    20 NA   
-3        9       12 center     1     0     0     0    15 NA   
-4       10       10 center     2     0     0     0    15 NA   
+1        7        5 bc         1    -1     1     1    20 NA   
+2        8        3 abc        1     1     1     1    20 NA   
+3        9        9 center     1     0     0     0    15 NA   
+4       10       12 center     2     0     0     0    15 NA   
 5       11       11 center     3     0     0     0    15 NA   
-6       12        9 center     4     0     0     0    15 NA   </code></pre>
+6       12       10 center     4     0     0     0    15 NA   </code></pre>
 </div>
 </div></div>
 </section>
@@ -2485,7 +2488,7 @@ Paolo Bosetti
 <p>And then further augment the FP with <strong>axial treatments</strong> to get a rotatable <em>Composite Centered Design</em> (CCD):</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a></a>  <span class="fu">fp_add_scale</span>(</span>
 <span id="cb16-3"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">18</span>), </span>
 <span id="cb16-4"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
@@ -2494,7 +2497,7 @@ Paolo Bosetti
 <span id="cb16-7"><a></a>  <span class="fu">fp_augment_axial</span>(<span class="at">rep=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb16-8"><a></a>  <span class="co"># Just to keep output compact 😎 </span></span>
 <span id="cb16-9"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>RunOrder) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-10"><a></a>  <span class="fu">as_tibble</span>() <span class="co"># don't print header</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-10"><a></a>  <span class="fu">as_tibble</span>() <span class="co"># don't print header</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 8
@@ -2533,7 +2536,7 @@ Paolo Bosetti
 <p>And then further augment the FP with <strong>axial treatments</strong> to get a rotatable <em>Centered Composite Design</em> (CCD):</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a></a>  <span class="fu">fp_add_scale</span>(</span>
 <span id="cb18-3"><a></a>    <span class="at">A=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">18</span>), </span>
 <span id="cb18-4"><a></a>    <span class="at">B=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
@@ -2545,7 +2548,7 @@ Paolo Bosetti
 <span id="cb18-10"><a></a>    <span class="fu">aes</span>(<span class="at">x0=</span><span class="dv">0</span>, <span class="at">y0=</span><span class="dv">0</span>, <span class="at">r=</span><span class="fu">sqrt</span>(<span class="dv">2</span>)), </span>
 <span id="cb18-11"><a></a>    <span class="at">lty=</span><span class="dv">2</span>, <span class="at">color=</span><span class="fu">gray</span>(<span class="fl">0.5</span>)) <span class="sc">+</span></span>
 <span id="cb18-12"><a></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>.treat)) <span class="sc">+</span></span>
-<span id="cb18-13"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)<span class="sc">*</span><span class="dv">6</span><span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-13"><a></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>)<span class="sc">*</span><span class="dv">6</span><span class="sc">/</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2574,10 +2577,10 @@ Paolo Bosetti
 <p>We can fraction a <span class="math inline">\(2^n\)</span> FP by adding subsequent <strong>defining relationships</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">fp_design_matrix</span>(<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-2"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-3"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D<span class="sc">*</span>E) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder,RunOrder,.rep))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-4"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(StdOrder,RunOrder,.rep))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2606,14 +2609,14 @@ Paolo Bosetti
 <p>You can save the design matrix as CSV file (for collecting experimental data), then load it back <strong>into</strong> the original FP object (thus preserving attributes):</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">fp_design_matrix</span>(<span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>fp <span class="ot">&lt;-</span> <span class="fu">fp_design_matrix</span>(<span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb21-2"><a></a>  <span class="fu">fp_fraction</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
 <span id="cb21-3"><a></a>  <span class="fu">fp_write_csv</span>(<span class="st">"fp.csv"</span>)</span>
 <span id="cb21-4"><a></a></span>
 <span id="cb21-5"><a></a>fp <span class="ot">&lt;-</span> fp <span class="sc">%&gt;%</span> </span>
 <span id="cb21-6"><a></a>  <span class="fu">fp_read_csv</span>(<span class="st">"fp.csv"</span>)</span>
 <span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a>fp <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>RunOrder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-8"><a></a>fp <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>RunOrder)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> Factorial Plan Design Matrix
@@ -2655,7 +2658,7 @@ Paolo Bosetti
 <p>Fractioning a FP creates <strong>alias structures</strong>: the <code>adas.utils</code> package can help you with that too:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>Defining relationships:
@@ -2685,8 +2688,8 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <p>The alias matrix can be plotted directly, via <code>ggplot2</code>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">fp_alias_matrix</span>(<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C, <span class="sc">~</span>B<span class="sc">*</span>C<span class="sc">*</span>D) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">plot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2715,10 +2718,10 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <p>The <code>adas.utils</code> package can also help you with <strong>Daniel’s method</strong>: the <code>daniel_plot_hn()</code> function takes a linear model object and returns a half-normal plot of the effects:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
 <span id="cb26-2"><a></a>  <span class="fu">lm</span>(Y<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
 <span id="cb26-3"><a></a>  <span class="fu">daniel_plot_hn</span>(<span class="at">nlab=</span><span class="dv">6</span>,<span class="at">repel=</span><span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Rev. model: Y~A*C+A*D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4"><a></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Rev. model: Y~A*C+A*D"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2734,13 +2737,13 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <p>It’s easy to build a Pareto chart of the effects in a linear model:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>filtration <span class="sc">%&gt;%</span> </span>
 <span id="cb27-2"><a></a>  <span class="fu">lm</span>(Y<span class="sc">~</span>A<span class="sc">*</span>B<span class="sc">*</span>C<span class="sc">*</span>D, <span class="at">data=</span>.) <span class="sc">%&gt;%</span></span>
 <span id="cb27-3"><a></a>  <span class="fu">pareto_chart</span>() <span class="sc">+</span></span>
 <span id="cb27-4"><a></a>  <span class="fu">theme</span>(</span>
 <span id="cb27-5"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
 <span id="cb27-6"><a></a>    <span class="at">axis.text.x =</span> </span>
-<span id="cb27-7"><a></a>      <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-7"><a></a>      <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2756,10 +2759,10 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <p>Tukey’s test <code>TukeyHSD()</code> is not compatible with <code>ggplot2</code>, and its output pretty limited (and not very appealing). The <code>adas.utils</code> package provides a <code>ggTukey()</code> function that can be used to plot the results of Tukey’s test, <strong>also with multiple groups</strong>:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>battery <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>battery <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a></a>  <span class="fu">ggTukey</span>(Response<span class="sc">~</span>Material, </span>
 <span id="cb28-3"><a></a>          <span class="at">splt=</span><span class="sc">~</span>Temperature, </span>
-<span id="cb28-4"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a></a>          <span class="at">conf.level=</span><span class="fl">0.99</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -2820,7 +2823,7 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section></section>
-<section id="question-time" class="title-slide slide level1 center">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20626920706572736f6e2d7261697365642d68616e64203e7d7d-question-time" class="title-slide slide level1 center">
 <h1><i class="bi-person-raised-hand " style="" role="img" aria-hidden="true"></i> Question time</h1>
 
 
@@ -3017,7 +3020,7 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -3129,13 +3132,14 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Members posts – RTUG</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -41,10 +44,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8cb3c4bc63a3cc4e45d5d97aea54ecef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
@@ -133,7 +140,7 @@ cookieconsent.run({
   
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -146,7 +153,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -164,7 +171,7 @@ window.Quarto = {
 
 <meta property="og:title" content="Members posts – RTUG">
 <meta property="og:description" content="R-Trento Users Group">
-<meta property="og:image" content="https://rtug.unitn.it/posts/008-tukey-vs-student/image.png">
+<meta property="og:image" content="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png">
 <meta property="og:site_name" content="RTUG">
 <meta property="og:image:height" content="1024">
 <meta property="og:image:width" content="1024">
@@ -178,7 +185,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/logo.png" alt="" class="navbar-logo">
+    <img src="./images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="./images/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">RTUG</span>
@@ -246,10 +254,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#posts" id="toc-posts" class="nav-link active" data-scroll-target="#posts"><i class="bi-file-post " style="" role="img" aria-hidden="true"></i> Posts</a></li>
+  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d706f7374203e7d7d-posts" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d706f7374203e7d7d-posts" class="nav-link active" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d706f7374203e7d7d-posts"><i class="bi-file-post " style="" role="img" aria-hidden="true"></i> Posts</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YWJhc2U=">database <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlsZXN0b25l">milestone <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9uZ29EQg==">MongoDB <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -273,7 +281,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 2, 2025</p>
+      <p class="date-modified">April 16, 2026</p>
     </div>
   </div>
     
@@ -291,14 +299,14 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How to contribute
+<span class="screen-reader-only">Tip</span>How to contribute
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>If you want to contribute, head on to the <a href="https://github.com/r-trento/r-trento.github.io" target="_blank">GitHub repo</a>, fork it, add a new post in the <code>posts</code> folder, tag it with the <code>post</code> category and make a pull request.</p>
 </div>
 </div>
-<section id="posts" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d706f7374203e7d7d-posts" class="level1">
 <h1><i class="bi-file-post " style="" role="img" aria-hidden="true"></i> Posts</h1>
 <div id="listing-posts" class="quarto-listing quarto-listing-container-grid">
 <div class="listing-actions-group">
@@ -327,14 +335,52 @@ How to contribute
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744243200000" data-listing-file-modified-sort="1748857545482" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
+<div class="g-col-1" data-index="0" data-categories="cG9zdCUyQ2RhdGFiYXNlJTJDTW9uZ29EQiUyQ3BhY2thZ2VzJTJDbWlsZXN0b25l" data-listing-date-sort="1776290400000" data-listing-file-modified-sort="1776359591632" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="588">
+<a href="./posts/011-MongoTidy/mongotidy.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/011-MongoTidy/mongotidy.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692066696c652d706f7374203e7d7d-posts">
+MongoTidy: a tidy interface to MongoDB
+</h5>
+<div class="listing-reading-time card-text text-muted">3 min</div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cG9zdA=='); return false;">post</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YWJhc2U='); return false;">database</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TW9uZ29EQg=='); return false;">MongoDB</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWlsZXN0b25l'); return false;">milestone</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>MongoTidy is a new R package that provides a tidy interface to MongoDB, a popular NoSQL database. With MongoTidy, you can easily connect to your MongoDB database, query data…</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Paolo Bosetti
+</div>
+<div class="listing-date">
+Apr 16, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744236000000" data-listing-file-modified-sort="1747039722771" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
 <a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./posts/008-tukey-vs-student/image.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="posts">
+<h5 class="no-anchor card-title listing-title">
 Tukey vs.&nbsp;Student
 </h5>
 <div class="listing-reading-time card-text text-muted">5 min</div>
@@ -363,7 +409,7 @@ Apr 10, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743033600000" data-listing-file-modified-sort="1748857545467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
+<div class="g-col-1" data-index="2" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743030000000" data-listing-file-modified-sort="1743148362373" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
 <a href="./posts/006-tukey/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -395,7 +441,7 @@ Mar 27, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739145600000" data-listing-file-modified-sort="1748857545459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
+<div class="g-col-1" data-index="3" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739142000000" data-listing-file-modified-sort="1750158043673" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
 <a href="./posts/004-adas.utils/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -431,7 +477,7 @@ Feb 10, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739059200000" data-listing-file-modified-sort="1748857545452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
+<div class="g-col-1" data-index="4" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739055600000" data-listing-file-modified-sort="1740575231955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
 <a href="./posts/003-logscale/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -542,13 +588,14 @@ Note
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

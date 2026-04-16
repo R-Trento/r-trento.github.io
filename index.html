@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>R-Trento Users Group (RTUG) – RTUG</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -40,10 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8cb3c4bc63a3cc4e45d5d97aea54ecef.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5fe93b950e560cb6ccda6b52880bb137.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
@@ -160,7 +167,7 @@ cookieconsent.run({
   
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -173,7 +180,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -205,7 +212,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/logo.png" alt="" class="navbar-logo">
+    <img src="./images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="./images/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">RTUG</span>
@@ -273,13 +281,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works"><i class="bi-gear " style="" role="img" aria-hidden="true"></i> How it works</a></li>
-  <li><a href="#next-meeting" id="toc-next-meeting" class="nav-link" data-scroll-target="#next-meeting"><i class="bi-people " style="" role="img" aria-hidden="true"></i> Next meeting</a></li>
-  <li><a href="#news" id="toc-news" class="nav-link" data-scroll-target="#news"><i class="bi-megaphone " style="" role="img" aria-hidden="true"></i> News</a></li>
-  <li><a href="#on-bluesky" id="toc-on-bluesky" class="nav-link" data-scroll-target="#on-bluesky"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> On Bluesky</a></li>
+  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692067656172203e7d7d-how-it-works" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692067656172203e7d7d-how-it-works" class="nav-link active" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692067656172203e7d7d-how-it-works"><i class="bi-gear " style="" role="img" aria-hidden="true"></i> How it works</a></li>
+  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070656f706c65203e7d7d-next-meeting" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070656f706c65203e7d7d-next-meeting" class="nav-link" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070656f706c65203e7d7d-next-meeting"><i class="bi-people " style="" role="img" aria-hidden="true"></i> Next meeting</a></li>
+  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news" class="nav-link" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news"><i class="bi-megaphone " style="" role="img" aria-hidden="true"></i> News</a></li>
+  <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320626c7565736b79203e7d7d-on-bluesky" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320626c7565736b79203e7d7d-on-bluesky" class="nav-link" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320626c7565736b79203e7d7d-on-bluesky"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> On Bluesky</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="YW5ub3VuY2VtZW50">announcement <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlsZXN0b25l">milestone <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlRVRw==">RTUG <span class="quarto-category-count">(4)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2Vic2l0ZQ==">website <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="YW5ub3VuY2VtZW50">announcement <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YWJhc2U=">database <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlsZXN0b25l">milestone <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TW9uZ29EQg==">MongoDB <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlRVRw==">RTUG <span class="quarto-category-count">(4)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2Vic2l0ZQ==">website <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -310,14 +318,14 @@ window.Quarto = {
 <div id="first-column" class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
 <p>The R-Trento Users Group is a shared space for academics, scholars, students, and professionals living and working in Trentino and surrounding areas that are passionate about the <a href="https://r-project.org">R language</a> and its suite of tools.</p>
 <p><em>The suggested pronunciation for RTUG is “Ar-TOO(g)”, akin to the Italian “Artù”.</em></p>
-<section id="mission" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20626920726f636b65742d74616b656f6666203e7d7d-mission" class="level1">
 <h1><i class="bi-rocket-takeoff " style="" role="img" aria-hidden="true"></i> Mission</h1>
 <p>RTUG mission is to spread the use or R language and tools within academia, industry and public administration.</p>
 </section>
 </div>
 </div>
 </div>
-<section id="how-it-works" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692067656172203e7d7d-how-it-works" class="level1">
 <h1><i class="bi-gear " style="" role="img" aria-hidden="true"></i> How it works</h1>
 <p>RTUG is a <strong>community-driven group</strong>. We organize meetings, workshops, and seminars, we share news, and we publish posts and tutorials. We are open to collaborations and partnerships with other groups and organizations.</p>
 <p><strong>Meetings</strong> are the core of our activities: we plan to have two to three meetings per year, with a mix of invited speakers, tutorials, and member presentations. Meetings can be a great opportunity for networking, learning, sharing experiences, and possibly finding new collaborations or solution providers.</p>
@@ -333,7 +341,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#11
 <li><strong>Volunteer and advertise your R skills</strong>: <a href="posts.html">contribute a post</a></li>
 </ul>
 </section>
-<section id="next-meeting" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070656f706c65203e7d7d-next-meeting" class="level1">
 <h1><i class="bi-people " style="" role="img" aria-hidden="true"></i> Next meeting</h1>
 <div id="listing-meetings" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
@@ -360,7 +368,7 @@ Description
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1748822400000" data-listing-file-modified-sort="1748857545406" data-listing-date-modified-sort="1748822400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="99" data-listing-title-sort="RTUG::25.2 meeting" data-listing-filename-sort="25.2-meeting.qmd">
+<tr data-index="0" data-listing-date-sort="1748815200000" data-listing-file-modified-sort="1748857487213" data-listing-date-modified-sort="1776290400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="99" data-listing-title-sort="RTUG::25.2 meeting" data-listing-filename-sort="25.2-meeting.qmd">
 <td>
 <span class="listing-date">Jun 2, 2025</span>
 </td>
@@ -381,7 +389,7 @@ Description
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="news" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news" class="level1">
 <h1><i class="bi-megaphone " style="" role="img" aria-hidden="true"></i> News</h1>
 <div id="listing-news" class="quarto-listing quarto-listing-container-default">
 <div class="listing-actions-group">
@@ -410,14 +418,53 @@ Description
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744243200000" data-listing-file-modified-sort="1748857545482" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
+<div class="quarto-post image-right" data-index="0" data-categories="cG9zdCUyQ2RhdGFiYXNlJTJDTW9uZ29EQiUyQ3BhY2thZ2VzJTJDbWlsZXN0b25l" data-listing-date-sort="1776290400000" data-listing-file-modified-sort="1776359591632" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="588">
+<div class="thumbnail"><a href="./posts/011-MongoTidy/mongotidy.html" class="no-external">
+
+<img loading="lazy" src="./posts/011-MongoTidy/mongotidy.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news">
+<a href="./posts/011-MongoTidy/mongotidy.html" class="no-external">MongoTidy: a tidy interface to MongoDB</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cG9zdA=='); return false;">post</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YWJhc2U='); return false;">database</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TW9uZ29EQg=='); return false;">MongoDB</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWlsZXN0b25l'); return false;">milestone</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/011-MongoTidy/mongotidy.html" class="no-external">
+<p>MongoTidy is a new R package that provides a tidy interface to MongoDB, a popular NoSQL database. With MongoTidy, you can easily connect to your MongoDB database, query data using a tidy syntax, and manipulate the results using tidyverse tools. In this post, we will explore the features of MongoTidy and how it can simplify your workflow when working with MongoDB in R.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/011-MongoTidy/mongotidy.html" class="no-external">
+<div class="listing-date">
+Apr 16, 2026
+</div>
+<div class="listing-author">
+Paolo Bosetti
+</div>
+<div class="listing-reading-time">3 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744236000000" data-listing-file-modified-sort="1747039722771" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
 <div class="thumbnail"><a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">
 
 <img loading="lazy" src="./posts/008-tukey-vs-student/image.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
-<h3 class="no-anchor listing-title" data-anchor-id="news">
+<h3 class="no-anchor listing-title">
 <a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">Tukey vs.&nbsp;Student</a>
 </h3>
 <div class="listing-categories">
@@ -447,7 +494,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1743120000000" data-listing-file-modified-sort="1748857545467" data-listing-date-modified-sort="1748822400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
+<div class="quarto-post image-right" data-index="2" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1743116400000" data-listing-file-modified-sort="1743173416043" data-listing-date-modified-sort="1776290400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
 <div class="thumbnail"><a href="./posts/007-r-consortium/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/007-r-consortium/milestone.jpg" class="thumbnail-image">
@@ -482,7 +529,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743033600000" data-listing-file-modified-sort="1748857545467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743030000000" data-listing-file-modified-sort="1743148362373" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
 <div class="thumbnail"><a href="./posts/006-tukey/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/006-tukey/Tukey.jpg" class="thumbnail-image">
@@ -515,7 +562,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="UlRVRyUyQ21pbGVzdG9uZQ==" data-listing-date-sort="1740528000000" data-listing-file-modified-sort="1748857545466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
+<div class="quarto-post image-right" data-index="4" data-categories="UlRVRyUyQ21pbGVzdG9uZQ==" data-listing-date-sort="1740524400000" data-listing-file-modified-sort="1741090609349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
 <div class="thumbnail"><a href="./posts/005-domain/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/005-domain/image.jpg" class="thumbnail-image">
@@ -548,7 +595,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739145600000" data-listing-file-modified-sort="1748857545459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
+<div class="quarto-post image-right" data-index="5" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739142000000" data-listing-file-modified-sort="1750158043673" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
 <div class="thumbnail"><a href="./posts/004-adas.utils/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/004-adas.utils/hypercube.jpg" class="thumbnail-image">
@@ -585,7 +632,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739059200000" data-listing-file-modified-sort="1748857545452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
+<div class="quarto-post image-right" data-index="6" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739055600000" data-listing-file-modified-sort="1740575231955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
 <div class="thumbnail"><a href="./posts/003-logscale/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/003-logscale/steps.jpg" class="thumbnail-image">
@@ -624,7 +671,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="UlRVRyUyQ3dlYnNpdGUlMkNhbm5vdW5jZW1lbnQ=" data-listing-date-sort="1738800000000" data-listing-file-modified-sort="1748857545452" data-listing-date-modified-sort="1748822400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<div class="quarto-post image-right" data-index="7" data-categories="UlRVRyUyQ3dlYnNpdGUlMkNhbm5vdW5jZW1lbnQ=" data-listing-date-sort="1738796400000" data-listing-file-modified-sort="1739026710393" data-listing-date-modified-sort="1776290400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
 <div class="thumbnail"><a href="./posts/002-logo/index.html" class="no-external">
 
 <img loading="lazy" src="./images/logo.png" class="thumbnail-image">
@@ -659,7 +706,7 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1738713600000" data-listing-file-modified-sort="1748857545445" data-listing-date-modified-sort="1748822400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="37">
+<div class="quarto-post image-right" data-index="8" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1738710000000" data-listing-file-modified-sort="1743757829909" data-listing-date-modified-sort="1776290400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="37">
 <div class="thumbnail"><a href="./posts/001-opening/001-opening.html" class="no-external">
 
 <img loading="lazy" src="./posts/001-opening/milestone.jpg" class="thumbnail-image">
@@ -698,7 +745,7 @@ Paolo Bosetti
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="on-bluesky" class="level1">
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320626c7565736b79203e7d7d-on-bluesky" class="level1">
 <h1><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> On Bluesky</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -706,7 +753,7 @@ Paolo Bosetti
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Last post:
+<span class="screen-reader-only">Note</span>Last post:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -802,13 +849,14 @@ Last post:
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

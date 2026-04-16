@@ -9,8 +9,525 @@
 <link>https://rtug.unitn.it/</link>
 <atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 02 Jun 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.30</generator>
+<lastBuildDate>Wed, 15 Apr 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>MongoTidy: a tidy interface to MongoDB</title>
+  <dc:creator>Paolo Bosetti</dc:creator>
+  <link>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>opts_chunk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set</span>(</span>
+<span id="cb1-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fig.align =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"center"</span>,</span>
+<span id="cb1-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># This for default device</span></span>
+<span id="cb1-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">out.width =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"16cm"</span>,</span>
+<span id="cb1-5">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># This two for high quality charts:</span></span>
+<span id="cb1-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fig.dim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span></span>
+<span id="cb1-7">)</span></code></pre></div></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png" class="img-fluid figure-img"></p>
+<figcaption>MongoTidy tentative logo</figcaption>
+</figure>
+</div>
+</div></div><section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>We are developing <code>MongoTidy</code>, an R package that provides a disciplined, lazy <code>dplyr</code>-style interface for MongoDB aggregation pipelines.</p>
+<p><code>MongoTidy</code> sits between raw <code>mongolite</code> usage and broader compatibility layers. Compared with writing aggregation JSON by hand, it lets you express supported queries with tidy verbs and inspect the generated pipeline before execution. Compared with approaches that try to hide MongoDB behind table-like semantics, it stays explicit about scope, keeps translation conservative, and fails clearly when a verb or expression is outside the supported subset.</p>
+<p>The practical advantages are:</p>
+<ul>
+<li>lazy query construction until <code>collect()</code>,</li>
+<li>direct translation to MongoDB aggregation stages,</li>
+<li><code>show_query()</code> for inspectable pipeline output,</li>
+<li>explicit unsupported-feature errors instead of silent fallback,</li>
+<li>a smaller, testable semantic surface aligned with MongoDB rather than SQL.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post is a quick introduction to <code>MongoTidy</code> with examples. The package is still in early development, so expect some rough edges and missing features. The API is not yet stable, and the documentation is still a work in progress. If you’re interested in trying it out or contributing, check out the <a href="https://github.com/mongodb/MongoTidy">GitHub repository</a>.</p>
+</div>
+</div>
+</section>
+<section id="usage-examples" class="level1">
+<h1>Usage examples</h1>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>Since MongoTidy is still in early development, it’s not yet available on CRAN. You can install it from GitHub using the <code>pak</code> package:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pak"</span>)</span>
+<span id="cb2-2">pak<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pak</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pbosetti/MongoTidy"</span>)</span></code></pre></div></div>
+</div>
+</section>
+<section id="loading-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
+<p>Suppose there is a running MongoDB instance on <code>localhost</code> with default port and no authentication. The code below loads <code>dplyr::starwars</code> into a collection named <code>starwars</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(mongolite)</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(MongoTidy)</span>
+<span id="cb3-4"></span>
+<span id="cb3-5">starwars_collection <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> mongolite<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mongo</span>(</span>
+<span id="cb3-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collection =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"starwars"</span>,</span>
+<span id="cb3-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">db =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mongotidy"</span></span>
+<span id="cb3-8">)</span>
+<span id="cb3-9"></span>
+<span id="cb3-10">starwars_collection<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">drop</span>()</span>
+<span id="cb3-11">starwars_collection<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">insert</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>starwars)</span>
+<span id="cb3-12"></span>
+<span id="cb3-13">starwars_tbl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tbl_mongo</span>(</span>
+<span id="cb3-14">  starwars_collection,</span>
+<span id="cb3-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">schema =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>starwars)</span>
+<span id="cb3-16">)</span></code></pre></div></div>
+</div>
+<p>Once the collection is loaded, <code>starwars_tbl</code> is the lazy table used in the examples below.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(MongoTidy)</span>
+<span id="cb4-3"></span>
+<span id="cb4-4">starwars_collection <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> mongolite<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mongo</span>(</span>
+<span id="cb4-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collection =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"starwars"</span>,</span>
+<span id="cb4-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">db =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mongotidy"</span></span>
+<span id="cb4-7">)</span>
+<span id="cb4-8"></span>
+<span id="cb4-9">starwars_tbl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tbl_mongo</span>(</span>
+<span id="cb4-10">  starwars_collection,</span>
+<span id="cb4-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">schema =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>starwars)</span>
+<span id="cb4-12">)</span></code></pre></div></div>
+</div>
+</section>
+<section id="basic-inspection" class="level2">
+<h2 class="anchored" data-anchor-id="basic-inspection">Basic inspection</h2>
+<p>Inspect the known schema and the generated pipeline without executing the query.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">schema_fields</span>(starwars_tbl)</span>
+<span id="cb5-2"></span>
+<span id="cb5-3">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Human"</span>, height <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">180</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(name, height, mass) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_query</span>()</span></code></pre></div></div>
+</div>
+</section>
+</section>
+<section id="supported-verbs" class="level1">
+<h1>Supported verbs</h1>
+<p>Each subsection below shows one of the supported <code>dplyr</code>-like verbs on the <code>starwars</code> collection.</p>
+<section id="filter" class="level2">
+<h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Droid"</span>, height <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="select" class="level2">
+<h2 class="anchored" data-anchor-id="select"><code>select()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(name, species, homeworld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="rename" class="level2">
+<h2 class="anchored" data-anchor-id="rename"><code>rename()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">character_name =</span> name, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">planet =</span> homeworld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="mutate" class="level2">
+<h2 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height_m =</span> height <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bmi_like =</span> mass <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (height_m <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> height_m)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(name, height, mass, height_m, bmi_like) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="transmute" class="level2">
+<h2 class="anchored" data-anchor-id="transmute"><code>transmute()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">transmute</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> name, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height_m =</span> height <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="arrange" class="level2">
+<h2 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(height), name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(name, height) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb11-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="group_by" class="level2">
+<h2 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(species)</span></code></pre></div></div>
+</div>
+</section>
+<section id="summarise" class="level2">
+<h2 class="anchored" data-anchor-id="summarise"><code>summarise()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(species) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb13-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(),</span>
+<span id="cb13-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">avg_height =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(height),</span>
+<span id="cb13-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_mass =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(mass)</span>
+<span id="cb13-7">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb13-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(n)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb13-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="slice_head" class="level2">
+<h2 class="anchored" data-anchor-id="slice_head"><code>slice_head()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(name, species) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+<section id="head" class="level2">
+<h2 class="anchored" data-anchor-id="head"><code>head()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(starwars_tbl, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">collect</span>()</span></code></pre></div></div>
+</div>
+</section>
+</section>
+<section id="notes" class="level1">
+<h1>Notes</h1>
+<p>The examples above stay within the currently supported subset:</p>
+<ul>
+<li>explicit field references,</li>
+<li>scalar expressions for <code>mutate()</code> and <code>transmute()</code>,</li>
+<li>conservative grouped summaries,</li>
+<li>no joins, window functions, or automatic client-side fallback.</li>
+</ul>
+<p>If a query falls outside that subset, <code>MongoTidy</code> is designed to fail explicitly rather than guess or silently change execution semantics.</p>
+<div class="thatsall">
+<p>That’s all, folks!</p>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>post</category>
+  <category>database</category>
+  <category>MongoDB</category>
+  <category>packages</category>
+  <category>milestone</category>
+  <guid>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</guid>
+  <pubDate>Wed, 15 Apr 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>RTUG::25.2 meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
@@ -36,16 +553,16 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 // -->
 </script><noscript>rtug.group at unitn dot it</noscript>.</p>
 <hr>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics"> Topics</h2>
 <p>To be defined.</p>
 </section>
-<section id="venue" class="level2">
-<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue"> Venue</h2>
 <p>To be defined.</p>
 </section>
-<section id="details-on-topics" class="level2">
-<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics"> Details on Topics</h2>
 <p>To be defined.</p>
 
 
@@ -53,7 +570,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.2-meeting.html</guid>
-  <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Jun 2025 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Tukey vs. Student</title>
@@ -70,18 +587,18 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Packages that we need
+<span class="screen-reader-only">Note</span>Packages that we need
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>In this example, we are using the packages <code>tidyverse</code> and <code>adas.utils</code> version 1.1.4 (see <a href="https://github.com/pbosetti/adas.utils" class="uri">https://github.com/pbosetti/adas.utils</a>)</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(adas.utils)</span></code></pre></div>
+font-style: inherit;">library</span>(adas.utils)</span></code></pre></div></div>
 </div>
 </div>
 </div>
@@ -91,7 +608,7 @@ font-style: inherit;">library</span>(adas.utils)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="the-dataset">The dataset</h2>
 <p>Let us compare the result of a Tukey’s test with a repeated Student’s T-test on all combinations. We consider the <code>cotton</code> dataset, which is included in the <code>adas.utils</code> package from version 1.1.4. The dataset contains the tensile strength of mixed cotton-synthetic yarns with different cotton content:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">cotton <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">cotton <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb2-2">  <span class="fu" style="color: #4758AB;
@@ -109,7 +626,7 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb2-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -124,7 +641,7 @@ font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
 <p>Now we want to compare all the possibile combinations of treatmentswith a set of pairwise T-tests.</p>
 <p>First, we create the list of pairwise combinations, sorting each pair in descending order, as it is done by the <code>TukeyHSD</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">lvl <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">lvl <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -159,7 +676,7 @@ font-style: inherit;">as.list</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">glimpse</span>()</span></code></pre></div>
+font-style: inherit;">glimpse</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 10
  $ : chr [1:2] "20" "15"
@@ -176,7 +693,7 @@ font-style: inherit;">glimpse</span>()</span></code></pre></div>
 </div>
 <p>Now, for each pair we do a T-test on the corresponding <code>cotton</code> data-frame subset, and accumulate into a new tibble the values of interest. We get the <code>df</code> table that is analogous to the <code>TukeyHSD</code> output:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> lvl <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -267,7 +784,7 @@ font-style: inherit;">%&gt;%</span> knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">kable</span>()</span></code></pre></div>
+font-style: inherit;">kable</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -356,7 +873,7 @@ font-style: inherit;">kable</span>()</span></code></pre></div>
 </div>
 <p>To be compared with Tukey’s values:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">ttdf <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">ttdf <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -404,7 +921,7 @@ font-style: inherit;">%&gt;%</span> knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">kable</span>()</span></code></pre></div>
+font-style: inherit;">kable</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -493,7 +1010,7 @@ font-style: inherit;">kable</span>()</span></code></pre></div>
 </div>
 <p>Now let’s join both tables and make a common plot:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">compared <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">compared <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -550,7 +1067,7 @@ font-style: inherit;">%&gt;%</span> knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">kable</span>()</span></code></pre></div>
+font-style: inherit;">kable</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -729,7 +1246,7 @@ font-style: inherit;">kable</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">compared <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">compared <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
 <span id="cb8-2">  <span class="fu" style="color: #4758AB;
@@ -796,7 +1313,7 @@ font-style: inherit;">"Pair"</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"95% pairwise confidence level"</span>)</span></code></pre></div>
+font-style: inherit;">"95% pairwise confidence level"</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -814,7 +1331,7 @@ font-style: inherit;">"95% pairwise confidence level"</span>)</span></code></pre
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The Family-Wise Error Rate
+<span class="screen-reader-only">Important</span>The Family-Wise Error Rate
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -824,20 +1341,20 @@ The Family-Wise Error Rate
 <p>Let’s see why. If we set a confidence level of 0.95, it means that the probability of not making a Type I error on <strong>a single</strong> T-test is 0.95.</p>
 <p>For 3 independent tests, the probability of no Type I error at all (in any of the tests) is: <img src="https://latex.codecogs.com/png.latex?%0A0.95%5E3%20%5Capprox%200.857%0A"> So the chance of making at least one Type I error is: <img src="https://latex.codecogs.com/png.latex?%0A1%20-%200.95%5E3%20%5Capprox%200.143%20%5Cquad%20%5Ctext%7B(14.3%5C%25)%7D%0A"> That’s almost triple the risk you thought you were accepting! Furthermore, this risk increases exponentially with the number of comparisons. Given <img src="https://latex.codecogs.com/png.latex?n"> elements, the number of possible combinations of <img src="https://latex.codecogs.com/png.latex?k"> elements is given by the <strong>binomial coefficient</strong>: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbinom%7Bn%7D%7Bk%7D%20=%20%5Cfrac%7Bn!%7D%7Bk!(n-k)!%7D%0A"> In R, the latter is provided by the <code>choose(n, k)</code> function:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">choose</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>)</span></code></pre></div>
+font-style: inherit;">2</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
 <p>so, with increasing number of classes to be compared, this is what happens to the probability of committing <strong>at least one</strong> Type-I error:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="dv" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -921,7 +1438,7 @@ font-style: inherit;">"number of classes"</span>, </span>
 background-color: null;
 font-style: inherit;">y=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"probability of Type-I Error"</span>)</span></code></pre></div>
+font-style: inherit;">"probability of Type-I Error"</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -932,7 +1449,7 @@ font-style: inherit;">"probability of Type-I Error"</span>)</span></code></pre><
 </div>
 <p>And what happens if we change the confidence level? Let’s see, by creating a parametric plot similar to the ast one, but with different confidence levels. First we factor the last <code>reduce</code> opration into a function, <code>FWER</code>, that takes the confidence level as an argument. The function returns a tibble with the number of classes and the corresponding probability of Type I error.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">FWER <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">FWER <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -974,11 +1491,11 @@ background-color: null;
 font-style: inherit;">.init=</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tibble</span>()) </span>
-<span id="cb12-8">}</span></code></pre></div>
+<span id="cb12-8">}</span></code></pre></div></div>
 </div>
 <p>Then we apply the <code>FWER</code> function to a set of confidence levels, and join the results into a single tibble via the usual <code>reduce</code>, and finally, we plot the results:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">cl <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">cl <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1111,7 +1628,7 @@ font-style: inherit;">"probability of Type-I Error"</span>, </span>
 background-color: null;
 font-style: inherit;">color=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Conf. level"</span>)</span></code></pre></div>
+font-style: inherit;">"Conf. level"</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1134,7 +1651,7 @@ font-style: inherit;">"Conf. level"</span>)</span></code></pre></div>
   <category>inference</category>
   <category>Tukey</category>
   <guid>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</guid>
-  <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 09 Apr 2025 22:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/008-tukey-vs-student/image.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -1167,7 +1684,7 @@ font-style: inherit;">"Conf. level"</span>)</span></code></pre></div>
   <category>milestone</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/007-r-consortium/</guid>
-  <pubDate>Fri, 28 Mar 2025 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 27 Mar 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/007-r-consortium/milestone.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1192,7 +1709,7 @@ font-style: inherit;">"Conf. level"</span>)</span></code></pre></div>
 </div>
 </div></div><p>The standard <code>stats::TukeyHSD</code> function returns an S3 object that has the <code>print</code> and <code>plot</code> methods. The result of the <code>plot</code> method, though, is honestly not really appealing. Let’s see how it works, by loading a dataset and running a Tukey’s test on it. We load an online dataset by using the <code>adas.utils::examples_url</code> function<sup>1</sup>, and we begin with a simple boxplot of the data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -1228,7 +1745,7 @@ background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb1-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">glimpse</span>()</span></code></pre></div>
+font-style: inherit;">glimpse</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 25
 Columns: 3
@@ -1236,7 +1753,7 @@ $ Cotton      &lt;fct&gt; 15, 15, 15, 15, 15, 20, 20, 20, 20, 20, 25, 25, 25, 25
 $ Observation &lt;int&gt; 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5…
 $ Strength    &lt;int&gt; 7, 7, 15, 11, 9, 12, 17, 12, 18, 18, 14, 18, 18, 19, 19, 1…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">data <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb3-2">  <span class="fu" style="color: #4758AB;
@@ -1254,7 +1771,7 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb3-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1265,7 +1782,7 @@ font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
 </div>
 <p>The Tukey’s test is built by using the <code>aov</code> function and the <code>TukeyHSD</code> function. The results are then plotted by the <code>plot</code> method of the <code>TukeyHSD</code> object:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb4-2">  <span class="fu" style="color: #4758AB;
@@ -1284,7 +1801,7 @@ background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb4-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plot</span>()</span></code></pre></div>
+font-style: inherit;">plot</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1299,7 +1816,7 @@ font-style: inherit;">plot</span>()</span></code></pre></div>
 <h1>Enter <code>ggTukey</code></h1>
 <p>Labels are much more readable in the <code>ggTukey</code> plot. Let’s see how it works:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">data <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb5-2">  <span class="fu" style="color: #4758AB;
@@ -1318,7 +1835,7 @@ background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb5-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ggTukey</span>()</span></code></pre></div>
+font-style: inherit;">ggTukey</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1329,14 +1846,14 @@ font-style: inherit;">ggTukey</span>()</span></code></pre></div>
 </div>
 <p>There’s actually more: you can also pass to <code>ggTukey</code> the data frame and the formula to be used in the <code>aov</code> model:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">data <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb6-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggTukey</span>(Strength <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span> Cotton)</span></code></pre></div>
+font-style: inherit;">~</span> Cotton)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1348,7 +1865,7 @@ font-style: inherit;">~</span> Cotton)</span></code></pre></div>
 <p>Which is nicely more tidiverse-y and readable, isn’t it?</p>
 <p>Now let’s look at a different, slightly more complex dataset:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">data <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">data <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1381,7 +1898,7 @@ background-color: null;
 font-style: inherit;">%&gt;%</span></span>
 <span id="cb7-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">glimpse</span>()</span></code></pre></div>
+font-style: inherit;">glimpse</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 36
 Columns: 6
@@ -1395,7 +1912,7 @@ $ Response      &lt;int&gt; 130, 34, 20, 150, 136, 25, 138, 174, 96, 155, 40, 70
 </div>
 <p>This one shows discharge test results for batteries with different dielectric materials (qualitative factors) and operating at different temperatures (quantitative factors). So inn this case we have two predictors. We want to create a set of Tukey’s tests for each level of <code>Material</code>. We need to pass <code>ggTukey</code> with the formula <code>Response ~ Temperature</code> (for the <code>aov</code> model) and the <code>splt</code> argument with another, one side formula that specifies the grouping factor: <code>~Material</code>. In a terse and clear way, we can write:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">data <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb9-2">  <span class="fu" style="color: #4758AB;
@@ -1406,7 +1923,7 @@ font-style: inherit;">~</span> Temperature, <span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">splt=</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">~</span>Material)</span></code></pre></div>
+font-style: inherit;">~</span>Material)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1433,7 +1950,7 @@ font-style: inherit;">~</span>Material)</span></code></pre></div>
   <category>R</category>
   <category>packages</category>
   <guid>https://rtug.unitn.it/posts/006-tukey/</guid>
-  <pubDate>Thu, 27 Mar 2025 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 26 Mar 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1475,7 +1992,7 @@ Note
   <category>RTUG</category>
   <category>milestone</category>
   <guid>https://rtug.unitn.it/posts/005-domain/</guid>
-  <pubDate>Wed, 26 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 25 Feb 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/005-domain/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1503,7 +2020,7 @@ Note
 </div>
 </div></div><p>You can create a full factorial plan with the <code>fp_design_matrix</code> function, passing the number of factors:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">(dm <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">(dm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1551,39 +2068,39 @@ background-color: null;
 font-style: inherit;">#&gt; # A tibble: 8 × 7</span></span>
 <span id="cb1-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B       Y</span></span>
+font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B      Y</span></span>
 <span id="cb1-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span id="cb1-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        5 (1)        1    -1    -1 -0.439 </span></span>
+font-style: inherit;">#&gt; 1        1        2 (1)        1    -1    -1  1.04 </span></span>
 <span id="cb1-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        8 a          1     1    -1  0.0520</span></span>
+font-style: inherit;">#&gt; 2        2        3 a          1     1    -1  0.547</span></span>
 <span id="cb1-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        2 b          1    -1     1  0.101 </span></span>
+font-style: inherit;">#&gt; 3        3        6 b          1    -1     1 -0.620</span></span>
 <span id="cb1-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        6 ab         1     1     1  0.571 </span></span>
+font-style: inherit;">#&gt; 4        4        7 ab         1     1     1 -0.421</span></span>
 <span id="cb1-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        4 (1)        2    -1    -1 -1.23  </span></span>
+font-style: inherit;">#&gt; 5        5        1 (1)        2    -1    -1 -0.462</span></span>
 <span id="cb1-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        3 a          2     1    -1 -2.40  </span></span>
+font-style: inherit;">#&gt; 6        6        4 a          2     1    -1 -0.641</span></span>
 <span id="cb1-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        7 b          2    -1     1  1.13  </span></span>
+font-style: inherit;">#&gt; 7        7        5 b          2    -1     1  0.976</span></span>
 <span id="cb1-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        1 ab         2     1     1  0.0625</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8        8        8 ab         2     1     1 -0.883</span></span></code></pre></div></div>
 </div>
 <p>In this case, the factors are the first <code>n</code> capital letters.</p>
 <p>If you want different factor names, use a right-side-only formula combining all the named factors with <code>*</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1622,22 +2139,22 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;       &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb2-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        4 (1)             1    -1     -1 NA   </span></span>
+font-style: inherit;">#&gt; 1        1        1 (1)             1    -1     -1 NA   </span></span>
 <span id="cb2-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        1 speed           1     1     -1 NA   </span></span>
+font-style: inherit;">#&gt; 2        2        3 speed           1     1     -1 NA   </span></span>
 <span id="cb2-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt; 3        3        2 weight          1    -1      1 NA   </span></span>
 <span id="cb2-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        3 speedweight     1     1      1 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 4        4        4 speedweight     1     1      1 NA</span></span></code></pre></div></div>
 </div>
 <p><strong>NOTE</strong>, though, that using custom factor names is discouraged, and won’t work as expected if you are using the functions for dealing with <strong>fractional factorial plans</strong>, especially for the analysis of alias structures among factors.</p>
 <p>The yield column <code>Y</code> must then be completed according to the randomized <code>RunOrder</code> column.</p>
 <p>It is possible to add custom scales to the factors, and also add names to the factors:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1700,53 +2217,56 @@ background-color: null;
 font-style: inherit;">#&gt;  Type:  plain </span></span>
 <span id="cb3-10"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  Scaled factors:</span></span>
+font-style: inherit;">#&gt;  Scales suffix: .scaled</span></span>
 <span id="cb3-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;     A: [20, 25]</span></span>
+font-style: inherit;">#&gt;  Scaled factors:</span></span>
 <span id="cb3-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;     B: [75, 125]</span></span>
+font-style: inherit;">#&gt;     A.scaled: [20, 25]</span></span>
 <span id="cb3-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  Factor names:</span></span>
+font-style: inherit;">#&gt;     B.scaled: [75, 125]</span></span>
 <span id="cb3-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;     A: Temperature</span></span>
+font-style: inherit;">#&gt;  Factor names:</span></span>
 <span id="cb3-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;     B: Pressure</span></span>
+font-style: inherit;">#&gt;     A: Temperature</span></span>
 <span id="cb3-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  </span></span>
+font-style: inherit;">#&gt;     B: Pressure</span></span>
 <span id="cb3-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; # A tibble: 4 × 9</span></span>
+font-style: inherit;">#&gt;  </span></span>
 <span id="cb3-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B A.scaled B.scaled Y    </span></span>
+font-style: inherit;">#&gt; # A tibble: 4 × 9</span></span>
 <span id="cb3-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;</span></span>
+font-style: inherit;">#&gt;   StdOrder RunOrder .treat  .rep     A     B A.scaled B.scaled Y    </span></span>
 <span id="cb3-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        1 (1)        1    -1    -1       20       75 NA   </span></span>
+font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb3-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        4 a          1     1    -1       25       75 NA   </span></span>
+font-style: inherit;">#&gt; 1        1        3 (1)        1    -1    -1       20       75 NA   </span></span>
 <span id="cb3-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        2 b          1    -1     1       20      125 NA   </span></span>
+font-style: inherit;">#&gt; 2        2        4 a          1     1    -1       25       75 NA   </span></span>
 <span id="cb3-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        3 ab         1     1     1       25      125 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 3        3        1 b          1    -1     1       20      125 NA   </span></span>
+<span id="cb3-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; 4        4        2 ab         1     1     1       25      125 NA</span></span></code></pre></div></div>
 </div>
 </section>
 <section id="custom-levels" class="level2">
 <h2 class="anchored" data-anchor-id="custom-levels">Custom levels</h2>
 <p>If you want a <img src="https://latex.codecogs.com/png.latex?k%5En"> factorial plan with custom levels, pass the <code>levels</code> argument. In this case, though, the <code>.treat</code> column with Yates’ treatment codes would be <code>NA</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1793,38 +2313,38 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt;</span></span>
 <span id="cb4-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        8     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt; 1        1        3     1    -1    -1 NA   </span></span>
 <span id="cb4-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        5     1     0    -1 NA   </span></span>
+font-style: inherit;">#&gt; 2        2        6     1     0    -1 NA   </span></span>
 <span id="cb4-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        3     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt; 3        3        1     1     1    -1 NA   </span></span>
 <span id="cb4-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        6     1    -1     0 NA   </span></span>
+font-style: inherit;">#&gt; 4        4        8     1    -1     0 NA   </span></span>
 <span id="cb4-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        7     1     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 5        5        2     1     0     0 NA   </span></span>
 <span id="cb4-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        1     1     1     0 NA   </span></span>
+font-style: inherit;">#&gt; 6        6        9     1     1     0 NA   </span></span>
 <span id="cb4-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        9     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt; 7        7        4     1    -1     1 NA   </span></span>
 <span id="cb4-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        2     1     0     1 NA   </span></span>
+font-style: inherit;">#&gt; 8        8        5     1     0     1 NA   </span></span>
 <span id="cb4-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 9        9        4     1     1     1 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 9        9        7     1     1     1 NA</span></span></code></pre></div></div>
 </div>
 </section>
 <section id="augment-a-plan" class="level2">
 <h2 class="anchored" data-anchor-id="augment-a-plan">Augment a plan</h2>
 <p>You can augment a plan by adding a central point, typically repeated:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1870,44 +2390,44 @@ background-color: null;
 font-style: inherit;">#&gt;       &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;</span></span>
 <span id="cb5-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  1        1        5 (1)        1    -1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  1        1        1 (1)        1    -1    -1    -1 NA   </span></span>
 <span id="cb5-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  2        2        8 a          1     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  2        2        5 a          1     1    -1    -1 NA   </span></span>
 <span id="cb5-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  3        3        6 b          1    -1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  3        3        3 b          1    -1     1    -1 NA   </span></span>
 <span id="cb5-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  4        4        4 ab         1     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  4        4        7 ab         1     1     1    -1 NA   </span></span>
 <span id="cb5-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  5        5        2 c          1    -1    -1     1 NA   </span></span>
 <span id="cb5-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  6        6        1 ac         1     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt;  6        6        4 ac         1     1    -1     1 NA   </span></span>
 <span id="cb5-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  7        7        7 bc         1    -1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  7        7        8 bc         1    -1     1     1 NA   </span></span>
 <span id="cb5-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  8        8        3 abc        1     1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  8        8        6 abc        1     1     1     1 NA   </span></span>
 <span id="cb5-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  9        9       11 center     1     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt;  9        9       12 center     1     0     0     0 NA   </span></span>
 <span id="cb5-22"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 10       10       10 center     2     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 10       10       11 center     2     0     0     0 NA   </span></span>
 <span id="cb5-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 11       11       12 center     3     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 11       11       10 center     3     0     0     0 NA   </span></span>
 <span id="cb5-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 12       12        9 center     4     0     0     0 NA</span></span></code></pre></div>
+font-style: inherit;">#&gt; 12       12        9 center     4     0     0     0 NA</span></span></code></pre></div></div>
 </div>
 <p>Then if needed (because the analysis show low p-value for the quadratic term) you can add axial points to get a central composite design:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -1953,7 +2473,7 @@ background-color: null;
 font-style: inherit;">#&gt;  </span></span>
 <span id="cb6-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; # A tibble: 35 × 8</span></span>
+font-style: inherit;">#&gt; # A tibble: 23 × 8</span></span>
 <span id="cb6-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;    StdOrder RunOrder .treat  .rep     A     B     C Y    </span></span>
@@ -1965,22 +2485,22 @@ background-color: null;
 font-style: inherit;">#&gt;  1        1        7 (1)        1    -1    -1    -1 NA   </span></span>
 <span id="cb6-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  2        2        3 a          1     1    -1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  2        2        8 a          1     1    -1    -1 NA   </span></span>
 <span id="cb6-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  3        3        2 b          1    -1     1    -1 NA   </span></span>
 <span id="cb6-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  4        4        1 ab         1     1     1    -1 NA   </span></span>
+font-style: inherit;">#&gt;  4        4        6 ab         1     1     1    -1 NA   </span></span>
 <span id="cb6-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  5        5        5 c          1    -1    -1     1 NA   </span></span>
 <span id="cb6-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  6        6        6 ac         1     1    -1     1 NA   </span></span>
+font-style: inherit;">#&gt;  6        6        1 ac         1     1    -1     1 NA   </span></span>
 <span id="cb6-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt;  7        7        8 bc         1    -1     1     1 NA   </span></span>
+font-style: inherit;">#&gt;  7        7        3 bc         1    -1     1     1 NA   </span></span>
 <span id="cb6-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#&gt;  8        8        4 abc        1     1     1     1 NA   </span></span>
@@ -1989,17 +2509,17 @@ background-color: null;
 font-style: inherit;">#&gt;  9        9        9 center     1     0     0     0 NA   </span></span>
 <span id="cb6-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 10       10       11 center     2     0     0     0 NA   </span></span>
+font-style: inherit;">#&gt; 10       10       10 center     2     0     0     0 NA   </span></span>
 <span id="cb6-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; # ℹ 25 more rows</span></span></code></pre></div>
+font-style: inherit;">#&gt; # ℹ 13 more rows</span></span></code></pre></div></div>
 </div>
 <section id="full-example" class="level3">
 <h3 class="anchored" data-anchor-id="full-example">Full example</h3>
 <p>Let’s see a full example using the <code>ccd_experiment_yield</code> dataset, which contains a list of the yield data for three sequential experiments in a central composite design.</p>
 <p>First, we design a <img src="https://latex.codecogs.com/png.latex?3%5Ccdot%202%5E2"> factorial plan, with two factors and two levels each:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">fp <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">fp <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2009,21 +2529,21 @@ font-style: inherit;">2</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">rep=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
+font-style: inherit;">3</span>)</span></code></pre></div></div>
 </div>
 <p>Ideally, we would then sort the table according to the <code>RunOrder</code> column, and complete the <code>Y</code> column with the yield data from the the real experiments. For the sake of documenting the package, we can directly add the yield data from the <code>base</code> field of the <code>ccd_experiment_yield</code> dataset (which holds values <strong>in standard Yates’ order</strong>):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">fp<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">fp<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>Y <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> ccd_experiment_yield<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>base</span></code></pre></div>
+font-style: inherit;">$</span>base</span></code></pre></div></div>
 </div>
 <p>Now we can fit a linear model to the data, and check the p-values of the ANOVA:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">fp <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">fp <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb9-2">  <span class="fu" style="color: #4758AB;
@@ -2069,11 +2589,11 @@ background-color: null;
 font-style: inherit;">#&gt; ---</span></span>
 <span id="cb9-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div></div>
 </div>
 <p>All factors and their interactions are significant. But is the two-level model enough? Let’s check for the quadratic terms, by augmenting the plan with a central point repeated 4 times. We also load the <code>center</code> field from the <code>ccd_experiment_yield</code> dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">fpc <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">fpc <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> fp <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2098,11 +2618,11 @@ font-style: inherit;">"center"</span>] <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> ccd_experiment_yield<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>center</span></code></pre></div>
+font-style: inherit;">$</span>center</span></code></pre></div></div>
 </div>
 <p>Now we can fit a model with the quadratic term, using either <img src="https://latex.codecogs.com/png.latex?A"> or <img src="https://latex.codecogs.com/png.latex?B">: since we only have a central point, we cannot discriminate which factor is contributing to the curvature in the response surface. We get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">fpc <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">fpc <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb11-2">  <span class="fu" style="color: #4758AB;
@@ -2159,12 +2679,12 @@ background-color: null;
 font-style: inherit;">#&gt; ---</span></span>
 <span id="cb11-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div></div>
 </div>
 <p>So the contribution of the quadratic term <strong>is significant</strong>. This means that we have to further augment the plan with axial points and investigate a <em>Central Composite Design</em> (CCD). <strong>Note</strong>: if the quadratic term contribution were not significant, we would have to remove the quadratic term from the model and accept the two-level model.</p>
 <p>So let’s load the axial points from the <code>axial</code> field of the <code>ccd_experiment_yield</code> dataset, and fit a model with the quadratic terms and their interactions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">fpccd <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">fpccd <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> fpc <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2268,11 +2788,11 @@ background-color: null;
 font-style: inherit;">#&gt; ---</span></span>
 <span id="cb12-23"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div></div>
 </div>
 <p>So we can finally state that a proper model would be <code>Y ~ A*B+I(A^2)</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">fpccd <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">fpccd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb13-2">  <span class="fu" style="color: #4758AB;
@@ -2359,7 +2879,7 @@ background-color: null;
 font-style: inherit;">#&gt; Multiple R-squared:  0.9714, Adjusted R-squared:  0.9654 </span></span>
 <span id="cb13-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; F-statistic: 161.5 on 4 and 19 DF,  p-value: 2.191e-14</span></span></code></pre></div>
+font-style: inherit;">#&gt; F-statistic: 161.5 on 4 and 19 DF,  p-value: 2.191e-14</span></span></code></pre></div></div>
 </div>
 </section>
 </section>
@@ -2367,7 +2887,7 @@ font-style: inherit;">#&gt; F-statistic: 161.5 on 4 and 19 DF,  p-value: 2.191e-
 <h2 class="anchored" data-anchor-id="save-toload-from-a-file">Save to/load from a file</h2>
 <p>Once the design matrix is prepared, you typically want to save it to a file and use it for collecting data form experiments. You can use the <code>write.csv</code> function, but it is recommended to use the <code>fp_write_csv</code> function, which will also save the design matrix properties as comments:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">dm <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">dm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span>  <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2418,12 +2938,12 @@ font-style: inherit;">%&gt;%</span></span>
 background-color: null;
 font-style: inherit;">fp_write_csv</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"design_matrix.csv"</span>)</span></code></pre></div>
+font-style: inherit;">"design_matrix.csv"</span>)</span></code></pre></div></div>
 </div>
 <p>Note that the <code>fp_write_csv</code> function invisibly returns the same design matrix, so you can use it in a pipe chain. Also, the CVS files has the rows arranged in the same order as the <code>RunOrder</code> column (i.e.&nbsp;randomized).</p>
 <p>Once the CSV file has been completed, you can load it back into R using the <code>fp_read_csv</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">dm <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">dm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dm <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2432,7 +2952,7 @@ font-style: inherit;">%&gt;%</span> </span>
 background-color: null;
 font-style: inherit;">fp_read_csv</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"design_matrix.csv"</span>)</span></code></pre></div>
+font-style: inherit;">"design_matrix.csv"</span>)</span></code></pre></div></div>
 </div>
 <p>Note that <code>fp_read_csv</code> returns the design matrix reordered according to Yates’ standard order.</p>
 </section>
@@ -2442,7 +2962,7 @@ font-style: inherit;">"design_matrix.csv"</span>)</span></code></pre></div>
 <p>Any fraction is added to the <code>factorial.plan</code> object in the <code>fraction</code> attribute.</p>
 <p>A full <img src="https://latex.codecogs.com/png.latex?2%5En"> factorial plan can be reduced to a fractional factorial plan <img src="https://latex.codecogs.com/png.latex?2%5E%7Bn-p%7D"> by applying the <code>fp_fraction</code> function <img src="https://latex.codecogs.com/png.latex?p"> times. For example, to get a <img src="https://latex.codecogs.com/png.latex?2%5E%7B5-2%7D"> plan with the defining relationships <img src="https://latex.codecogs.com/png.latex?I=ABCD"> and <img src="https://latex.codecogs.com/png.latex?I=BCDE">:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2505,32 +3025,32 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span id="cb16-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        8 (1)        1    -1    -1    -1    -1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 1        1       10 (1)        1    -1    -1    -1    -1    -1 NA        1     1</span></span>
 <span id="cb16-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        7       14 bc         1    -1     1     1    -1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 2        7       28 bc         1    -1     1     1    -1    -1 NA        1     1</span></span>
 <span id="cb16-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3       11        6 bd         1    -1     1    -1     1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 3       11       14 bd         1    -1     1    -1     1    -1 NA        1     1</span></span>
 <span id="cb16-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4       13        4 cd         1    -1    -1     1     1    -1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 4       13       13 cd         1    -1    -1     1     1    -1 NA        1     1</span></span>
 <span id="cb16-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5       20       24 abe        1     1     1    -1    -1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 5       20       16 abe        1     1     1    -1    -1     1 NA        1     1</span></span>
 <span id="cb16-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6       22       29 ace        1     1    -1     1    -1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 6       22       18 ace        1     1    -1     1    -1     1 NA        1     1</span></span>
 <span id="cb16-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7       26        2 ade        1     1    -1    -1     1     1 NA        1     1</span></span>
+font-style: inherit;">#&gt; 7       26        8 ade        1     1    -1    -1     1     1 NA        1     1</span></span>
 <span id="cb16-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8       32       22 abcde      1     1     1     1     1     1 NA        1     1</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8       32        1 abcde      1     1     1     1     1     1 NA        1     1</span></span></code></pre></div></div>
 </div>
 <p>Note that with the <code>remove</code> option you can control if you want to keep both fractions, and later on <code>filter(ABC==1)</code> them out.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">fp_design_matrix</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2582,28 +3102,28 @@ background-color: null;
 font-style: inherit;">#&gt;      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt;</span></span>
 <span id="cb17-13"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 1        1        2 (1)        1    -1    -1    -1 NA       -1</span></span>
+font-style: inherit;">#&gt; 1        1        8 (1)        1    -1    -1    -1 NA       -1</span></span>
 <span id="cb17-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 2        2        5 a          1     1    -1    -1 NA        1</span></span>
+font-style: inherit;">#&gt; 2        2        3 a          1     1    -1    -1 NA        1</span></span>
 <span id="cb17-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 3        3        4 b          1    -1     1    -1 NA        1</span></span>
+font-style: inherit;">#&gt; 3        3        5 b          1    -1     1    -1 NA        1</span></span>
 <span id="cb17-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 4        4        8 ab         1     1     1    -1 NA       -1</span></span>
+font-style: inherit;">#&gt; 4        4        7 ab         1     1     1    -1 NA       -1</span></span>
 <span id="cb17-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 5        5        1 c          1    -1    -1     1 NA        1</span></span>
+font-style: inherit;">#&gt; 5        5        6 c          1    -1    -1     1 NA        1</span></span>
 <span id="cb17-18"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 6        6        7 ac         1     1    -1     1 NA       -1</span></span>
+font-style: inherit;">#&gt; 6        6        1 ac         1     1    -1     1 NA       -1</span></span>
 <span id="cb17-19"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 7        7        3 bc         1    -1     1     1 NA       -1</span></span>
+font-style: inherit;">#&gt; 7        7        2 bc         1    -1     1     1 NA       -1</span></span>
 <span id="cb17-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 8        8        6 abc        1     1     1     1 NA        1</span></span></code></pre></div>
+font-style: inherit;">#&gt; 8        8        4 abc        1     1     1     1 NA        1</span></span></code></pre></div></div>
 </div>
 <p>Also, note that the <code>remove</code> option is sticky, so that when you can apply the <code>fp_fraction</code> function multiple times and the first time has the option set to <code>remove=FALSE</code>, then all the following <code>fp_fraction</code> calls will have the same option set to <code>FALSE</code>. Setting <code>remove=FALSE</code> to any of the following calls <strong>can have unexpected behavior</strong>.</p>
 </section>
@@ -2618,7 +3138,7 @@ font-style: inherit;">#&gt; 8        8        6 abc        1     1     1     1 N
 </ul>
 <p>For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">(am <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">(am <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2691,14 +3211,14 @@ background-color: null;
 font-style: inherit;">#&gt; BCD  0 0  0 0  0  0   3 0  1  0   0  0   0   0    0</span></span>
 <span id="cb18-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</span></span></code></pre></div>
+font-style: inherit;">#&gt; ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</span></span></code></pre></div></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">am <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">am <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">plot</span>()</span></code></pre></div>
+font-style: inherit;">plot</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2709,7 +3229,7 @@ font-style: inherit;">plot</span>()</span></code></pre></div>
 </div>
 <p>The design matrix can be converted to a tibble thanks to the proper <code>as_tibble.design.matrix</code> S3 method:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">am <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">am <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2755,7 +3275,7 @@ background-color: null;
 font-style: inherit;">#&gt; 10 C        AB       ABC      </span></span>
 <span id="cb20-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; # ℹ 32 more rows</span></span></code></pre></div>
+font-style: inherit;">#&gt; # ℹ 32 more rows</span></span></code></pre></div></div>
 </div>
 </section>
 </section>
@@ -2768,7 +3288,7 @@ font-style: inherit;">#&gt; # ℹ 32 more rows</span></span></code></pre></div>
 <h3 class="anchored" data-anchor-id="normal-probability-plot">Normal probability plot</h3>
 <p>The normal probability plot is provided as an alternative to the quantile-quantile plot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">df <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2809,7 +3329,7 @@ font-style: inherit;">40</span>)</span>
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">normplot</span>(xn)</span></code></pre></div>
+font-style: inherit;">normplot</span>(xn)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2817,11 +3337,11 @@ font-style: inherit;">normplot</span>(xn)</span></code></pre></div>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">df <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">df <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">normplot</span>(xu)</span></code></pre></div>
+font-style: inherit;">normplot</span>(xu)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2838,7 +3358,7 @@ font-style: inherit;">normplot</span>(xu)</span></code></pre></div>
 <p>The package provides a <em>generic function</em>, <code>pareto_chart</code>, that can be used with a tibble (or a data frame), or with a linear model (an <code>lm</code> object). In the latter case, the function produces the Pareto chart of the model effects.</p>
 <p>For the general case, when you have a tibble with values and names:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2875,7 +3395,16 @@ font-style: inherit;">pareto_chart</span>(<span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">labels=</span>cat, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">values=</span>val)</span></code></pre></div>
+font-style: inherit;">values=</span>val)</span>
+<span id="cb23-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning in pareto_chart.data.frame(., labels = cat, values = val): 'pareto_chart.data.frame' is deprecated.</span></span>
+<span id="cb23-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Use 'geom_pareto' instead.</span></span>
+<span id="cb23-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; See help("Deprecated")</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2886,7 +3415,7 @@ font-style: inherit;">values=</span>val)</span></code></pre></div>
 </div>
 <p>For the case of a linear model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">filtration <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">filtration <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb24-2">  <span class="fu" style="color: #4758AB;
@@ -2906,7 +3435,7 @@ background-color: null;
 font-style: inherit;">%&gt;%</span></span>
 <span id="cb24-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">pareto_chart</span>()</span></code></pre></div>
+font-style: inherit;">pareto_chart</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2920,7 +3449,7 @@ font-style: inherit;">pareto_chart</span>()</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="daniels-plot">Daniel’s plot</h3>
 <p>In case of non-replicated factorial plans, the Daniel’s plot can be used to identify the most important factors: a quantile-quantile plot of the factors effects shows the significant factors and interactions off the diagonal.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">daniel_plot_qq</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2934,7 +3463,7 @@ font-style: inherit;">*</span>C<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span>D, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">data=</span>filtration))</span></code></pre></div>
+font-style: inherit;">data=</span>filtration))</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2945,7 +3474,7 @@ font-style: inherit;">data=</span>filtration))</span></code></pre></div>
 </div>
 <p>If you prefer, you can rather use a half-normal plot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">filtration <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">filtration <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb26-2">  <span class="fu" style="color: #4758AB;
@@ -2973,7 +3502,7 @@ font-style: inherit;">6</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">repel=</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2984,7 +3513,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 </div>
 <p>It shows that none of the effects containing the <code>B</code> factor are significant, so we can reduce the model to <code>Y~A*C*D</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">filtration <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">filtration <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> </span>
 <span id="cb27-2">  <span class="fu" style="color: #4758AB;
@@ -3044,7 +3573,7 @@ background-color: null;
 font-style: inherit;">#&gt; ---</span></span>
 <span id="cb27-17"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div></div>
 </div>
 <p>Even better, the model can be further reduced to <code>Y~A*C+A*D</code>. Compare this conclusion with the last Pareto chart above.</p>
 </section>
@@ -3054,7 +3583,7 @@ font-style: inherit;">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.'
 <h1>Utilities</h1>
 <p>This package also provides a function for easily loading data files made available on the accompanying course documentation on <a href="https://paolobosetti.quarto.pub/data" class="uri">https://paolobosetti.quarto.pub/data</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">examples_url</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -3177,7 +3706,7 @@ background-color: null;
 font-style: inherit;">#&gt; 35        2            35          70        3      4      139</span></span>
 <span id="cb28-38"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#&gt; 36        9            36         125        3      4       60</span></span></code></pre></div>
+font-style: inherit;">#&gt; 36        9            36         125        3      4       60</span></span></code></pre></div></div>
 </div>
 <div class="thatsall">
 <p>That’s all, folks!</p>
@@ -3192,7 +3721,7 @@ font-style: inherit;">#&gt; 36        9            36         125        3      
   <category>CRAN</category>
   <category>design of experiments</category>
   <guid>https://rtug.unitn.it/posts/004-adas.utils/</guid>
-  <pubDate>Mon, 10 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 09 Feb 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/004-adas.utils/hypercube.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -3213,7 +3742,7 @@ font-style: inherit;">#&gt; 36        9            36         125        3      
 <h1>Example: vibration isolation</h1>
 <p>Let us use the example for a lumped parameters model of a vibration isolation system, that is, a 1-DoF mass-spring-damper system. Briefly, its transfer function can be created as:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">M <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">M <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -3247,7 +3776,7 @@ font-style: inherit;">/</span>K, C<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>K, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>)))</span></code></pre></div>
+font-style: inherit;">1</span>)))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 y1:
@@ -3261,13 +3790,13 @@ Transfer Function: Continuous time model </code></pre>
 </div>
 <p>Its Bode representation can be obtained by:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bode</span>(H) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">str</span>()</span></code></pre></div>
+font-style: inherit;">str</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ w    : num [1:10000] 0 0.01 0.02 0.03 0.04 ...
@@ -3277,7 +3806,7 @@ font-style: inherit;">str</span>()</span></code></pre></div>
 </div>
 <p>That is, a list of three vectors reporting frequency (<code>w</code>), magnitude in dB (<code>mag</code>), and phase in degrees (<code>phase</code>). Why the <code>control</code> developers decided to return a list of equally sized vectors rather a data frame is beyond me, but let’s deal with what we have.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bode</span>(H, <span class="at" style="color: #657422;
 background-color: null;
@@ -3339,7 +3868,7 @@ font-style: inherit;">%&gt;%</span> </span>
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">kable</span>()</span></code></pre></div>
+font-style: inherit;">kable</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -3386,7 +3915,7 @@ font-style: inherit;">kable</span>()</span></code></pre></div>
 </div>
 <p>To make the Bode plot, which reports magnitude vs.&nbsp;frequency on top of phase vs.&nbsp;frequency, we make the tibble tidy and use <code>facet_wrap</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bode</span>(H, <span class="at" style="color: #657422;
 background-color: null;
@@ -3500,7 +4029,7 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb6-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scale_x_log10</span>()</span></code></pre></div>
+font-style: inherit;">scale_x_log10</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3521,7 +4050,7 @@ font-style: inherit;">scale_x_log10</span>()</span></code></pre></div>
 <h1>Log-tickmarks: Solution</h1>
 <p>The <code>scale_x_log10()</code> function allows to specify the <code>breaks</code> and the <code>minor_breaks</code>, which we can exploit to fix the gridlines. How can we get a log-spaced sequence? an elegant solution uses the <strong>outer product</strong> <code>%o%</code> of two vectors: that of the ticks, and that of the orders of magnitude (<code>ooms</code>):</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">ticks <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">ticks <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -3546,7 +4075,7 @@ font-style: inherit;">4</span>)</span>
 <span id="cb7-3"></span>
 <span id="cb7-4">ticks <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%o%</span> ooms</span></code></pre></div>
+font-style: inherit;">%o%</span> ooms</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]  [,5]
 [1,]    2   20  200 2000 20000
@@ -3561,13 +4090,13 @@ font-style: inherit;">%o%</span> ooms</span></code></pre></div>
 </div>
 <p>Looking at the columns , in sequence, we have what we want, so:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">(breaks <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">(breaks <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">as.vector</span>(ticks <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">%o%</span> ooms))</span></code></pre></div>
+font-style: inherit;">%o%</span> ooms))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]     2     3     4     5     6     7     8     9    20    30    40    50
 [13]    60    70    80    90   200   300   400   500   600   700   800   900
@@ -3576,7 +4105,7 @@ font-style: inherit;">%o%</span> ooms))</span></code></pre></div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bode</span>(H, <span class="at" style="color: #657422;
 background-color: null;
@@ -3696,7 +4225,7 @@ font-style: inherit;">minor_breaks=</span>breaks, <span class="at" style="color:
 background-color: null;
 font-style: inherit;">labels=</span>scales<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">::</span>scientific)</span></code></pre></div>
+font-style: inherit;">::</span>scientific)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3712,7 +4241,7 @@ font-style: inherit;">::</span>scientific)</span></code></pre></div>
 <h1>Log-spaced points: Solution</h1>
 <p>We use the same outer product trick, multiplying the vector of orders of magnitude by a vector of positions, <strong>exponentially spaced</strong> within each magnitude:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">pts <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">pts <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -3749,7 +4278,7 @@ font-style: inherit;">head</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">20</span>)</span></code></pre></div>
+font-style: inherit;">20</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   1.258925   1.584893   1.995262   2.511886   3.162278   3.981072
  [7]   5.011872   6.309573   7.943282  10.000000  12.589254  15.848932
@@ -3759,7 +4288,7 @@ font-style: inherit;">20</span>)</span></code></pre></div>
 </div>
 <p>Finally:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">pts <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">pts <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -3904,7 +4433,7 @@ font-style: inherit;">minor_breaks=</span>breaks, <span class="at" style="color:
 background-color: null;
 font-style: inherit;">labels=</span>scales<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">::</span>scientific)</span></code></pre></div>
+font-style: inherit;">::</span>scientific)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3918,7 +4447,7 @@ font-style: inherit;">::</span>scientific)</span></code></pre></div>
 <h1>Putting all together</h1>
 <p>We can then put everything together and make a useful function (note that we are now converting the frequencies to Hz):</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">ggbodeplot <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">ggbodeplot <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -4118,7 +4647,7 @@ font-style: inherit;">0.1</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">fmax=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
+font-style: inherit;">100</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -4132,7 +4661,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <h1>One last thing…</h1>
 <p>Well, the above is mostly of academic interest, at least for what pertains the logarithmic grid lines: it shows a nice and useful way for creating regularly spaced vectors, which is really useful to evenly distribute abscissa values when the axis scale is not linear. But thanks to the <code>scales</code> package there is a quick way for having <strong>any axis, whichever the scale</strong>, with a number of minor breaks different to 1 (the defaiult in GGplot). In fact, we can just use the <code>scales::minor_breaks_n()</code> function to generate minor grid lines at will:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">ggbodeplot <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">ggbodeplot <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -4337,7 +4866,7 @@ font-style: inherit;">0.1</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">fmax=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
+font-style: inherit;">100</span>)</span></code></pre></div></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -4361,7 +4890,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
   <category>GGPlot2</category>
   <category>signal analysis</category>
   <guid>https://rtug.unitn.it/posts/003-logscale/</guid>
-  <pubDate>Sun, 09 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 08 Feb 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/003-logscale/steps.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4393,7 +4922,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
   <category>website</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/002-logo/</guid>
-  <pubDate>Thu, 06 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/images/logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -4408,8 +4937,8 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <p>The first R-Trento Users Meeting, code <code>RTUG::25.1</code>, is planned for <strong>Friday, May 30, 2025</strong> at 14:30 in the <em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 <p><strong>Participation is free</strong> but you need to subscribe to the event via <a href="https://www.meetup.com/r-trento-users-group/events/306973694/?eventOrigin=group_upcoming_events"><img src="https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN.png" style="height:2em"></a>.</p>
 <p><strong>Certificates of participation</strong> will be available upon request</p>
-<section id="topics" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics"> Topics</h2>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="callout callout-style-default callout-note callout-titled" title="Event flyer">
@@ -4418,7 +4947,7 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Event flyer
+<span class="screen-reader-only">Note</span>Event flyer
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4435,12 +4964,12 @@ Event flyer
 </ol>
 <p>See below for details on the topics. The <a href="../slides.html">slides</a> page lists all the available presentations.</p>
 </section>
-<section id="venue" class="level2">
-<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue"> Venue</h2>
 <p><em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 </section>
-<section id="details-on-topics" class="level2">
-<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics"> Details on Topics</h2>
 <section id="welcome" class="level3">
 <h3 class="anchored" data-anchor-id="welcome">Welcome</h3>
 <ul>
@@ -4481,8 +5010,8 @@ Event flyer
 <p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
 </section>
 </section>
-<section id="post-mortem" class="level2">
-<h2 class="anchored" data-anchor-id="post-mortem"> Post Mortem 😜</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692063616d657261203e7d7d-post-mortem" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692063616d657261203e7d7d-post-mortem"> Post Mortem 😜</h2>
 <p>So <code>RTUG::25.1</code> is over, and it was a great success! We had a good turnout, with more than 20 participants, and the feedback was very positive. The presentations were well received, and the discussions were lively.</p>
 <p>We would like to thank all the speakers for their contributions, and all the participants for their interest and enthusiasm. We hope to see you again at the next RTUG meeting, which will be held in the fall of 2025.</p>
 <p><a href="images/rtug-25.1-01.jpeg" class="lightbox" data-gallery="post_mortem"><img src="https://rtug.unitn.it/meetings/images/rtug-25.1-01.jpeg" class="img-fluid"></a></p>
@@ -4493,7 +5022,7 @@ Event flyer
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
-  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Opening!</title>
@@ -4516,7 +5045,7 @@ Event flyer
 </div>
 </div></div><p>On Feb.&nbsp;5th, 2025, Giuseppe <strong>Espa</strong>, Maria Michela <strong>Dickson</strong>, Flavio <strong>Santi</strong>, Diego <strong>Giuliani</strong> and Paolo <strong>Bosetti</strong> had the first founding meeting of the R-Trento Users Group.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">RTUG <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">RTUG <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4530,7 +5059,7 @@ font-style: inherit;">"Flavio"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Diego"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Paolo"</span>)</span></code></pre></div>
+font-style: inherit;">"Paolo"</span>)</span></code></pre></div></div>
 </div>
 <p>That’s a milestone.</p>
 
@@ -4542,7 +5071,7 @@ font-style: inherit;">"Paolo"</span>)</span></code></pre></div>
   <category>milestone</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/001-opening/001-opening.html</guid>
-  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/001-opening/milestone.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>

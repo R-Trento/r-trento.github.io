@@ -9,8 +9,8 @@
 <link>https://rtug.unitn.it/meetings.html</link>
 <atom:link href="https://rtug.unitn.it/meetings.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.7.31</generator>
-<lastBuildDate>Mon, 02 Jun 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.30</generator>
+<lastBuildDate>Sun, 01 Jun 2025 22:00:00 GMT</lastBuildDate>
 <item>
   <title>RTUG::25.2 meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
@@ -36,16 +36,16 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 // -->
 </script><noscript>rtug.group at unitn dot it</noscript>.</p>
 <hr>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics"> Topics</h2>
 <p>To be defined.</p>
 </section>
-<section id="venue" class="level2">
-<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue"> Venue</h2>
 <p>To be defined.</p>
 </section>
-<section id="details-on-topics" class="level2">
-<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics"> Details on Topics</h2>
 <p>To be defined.</p>
 
 
@@ -53,7 +53,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.2-meeting.html</guid>
-  <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Jun 2025 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>First RTUG meeting</title>
@@ -67,8 +67,8 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <p>The first R-Trento Users Meeting, code <code>RTUG::25.1</code>, is planned for <strong>Friday, May 30, 2025</strong> at 14:30 in the <em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 <p><strong>Participation is free</strong> but you need to subscribe to the event via <a href="https://www.meetup.com/r-trento-users-group/events/306973694/?eventOrigin=group_upcoming_events"><img src="https://help.meetup.com/hc/theming_assets/01HZH3ZAT7AR9TR620NM18CDKN.png" style="height:2em"></a>.</p>
 <p><strong>Certificates of participation</strong> will be available upon request</p>
-<section id="topics" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="topics"> Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692070617463682d7175657374696f6e203e7d7d-topics"> Topics</h2>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="callout callout-style-default callout-note callout-titled" title="Event flyer">
@@ -77,7 +77,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Event flyer
+<span class="screen-reader-only">Note</span>Event flyer
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -94,12 +94,12 @@ Event flyer
 </ol>
 <p>See below for details on the topics. The <a href="../slides.html">slides</a> page lists all the available presentations.</p>
 </section>
-<section id="venue" class="level2">
-<h2 class="anchored" data-anchor-id="venue"> Venue</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206275696c64696e67203e7d7d-venue"> Venue</h2>
 <p><em>Aula Rossa</em> of the Department of Economics and Management, via Inama 5, Trento.</p>
 </section>
-<section id="details-on-topics" class="level2">
-<h2 class="anchored" data-anchor-id="details-on-topics"> Details on Topics</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269207a6f6f6d2d696e203e7d7d-details-on-topics"> Details on Topics</h2>
 <section id="welcome" class="level3">
 <h3 class="anchored" data-anchor-id="welcome">Welcome</h3>
 <ul>
@@ -140,8 +140,8 @@ Event flyer
 <p>We introduce the <code>BalancedSampling</code> package, which allows the selection of balanced and spatially balanced samples, widely used in the environmental/forestry field, with recent diffusion also in the economic-social field.</p>
 </section>
 </section>
-<section id="post-mortem" class="level2">
-<h2 class="anchored" data-anchor-id="post-mortem"> Post Mortem 😜</h2>
+<section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692063616d657261203e7d7d-post-mortem" class="level2">
+<h2 class="anchored" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2062692063616d657261203e7d7d-post-mortem"> Post Mortem 😜</h2>
 <p>So <code>RTUG::25.1</code> is over, and it was a great success! We had a good turnout, with more than 20 participants, and the feedback was very positive. The presentations were well received, and the discussions were lively.</p>
 <p>We would like to thank all the speakers for their contributions, and all the participants for their interest and enthusiasm. We hope to see you again at the next RTUG meeting, which will be held in the fall of 2025.</p>
 <p><a href="images/rtug-25.1-01.jpeg" class="lightbox" data-gallery="post_mortem"><img src="https://rtug.unitn.it/meetings/images/rtug-25.1-01.jpeg" class="img-fluid"></a></p>
@@ -152,7 +152,7 @@ Event flyer
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
-  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
