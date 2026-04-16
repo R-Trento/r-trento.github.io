@@ -46,6 +46,10 @@ pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "geotopbricks")) %>%
 ggplotly(pp)
 ```
 
+# {{< bi box >}} Other Packages
+
+* [MongoTidy](https://github.com/pbosetti/MongoTidy){target="_blank"}---A tidy interface to MongoDB, a popular NoSQL database.
+
 
 # {{< bi book >}} Books
 

@@ -1,0 +1,126 @@
+---
+title: "Post Title"
+author: "Paolo Bosetti"
+date: "02/05/2025"
+# date-modified: today
+image: "image.jpg"
+format: html
+draft: true
+categories: 
+  - RTUG
+  - milestone
+abstract: >
+  This is the abstract. If not empty, it is used in plece of the post initial paragraph to build the post preview in the posts listing.
+---
+
+```{r}
+#| label: setup
+knitr::opts_chunk$set(
+  fig.align = "center",
+  # This for default device
+  out.width = "16cm",
+  # This two for high quality charts:
+  fig.dim = c(16, 9)*0.4
+)
+library(tidyverse)
+library(ggforce)
+library(adas.utils)
+library(latex2exp)
+```
+
+```{r}
+t <- c(A=0.05, B=0.03, C=0.3)
+fp <- fp_design_matrix(2) %>% 
+  fp_add_names(A="radius", B="length") %>% 
+  fp_add_scale(A=c(0.25, 2), B=c(0.15, 6))
+
+fpt <- fp %>%
+  rowwise() %>%
+  mutate(
+    deltas = list(
+      expand.grid(
+        dA = c(-1, 1) * t[["A"]],
+        dB = c(-1, 1) * t[["B"]]
+      )
+    ),
+    .before = Y
+  ) %>% 
+  unnest(deltas) %>% 
+  mutate(
+    At = A + dA,
+    Bt = B + dB,
+    A_st = A_s * (1 + dA),
+    B_st = B_s * (1 + dB),
+    .before = Y
+  )
+fpt 
+
+fpt %>% ggplot(aes(x=At, y=Bt)) + 
+  geom_point() + 
+  coord_equal()
+```
+
+
+
+
+```{r}
+Vol <- function(r, l) pi * r^2 * l
+
+fpt <- fpt %>%
+  mutate(
+    Y = Vol(A_st, B_st)
+  )
+
+fpt %>% arrange(Y)
+
+fpt %>% 
+  ggplot(aes(x=At, y=Bt, color=Y)) + 
+  geom_point() + 
+  coord_equal() + 
+  scale_color_viridis_c() +
+  labs(
+    x = "A",
+    y = "B",
+    color = "Yield"
+  )
+```
+
+```{r}
+fpt_t <- fpt %>% 
+  group_by(A, B) %>% 
+  summarise(
+    Ym=mean(Y), 
+    Ys=sd(Y),
+    SN = -10*log(sum((Y - Ym)^2 + (Ym - 4)^2) / n())
+  ) %>% 
+  ungroup() %>%
+  right_join(fpt, by=c("A", "B"))
+
+fpt_t %>% 
+  ggplot() + 
+  geom_point(aes(x=A, y=B, size=SN), alpha=0.1) +
+  geom_point(aes(x=At, y=Bt, color=Y)) +
+  scale_fill_viridis_b() +
+  scale_color_viridis_b(option="A") +
+  scale_size_continuous(range=c(1,50)) +
+  coord_equal(xlim=c(-1.1, 1.1), ylim=c(-1.1,1.1)) + 
+  guides(size="none") + 
+  labs(title = TeX("$SN=-10 log(MSD)$"))
+```
+```{r}
+fpt_t %>% 
+  select(A, B, Ym, Ys, SN) %>% 
+  mutate(across(c(Ym, Ys, SN), round, 2)) %>%
+  distinct() %>% 
+  knitr::kable(
+    col.names = c("A", "B", "Mean Yield", "Yield Std. Dev.", "Signal-to-Noise Ratio")
+  )
+```
+
+
+
+
+
+:::thatsall
+That's all, folks!
+:::

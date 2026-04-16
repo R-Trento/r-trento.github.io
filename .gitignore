@@ -9,3 +9,4 @@
 *_files/*
 
 _certificates
+**/*.quarto_ipynb
