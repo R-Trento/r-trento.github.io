@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rtug.unitn.it/meetings/25.2-meeting.html</loc>
-    <lastmod>2025-06-02T09:44:47.213Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/about.html</loc>
-    <lastmod>2025-05-12T08:48:42.771Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides/dickson-25.1.html</loc>
-    <lastmod>2025-06-02T09:25:06.565Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides/bosetti-25.1/index.html</loc>
-    <lastmod>2025-05-30T11:45:17.840Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides/micciolo-espa-25.1.html</loc>
-    <lastmod>2025-05-30T09:21:18.677Z</lastmod>
-  </url>
-  <url>
     <loc>https://rtug.unitn.it/slides.html</loc>
-    <lastmod>2025-05-30T09:28:23.409Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/002-logo/index.html</loc>
-    <lastmod>2025-02-08T14:58:30.393Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/006-tukey/index.html</loc>
-    <lastmod>2025-03-28T07:52:42.373Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/005-domain/index.html</loc>
-    <lastmod>2025-03-04T12:16:49.349Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.364Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/contact.html</loc>
-    <lastmod>2025-02-26T13:06:38.069Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.183Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/members.html</loc>
-    <lastmod>2025-05-19T14:32:15.464Z</lastmod>
+    <loc>https://rtug.unitn.it/about.html</loc>
+    <lastmod>2026-04-16T17:21:12.183Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</loc>
-    <lastmod>2026-04-16T17:13:11.632Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.363Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/posts/003-logscale/index.html</loc>
-    <lastmod>2025-02-26T13:07:11.955Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</loc>
-    <lastmod>2025-05-12T08:48:42.771Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/001-opening/001-opening.html</loc>
-    <lastmod>2025-04-04T09:10:29.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/posts/004-adas.utils/index.html</loc>
-    <lastmod>2025-06-17T11:00:43.673Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/002-logo/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.320Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/posts/007-r-consortium/index.html</loc>
-    <lastmod>2025-03-28T14:50:16.043Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.332Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/bibliography.html</loc>
-    <lastmod>2026-04-16T17:14:50.304Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</loc>
+    <lastmod>2026-04-16T17:21:12.344Z</lastmod>
   </url>
   <url>
-    <loc>https://rtug.unitn.it/index.html</loc>
-    <lastmod>2025-05-30T09:17:06.777Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides/ciani-25.1.html</loc>
-    <lastmod>2025-05-30T09:15:15.599Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/slides/rtug-25.1.html</loc>
-    <lastmod>2025-05-30T10:46:49.832Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rtug.unitn.it/meetings.html</loc>
-    <lastmod>2025-06-02T09:32:31.742Z</lastmod>
+    <loc>https://rtug.unitn.it/posts/003-logscale/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.320Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/posts.html</loc>
-    <lastmod>2025-04-10T13:17:17.924Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.308Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/slides/rtug-25.1.html</loc>
+    <lastmod>2026-04-16T17:21:12.449Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/slides/dickson-25.1.html</loc>
+    <lastmod>2026-04-16T17:21:12.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/slides/micciolo-espa-25.1.html</loc>
+    <lastmod>2026-04-16T17:21:12.449Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/meetings/25.2-meeting.html</loc>
+    <lastmod>2026-04-16T17:21:12.282Z</lastmod>
   </url>
   <url>
     <loc>https://rtug.unitn.it/meetings/25.1-meeting.html</loc>
-    <lastmod>2025-05-30T17:40:30.373Z</lastmod>
+    <lastmod>2026-04-16T17:21:12.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/slides/ciani-25.1.html</loc>
+    <lastmod>2026-04-16T17:21:12.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/slides/bosetti-25.1/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/meetings.html</loc>
+    <lastmod>2026-04-16T17:21:12.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/005-domain/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/001-opening/001-opening.html</loc>
+    <lastmod>2026-04-16T17:21:12.314Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/006-tukey/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.332Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/posts/004-adas.utils/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.325Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/bibliography.html</loc>
+    <lastmod>2026-04-16T17:21:12.183Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/index.html</loc>
+    <lastmod>2026-04-16T17:21:12.282Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rtug.unitn.it/members.html</loc>
+    <lastmod>2026-04-16T17:21:12.308Z</lastmod>
   </url>
 </urlset>

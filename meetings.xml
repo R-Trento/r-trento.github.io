@@ -9,8 +9,8 @@
 <link>https://rtug.unitn.it/meetings.html</link>
 <atom:link href="https://rtug.unitn.it/meetings.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.9.30</generator>
-<lastBuildDate>Sun, 01 Jun 2025 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Mon, 02 Jun 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>RTUG::25.2 meeting</title>
   <dc:creator>Paolo Bosetti</dc:creator>
@@ -53,7 +53,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.2-meeting.html</guid>
-  <pubDate>Sun, 01 Jun 2025 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>First RTUG meeting</title>
@@ -152,7 +152,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
-  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

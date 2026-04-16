@@ -9,8 +9,8 @@
 <link>https://rtug.unitn.it/</link>
 <atom:link href="https://rtug.unitn.it/index.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.9.30</generator>
-<lastBuildDate>Wed, 15 Apr 2026 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.37</generator>
+<lastBuildDate>Thu, 16 Apr 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>MongoTidy: a tidy interface to MongoDB</title>
   <dc:creator>Paolo Bosetti</dc:creator>
@@ -525,7 +525,7 @@ font-style: inherit;">collect</span>()</span></code></pre></div></div>
   <category>packages</category>
   <category>milestone</category>
   <guid>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</guid>
-  <pubDate>Wed, 15 Apr 2026 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -570,7 +570,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail email">'
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.2-meeting.html</guid>
-  <pubDate>Sun, 01 Jun 2025 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 02 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Tukey vs. Student</title>
@@ -1651,7 +1651,7 @@ font-style: inherit;">"Conf. level"</span>)</span></code></pre></div></div>
   <category>inference</category>
   <category>Tukey</category>
   <guid>https://rtug.unitn.it/posts/008-tukey-vs-student/tukey-vs-student.html</guid>
-  <pubDate>Wed, 09 Apr 2025 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/008-tukey-vs-student/image.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -1684,7 +1684,7 @@ font-style: inherit;">"Conf. level"</span>)</span></code></pre></div></div>
   <category>milestone</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/007-r-consortium/</guid>
-  <pubDate>Thu, 27 Mar 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 28 Mar 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/007-r-consortium/milestone.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1950,7 +1950,7 @@ font-style: inherit;">~</span>Material)</span></code></pre></div></div>
   <category>R</category>
   <category>packages</category>
   <guid>https://rtug.unitn.it/posts/006-tukey/</guid>
-  <pubDate>Wed, 26 Mar 2025 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 27 Mar 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/006-tukey/Tukey.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -1992,7 +1992,7 @@ Note
   <category>RTUG</category>
   <category>milestone</category>
   <guid>https://rtug.unitn.it/posts/005-domain/</guid>
-  <pubDate>Tue, 25 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 26 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/005-domain/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -3721,7 +3721,7 @@ font-style: inherit;">#&gt; 36        9            36         125        3      
   <category>CRAN</category>
   <category>design of experiments</category>
   <guid>https://rtug.unitn.it/posts/004-adas.utils/</guid>
-  <pubDate>Sun, 09 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 10 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/004-adas.utils/hypercube.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4890,7 +4890,7 @@ font-style: inherit;">100</span>)</span></code></pre></div></div>
   <category>GGPlot2</category>
   <category>signal analysis</category>
   <guid>https://rtug.unitn.it/posts/003-logscale/</guid>
-  <pubDate>Sat, 08 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 09 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/003-logscale/steps.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4922,7 +4922,7 @@ font-style: inherit;">100</span>)</span></code></pre></div></div>
   <category>website</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/002-logo/</guid>
-  <pubDate>Wed, 05 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/images/logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -5022,7 +5022,7 @@ font-style: inherit;">100</span>)</span></code></pre></div></div>
 
  ]]></description>
   <guid>https://rtug.unitn.it/meetings/25.1-meeting.html</guid>
-  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Opening!</title>
@@ -5071,7 +5071,7 @@ font-style: inherit;">"Paolo"</span>)</span></code></pre></div></div>
   <category>milestone</category>
   <category>announcement</category>
   <guid>https://rtug.unitn.it/posts/001-opening/001-opening.html</guid>
-  <pubDate>Tue, 04 Feb 2025 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
   <media:content url="https://rtug.unitn.it/posts/001-opening/milestone.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
