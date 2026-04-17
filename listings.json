@@ -14,7 +14,7 @@
     "items": [
       "/meetings/25.2-meeting.html",
       "/meetings/25.1-meeting.html",
-      "/posts/011-MongoTidy/mongotidy.html",
+      "/posts/011-mdbplyr/mdbplyr.html",
       "/posts/008-tukey-vs-student/tukey-vs-student.html",
       "/posts/007-r-consortium/index.html",
       "/posts/006-tukey/index.html",
@@ -35,7 +35,7 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/011-MongoTidy/mongotidy.html",
+      "/posts/011-mdbplyr/mdbplyr.html",
       "/posts/008-tukey-vs-student/tukey-vs-student.html",
       "/posts/006-tukey/index.html",
       "/posts/004-adas.utils/index.html",

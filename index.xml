@@ -12,9 +12,9 @@
 <generator>quarto-1.9.30</generator>
 <lastBuildDate>Wed, 15 Apr 2026 22:00:00 GMT</lastBuildDate>
 <item>
-  <title>MongoTidy: a tidy interface to MongoDB</title>
+  <title>mdbplyr: a tidy interface to MongoDB</title>
   <dc:creator>Paolo Bosetti</dc:creator>
-  <link>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</link>
+  <link>https://rtug.unitn.it/posts/011-mdbplyr/mdbplyr.html</link>
   <description><![CDATA[ 
 
 
@@ -24,14 +24,14 @@
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png" class="img-fluid figure-img"></p>
-<figcaption>MongoTidy tentative logo</figcaption>
+<p><img src="https://rtug.unitn.it/posts/011-mdbplyr/mdbplyr.png" class="img-fluid figure-img"></p>
+<figcaption>mdbplyr tentative logo</figcaption>
 </figure>
 </div>
 </div></div><section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>We are developing <code>MongoTidy</code>, an R package that provides a disciplined, lazy <code>dplyr</code>-style interface for MongoDB aggregation pipelines.</p>
-<p><code>MongoTidy</code> sits between raw <code>mongolite</code> usage and broader compatibility layers. Compared with writing aggregation JSON by hand, it lets you express supported queries with tidy verbs and inspect the generated pipeline before execution. Compared with approaches that try to hide MongoDB behind table-like semantics, it stays explicit about scope, keeps translation conservative, and fails clearly when a verb or expression is outside the supported subset.</p>
+<p>We are developing <code>mdbplyr</code>, an R package that provides a disciplined, lazy <code>dplyr</code>-style interface for MongoDB aggregation pipelines.</p>
+<p><code>mdbplyr</code> sits between raw <code>mongolite</code> usage and broader compatibility layers. Compared with writing aggregation JSON by hand, it lets you express supported queries with tidy verbs and inspect the generated pipeline before execution. Compared with approaches that try to hide MongoDB behind table-like semantics, it stays explicit about scope, keeps translation conservative, and fails clearly when a verb or expression is outside the supported subset.</p>
 <p>The practical advantages are:</p>
 <ul>
 <li>lazy query construction until <code>collect()</code>,</li>
@@ -50,7 +50,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This post is a quick introduction to <code>MongoTidy</code> with examples. The package is still in early development, so expect some rough edges and missing features. The API is not yet stable, and the documentation is still a work in progress. If you’re interested in trying it out or contributing, check out the <a href="https://github.com/mongodb/MongoTidy">GitHub repository</a>.</p>
+<p>This post is a quick introduction to <code>mdbplyr</code> with examples. The package is still in early development, so expect some rough edges and missing features. The API is not yet stable, and the documentation is still a work in progress. If you’re interested in trying it out or contributing, check out the <a href="https://github.com/pbosetti/mdbplyr">GitHub repository</a>.</p>
 </div>
 </div>
 </section>
@@ -58,7 +58,7 @@ Important
 <h1>Usage examples</h1>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>Since MongoTidy is still in early development, it’s not yet available on CRAN. You can install it from GitHub using the <code>pak</code> package:</p>
+<p>Since <code>mdbplyr</code> is still in early development, it’s not yet available on CRAN. You can install it from GitHub using the <code>pak</code> package:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -71,7 +71,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">pak</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"pbosetti/MongoTidy"</span>)</span></code></pre></div></div>
+font-style: inherit;">"pbosetti/mdbplyr"</span>)</span></code></pre></div></div>
 </div>
 </section>
 <section id="loading-data" class="level2">
@@ -80,117 +80,150 @@ font-style: inherit;">"pbosetti/MongoTidy"</span>)</span></code></pre></div></di
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(dplyr)</span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(mongolite)</span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
+<span id="cb6-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(MongoTidy)</span>
-<span id="cb2-4"></span>
-<span id="cb2-5">starwars_collection <span class="ot" style="color: #003B4F;
+font-style: inherit;">library</span>(mdbplyr)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'mdbplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    collect, show_query</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">starwars_collection <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> mongolite<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mongo</span>(</span>
-<span id="cb2-6">  <span class="at" style="color: #657422;
+<span id="cb9-2">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">collection =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"starwars"</span>,</span>
-<span id="cb2-7">  <span class="at" style="color: #657422;
+<span id="cb9-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">db =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"mongotidy"</span></span>
-<span id="cb2-8">)</span>
-<span id="cb2-9"></span>
-<span id="cb2-10">starwars_collection<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">"mdbplyr"</span></span>
+<span id="cb9-4">)</span>
+<span id="cb9-5"></span>
+<span id="cb9-6">starwars_collection<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">drop</span>()</span>
-<span id="cb2-11">starwars_collection<span class="sc" style="color: #5E5E5E;
+<span id="cb9-7">starwars_collection<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">insert</span>(dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">::</span>starwars)</span>
-<span id="cb2-12"></span>
-<span id="cb2-13">starwars_tbl <span class="ot" style="color: #003B4F;
+font-style: inherit;">::</span>starwars)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ nInserted  : num 87
+ $ nMatched   : num 0
+ $ nRemoved   : num 0
+ $ nUpserted  : num 0
+ $ writeErrors: list()</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">starwars_tbl <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tbl_mongo</span>(</span>
-<span id="cb2-14">  starwars_collection,</span>
-<span id="cb2-15">  <span class="at" style="color: #657422;
+<span id="cb11-2">  starwars_collection,</span>
+<span id="cb11-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">schema =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">names</span>(dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span>starwars)</span>
-<span id="cb2-16">)</span></code></pre></div></div>
+<span id="cb11-4">)</span></code></pre></div></div>
 </div>
 <p>Once the collection is loaded, <code>starwars_tbl</code> is the lazy table used in the examples below.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
+<span id="cb12-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(MongoTidy)</span>
-<span id="cb3-3"></span>
-<span id="cb3-4">starwars_collection <span class="ot" style="color: #003B4F;
+font-style: inherit;">library</span>(mdbplyr)</span>
+<span id="cb12-3"></span>
+<span id="cb12-4">starwars_collection <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> mongolite<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mongo</span>(</span>
-<span id="cb3-5">  <span class="at" style="color: #657422;
+<span id="cb12-5">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">collection =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"starwars"</span>,</span>
-<span id="cb3-6">  <span class="at" style="color: #657422;
+<span id="cb12-6">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">db =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"mongotidy"</span></span>
-<span id="cb3-7">)</span>
-<span id="cb3-8"></span>
-<span id="cb3-9">starwars_tbl <span class="ot" style="color: #003B4F;
+font-style: inherit;">"mdbplyr"</span></span>
+<span id="cb12-7">)</span>
+<span id="cb12-8"></span>
+<span id="cb12-9">starwars_tbl <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tbl_mongo</span>(</span>
-<span id="cb3-10">  starwars_collection,</span>
-<span id="cb3-11">  <span class="at" style="color: #657422;
+<span id="cb12-10">  starwars_collection,</span>
+<span id="cb12-11">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">schema =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">names</span>(dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span>starwars)</span>
-<span id="cb3-12">)</span></code></pre></div></div>
+<span id="cb12-12">)</span></code></pre></div></div>
 </div>
 </section>
 <section id="basic-inspection" class="level2">
 <h2 class="anchored" data-anchor-id="basic-inspection">Basic inspection</h2>
 <p>Inspect the known schema and the generated pipeline without executing the query.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">schema_fields</span>(starwars_tbl)</span>
-<span id="cb4-2"></span>
-<span id="cb4-3">starwars_tbl <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">schema_fields</span>(starwars_tbl)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "name"       "height"     "mass"       "hair_color" "skin_color"
+ [6] "eye_color"  "birth_year" "sex"        "gender"     "homeworld" 
+[11] "species"    "films"      "vehicles"   "starships" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -203,14 +236,46 @@ background-color: null;
 font-style: inherit;">180</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+<span id="cb15-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(name, height, mass) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb4-6">  <span class="fu" style="color: #4758AB;
+<span id="cb15-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">show_query</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[
+  {
+    "$match": {
+      "$expr": {
+        "$and": {
+          "1": {
+            "$eq": [
+              "$species",
+              "Human"
+            ]
+          },
+          "2": {
+            "$gt": [
+              "$height",
+              180
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "$project": {
+      "name": 1,
+      "height": 1,
+      "mass": 1,
+      "_id": 0
+    }
+  }
+] </code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -220,10 +285,10 @@ font-style: inherit;">show_query</span>()</span></code></pre></div></div>
 <section id="filter" class="level2">
 <h2 class="anchored" data-anchor-id="filter"><code>filter()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -236,34 +301,68 @@ background-color: null;
 font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+<span id="cb17-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 15
+   `_id`     name  height  mass hair_color skin_color eye_color birth_year sex  
+   &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+ 1 69e21c24… Luke…    172    77 blond      fair       blue            19   male 
+ 2 69e21c24… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+ 3 69e21c24… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
+ 4 69e21c24… Dart…    202   136 none       white      yellow          41.9 male 
+ 5 69e21c24… Leia…    150    49 brown      light      brown           19   fema…
+ 6 69e21c24… Owen…    178   120 brown, gr… light      blue            52   male 
+ 7 69e21c24… Beru…    165    75 brown      light      blue            47   fema…
+ 8 69e21c24… R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none 
+ 9 69e21c24… Bigg…    183    84 black      light      brown           24   male 
+10 69e21c24… Obi-…    182    77 auburn, w… fair       blue-gray       57   male 
+# ℹ 77 more rows
+# ℹ 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
+#   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+</div>
 </div>
 </section>
 <section id="select" class="level2">
 <h2 class="anchored" data-anchor-id="select"><code>select()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(name, species, homeworld) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+<span id="cb19-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 3
+   name               homeworld species
+   &lt;chr&gt;              &lt;chr&gt;     &lt;chr&gt;  
+ 1 Luke Skywalker     Tatooine  Human  
+ 2 C-3PO              Tatooine  Droid  
+ 3 R2-D2              Naboo     Droid  
+ 4 Darth Vader        Tatooine  Human  
+ 5 Leia Organa        Alderaan  Human  
+ 6 Owen Lars          Tatooine  Human  
+ 7 Beru Whitesun Lars Tatooine  Human  
+ 8 R5-D4              Tatooine  Droid  
+ 9 Biggs Darklighter  Tatooine  Human  
+10 Obi-Wan Kenobi     Stewjon   Human  
+# ℹ 77 more rows</code></pre>
+</div>
 </div>
 </section>
 <section id="rename" class="level2">
 <h2 class="anchored" data-anchor-id="rename"><code>rename()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -272,18 +371,36 @@ background-color: null;
 font-style: inherit;">planet =</span> homeworld) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+<span id="cb21-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 14
+   height  mass hair_color  skin_color eye_color birth_year sex   gender species
+    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+ 1    172    77 blond       fair       blue            19   male  mascu… Human  
+ 2    167    75 &lt;NA&gt;        gold       yellow         112   none  mascu… Droid  
+ 3     96    32 &lt;NA&gt;        white, bl… red             33   none  mascu… Droid  
+ 4    202   136 none        white      yellow          41.9 male  mascu… Human  
+ 5    150    49 brown       light      brown           19   fema… femin… Human  
+ 6    178   120 brown, grey light      blue            52   male  mascu… Human  
+ 7    165    75 brown       light      blue            47   fema… femin… Human  
+ 8     97    32 &lt;NA&gt;        white, red red             NA   none  mascu… Droid  
+ 9    183    84 black       light      brown           24   male  mascu… Human  
+10    182    77 auburn, wh… fair       blue-gray       57   male  mascu… Human  
+# ℹ 77 more rows
+# ℹ 5 more variables: films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;,
+#   character_name &lt;chr&gt;, planet &lt;chr&gt;</code></pre>
+</div>
 </div>
 </section>
 <section id="mutate" class="level2">
 <h2 class="anchored" data-anchor-id="mutate"><code>mutate()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -297,26 +414,65 @@ font-style: inherit;">bmi_like =</span> mass <span class="sc" style="color: #5E5
 background-color: null;
 font-style: inherit;">/</span> (height_m <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">*</span> height_m)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">^</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(name, height, mass, height_m, bmi_like) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+<span id="cb23-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 5
+   name               height  mass height_m bmi_like
+   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;   
+ 1 Luke Skywalker        172    77     1.72 NA      
+ 2 C-3PO                 167    75     1.67 NA      
+ 3 R2-D2                  96    32     0.96 NA      
+ 4 Darth Vader           202   136     2.02 NA      
+ 5 Leia Organa           150    49     1.5  NA      
+ 6 Owen Lars             178   120     1.78 NA      
+ 7 Beru Whitesun Lars    165    75     1.65 NA      
+ 8 R5-D4                  97    32     0.97 NA      
+ 9 Biggs Darklighter     183    84     1.83 NA      
+10 Obi-Wan Kenobi        182    77     1.82 NA      
+# ℹ 77 more rows</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Currently, <code>mdbplyr</code> implements mapping between MongoDB operators and:</p>
+<ul>
+<li>Arithmetic/predicate: <code>%%,</code> <code>^,</code> <code>%in%</code></li>
+<li>Logs/math: <code>log(x, base)</code>, <code>log10()</code>, <code>floor()</code>, <code>ceiling()</code>, <code>trunc()</code></li>
+<li>Trig/hyperbolic: <code>sin()</code>, <code>cos()</code>, <code>tan()</code>, <code>asin()</code>, <code>acos()</code>, <code>atan()</code>, <code>atan2()</code>, <code>sinh()</code>, <code>cosh()</code>, <code>tanh()</code>, <code>asinh()</code>, <code>acosh()</code>, <code>atanh()</code></li>
+<li>Scalar min/max: <code>pmin()</code>, <code>pmax()</code></li>
+<li>String ops: <code>tolower()</code>, <code>toupper()</code>, <code>nchar()</code>, <code>paste()</code>, <code>paste0()</code>, <code>substr()</code>, <code>substring()</code></li>
+<li>Literal vector support for expressions like <code>x %in% c(1, 3, 5)</code></li>
+</ul>
+</div>
 </div>
 </section>
 <section id="transmute" class="level2">
 <h2 class="anchored" data-anchor-id="transmute"><code>transmute()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+<span id="cb25-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">transmute</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -329,30 +485,46 @@ background-color: null;
 font-style: inherit;">100</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+<span id="cb25-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 87 × 2
+   name               height_m
+   &lt;chr&gt;                 &lt;dbl&gt;
+ 1 Luke Skywalker         1.72
+ 2 C-3PO                  1.67
+ 3 R2-D2                  0.96
+ 4 Darth Vader            2.02
+ 5 Leia Organa            1.5 
+ 6 Owen Lars              1.78
+ 7 Beru Whitesun Lars     1.65
+ 8 R5-D4                  0.97
+ 9 Biggs Darklighter      1.83
+10 Obi-Wan Kenobi         1.82
+# ℹ 77 more rows</code></pre>
+</div>
 </div>
 </section>
 <section id="arrange" class="level2">
 <h2 class="anchored" data-anchor-id="arrange"><code>arrange()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(height), name) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+<span id="cb27-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(name, height) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+<span id="cb27-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -361,78 +533,119 @@ background-color: null;
 font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+<span id="cb27-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   name         height
+   &lt;chr&gt;         &lt;int&gt;
+ 1 Yarael Poof     264
+ 2 Tarfful         234
+ 3 Lama Su         229
+ 4 Chewbacca       228
+ 5 Roos Tarpals    224
+ 6 Grievous        216
+ 7 Taun We         213
+ 8 Rugor Nass      206
+ 9 Tion Medon      206
+10 Darth Vader     202</code></pre>
+</div>
 </div>
 </section>
 <section id="group_by" class="level2">
 <h2 class="anchored" data-anchor-id="group_by"><code>group_by()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+<span id="cb29-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(species)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;tbl_mongo&gt; collection 
+  Filters: 0 
+  Projection: &lt;all&gt; 
+  Computed: &lt;none&gt; 
+  Groups: species 
+  Summaries: &lt;none&gt; 
+  Limit: &lt;none&gt; 
+  Manual stages: 0 </code></pre>
+</div>
 </div>
 </section>
 <section id="summarise" class="level2">
 <h2 class="anchored" data-anchor-id="summarise"><code>summarise()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+<span id="cb31-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(species) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+<span id="cb31-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(</span>
-<span id="cb12-4">    <span class="at" style="color: #657422;
+<span id="cb31-4">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n</span>(),</span>
-<span id="cb12-5">    <span class="at" style="color: #657422;
+<span id="cb31-5">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">avg_height =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mean</span>(height),</span>
-<span id="cb12-6">    <span class="at" style="color: #657422;
+<span id="cb31-6">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">max_mass =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">max</span>(mass)</span>
-<span id="cb12-7">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb31-7">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb12-8">  <span class="fu" style="color: #4758AB;
+<span id="cb31-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(n)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb12-9">  <span class="fu" style="color: #4758AB;
+<span id="cb31-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 38 × 4
+       n avg_height max_mass species 
+   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   
+ 1    35       178     136   Human   
+ 2     6       131.    140   Droid   
+ 3     4       175     110   &lt;NA&gt;    
+ 4     3       209.     82   Gungan  
+ 5     2       173      80   Zabrak  
+ 6     2       221      88   Kaminoan
+ 7     2       168      56.2 Mirialan
+ 8     2       231     136   Wookiee 
+ 9     2       179      55   Twi'lek 
+10     1       188      NA   Iktotchi
+# ℹ 28 more rows</code></pre>
+</div>
 </div>
 </section>
 <section id="slice_head" class="level2">
 <h2 class="anchored" data-anchor-id="slice_head"><code>slice_head()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">starwars_tbl <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+<span id="cb33-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(name, species) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+<span id="cb33-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -441,24 +654,46 @@ background-color: null;
 font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+<span id="cb33-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  name           species
+  &lt;chr&gt;          &lt;chr&gt;  
+1 Luke Skywalker Human  
+2 C-3PO          Droid  
+3 R2-D2          Droid  
+4 Darth Vader    Human  
+5 Leia Organa    Human  </code></pre>
+</div>
 </div>
 </section>
 <section id="head" class="level2">
 <h2 class="anchored" data-anchor-id="head"><code>head()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">head</span>(starwars_tbl, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+<span id="cb35-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">collect</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 15
+  `_id`      name  height  mass hair_color skin_color eye_color birth_year sex  
+  &lt;chr&gt;      &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
+1 69e21c245… Luke…    172    77 blond      fair       blue            19   male 
+2 69e21c245… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+3 69e21c245… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
+4 69e21c245… Dart…    202   136 none       white      yellow          41.9 male 
+5 69e21c245… Leia…    150    49 brown      light      brown           19   fema…
+# ℹ 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
+#   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -471,7 +706,7 @@ font-style: inherit;">collect</span>()</span></code></pre></div></div>
 <li>conservative grouped summaries,</li>
 <li>no joins, window functions, or automatic client-side fallback.</li>
 </ul>
-<p>If a query falls outside that subset, <code>MongoTidy</code> is designed to fail explicitly rather than guess or silently change execution semantics.</p>
+<p>If a query falls outside that subset, <code>mdbplyr</code> is designed to fail explicitly rather than guess or silently change execution semantics.</p>
 <div class="thatsall">
 <p>That’s all, folks!</p>
 </div>
@@ -485,9 +720,9 @@ font-style: inherit;">collect</span>()</span></code></pre></div></div>
   <category>MongoDB</category>
   <category>packages</category>
   <category>milestone</category>
-  <guid>https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.html</guid>
+  <guid>https://rtug.unitn.it/posts/011-mdbplyr/mdbplyr.html</guid>
   <pubDate>Wed, 15 Apr 2026 22:00:00 GMT</pubDate>
-  <media:content url="https://rtug.unitn.it/posts/011-MongoTidy/mongotidy.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://rtug.unitn.it/posts/011-mdbplyr/mdbplyr.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>RTUG::25.2 meeting</title>
