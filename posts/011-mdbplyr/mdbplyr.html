@@ -452,16 +452,16 @@ Important
 <pre><code># A tibble: 87 × 15
    `_id`     name  height  mass hair_color skin_color eye_color birth_year sex  
    &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
- 1 69e8ee44… Luke…    172    77 blond      fair       blue            19   male 
- 2 69e8ee44… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
- 3 69e8ee44… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
- 4 69e8ee44… Dart…    202   136 none       white      yellow          41.9 male 
- 5 69e8ee44… Leia…    150    49 brown      light      brown           19   fema…
- 6 69e8ee44… Owen…    178   120 brown, gr… light      blue            52   male 
- 7 69e8ee44… Beru…    165    75 brown      light      blue            47   fema…
- 8 69e8ee44… R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none 
- 9 69e8ee44… Bigg…    183    84 black      light      brown           24   male 
-10 69e8ee44… Obi-…    182    77 auburn, w… fair       blue-gray       57   male 
+ 1 6a0ac293… Luke…    172    77 blond      fair       blue            19   male 
+ 2 6a0ac293… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+ 3 6a0ac293… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
+ 4 6a0ac293… Dart…    202   136 none       white      yellow          41.9 male 
+ 5 6a0ac293… Leia…    150    49 brown      light      brown           19   fema…
+ 6 6a0ac293… Owen…    178   120 brown, gr… light      blue            52   male 
+ 7 6a0ac293… Beru…    165    75 brown      light      blue            47   fema…
+ 8 6a0ac293… R5-D4     97    32 &lt;NA&gt;       white, red red             NA   none 
+ 9 6a0ac293… Bigg…    183    84 black      light      brown           24   male 
+10 6a0ac293… Obi-…    182    77 auburn, w… fair       blue-gray       57   male 
 # ℹ 77 more rows
 # ℹ 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
 #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
@@ -502,16 +502,16 @@ Important
 <pre><code># A tibble: 87 × 15
    `_id`  character_name height  mass hair_color skin_color eye_color birth_year
    &lt;chr&gt;  &lt;chr&gt;           &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
- 1 69e8e… Luke Skywalker    172    77 blond      fair       blue            19  
- 2 69e8e… C-3PO             167    75 &lt;NA&gt;       gold       yellow         112  
- 3 69e8e… R2-D2              96    32 &lt;NA&gt;       white, bl… red             33  
- 4 69e8e… Darth Vader       202   136 none       white      yellow          41.9
- 5 69e8e… Leia Organa       150    49 brown      light      brown           19  
- 6 69e8e… Owen Lars         178   120 brown, gr… light      blue            52  
- 7 69e8e… Beru Whitesun…    165    75 brown      light      blue            47  
- 8 69e8e… R5-D4              97    32 &lt;NA&gt;       white, red red             NA  
- 9 69e8e… Biggs Darklig…    183    84 black      light      brown           24  
-10 69e8e… Obi-Wan Kenobi    182    77 auburn, w… fair       blue-gray       57  
+ 1 6a0ac… Luke Skywalker    172    77 blond      fair       blue            19  
+ 2 6a0ac… C-3PO             167    75 &lt;NA&gt;       gold       yellow         112  
+ 3 6a0ac… R2-D2              96    32 &lt;NA&gt;       white, bl… red             33  
+ 4 6a0ac… Darth Vader       202   136 none       white      yellow          41.9
+ 5 6a0ac… Leia Organa       150    49 brown      light      brown           19  
+ 6 6a0ac… Owen Lars         178   120 brown, gr… light      blue            52  
+ 7 6a0ac… Beru Whitesun…    165    75 brown      light      blue            47  
+ 8 6a0ac… R5-D4              97    32 &lt;NA&gt;       white, red red             NA  
+ 9 6a0ac… Biggs Darklig…    183    84 black      light      brown           24  
+10 6a0ac… Obi-Wan Kenobi    182    77 auburn, w… fair       blue-gray       57  
 # ℹ 77 more rows
 # ℹ 7 more variables: sex &lt;chr&gt;, gender &lt;chr&gt;, planet &lt;chr&gt;, species &lt;chr&gt;,
 #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
@@ -646,18 +646,18 @@ Important
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 38 × 4
-   species      n avg_height max_mass
-   &lt;chr&gt;    &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
- 1 Human       35       178     136  
- 2 Droid        6       131.    140  
- 3 &lt;NA&gt;         4       175     110  
- 4 Gungan       3       209.     82  
- 5 Twi'lek      2       179      55  
- 6 Kaminoan     2       221      88  
- 7 Wookiee      2       231     136  
- 8 Zabrak       2       173      80  
- 9 Mirialan     2       168      56.2
-10 Muun         1       191      NA  
+   species          n avg_height max_mass
+   &lt;chr&gt;        &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+ 1 Human           35       178     136  
+ 2 Droid            6       131.    140  
+ 3 &lt;NA&gt;             4       175     110  
+ 4 Gungan           3       209.     82  
+ 5 Twi'lek          2       179      55  
+ 6 Mirialan         2       168      56.2
+ 7 Kaminoan         2       221      88  
+ 8 Zabrak           2       173      80  
+ 9 Wookiee          2       231     136  
+10 Mon Calamari     1       180      83  
 # ℹ 28 more rows</code></pre>
 </div>
 </div>
@@ -690,11 +690,11 @@ Important
 <pre><code># A tibble: 5 × 15
   `_id`      name  height  mass hair_color skin_color eye_color birth_year sex  
   &lt;chr&gt;      &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;
-1 69e8ee442… Luke…    172    77 blond      fair       blue            19   male 
-2 69e8ee442… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
-3 69e8ee442… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
-4 69e8ee442… Dart…    202   136 none       white      yellow          41.9 male 
-5 69e8ee442… Leia…    150    49 brown      light      brown           19   fema…
+1 6a0ac293c… Luke…    172    77 blond      fair       blue            19   male 
+2 6a0ac293c… C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none 
+3 6a0ac293c… R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none 
+4 6a0ac293c… Dart…    202   136 none       white      yellow          41.9 male 
+5 6a0ac293c… Leia…    150    49 brown      light      brown           19   fema…
 # ℹ 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;, species &lt;chr&gt;,
 #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
 </div>
