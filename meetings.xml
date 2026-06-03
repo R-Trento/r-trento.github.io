@@ -9,7 +9,7 @@
 <link>https://rtug.unitn.it/meetings.html</link>
 <atom:link href="https://rtug.unitn.it/meetings.xml" rel="self" type="application/rss+xml"/>
 <description>R-Trento Users Group</description>
-<generator>quarto-1.9.30</generator>
+<generator>quarto-1.9.38</generator>
 <lastBuildDate>Sun, 01 Jun 2025 22:00:00 GMT</lastBuildDate>
 <item>
   <title>RTUG::25.2 meeting</title>
