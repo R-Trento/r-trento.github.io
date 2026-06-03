@@ -10,3 +10,4 @@
 
 _certificates
 **/*.quarto_ipynb
+.positai

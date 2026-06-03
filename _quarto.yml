@@ -69,5 +69,5 @@ format:
     theme: 
       - flatly
       - custom.scss
-execute:
-  freeze: auto
+# execute:
+#   freeze: auto

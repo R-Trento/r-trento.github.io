@@ -25,14 +25,16 @@ Members of RTUG have contributed to the following topics:
 
 # {{< bi box >}} CRAN Packages
 
-* [ADAS Utils](https://cran.r-project.org/package=adas.utils){target="_blank"}---Design of Experiments
-* [noisyCE2](https://cran.r-project.org/package=noisyCE2){target="_blank"}---Cross-Entropy Optimisation of Noisy Functions
-* [RMAWGEN](https://cran.r-project.org/web/packages/RMAWGEN/index.html){target="_blank"}---Multi-Site Auto-Regressive Weather GENerator
-* [geotopbricks](https://cran.r-project.org/web/packages/geotopbricks/index.html){target="_blank"}---An R Plug-in for the Distributed Hydrological Model GEOtop
+* [ADAS Utils](https://pbosetti.r-universe.dev/adas.utils){target="_blank"}---Design of Experiments
+* [geotopbricks](https://ecor.r-universe.dev/geotopbricks){target="_blank"}---An R Plug-in for the Distributed Hydrological Model GEOtop
+* [mdbplyr](https://pbosetti.r-universe.dev/mdbplyr)---A tidy interface to MongoDB, a popular NoSQL database.
+* [noisyCE2](https://f-santi.r-universe.dev/noisyCE2){target="_blank"}---Cross-Entropy Optimisation of Noisy Functions
+* [RGENERATE](https://ecor.r-universe.dev/RGENERATE){target="_blank"}---Tools to Generate Vector Time Series
+* [RMAWGEN](https://ecor.r-universe.dev/RMAWGEN){target="_blank"}---Multi-Site Auto-Regressive Weather GENerator
 
 ```{r}
 #| echo: false
-pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "geotopbricks")) %>% 
+pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "RGENERATE", "geotopbricks", "mdbplyr")) %>% 
   ggplot(aes(x=end, y=downloads, group=package, color=package)) +
   geom_line() +
   scale_x_date(date_labels="%Y",
@@ -45,10 +47,6 @@ pp <- cran_stats(c("adas.utils", "noisyCE2", "RMAWGEN", "geotopbricks")) %>%
 
 ggplotly(pp)
 ```
-
-# {{< bi box >}} Other Packages
-
-* [MongoTidy](https://github.com/pbosetti/MongoTidy){target="_blank"}---A tidy interface to MongoDB, a popular NoSQL database.
 
 
 # {{< bi book >}} Books

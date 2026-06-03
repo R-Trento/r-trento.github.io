@@ -108,3 +108,15 @@ div.abstract {
   color: $link-hover-color;
   border-color: $link-hover-color;
 }
+
+div.cell-output {
+  background-color: #fafafa;
+  border-left: 3px solid #aaa;
+  padding-left: 10px;
+  border-radius: 2px;
+}
+
+.cell-output code {
+  color: #00540d;
+  font-size: 85%;
+}

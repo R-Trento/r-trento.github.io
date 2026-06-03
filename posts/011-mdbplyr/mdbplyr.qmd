@@ -1,9 +1,11 @@
 ---
-title: "MongoTidy: a tidy interface to MongoDB"
+title: "mdbplyr: a tidy interface to MongoDB"
 author: "Paolo Bosetti"
 date: "04/16/2026"
 # date-modified: today
-image: "mongotidy.png"
+image: "mdbplyr.png"
+aliases:
+  - "/posts/011-MongoTidy/mongotidy.html"
 format: html
 draft: false
 categories: 
@@ -13,31 +15,34 @@ categories:
   - packages
   - milestone
 abstract: >
-  MongoTidy is a new R package that provides a tidy interface to MongoDB, a popular NoSQL database. With MongoTidy, you can easily connect to your MongoDB database, query data using a tidy syntax, and manipulate the results using tidyverse tools. In this post, we will explore the features of MongoTidy and how it can simplify your workflow when working with MongoDB in R.
+  `mdbplyr` is a new R package that provides a tidy interface to MongoDB, a popular NoSQL database. With `mdbplyr`, you can easily connect to your MongoDB database, query data using a tidy syntax, and manipulate the results using tidyverse tools. In this post, we will explore the features of `mdbplyr` and how it can simplify your workflow when working with MongoDB in R.
 ---
 
 ```{r}
 #| label: setup
+#| echo: false
 knitr::opts_chunk$set(
   fig.align = "center",
   # This for default device
   out.width = "16cm",
   # This two for high quality charts:
-  fig.dim = c(16, 9)*0.4
+  fig.dim = c(16, 9)*0.4,
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
 
-:::column-margin
-![MongoTidy tentative logo](mongotidy.png)
-:::
-
 # Introduction
 
-We are developing `MongoTidy`, an R package that provides a disciplined,
+We are developing [`mdbplyr`](https://cran.r-project.org/package=mdbplyr), an R package that provides a disciplined,
 lazy `dplyr`-style interface for MongoDB aggregation pipelines.
 
-`MongoTidy` sits between raw `mongolite` usage and broader compatibility layers.
+:::column-margin
+![mdbplyr logo](mdbplyr.png)
+:::
+
+`mdbplyr` sits between raw `mongolite` usage and broader compatibility layers.
 Compared with writing aggregation JSON by hand, it lets you express supported
 queries with tidy verbs and inspect the generated pipeline before execution.
 Compared with approaches that try to hide MongoDB behind table-like semantics,
@@ -54,8 +59,7 @@ The practical advantages are:
 
 
 ::: {.callout-important}
-
-This post is a quick introduction to `MongoTidy` with examples. The package is still in early development, so expect some rough edges and missing features. The API is not yet stable, and the documentation is still a work in progress. If you're interested in trying it out or contributing, check out the [GitHub repository](https://github.com/mongodb/MongoTidy).
+This post is a quick introduction to `mdbplyr` with examples. The package is still in early development, so expect some rough edges and missing features. The API is not yet stable, and the documentation is still a work in progress. If you're interested in trying it out or contributing, check out the [GitHub repository](https://github.com/pbosetti/mdbplyr).
 
 :::
 
@@ -64,11 +68,19 @@ This post is a quick introduction to `MongoTidy` with examples. The package is s
 
 ## Installation
 
-Since MongoTidy is still in early development, it's not yet available on CRAN. You can install it from GitHub using the `pak` package:
+Since April 22, 20226, `mdbplyr` is available on CRAN. You can install it with:
 
-```{r install, eval = FALSE}
-install.packages("pak")
-pak::pak("pbosetti/MongoTidy")
+```{r install-cran}
+#| eval = FALSE
+install.packages("mdbplyr")
+```
+
+Since `mdbplyr` is still in early development, you can alternatively install the latest development version from GitHub using the `devtools` package:
+
+```{r install}
+#| eval = FALSE
+install.packages("devtools")
+devtools::install_github("pbosetti/mdbplyr")
 ```
 
 ## Loading data
@@ -77,14 +89,16 @@ Suppose there is a running MongoDB instance on `localhost` with default port
 and no authentication. The code below loads `dplyr::starwars` into a collection
 named `starwars`.
 
-```{r load-starwars, eval = FALSE}
+```{r load-starwars}
+#| message: false
+#| warning: false
 library(dplyr)
 library(mongolite)
-library(MongoTidy)
+library(mdbplyr)
 
 starwars_collection <- mongolite::mongo(
   collection = "starwars",
-  db = "mongotidy"
+  db = "mdbplyr"
 )
 
 starwars_collection$drop()
@@ -99,19 +113,17 @@ starwars_tbl <- tbl_mongo(
 Once the collection is loaded, `starwars_tbl` is the lazy table used in the
 examples below.
 
-```{r create-lazy-table, eval = FALSE}
+```{r create-lazy-table}
 library(dplyr)
-library(MongoTidy)
+library(mdbplyr)
 
 starwars_collection <- mongolite::mongo(
   collection = "starwars",
-  db = "mongotidy"
+  db = "mdbplyr"
 )
 
-starwars_tbl <- tbl_mongo(
-  starwars_collection,
-  schema = names(dplyr::starwars)
-)
+starwars_tbl <- tbl_mongo(starwars_collection) %>% 
+  infer_schema()
 ```
 
 ## Basic inspection
@@ -119,7 +131,7 @@ starwars_tbl <- tbl_mongo(
 Inspect the known schema and the generated pipeline without executing the
 query.
 
-```{r inspect, eval = FALSE}
+```{r inspect}
 schema_fields(starwars_tbl)
 
 starwars_tbl |>
@@ -135,7 +147,7 @@ Each subsection below shows one of the supported `dplyr`-like verbs on the
 
 ## `filter()`
 
-```{r verb-filter, eval = FALSE}
+```{r verb-filter}
 starwars_tbl |>
   filter(species == "Droid", height > 100) |>
   collect()
@@ -143,7 +155,7 @@ starwars_tbl |>
 
 ## `select()`
 
-```{r verb-select, eval = FALSE}
+```{r verb-select}
 starwars_tbl |>
   select(name, species, homeworld) |>
   collect()
@@ -151,7 +163,7 @@ starwars_tbl |>
 
 ## `rename()`
 
-```{r verb-rename, eval = FALSE}
+```{r verb-rename}
 starwars_tbl |>
   rename(character_name = name, planet = homeworld) |>
   collect()
@@ -159,16 +171,34 @@ starwars_tbl |>
 
 ## `mutate()`
 
-```{r verb-mutate, eval = FALSE}
+```{r verb-mutate}
 starwars_tbl |>
-  mutate(height_m = height / 100, bmi_like = mass / (height_m * height_m)) |>
+  mutate(height_m = height / 100) |>
+  mutate(bmi_like = mass / height_m^2 ) |> # can't be in the same mutate()!
   select(name, height, mass, height_m, bmi_like) |>
   collect()
 ```
 
+
+::: {.callout-important}
+
+Currently, `mdbplyr` implements mapping between MongoDB operators and:
+
+* Arithmetic/predicate: `%%,` `^,` `%in%`
+* Logs/math: `log(x, base)`, `log10()`, `floor()`, `ceiling()`, `trunc()`
+* Trig/hyperbolic: `sin()`, `cos()`, `tan()`, `asin()`, `acos()`, `atan()`, `atan2()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`
+* Scalar min/max: `pmin()`, `pmax()`
+* String ops: `tolower()`, `toupper()`, `nchar()`, `paste()`, `paste0()`, `substr()`, `substring()`
+* Literal vector support for expressions like `x %in% c(1, 3, 5)`
+
+Note though, that within the same `mutate` call you cannot use a newly created field in another expression, as the translation is currently one-to-one with MongoDB's `$addFields` stage. So you need to split the BMI-like calculation into two `mutate()` calls, as in te above example.
+
+:::
+
+
 ## `transmute()`
 
-```{r verb-transmute, eval = FALSE}
+```{r verb-transmute}
 starwars_tbl |>
   transmute(name = name, height_m = height / 100) |>
   collect()
@@ -176,7 +206,7 @@ starwars_tbl |>
 
 ## `arrange()`
 
-```{r verb-arrange, eval = FALSE}
+```{r verb-arrange}
 starwars_tbl |>
   arrange(desc(height), name) |>
   select(name, height) |>
@@ -186,14 +216,14 @@ starwars_tbl |>
 
 ## `group_by()`
 
-```{r verb-group-by, eval = FALSE}
+```{r verb-group-by}
 starwars_tbl |>
   group_by(species)
 ```
 
 ## `summarise()`
 
-```{r verb-summarise, eval = FALSE}
+```{r verb-summarise}
 starwars_tbl |>
   group_by(species) |>
   summarise(
@@ -207,7 +237,7 @@ starwars_tbl |>
 
 ## `slice_head()`
 
-```{r verb-slice-head, eval = FALSE}
+```{r verb-slice-head}
 starwars_tbl |>
   select(name, species) |>
   slice_head(n = 5) |>
@@ -216,7 +246,7 @@ starwars_tbl |>
 
 ## `head()`
 
-```{r verb-head, eval = FALSE}
+```{r verb-head}
 head(starwars_tbl, 5) |>
   collect()
 ```
@@ -230,7 +260,7 @@ The examples above stay within the currently supported subset:
 - conservative grouped summaries,
 - no joins, window functions, or automatic client-side fallback.
 
-If a query falls outside that subset, `MongoTidy` is designed to fail
+If a query falls outside that subset, `mdbplyr` is designed to fail
 explicitly rather than guess or silently change execution semantics.
 
 
