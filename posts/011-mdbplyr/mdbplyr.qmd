@@ -8,6 +8,8 @@ aliases:
   - "/posts/011-MongoTidy/mongotidy.html"
 format: html
 draft: false
+execute: 
+  freeze: true
 categories: 
   - post
   - database
