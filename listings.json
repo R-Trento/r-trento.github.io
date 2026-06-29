@@ -1,15 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": [
-      "/slides/dickson-25.1.html",
-      "/slides/bosetti-25.1/index.html",
-      "/slides/rtug-25.1.html",
-      "/slides/micciolo-espa-25.1.html",
-      "/slides/ciani-25.1.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/meetings/25.2-meeting.html",
@@ -26,13 +16,6 @@
     ]
   },
   {
-    "listing": "/meetings.html",
-    "items": [
-      "/meetings/25.2-meeting.html",
-      "/meetings/25.1-meeting.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
       "/posts/011-mdbplyr/mdbplyr.html",
@@ -40,6 +23,23 @@
       "/posts/006-tukey/index.html",
       "/posts/004-adas.utils/index.html",
       "/posts/003-logscale/index.html"
+    ]
+  },
+  {
+    "listing": "/meetings.html",
+    "items": [
+      "/meetings/25.2-meeting.html",
+      "/meetings/25.1-meeting.html"
+    ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": [
+      "/slides/dickson-25.1.html",
+      "/slides/bosetti-25.1/index.html",
+      "/slides/rtug-25.1.html",
+      "/slides/micciolo-espa-25.1.html",
+      "/slides/ciani-25.1.html"
     ]
   }
 ]
