@@ -10,13 +10,6 @@
     ]
   },
   {
-    "listing": "/meetings.html",
-    "items": [
-      "/meetings/25.2-meeting.html",
-      "/meetings/25.1-meeting.html"
-    ]
-  },
-  {
     "listing": "/slides.html",
     "items": [
       "/slides/dickson-25.1.html",
@@ -40,6 +33,13 @@
       "/posts/003-logscale/index.html",
       "/posts/002-logo/index.html",
       "/posts/001-opening/001-opening.html"
+    ]
+  },
+  {
+    "listing": "/meetings.html",
+    "items": [
+      "/meetings/25.2-meeting.html",
+      "/meetings/25.1-meeting.html"
     ]
   }
 ]
