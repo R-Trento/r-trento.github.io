@@ -1,12 +1,9 @@
 [
   {
-    "listing": "/posts.html",
+    "listing": "/meetings.html",
     "items": [
-      "/posts/011-mdbplyr/mdbplyr.html",
-      "/posts/008-tukey-vs-student/tukey-vs-student.html",
-      "/posts/006-tukey/index.html",
-      "/posts/004-adas.utils/index.html",
-      "/posts/003-logscale/index.html"
+      "/meetings/25.2-meeting.html",
+      "/meetings/25.1-meeting.html"
     ]
   },
   {
@@ -26,20 +23,23 @@
     ]
   },
   {
-    "listing": "/slides.html",
+    "listing": "/posts.html",
     "items": [
-      "/slides/dickson-25.1.html",
-      "/slides/rtug-25.1.html",
-      "/slides/bosetti-25.1/index.html",
-      "/slides/micciolo-espa-25.1.html",
-      "/slides/ciani-25.1.html"
+      "/posts/011-mdbplyr/mdbplyr.html",
+      "/posts/008-tukey-vs-student/tukey-vs-student.html",
+      "/posts/006-tukey/index.html",
+      "/posts/004-adas.utils/index.html",
+      "/posts/003-logscale/index.html"
     ]
   },
   {
-    "listing": "/meetings.html",
+    "listing": "/slides.html",
     "items": [
-      "/meetings/25.2-meeting.html",
-      "/meetings/25.1-meeting.html"
+      "/slides/dickson-25.1.html",
+      "/slides/bosetti-25.1/index.html",
+      "/slides/rtug-25.1.html",
+      "/slides/micciolo-espa-25.1.html",
+      "/slides/ciani-25.1.html"
     ]
   }
 ]
