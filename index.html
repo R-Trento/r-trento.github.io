@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.20">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -42,18 +42,19 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0ae969d3293726db143f6e9eb89af930.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-24d1bc8ca511728c6451c61697059bc5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-24d1bc8ca511728c6451c61697059bc5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-24d1bc8ca511728c6451c61697059bc5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5d97ff25a24e7359e5515ac9c050861f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5d97ff25a24e7359e5515ac9c050861f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5d97ff25a24e7359e5515ac9c050861f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
@@ -106,12 +107,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
@@ -134,12 +129,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
@@ -207,11 +196,11 @@ window.Quarto = {
 <meta property="og:image:width" content="1024">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
@@ -222,8 +211,7 @@ window.Quarto = {
     <span class="navbar-title">RTUG</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -272,6 +260,7 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -280,7 +269,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -292,7 +281,7 @@ window.Quarto = {
 </nav>
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="YW5ub3VuY2VtZW50">announcement <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q1JBTg==">CRAN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YWJhc2U=">database <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw==">design of experiments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R0dQbG90Mg==">GGPlot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5mZXJlbmNl">inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWlsZXN0b25l">milestone <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TW9uZ29EQg==">MongoDB <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZXM=">packages <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cG9zdA==">post <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UlRVRw==">RTUG <span class="quarto-category-count">(4)</span></div><div class="category" data-category="c2lnbmFsJTIwYW5hbHlzaXM=">signal analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHVrZXk=">Tukey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2Vic2l0ZQ==">website <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content" tabindex="-1">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -371,7 +360,7 @@ Description
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1748822400000" data-listing-file-modified-sort="1793587148204" data-listing-date-modified-sort="1793577600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="99" data-listing-title-sort="RTUG::25.2 meeting" data-listing-filename-sort="25.2-meeting.qmd">
+<tr data-index="0" data-listing-date-sort="1748822400000" data-listing-file-modified-sort="1794192641609" data-listing-date-modified-sort="1794182400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="99" data-listing-title-sort="RTUG::25.2 meeting" data-listing-filename-sort="25.2-meeting.qmd">
 <td>
 <span class="listing-date">Jun 2, 2025</span>
 </td>
@@ -421,15 +410,15 @@ Description
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cG9zdCUyQ2RhdGFiYXNlJTJDTW9uZ29EQiUyQ3BhY2thZ2VzJTJDbWlsZXN0b25l" data-listing-date-sort="1776297600000" data-listing-file-modified-sort="1793587148301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail"><a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="cG9zdCUyQ2RhdGFiYXNlJTJDTW9uZ29EQiUyQ3BhY2thZ2VzJTJDbWlsZXN0b25l" data-listing-date-sort="1776297600000" data-listing-file-modified-sort="1794192641734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/011-mdbplyr/mdbplyr.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title" data-anchor-id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206269206d65676170686f6e65203e7d7d-news">
-<a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external">mdbplyr: a tidy interface to MongoDB</a>
+<a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external-icon">mdbplyr: a tidy interface to MongoDB</a>
 </h3>
 <div class="listing-categories">
 
@@ -444,12 +433,14 @@ Description
 <div class="listing-category" onclick="window.quartoListingCategory('bWlsZXN0b25l'); return false;">milestone</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external-icon">
 <p><code>mdbplyr</code> is a new R package that provides a tidy interface to MongoDB, a popular NoSQL database. With <code>mdbplyr</code>, you can easily connect to your MongoDB database, query data using a tidy syntax, and manipulate the results using tidyverse tools. In this post, we will explore the features of <code>mdbplyr</code> and how it can simplify your workflow when working with MongoDB in R.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external">
+<a href="./posts/011-mdbplyr/mdbplyr.html" class="no-external-icon">
 <div class="listing-date">
 Apr 16, 2026
 </div>
@@ -460,15 +451,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744243200000" data-listing-file-modified-sort="1793587148278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
-<div class="thumbnail"><a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">
+<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ3RpZHl2ZXJzZSUyQ2luZmVyZW5jZSUyQ1R1a2V5" data-listing-date-sort="1744243200000" data-listing-file-modified-sort="1794192641705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="830">
+<div class="thumbnail"><a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/008-tukey-vs-student/image.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">Tukey vs.&nbsp;Student</a>
+<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external-icon">Tukey vs.&nbsp;Student</a>
 </h3>
 <div class="listing-categories">
 
@@ -481,12 +472,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('VHVrZXk='); return false;">Tukey</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external-icon">
 <p>To compare two samples, or groups, we can use a T-test. But if we want to compare more than two groups, we need to use Tukey’s test. In this post we investigate the reason why a Tukey’s test is more appropriate and robust than a set of pairwise T-tests for all possible combinations of groups. This is also an excuse to illustrate the power of <code>purrr</code> and <code>dplyr</code> packages, specifically for the use of <code>map</code>/<code>reduce</code>, <code>join_left</code>, and <code>pivot_longer</code>/<code>pivot_wider</code> functions.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external">
+<a href="./posts/008-tukey-vs-student/tukey-vs-student.html" class="no-external-icon">
 <div class="listing-date">
 Apr 10, 2025
 </div>
@@ -497,15 +490,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1743120000000" data-listing-file-modified-sort="1793587148264" data-listing-date-modified-sort="1793577600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
-<div class="thumbnail"><a href="./posts/007-r-consortium/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="2" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1743120000000" data-listing-file-modified-sort="1794192641685" data-listing-date-modified-sort="1794182400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
+<div class="thumbnail"><a href="./posts/007-r-consortium/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/007-r-consortium/milestone.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/007-r-consortium/index.html" class="no-external">R-Consortium supporting RTUG</a>
+<a href="./posts/007-r-consortium/index.html" class="no-external-icon">R-Consortium supporting RTUG</a>
 </h3>
 <div class="listing-categories">
 
@@ -516,12 +509,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('YW5ub3VuY2VtZW50'); return false;">announcement</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/007-r-consortium/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/007-r-consortium/index.html" class="no-external-icon">
 Today, March 28th, 2025, we are proud to announce that the R-Trento Users Group has been accepted by the R-Consortium. This means that we are now officially recognized as a…
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/007-r-consortium/index.html" class="no-external">
+<a href="./posts/007-r-consortium/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 28, 2025
 </div>
@@ -532,15 +527,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743033600000" data-listing-file-modified-sort="1793587148264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
-<div class="thumbnail"><a href="./posts/006-tukey/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ3BhY2thZ2Vz" data-listing-date-sort="1743033600000" data-listing-file-modified-sort="1794192641685" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="445">
+<div class="thumbnail"><a href="./posts/006-tukey/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/006-tukey/Tukey.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/006-tukey/index.html" class="no-external">Tukey’s test plot in <code>adas.utils</code></a>
+<a href="./posts/006-tukey/index.html" class="no-external-icon">Tukey’s test plot in <code>adas.utils</code></a>
 </h3>
 <div class="listing-categories">
 
@@ -549,12 +544,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/006-tukey/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/006-tukey/index.html" class="no-external-icon">
 <p>The new version 1.1.1 of the <code>adas.utils</code> package includes a new function to plot the results of Tukey’s test.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/006-tukey/index.html" class="no-external">
+<a href="./posts/006-tukey/index.html" class="no-external-icon">
 <div class="listing-date">
 Mar 27, 2025
 </div>
@@ -565,15 +562,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="UlRVRyUyQ21pbGVzdG9uZQ==" data-listing-date-sort="1740528000000" data-listing-file-modified-sort="1793587148263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
-<div class="thumbnail"><a href="./posts/005-domain/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="4" data-categories="UlRVRyUyQ21pbGVzdG9uZQ==" data-listing-date-sort="1740528000000" data-listing-file-modified-sort="1794192641684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="50">
+<div class="thumbnail"><a href="./posts/005-domain/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/005-domain/image.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/005-domain/index.html" class="no-external">Moving to a new domain</a>
+<a href="./posts/005-domain/index.html" class="no-external-icon">Moving to a new domain</a>
 </h3>
 <div class="listing-categories">
 
@@ -582,12 +579,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('bWlsZXN0b25l'); return false;">milestone</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/005-domain/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/005-domain/index.html" class="no-external-icon">
 <p>RTUG website has a new domain and a new contact email.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/005-domain/index.html" class="no-external">
+<a href="./posts/005-domain/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 26, 2025
 </div>
@@ -598,15 +597,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739145600000" data-listing-file-modified-sort="1793587148256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
-<div class="thumbnail"><a href="./posts/004-adas.utils/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="5" data-categories="cGFja2FnZXMlMkNwb3N0JTJDQ1JBTiUyQ2Rlc2lnbiUyMG9mJTIwZXhwZXJpbWVudHM=" data-listing-date-sort="1739145600000" data-listing-file-modified-sort="1794192641675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1396">
+<div class="thumbnail"><a href="./posts/004-adas.utils/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/004-adas.utils/hypercube.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/004-adas.utils/index.html" class="no-external">Introducing the <code>adas.utils</code> package</a>
+<a href="./posts/004-adas.utils/index.html" class="no-external-icon">Introducing the <code>adas.utils</code> package</a>
 </h3>
 <div class="listing-categories">
 
@@ -619,12 +618,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('ZGVzaWduJTIwb2YlMjBleHBlcmltZW50cw=='); return false;">design of experiments</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/004-adas.utils/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/004-adas.utils/index.html" class="no-external-icon">
 <p>The package <code>adas.utils</code>, contributed by one of RTUG members, aims at helping in the design and analysis of factorial experiments.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/004-adas.utils/index.html" class="no-external">
+<a href="./posts/004-adas.utils/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 10, 2025
 </div>
@@ -635,15 +636,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739059200000" data-listing-file-modified-sort="1793587148248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
-<div class="thumbnail"><a href="./posts/003-logscale/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="6" data-categories="cG9zdCUyQ1IlMkN0aWR5dmVyc2UlMkNHR1Bsb3QyJTJDc2lnbmFsJTIwYW5hbHlzaXM=" data-listing-date-sort="1739059200000" data-listing-file-modified-sort="1794192641667" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
+<div class="thumbnail"><a href="./posts/003-logscale/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/003-logscale/steps.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/003-logscale/index.html" class="no-external">Logarithmic scales in GGPlot2</a>
+<a href="./posts/003-logscale/index.html" class="no-external-icon">Logarithmic scales in GGPlot2</a>
 </h3>
 <div class="listing-categories">
 
@@ -658,12 +659,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('c2lnbmFsJTIwYW5hbHlzaXM='); return false;">signal analysis</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/003-logscale/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/003-logscale/index.html" class="no-external-icon">
 <p>With the excuse of doing signal analysis in R, this post discusses on how to deal with logarithmic scales and tick-marks in GGPlot2, and how to generate log-spaced grids to have an equally dense set of points in the resulting plot.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/003-logscale/index.html" class="no-external">
+<a href="./posts/003-logscale/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 9, 2025
 </div>
@@ -674,15 +677,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="UlRVRyUyQ3dlYnNpdGUlMkNhbm5vdW5jZW1lbnQ=" data-listing-date-sort="1738800000000" data-listing-file-modified-sort="1793587148248" data-listing-date-modified-sort="1793577600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
-<div class="thumbnail"><a href="./posts/002-logo/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="7" data-categories="UlRVRyUyQ3dlYnNpdGUlMkNhbm5vdW5jZW1lbnQ=" data-listing-date-sort="1738800000000" data-listing-file-modified-sort="1794192641666" data-listing-date-modified-sort="1794182400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<div class="thumbnail"><a href="./posts/002-logo/index.html" class="no-external-icon">
 
 <img loading="lazy" src="./images/logo.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/002-logo/index.html" class="no-external">New Logo</a>
+<a href="./posts/002-logo/index.html" class="no-external-icon">New Logo</a>
 </h3>
 <div class="listing-categories">
 
@@ -693,12 +696,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('YW5ub3VuY2VtZW50'); return false;">announcement</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/002-logo/index.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/002-logo/index.html" class="no-external-icon">
 The new RTUG logo is a hexagon, on the style of Tidyverse packages, it takes the colors of Trentino Province lettering, and of course it incorporates the GNU-R language logo.
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/002-logo/index.html" class="no-external">
+<a href="./posts/002-logo/index.html" class="no-external-icon">
 <div class="listing-date">
 Feb 6, 2025
 </div>
@@ -709,15 +714,15 @@ Paolo Bosetti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1738713600000" data-listing-file-modified-sort="1793587148240" data-listing-date-modified-sort="1793577600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="37">
-<div class="thumbnail"><a href="./posts/001-opening/001-opening.html" class="no-external">
+<div class="quarto-post image-right" data-index="8" data-categories="UlRVRyUyQ21pbGVzdG9uZSUyQ2Fubm91bmNlbWVudA==" data-listing-date-sort="1738713600000" data-listing-file-modified-sort="1794192641657" data-listing-date-modified-sort="1794182400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="37">
+<div class="thumbnail"><a href="./posts/001-opening/001-opening.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/001-opening/milestone.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/001-opening/001-opening.html" class="no-external">Opening!</a>
+<a href="./posts/001-opening/001-opening.html" class="no-external-icon">Opening!</a>
 </h3>
 <div class="listing-categories">
 
@@ -728,12 +733,14 @@ Paolo Bosetti
 <div class="listing-category" onclick="window.quartoListingCategory('YW5ub3VuY2VtZW50'); return false;">announcement</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/001-opening/001-opening.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/001-opening/001-opening.html" class="no-external-icon">
 On Feb.&nbsp;5th, 2025, Giuseppe <strong>Espa</strong>, Maria Michela <strong>Dickson</strong>, Flavio <strong>Santi</strong>, Diego <strong>Giuliani</strong> and Paolo <strong>Bosetti</strong> had the first founding meeting of the R-Trento Users Group.
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/001-opening/001-opening.html" class="no-external">
+<a href="./posts/001-opening/001-opening.html" class="no-external-icon">
 <div class="listing-date">
 Feb 5, 2025
 </div>
@@ -879,7 +886,8 @@ Paolo Bosetti
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -888,8 +896,69 @@ Paolo Bosetti
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -903,6 +972,7 @@ Paolo Bosetti
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1065,44 +1135,54 @@ Paolo Bosetti
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1200,6 +1280,9 @@ Paolo Bosetti
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">

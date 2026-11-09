@@ -8,15 +8,15 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/bootstrap-icons-1.11.1/all.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.20">
+  <meta name="generator" content="quarto-1.11.9">
 
   <meta name="author" content="Paolo Bosetti">
   <title>RTUG – The adas.utils package</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
@@ -104,7 +104,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f19e61daf9493e3e1e5fe4cb9a0896a5.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-18ec7d5bb8db272ee0b0dbc1cbf7efaa.css">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XKT2HCTTXM"></script>
 
   <script type="text/plain" cookie-consent="tracking">
@@ -2172,14 +2172,14 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-1 -1 -1 -1 NA        1        1
-2  1 -1 -1 NA        2        8
-3 -1  1 -1 NA        3        6
-4  1  1 -1 NA        4        7
-5 -1 -1  1 NA        5        2
-6  1 -1  1 NA        6        3
+1 -1 -1 -1 NA        1        5
+2  1 -1 -1 NA        2        7
+3 -1  1 -1 NA        3        3
+4  1  1 -1 NA        4        6
+5 -1 -1  1 NA        5        1
+6  1 -1  1 NA        6        2
 7 -1  1  1 NA        7        4
-8  1  1  1 NA        8        5</code></pre>
+8  1  1  1 NA        8        8</code></pre>
 </div>
 </div></div>
 <p>Then save it (typ. as CSV), perform the experiments, fill the <code>Y</code> yield column, and load it back for the analysis</p>
@@ -2203,10 +2203,10 @@ Paolo Bosetti
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>   A  B  C  Y StdOrder RunOrder
-2  1 -1 -1 NA        2        2
-3 -1  1 -1 NA        3        3
+2  1 -1 -1 NA        2        3
+3 -1  1 -1 NA        3        4
 5 -1 -1  1 NA        5        1
-8  1  1  1 NA        8        4</code></pre>
+8  1  1  1 NA        8        2</code></pre>
 </div>
 </div></div>
 <p>But mind you! for this to work, columns <code>A</code>, <code>B</code>, and <code>C</code> <strong>must NOT be <u>factors</u>!</strong> (in the R sense)</p>
@@ -2329,13 +2329,13 @@ Paolo Bosetti
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
 1        1        6 (1)        1    -1    -1 NA   
-2        2        5 a          1     1    -1 NA   
-3        3        4 b          1    -1     1 NA   
-4        4        1 ab         1     1     1 NA   
-5        5        8 (1)        2    -1    -1 NA   
-6        6        3 a          2     1    -1 NA   
+2        2        8 a          1     1    -1 NA   
+3        3        1 b          1    -1     1 NA   
+4        4        4 ab         1     1     1 NA   
+5        5        2 (1)        2    -1    -1 NA   
+6        6        5 a          2     1    -1 NA   
 7        7        7 b          2    -1     1 NA   
-8        8        2 ab         2     1     1 NA   </code></pre>
+8        8        3 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -2382,14 +2382,14 @@ Paolo Bosetti
 # A tibble: 8 × 7
   StdOrder RunOrder .treat  .rep     A     B Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        1        2 (1)        1    -1    -1 NA   
-2        2        5 a          1     1    -1 NA   
-3        3        3 b          1    -1     1 NA   
-4        4        6 ab         1     1     1 NA   
-5        5        8 (1)        2    -1    -1 NA   
-6        6        4 a          2     1    -1 NA   
-7        7        7 b          2    -1     1 NA   
-8        8        1 ab         2     1     1 NA   </code></pre>
+1        1        1 (1)        1    -1    -1 NA   
+2        2        3 a          1     1    -1 NA   
+3        3        6 b          1    -1     1 NA   
+4        4        8 ab         1     1     1 NA   
+5        5        7 (1)        2    -1    -1 NA   
+6        6        2 a          2     1    -1 NA   
+7        7        4 b          2    -1     1 NA   
+8        8        5 ab         2     1     1 NA   </code></pre>
 </div>
 </div></div>
 
@@ -2477,12 +2477,12 @@ Paolo Bosetti
 # A tibble: 6 × 9
   StdOrder RunOrder .treat  .rep     A     B     C   B_s Y    
      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
-1        7        4 bc         1    -1     1     1    20 NA   
+1        7        5 bc         1    -1     1     1    20 NA   
 2        8        8 abc        1     1     1     1    20 NA   
-3        9       11 center     1     0     0     0    15 NA   
-4       10       12 center     2     0     0     0    15 NA   
-5       11       10 center     3     0     0     0    15 NA   
-6       12        9 center     4     0     0     0    15 NA   </code></pre>
+3        9       12 center     1     0     0     0    15 NA   
+4       10       11 center     2     0     0     0    15 NA   
+5       11        9 center     3     0     0     0    15 NA   
+6       12       10 center     4     0     0     0    15 NA   </code></pre>
 </div>
 </div></div>
 </section>
@@ -2868,7 +2868,7 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\">\u003ckbd>b\u003c/kbd> Toggle Chalkboard\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"6\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\">\u003ckbd>c\u003c/kbd> Toggle Notes Canvas\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"7\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\">\u003ckbd>d\u003c/kbd> Download Drawings\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"8\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -3162,7 +3162,8 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
           // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
           for (var i=0; i<links.length; i++) {
             const link = links[i];
             if (!isInternal(link.href)) {
@@ -3171,10 +3172,71 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+              if (!link.classList.contains('no-external-icon')) {
                 // default icon
                 link.classList.add("external");
+              }
             }
           }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
@@ -3188,6 +3250,7 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
             interactiveBorder: 10,
             theme: 'light-border',
             placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
           };
           if (contentFn) {
             config.content = contentFn;
@@ -3234,44 +3297,54 @@ ABCD 2 0  0 0  0  3   0 1  0  0   0  0   0   0    0</code></pre>
               const lineIds = lines.map((line) => {
                 return targetCell + "-" + line;
               })
-              let top = null;
-              let height = null;
-              let parent = null;
+              // Each band is positioned against its own containing block, which is
+              // not the offsetParent of the lines, so place it from client rects.
+              const placeBand = (band, firstEl, lastEl, codeBlock) => {
+                const container = band.offsetParent;
+                if (container === null) {
+                  return;
+                }
+                const containerRect = container.getBoundingClientRect();
+                // Reveal.js scales slides with a transform, so convert client
+                // pixels back to the CSS pixels of the container.
+                const scale = containerRect.height / container.offsetHeight || 1;
+                const firstRect = firstEl.getBoundingClientRect();
+                const lastRect = lastEl.getBoundingClientRect();
+                const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+                const height = (lastRect.bottom - firstRect.top) / scale;
+                band.style.top = top - 2 + "px";
+                band.style.height = height + 4 + "px";
+                if (codeBlock) {
+                  // Without the copy button wrapper, the containing block is wider
+                  // than the code block, so span the code block explicitly.
+                  const blockRect = codeBlock.getBoundingClientRect();
+                  band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+                  band.style.width = blockRect.width / scale + "px";
+                }
+              };
               if (lineIds.length > 0) {
-                  //compute the position of the single el (top and bottom and make a div)
-                  const el = window.document.getElementById(lineIds[0]);
-                  top = el.offsetTop;
-                  height = el.offsetHeight;
-                  parent = el.parentElement.parentElement;
-                if (lineIds.length > 1) {
-                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                  height = bottom - top;
+                const el = window.document.getElementById(lineIds[0]);
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const parent = el.parentElement.parentElement;
+                // cook up a div (if necessary) and position it
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
                 }
-                if (top !== null && height !== null && parent !== null) {
-                  // cook up a div (if necessary) and position it 
-                  let div = window.document.getElementById("code-annotation-line-highlight");
-                  if (div === null) {
-                    div = window.document.createElement("div");
-                    div.setAttribute("id", "code-annotation-line-highlight");
-                    div.style.position = 'absolute';
-                    parent.appendChild(div);
-                  }
-                  div.style.top = top - 2 + "px";
-                  div.style.height = height + 4 + "px";
-                  div.style.left = 0;
-                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                  if (gutterDiv === null) {
-                    gutterDiv = window.document.createElement("div");
-                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                    gutterDiv.style.position = 'absolute';
-                    const codeCell = window.document.getElementById(targetCell);
-                    const gutter = codeCell.querySelector('.code-annotation-gutter');
-                    gutter.appendChild(gutterDiv);
-                  }
-                  gutterDiv.style.top = top - 2 + "px";
-                  gutterDiv.style.height = height + 4 + "px";
+                placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
                 }
+                placeBand(gutterDiv, el, lastEl);
                 selectedAnnoteEl = annoteEl;
               }
             };
